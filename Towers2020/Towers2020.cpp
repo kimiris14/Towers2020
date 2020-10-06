@@ -64,6 +64,8 @@ BOOL CTowers2020App::InitInstance()
 
 	CWinApp::InitInstance();
 
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
 
 	// Initialize OLE libraries
 	if (!AfxOleInit())
@@ -112,7 +114,8 @@ BOOL CTowers2020App::InitInstance()
 
 int CTowers2020App::ExitInstance()
 {
-	//TODO: handle additional resources you may have added
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
 	AfxOleTerm(FALSE);
 
 	return CWinApp::ExitInstance();

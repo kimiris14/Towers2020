@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "Game.h"
+
 
 // CChildView window
 
@@ -32,5 +34,21 @@ public:
 protected:
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+
+private:
+
+	/// The main game object
+	CGame mGame;
+
+	/// True until the first time we draw
+	bool mFirstDraw = true;
+
+	long long mLastTime = 0;    ///< Last time we read the timer
+	double mTimeFreq = 0;       ///< Rate the timer updates
+
+
+public:
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 
