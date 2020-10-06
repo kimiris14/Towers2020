@@ -12,26 +12,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C2E0447-F552-455F-818D-41CE8A73103E}.Debug|x64.ActiveCfg = Debug|x64
-		{7C2E0447-F552-455F-818D-41CE8A73103E}.Debug|x64.Build.0 = Debug|x64
 		{7C2E0447-F552-455F-818D-41CE8A73103E}.Debug|x86.ActiveCfg = Debug|Win32
 		{7C2E0447-F552-455F-818D-41CE8A73103E}.Debug|x86.Build.0 = Debug|Win32
-		{7C2E0447-F552-455F-818D-41CE8A73103E}.Release|x64.ActiveCfg = Release|x64
-		{7C2E0447-F552-455F-818D-41CE8A73103E}.Release|x64.Build.0 = Release|x64
 		{7C2E0447-F552-455F-818D-41CE8A73103E}.Release|x86.ActiveCfg = Release|Win32
 		{7C2E0447-F552-455F-818D-41CE8A73103E}.Release|x86.Build.0 = Release|Win32
-		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Debug|x64.ActiveCfg = Debug|x64
-		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Debug|x64.Build.0 = Debug|x64
 		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Debug|x86.ActiveCfg = Debug|Win32
 		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Debug|x86.Build.0 = Debug|Win32
-		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Release|x64.ActiveCfg = Release|x64
-		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Release|x64.Build.0 = Release|x64
 		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Release|x86.ActiveCfg = Release|Win32
 		{F551D502-F3E3-4075-9CB7-4F9A05736C5F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
