@@ -3,6 +3,7 @@
 //
 
 #include "pch.h"
+#include "DoubleBufferDC.h"
 #include "framework.h"
 #include "Towers2020.h"
 #include "ChildView.h"
