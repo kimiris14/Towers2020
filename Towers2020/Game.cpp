@@ -42,6 +42,8 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // from here on you are drawing virtual pixels
 
+    test change
+
 }
 
 
