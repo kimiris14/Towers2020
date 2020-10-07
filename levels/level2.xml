@@ -16,6 +16,7 @@
     <trees id="i018" image="trees1.png"/>
     <trees id="i019" image="trees2.png"/>
     <trees id="i020" image="trees3.png"/>
+    <trees id="i021" image="trees4.png"/>
   </declarations>
   <items>
     <trees id="i021" x="0" y="15"/>
