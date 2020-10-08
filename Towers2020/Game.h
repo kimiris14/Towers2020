@@ -9,14 +9,15 @@
 #pragma once
 #include <map>
 #include <string>
+#include <memory>
 
 class CGame
 {
 public:
-
+    CGame();
+    
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
     void OnLButtonDown(int x, int y);
-    void ImageMap();
 
 private:
     /// Game area in virtual pixels
@@ -35,7 +36,6 @@ private:
     float mYOffset;
 
     /// map that links images to their respective id
-    std::map<std::string, std::string> mImageMap;
-    
-};
+    std::map<std::string, std::wstring> mImageMap;
 
+};

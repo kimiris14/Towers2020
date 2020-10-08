@@ -12,9 +12,148 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// roadEW filename
+const wstring roadEWImageName = L"roadEW.png";
 
+/// roadEW id number
+const string roadEWID = "i001";
 
- /**
+/// roadNS filename
+const wstring roadNSImageName = L"roadNS.png";
+
+/// roadNS id number
+const string roadNSID = "i002";
+
+/// roadSE filename
+const wstring roadSEImageName = L"roadSE.png";
+
+/// roadSE id number
+const string roadSEID = "i003";
+
+/// roadSW filename
+const wstring roadSWImageName = L"roadSW.png";
+
+/// roadSW id number
+const string roadSWID = "i004";
+
+/// roadNE filename
+const wstring roadNEImageName = L"roadNE.png";
+
+/// roadNE id number
+const string roadNEID = "i005";
+
+/// roadNW filename
+const wstring roadNWImageName = L"roadNW.png";
+
+/// roadNW id number
+const string roadNWID = "i006";
+
+/// grass1 filename
+const wstring grassOneImageName = L"grass1.png";
+
+/// grass1 id number
+const string grassOneID = "i007";
+
+/// grass2 filename
+const wstring grassTwoImageName = L"grass2.png";
+
+/// grass2 id number
+const string grassTwoID = "i008";
+
+/// house1 filename
+const wstring houseOneImageName = L"house1.png";
+
+/// house1 id number
+const string houseOneID = "i011";
+
+/// house2 filename
+const wstring houseTwoImageName = L"house2.png";
+
+/// house2 id number
+const string houseTwoID = "i012";
+
+/// house3 filename
+const wstring houseThreeImageName = L"house3.png";
+
+/// house3 id number
+const string houseThreeID = "i013";
+
+/// house4a filename
+const wstring houseFourAImageName = L"house4a.png";
+
+/// house4a id number
+const string houseFourAID = "i014";
+
+/// house4b filename
+const wstring houseFourBImageName = L"house4b.png";
+
+/// house4b id number
+const string houseFourBID = "i015";
+
+/// castlea filename
+const wstring castleAImageName = L"castlea.png";
+
+/// castlea id number
+const string castleAID = "i016";
+
+/// castleb filename
+const wstring castleBImageName = L"castleb.png";
+
+/// castleb id number
+const string castleBID = "i017";
+
+/// trees1 filename
+const wstring treesOneImageName = L"trees1.png";
+
+/// trees1 id number
+const string treesOneID = "i018";
+
+/// trees2 filename
+const wstring treesTwoImageName = L"trees2.png";
+
+/// trees2 id number
+const string treesTwoID = "i019";
+
+/// trees3 filename
+const wstring treesThreeImageName = L"trees3.png";
+
+/// trees3 id number
+const string treesThreeID = "i020";
+
+/// trees4 filename
+const wstring treesFourImageName = L"trees4.png";
+
+/// trees4 id number
+const string treesFourID = "i021";
+
+/**
+* Game constructor
+* Loads the each image necessary for the game once through a map
+*/
+CGame::CGame()
+{
+    mImageMap.insert({ roadEWID, roadEWImageName });
+    mImageMap.insert({ roadNSID, roadNSImageName });
+    mImageMap.insert({ roadSEID, roadSEImageName });
+    mImageMap.insert({ roadSWID, roadSWImageName });
+    mImageMap.insert({ roadNEID, roadNEImageName });
+    mImageMap.insert({ roadNWID, roadNWImageName });
+    mImageMap.insert({ grassOneID, grassOneImageName });
+    mImageMap.insert({ grassTwoID, grassTwoImageName });
+    mImageMap.insert({ houseOneID, houseOneImageName });
+    mImageMap.insert({ houseTwoID, houseTwoImageName });
+    mImageMap.insert({ houseThreeID, houseThreeImageName });
+    mImageMap.insert({ houseFourAID, houseFourAImageName });
+    mImageMap.insert({ houseFourBID, houseFourBImageName });
+    mImageMap.insert({ castleAID, castleAImageName });
+    mImageMap.insert({ castleBID, castleBImageName });
+    mImageMap.insert({ treesOneID, treesOneImageName });
+    mImageMap.insert({ treesTwoID, treesTwoImageName });
+    mImageMap.insert({ treesThreeID, treesThreeImageName });
+    mImageMap.insert({ treesFourID, treesFourImageName });
+}
+
+/**
   * Draw the game area
   * \param graphics The GDI+ graphics context to draw on
   * \param width Width of the client window
@@ -59,31 +198,4 @@ void CGame::OnLButtonDown(int x, int y)
     double oY = (y - mYOffset) / mScale;
 
 }
-
-/**
-* Load images once by mapping all images to their respective IDs
-*/
-void CGame::ImageMap() 
-{
-    mImageMap.insert({"i001", "roadEW.png"});
-    mImageMap.insert({"i002", "roadNS.png"});
-    mImageMap.insert({"i003", "roadSE.png"});
-    mImageMap.insert({"i004", "roadSW.png"});
-    mImageMap.insert({"i005", "roadNE.png"});
-    mImageMap.insert({"i006", "roadNW.png"});
-    mImageMap.insert({"i007", "grass1.png"});
-    mImageMap.insert({"i008", "grass2.png"});
-    mImageMap.insert({"i011", "house1.png"});
-    mImageMap.insert({"i012", "house2.png"});
-    mImageMap.insert({"i013", "house3.png"});
-    mImageMap.insert({"i014", "house4a.png"});
-    mImageMap.insert({"i015", "house4b.png"});
-    mImageMap.insert({"i016", "castlea.png"});
-    mImageMap.insert({"i017", "castleb.png"});
-    mImageMap.insert({"i018", "trees1.png"});
-    mImageMap.insert({"i019", "trees2.png"});
-    mImageMap.insert({"i020", "trees3.png"});
-    mImageMap.insert({"i021", "trees4.png"});
-}
-
 
