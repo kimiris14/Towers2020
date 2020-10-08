@@ -7,12 +7,16 @@
  */
 
 #pragma once
+#include <map>
+#include <string>
+
 class CGame
 {
 public:
 
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
     void OnLButtonDown(int x, int y);
+    void ImageMap();
 
 private:
     /// Game area in virtual pixels
@@ -30,6 +34,8 @@ private:
     /// the viewing window's offset in the y-direction
     float mYOffset;
 
+    // map that links images to their respective id
+    map<string, string> mImageMap;
     
 };
 

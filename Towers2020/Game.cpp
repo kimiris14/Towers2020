@@ -57,3 +57,30 @@ void CGame::OnLButtonDown(int x, int y)
     double oY = (y - mYOffset) / mScale;
 
 }
+
+/**
+* Load images once by mapping all images to their respective IDs
+*/
+void CGame::ImageMap() 
+{
+    mImageMap.insert({"i001", "roadEW.png"});
+    mImageMap.insert({"i002", "roadNS.png"});
+    mImageMap.insert({"i003", "roadSE.png"});
+    mImageMap.insert({"i004", "roadSW.png"});
+    mImageMap.insert({"i005", "roadNE.png"});
+    mImageMap.insert({"i006", "roadNW.png"});
+    mImageMap.insert({"i007", "grass1.png"});
+    mImageMap.insert({"i008", "grass2.png"});
+    mImageMap.insert({"i011", "house1.png"});
+    mImageMap.insert({"i012", "house2.png"});
+    mImageMap.insert({"i013", "house3.png"});
+    mImageMap.insert({"i014", "house4a.png"});
+    mImageMap.insert({"i015", "house4b.png"});
+    mImageMap.insert({"i016", "castlea.png"});
+    mImageMap.insert({"i017", "castleb.png"});
+    mImageMap.insert({"i018", "trees1.png"});
+    mImageMap.insert({"i019", "trees2.png"});
+    mImageMap.insert({"i020", "trees3.png"});
+    mImageMap.insert({"i021", "trees4.png"});
+}
+
