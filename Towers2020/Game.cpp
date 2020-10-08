@@ -6,6 +6,8 @@
 
 #include "pch.h"
 #include "Game.h"
+#include <map>
+#include <string>
 
 using namespace Gdiplus;
 using namespace std;
@@ -83,4 +85,5 @@ void CGame::ImageMap()
     mImageMap.insert({"i020", "trees3.png"});
     mImageMap.insert({"i021", "trees4.png"});
 }
+
 

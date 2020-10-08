@@ -34,8 +34,8 @@ private:
     /// the viewing window's offset in the y-direction
     float mYOffset;
 
-    // map that links images to their respective id
-    map<string, string> mImageMap;
+    /// map that links images to their respective id
+    std::map<std::string, std::string> mImageMap;
     
 };
 
