@@ -16,115 +16,115 @@ using namespace std;
 const wstring roadEWImageName = L"roadEW.png";
 
 /// roadEW id number
-const string roadEWID = "i001";
+const wstring roadEWID = L"i001";
 
 /// roadNS filename
 const wstring roadNSImageName = L"roadNS.png";
 
 /// roadNS id number
-const string roadNSID = "i002";
+const wstring roadNSID = L"i002";
 
 /// roadSE filename
 const wstring roadSEImageName = L"roadSE.png";
 
 /// roadSE id number
-const string roadSEID = "i003";
+const wstring roadSEID = L"i003";
 
 /// roadSW filename
 const wstring roadSWImageName = L"roadSW.png";
 
 /// roadSW id number
-const string roadSWID = "i004";
+const wstring roadSWID = L"i004";
 
 /// roadNE filename
 const wstring roadNEImageName = L"roadNE.png";
 
 /// roadNE id number
-const string roadNEID = "i005";
+const wstring roadNEID = L"i005";
 
 /// roadNW filename
 const wstring roadNWImageName = L"roadNW.png";
 
 /// roadNW id number
-const string roadNWID = "i006";
+const wstring roadNWID = L"i006";
 
 /// grass1 filename
 const wstring grassOneImageName = L"grass1.png";
 
 /// grass1 id number
-const string grassOneID = "i007";
+const wstring grassOneID = L"i007";
 
 /// grass2 filename
 const wstring grassTwoImageName = L"grass2.png";
 
 /// grass2 id number
-const string grassTwoID = "i008";
+const wstring grassTwoID = L"i008";
 
 /// house1 filename
 const wstring houseOneImageName = L"house1.png";
 
 /// house1 id number
-const string houseOneID = "i011";
+const wstring houseOneID = L"i011";
 
 /// house2 filename
 const wstring houseTwoImageName = L"house2.png";
 
 /// house2 id number
-const string houseTwoID = "i012";
+const wstring houseTwoID = L"i012";
 
 /// house3 filename
 const wstring houseThreeImageName = L"house3.png";
 
 /// house3 id number
-const string houseThreeID = "i013";
+const wstring houseThreeID = L"i013";
 
 /// house4a filename
 const wstring houseFourAImageName = L"house4a.png";
 
 /// house4a id number
-const string houseFourAID = "i014";
+const wstring houseFourAID = L"i014";
 
 /// house4b filename
 const wstring houseFourBImageName = L"house4b.png";
 
 /// house4b id number
-const string houseFourBID = "i015";
+const wstring houseFourBID = L"i015";
 
 /// castlea filename
 const wstring castleAImageName = L"castlea.png";
 
 /// castlea id number
-const string castleAID = "i016";
+const wstring castleAID = L"i016";
 
 /// castleb filename
 const wstring castleBImageName = L"castleb.png";
 
 /// castleb id number
-const string castleBID = "i017";
+const wstring castleBID = L"i017";
 
 /// trees1 filename
 const wstring treesOneImageName = L"trees1.png";
 
 /// trees1 id number
-const string treesOneID = "i018";
+const wstring treesOneID = L"i018";
 
 /// trees2 filename
 const wstring treesTwoImageName = L"trees2.png";
 
 /// trees2 id number
-const string treesTwoID = "i019";
+const wstring treesTwoID = L"i019";
 
 /// trees3 filename
 const wstring treesThreeImageName = L"trees3.png";
 
 /// trees3 id number
-const string treesThreeID = "i020";
+const wstring treesThreeID = L"i020";
 
 /// trees4 filename
 const wstring treesFourImageName = L"trees4.png";
 
 /// trees4 id number
-const string treesFourID = "i021";
+const wstring treesFourID = L"i021";
 
 /**
 * Game constructor

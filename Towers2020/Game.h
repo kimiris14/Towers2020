@@ -36,6 +36,6 @@ private:
     float mYOffset;
 
     /// map that links images to their respective id
-    std::map<std::string, std::wstring> mImageMap;
+    std::map<std::wstring, std::wstring> mImageMap;
 
 };
