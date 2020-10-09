@@ -20,7 +20,7 @@ class CItem
 {
 public:
 
-	virtual ~CItem();
+	virtual ~CItem() {}
 
 	/// Default constructor (disabled)
 	CItem() = delete;

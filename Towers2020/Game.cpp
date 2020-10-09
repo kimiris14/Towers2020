@@ -48,18 +48,6 @@ const wstring roadNWImageName = L"roadNW.png";
 /// roadNW id number
 const wstring roadNWID = L"i006";
 
-/// grass1 filename
-const wstring grassOneImageName = L"grass1.png";
-
-/// grass1 id number
-const wstring grassOneID = L"i007";
-
-/// grass2 filename
-const wstring grassTwoImageName = L"grass2.png";
-
-/// grass2 id number
-const wstring grassTwoID = L"i008";
-
 /// house1 filename
 const wstring houseOneImageName = L"house1.png";
 
@@ -138,8 +126,6 @@ CGame::CGame()
     mImageMap.AddImage(roadSWID,     roadSWImageName);
     mImageMap.AddImage(roadNEID,     roadNEImageName);
     mImageMap.AddImage(roadNWID,     roadNWImageName);
-    mImageMap.AddImage(grassOneID,   grassOneImageName);
-    mImageMap.AddImage(grassTwoID,   grassTwoImageName);
     mImageMap.AddImage(houseOneID,   houseOneImageName);
     mImageMap.AddImage(houseTwoID,   houseTwoImageName);
     mImageMap.AddImage(houseThreeID, houseThreeImageName);

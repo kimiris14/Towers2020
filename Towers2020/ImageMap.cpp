@@ -14,8 +14,6 @@ CImageMap::CImageMap()
 {
 }
 
-
-
 /**
  * Adds a bitmap to the mImageMap and shows an error message box if appropriate
  * \param imageID The ID to associate with this image
