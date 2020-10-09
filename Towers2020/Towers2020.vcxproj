@@ -189,6 +189,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameField.h" />
     <ClInclude Include="GamePallette.h" />
+    <ClInclude Include="ImageMap.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameField.cpp" />
     <ClCompile Include="GamePallette.cpp" />
+    <ClCompile Include="ImageMap.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">

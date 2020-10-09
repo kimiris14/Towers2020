@@ -132,25 +132,25 @@ const wstring treesFourID = L"i021";
 */
 CGame::CGame()
 {
-    mImageMap.insert({ roadEWID, roadEWImageName });
-    mImageMap.insert({ roadNSID, roadNSImageName });
-    mImageMap.insert({ roadSEID, roadSEImageName });
-    mImageMap.insert({ roadSWID, roadSWImageName });
-    mImageMap.insert({ roadNEID, roadNEImageName });
-    mImageMap.insert({ roadNWID, roadNWImageName });
-    mImageMap.insert({ grassOneID, grassOneImageName });
-    mImageMap.insert({ grassTwoID, grassTwoImageName });
-    mImageMap.insert({ houseOneID, houseOneImageName });
-    mImageMap.insert({ houseTwoID, houseTwoImageName });
-    mImageMap.insert({ houseThreeID, houseThreeImageName });
-    mImageMap.insert({ houseFourAID, houseFourAImageName });
-    mImageMap.insert({ houseFourBID, houseFourBImageName });
-    mImageMap.insert({ castleAID, castleAImageName });
-    mImageMap.insert({ castleBID, castleBImageName });
-    mImageMap.insert({ treesOneID, treesOneImageName });
-    mImageMap.insert({ treesTwoID, treesTwoImageName });
-    mImageMap.insert({ treesThreeID, treesThreeImageName });
-    mImageMap.insert({ treesFourID, treesFourImageName });
+    mImageMap.AddImage(roadEWID,     roadEWImageName);
+    mImageMap.AddImage(roadNSID,     roadNSImageName);
+    mImageMap.AddImage(roadSEID,     roadSEImageName);
+    mImageMap.AddImage(roadSWID,     roadSWImageName);
+    mImageMap.AddImage(roadNEID,     roadNEImageName);
+    mImageMap.AddImage(roadNWID,     roadNWImageName);
+    mImageMap.AddImage(grassOneID,   grassOneImageName);
+    mImageMap.AddImage(grassTwoID,   grassTwoImageName);
+    mImageMap.AddImage(houseOneID,   houseOneImageName);
+    mImageMap.AddImage(houseTwoID,   houseTwoImageName);
+    mImageMap.AddImage(houseThreeID, houseThreeImageName);
+    mImageMap.AddImage(houseFourAID, houseFourAImageName);
+    mImageMap.AddImage(houseFourBID, houseFourBImageName);
+    mImageMap.AddImage(castleAID,    castleAImageName);
+    mImageMap.AddImage(castleBID,    castleBImageName);
+    mImageMap.AddImage(treesOneID,   treesOneImageName);
+    mImageMap.AddImage(treesTwoID,   treesTwoImageName);
+    mImageMap.AddImage(treesThreeID, treesThreeImageName);
+    mImageMap.AddImage(treesFourID,  treesFourImageName);
 }
 
 /**

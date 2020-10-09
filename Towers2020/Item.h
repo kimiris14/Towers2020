@@ -13,6 +13,9 @@
 #include "GameField.h"
 #include "Game.h"
 
+/**
+ * A class that will store all of the game's images
+ */
 class CItem
 {
 public:

@@ -10,6 +10,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include "ImageMap.h"
 
 class CGame
 {
@@ -35,7 +36,7 @@ private:
     /// the viewing window's offset in the y-direction
     float mYOffset;
 
-    /// map that links images to their respective id
-    std::map<std::wstring, std::wstring> mImageMap;
+    /// map that links image bitmaps to their respective image id
+    CImageMap mImageMap;
 
 };
