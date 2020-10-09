@@ -13,7 +13,7 @@
 #include <memory>
 
 /**
- * 
+ * A class to store game images, so that they are only loaded once.
  */
 class CImageMap
 {
@@ -24,6 +24,11 @@ public:
 	bool AddImage(std::wstring imageID, std::wstring imageFileName);
 
 	std::shared_ptr<Gdiplus::Bitmap> GetImage(std::wstring imageID);
+
+	/**
+	 * Get the size of the image map
+	 */
+	size_t GetSize() { return mImageMap.size(); }
 
 private:
 
