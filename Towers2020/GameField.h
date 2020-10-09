@@ -1,7 +1,7 @@
 /**
  * \file GameField.h
  *
- * \author Iris Kim
+ * \author PaulaRed
  *
  * Gamefield class that encompasses the overall game board
  */
