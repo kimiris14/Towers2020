@@ -6,7 +6,6 @@
  * Base class for any tile in the game field
  */
 
-
 #pragma once
 #include <memory>
 #include <string>

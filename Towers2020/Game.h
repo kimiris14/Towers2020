@@ -20,6 +20,10 @@ public:
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
     void OnLButtonDown(int x, int y);
 
+    void Load(const std::wstring& filename);
+
+    void Clear();
+
 private:
     /// Game area in virtual pixels
     const static int Width = 1224;

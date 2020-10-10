@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
 	ON_WM_TIMER()
 	ON_WM_ERASEBKGND()
+	ON_COMMAND(ID_FILE_OPEN32775, &CChildView::OnFileOpen32775)
 END_MESSAGE_MAP()
 
 
@@ -122,4 +123,23 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return FALSE;
+}
+
+/**
+ * Open a .xml level file 
+ */
+void CChildView::OnFileOpen32775()
+{
+	CFileDialog dlg(true,  // true = Open dialog box
+		L".xml",           // Default file extension
+		nullptr,            // Default file name (none)
+		0,    // Flags
+		L"XML Files (*.xml)|*.xml|All Files (*.*)|*.*||");  // Filter
+	if (dlg.DoModal() != IDOK)
+		return;
+
+	wstring filename = dlg.GetPathName();
+
+	mGame.Load(filename);
+	Invalidate();
 }
