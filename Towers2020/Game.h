@@ -22,9 +22,13 @@ public:
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
     void OnLButtonDown(int x, int y);
 
+    void Save(const std::wstring& filename);
+
     void Load(const std::wstring& filename);
 
     void Clear();
+
+    //void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 private:
     /// Game area in virtual pixels

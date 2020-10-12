@@ -10,7 +10,11 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "GameField.h"
+#include "XmlNode.h"
+
+using namespace xmlnode;
 
 class CGame;
 
@@ -44,6 +48,10 @@ public:
 	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 
 	/** The X location of the item

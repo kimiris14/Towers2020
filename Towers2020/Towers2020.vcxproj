@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\XmlNode.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileRoad.cpp" />
     <ClCompile Include="Towers2020.cpp" />
+    <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Towers2020.rc" />

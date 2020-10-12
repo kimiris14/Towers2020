@@ -33,3 +33,37 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
         (float)mItemBitmap->GetWidth(), (float)mItemBitmap->GetHeight());
     */
 }
+
+/**
+ * Save the attributes for an item node.
+ *
+ * This is the  base class version that saves the attributes
+ * common to all items. Override this to save custom attributes
+ * for specific items.
+ *
+ * \param node The Xml node we are saving the item from
+ */
+std::shared_ptr<xmlnode::CXmlNode> CItem::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    auto itemNode = node->AddChild(L"item");
+
+    itemNode->SetAttribute(L"x", mX);
+    itemNode->SetAttribute(L"y", mY);
+
+    return itemNode;
+}
+
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ *
+ * \param node The Xml node we are loading the item from
+ */
+void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    mX = node->GetAttributeDoubleValue(L"x", 0);
+    mY = node->GetAttributeDoubleValue(L"y", 0);
+}

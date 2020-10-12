@@ -41,6 +41,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_TIMER()
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_FILE_OPEN32775, &CChildView::OnFileOpen32775)
+	ON_COMMAND(ID_FILE_SAVEAS, &CChildView::OnFileSaveas)
 END_MESSAGE_MAP()
 
 
@@ -142,4 +143,24 @@ void CChildView::OnFileOpen32775()
 
 	mGame.Load(filename);
 	Invalidate();
+}
+
+/**
+ * Save a .xml level file
+ */
+void CChildView::OnFileSaveas()
+{
+	CFileDialog dlg(false,  // false = Save dialog box
+		L".xml",           // Default file extension
+		nullptr,            // Default file name (none)
+		OFN_OVERWRITEPROMPT,      // Flags (warn it overwriting file)
+		L"XML Files (*.xml)|*.xml|All Files (*.*)|*.*||"); // Filter
+
+	if (dlg.DoModal() != IDOK)
+		return;
+
+	wstring filename = dlg.GetPathName();
+
+	mGame.Save(filename);
+
 }

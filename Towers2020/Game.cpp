@@ -6,11 +6,13 @@
 
 #include "pch.h"
 #include "Game.h"
+#include "XmlNode.h"
 #include <map>
 #include <string>
 
 using namespace Gdiplus;
 using namespace std;
+using namespace xmlnode;
 
 
 /// house1 filename
@@ -146,6 +148,35 @@ void CGame::OnLButtonDown(int x, int y)
 }
 
 /**
+ * Save the game level as a .xml XML file.
+ *
+ * Open an XML file and stream the level data to it.
+ *
+ * \param filename The filename of the file to save the level to
+ */
+void CGame::Save(const std::wstring& filename)
+{   //
+    // Create an XML document
+    //
+    auto root = CXmlNode::CreateDocument(L"xml");
+
+
+    // Iterate over all items and save them
+    for (auto item : mItems)
+    {
+        item->XmlSave(root);
+    }
+    try
+    {
+        root->Save(filename);
+    }
+    catch (CXmlNode::Exception ex)
+    {
+        AfxMessageBox(ex.Message().c_str());
+    }
+}
+
+/**
  * Load the game level from a .xml XML file.
  *
  * Opens the XML file and reads the nodes, creating items as appropriate.
@@ -154,7 +185,30 @@ void CGame::OnLButtonDown(int x, int y)
  */
 void CGame::Load(const std::wstring& filename)
 {
-    // I'll fill this once there is a vector of CTiles
+    // We surround with a try/catch to handle errors
+    try
+    {
+        // Open the document to read
+        shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
+
+        // Once we know it is open, clear the existing data
+        Clear();
+        //
+        // Traverse the children of the root
+        // node of the XML document in memory
+        //
+        for (auto node : root->GetChildren())
+        {
+            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"item")
+            {
+                //XmlItem(node);
+            }
+        }
+    }
+    catch (CXmlNode::Exception ex)
+    {
+        AfxMessageBox(ex.Message().c_str());
+    }
 }
 
 /**
@@ -164,8 +218,43 @@ void CGame::Load(const std::wstring& filename)
  */
 void CGame::Clear()
 {
-    // I'll fill this once there is a vector of CTiles
+    mItems.clear();
 }
 
+/**
+* Handle an item node.
+* \param node Pointer to XML node we are handling
+*
+void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    // A pointer for the item we are loading
+    shared_ptr<CItem> item;
+
+    // We have an item. What type?
+    wstring type = node->GetAttributeValue(L"type", L"");
+    if (type == L"beta")
+    {
+        item = make_shared<CFishBeta>(this);
+    }
+    if (type == L"nemo")
+    {
+        item = make_shared<CNemo>(this);
+    }
+    if (type == L"dory")
+    {
+        item = make_shared<CDory>(this);
+    }
+    if (type == L"castle")
+    {
+        item = make_shared<CDecorCastle>(this);
+    }
+
+
+    if (item != nullptr)
+    {
+        item->XmlLoad(node);
+        Add(item);
+    }
+}*/
 
 

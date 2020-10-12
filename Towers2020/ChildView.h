@@ -51,5 +51,6 @@ public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnFileOpen32775();
+	afx_msg void OnFileSaveas();
 };
 
