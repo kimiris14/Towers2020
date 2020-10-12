@@ -24,6 +24,10 @@ class CTileRoad :
     ~CTileRoad() {}
 
 private:
+
+    /// The image of this tile
+    std::shared_ptr<Gdiplus::Bitmap> mItemImage;
+
     /// map that links image bitmaps to their respective image id
     CImageMap mImageMap;
 
