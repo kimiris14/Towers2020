@@ -7,6 +7,9 @@
 #include "pch.h"
 #include "TileRoad.h"
 #include "ImageMap.h"
+#include "Tile.h"
+#include "Game.h"
+#include "GameField.h"
 
 using namespace std;
 
@@ -46,13 +49,18 @@ const wstring roadNWImageName = L"images/roadNW.png";
 /// roadNW id number
 const wstring roadNWID = L"i006";
 
-/* mImageMap.AddImage(roadEWID,     roadEWImageName);
-    mImageMap.AddImage(roadNSID,     roadNSImageName);
-    mImageMap.AddImage(roadSEID,     roadSEImageName);
-    mImageMap.AddImage(roadSWID,     roadSWImageName);
-    mImageMap.AddImage(roadNEID,     roadNEImageName);
-    mImageMap.AddImage(roadNWID,     roadNWImageName);
-*/
+
+CTileRoad::CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID)
+    : CTile(game, field, imageID)
+
+{
+    mImageMap.AddImage(roadEWID, roadEWImageName);
+    mImageMap.AddImage(roadNSID, roadNSImageName);
+    mImageMap.AddImage(roadSEID, roadSEImageName);
+    mImageMap.AddImage(roadSWID, roadSWImageName);
+    mImageMap.AddImage(roadNEID, roadNEImageName);
+    mImageMap.AddImage(roadNWID, roadNWImageName);
+}
 
 
 
