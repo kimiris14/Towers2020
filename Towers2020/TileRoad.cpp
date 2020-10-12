@@ -50,6 +50,12 @@ const wstring roadNWImageName = L"images/roadNW.png";
 const wstring roadNWID = L"i006";
 
 
+/**
+* Constructor
+* \param game The Game this item is a member of
+* \param field The field this item is a member of
+* \param imageID The image id for this item
+*/
 CTileRoad::CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID)
     : CTile(game, field, imageID)
 
