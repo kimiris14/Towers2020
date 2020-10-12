@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Tile.h"
+#include "Game.h"
 #include "ImageMap.h"
 
 using namespace std;
@@ -30,14 +31,10 @@ const wstring grassTwoID = L"i008";
 * \param imageID The image id for this item
 */
 CTile::CTile(CGame* game, CGameField* field, const std::wstring& imageID) 
-	: CItem(game, field, imageID), mImageID(imageID), mGame(game), mField(field)
+	: CItem(game, field, imageID)
 {
-	mImageMap.AddImage(grassOneID, grassOneImageName);
-	mImageMap.AddImage(grassTwoID, grassTwoImageName);
-}
 
-void CTile::SetImage(const std::wstring& imageID)
-{
-	mItemImage = mImageMap.GetImage(imageID);
+	game->AddImage(grassOneID, grassOneImageName);
+	game->AddImage(grassTwoID, grassTwoImageName);
 }
 

@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Item.h"
+#include "Game.h"
 #include "GameField.h"
 
 
@@ -33,6 +34,18 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
         (float)mItemBitmap->GetWidth(), (float)mItemBitmap->GetHeight());
     */
 }
+
+
+/**
+* Adds an image to the game
+* \param imageID The ID for this image
+* \param imageFile The file that contains the actual image data
+*/
+void CItem::SetImage(const std::wstring& imageID, const std::wstring& imageFile)
+{
+    mGame->AddImage(imageID, imageFile);
+}
+
 
 /**
  * Save the attributes for an item node.

@@ -35,7 +35,7 @@ public:
 	* \param field The field this item is a member of
 	* \param imageID The image ID for this object
 	*/
-	CItem::CItem(CGame *game, CGameField *field, const std::wstring& imageID) : mField(field), mImageID(imageID) {}
+	CItem::CItem(CGame *game, CGameField *field, const std::wstring& imageID) : mGame(game), mField(field), mImageID(imageID) {}
 
 
 	/// Copy constructor (disabled)
@@ -61,6 +61,10 @@ public:
 	/** The Y location of the item
 	* \returns Y location in pixels */
 	double GetY() const { return mY; }
+
+protected:
+
+	void SetImage(const std::wstring& imageID, const std::wstring& imageFile);
 
 
 private:

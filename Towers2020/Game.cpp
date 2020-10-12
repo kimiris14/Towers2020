@@ -221,6 +221,20 @@ void CGame::Clear()
     mItems.clear();
 }
 
+
+
+/**
+ * Adds an image to the image map
+ * \param imageID The ID for this image
+ * \param imageFile The file that contains the actual image data
+ */
+void CGame::AddImage(const std::wstring& imageID, const std::wstring& imageFile)
+{
+    mImageMap.AddImage(imageID, imageFile);
+}
+
+
+
 /**
 * Handle an item node.
 * \param node Pointer to XML node we are handling

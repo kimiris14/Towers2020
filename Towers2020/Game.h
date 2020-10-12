@@ -28,6 +28,8 @@ public:
 
     void Clear();
 
+    void AddImage(const std::wstring& imageID, const std::wstring& imageFile);
+
     //void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 private:
