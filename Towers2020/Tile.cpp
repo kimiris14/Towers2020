@@ -30,7 +30,7 @@ const wstring grassTwoID = L"i008";
 * \param field The field this item is a member of
 * \param imageID The image id for this item
 */
-CTile::CTile(CGame* game, CGameField* field, const std::wstring& imageID) 
+CItemTile::CItemTile(CGame* game, CGameField* field, const std::wstring& imageID) 
 	: CItem(game, field, imageID)
 {
 

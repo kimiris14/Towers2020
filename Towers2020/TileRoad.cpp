@@ -57,7 +57,7 @@ const wstring roadNWID = L"i006";
 * \param imageID The image id for this item
 */
 CTileRoad::CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID)
-    : CTile(game, field, imageID)
+    : CItemTile(game, field, imageID)
 
 {
     mImageMap.AddImage(roadEWID, roadEWImageName);

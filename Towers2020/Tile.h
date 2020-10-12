@@ -16,20 +16,20 @@
 /**
  * Base class for any tile in the game field
  */
-class CTile :
+class CItemTile :
     public CItem
 {
 public:
 
-    CTile(CGame* game, CGameField* field, const std::wstring& imageID);
+    CItemTile(CGame* game, CGameField* field, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
-    CTile() = delete;
+    CItemTile() = delete;
 
     ///  Copy constructor (disabled)
-    CTile(const CTile&) = delete;
+    CItemTile(const CItemTile&) = delete;
 
-    ~CTile() {}
+    ~CItemTile() {}
 
     /**  Draw this item
     * \param graphics The graphics context to draw on */

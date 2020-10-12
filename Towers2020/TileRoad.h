@@ -11,7 +11,7 @@
 
 
 class CTileRoad :
-    public CTile
+    public CItemTile
 {
     CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID);
 
