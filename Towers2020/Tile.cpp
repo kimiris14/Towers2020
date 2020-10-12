@@ -12,13 +12,13 @@
 using namespace std;
 
 /// grass1 filename
-const wstring grassOneImageName = L"grass1.png";
+const wstring grassOneImageName = L"images/grass1.png";
 
 /// grass1 id number
 const wstring grassOneID = L"i007";
 
 /// grass2 filename
-const wstring grassTwoImageName = L"grass2.png";
+const wstring grassTwoImageName = L"images/grass2.png";
 
 /// grass2 id number
 const wstring grassTwoID = L"i008";
