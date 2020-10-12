@@ -11,6 +11,8 @@
 #include <string>
 #include <memory>
 #include "ImageMap.h"
+#include "Item.h"
+
 
 class CGame
 {
@@ -39,4 +41,6 @@ private:
     /// map that links image bitmaps to their respective image id
     CImageMap mImageMap;
 
+    /// All of the items to add to our game
+    std::vector<std::shared_ptr<CItem> > mItems;
 };
