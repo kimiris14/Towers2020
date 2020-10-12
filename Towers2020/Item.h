@@ -11,7 +11,8 @@
 
 #include <string>
 #include "GameField.h"
-#include "Game.h"
+
+class CGame;
 
 /**
  * A class that will store all of the game's images
