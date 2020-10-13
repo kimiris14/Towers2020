@@ -31,5 +31,25 @@ private:
     /// map that links image bitmaps to their respective image id
     CImageMap mImageMap;
 
+    /// Road tile pointer to move East/West
+    CTileRoad* mRoadEW = nullptr;
+
+    /// Road tile pointer to move North/South
+    CTileRoad* mRoadNS = nullptr;
+
+    /// Road tile pointer to move North/East
+    CTileRoad* mRoadNE = nullptr;
+
+    /// Road tile pointer to move North/West
+    CTileRoad* mRoadNW = nullptr;
+
+    /// Road tile pointer to move South/East
+    CTileRoad* mRoadSE = nullptr;
+
+    /// Road tile pointer to move South/West
+    CTileRoad* mRoadSW = nullptr;
+
+    ///List of current balloons over this tile
+    //std::vector<std::shared_ptr<CItemBalloon>> mTileBalloons;
 };
 
