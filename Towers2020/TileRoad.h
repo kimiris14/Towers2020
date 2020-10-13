@@ -8,7 +8,7 @@
 
 #pragma once
 #include "Tile.h"
-
+#include "ItemBalloon.h"
 
 class CTileRoad :
     public CItemTile
@@ -50,6 +50,6 @@ private:
     CTileRoad* mRoadSW = nullptr;
 
     ///List of current balloons over this tile
-    //std::vector<std::shared_ptr<CItemBalloon>> mTileBalloons;
+    std::vector<std::shared_ptr<CItemBalloon>> mTileBalloons;
 };
 
