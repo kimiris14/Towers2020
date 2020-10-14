@@ -20,17 +20,12 @@ public:
     CGame();
     
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
+
     void OnLButtonDown(int x, int y);
-
-    void Save(const std::wstring& filename);
-
-    void Load(const std::wstring& filename);
-
-    void Clear();
 
     void AddImage(const std::wstring& imageID, const std::wstring& imageFile);
 
-    //void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
 
 private:
     /// Game area in virtual pixels
@@ -50,7 +45,4 @@ private:
 
     /// map that links image bitmaps to their respective image id
     CImageMap mImageMap;
-
-    /// All of the items to add to our game
-    std::vector<std::shared_ptr<CItem> > mItems;
 };

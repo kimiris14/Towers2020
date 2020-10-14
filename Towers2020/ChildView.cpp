@@ -128,9 +128,10 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 
 /**
  * Open a .xml level file 
- */
+*/ 
 void CChildView::OnFileOpen32775()
 {
+/**
 	CFileDialog dlg(true,  // true = Open dialog box
 		L".xml",           // Default file extension
 		nullptr,            // Default file name (none)
@@ -141,8 +142,9 @@ void CChildView::OnFileOpen32775()
 
 	wstring filename = dlg.GetPathName();
 
-	mGame.Load(filename);
+	mLevel.Load(filename);
 	Invalidate();
+*/
 }
 
 /**
@@ -150,6 +152,7 @@ void CChildView::OnFileOpen32775()
  */
 void CChildView::OnFileSaveas()
 {
+/**
 	CFileDialog dlg(false,  // false = Save dialog box
 		L".xml",           // Default file extension
 		nullptr,            // Default file name (none)
@@ -162,5 +165,6 @@ void CChildView::OnFileSaveas()
 	wstring filename = dlg.GetPathName();
 
 	mGame.Save(filename);
-
+*/
 }
+

@@ -183,7 +183,6 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\XmlNode.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
@@ -193,6 +192,7 @@
     <ClInclude Include="ImageMap.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemBalloon.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -201,6 +201,7 @@
     <ClInclude Include="TileRoad.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Towers2020.h" />
+    <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ImageMap.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBalloon.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
