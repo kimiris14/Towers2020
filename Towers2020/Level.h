@@ -29,9 +29,13 @@ public:
 
 	void CLevel::Load(const std::wstring& filename);
 
+	void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
 	void CLevel::Clear();
 
 	void Draw(Gdiplus::Graphics* graphics);
+
+	void CLevel::Add(std::shared_ptr<CItem> item);
 
 
 private:

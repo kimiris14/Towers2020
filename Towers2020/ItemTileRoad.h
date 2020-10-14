@@ -13,6 +13,8 @@
 class CItemTileRoad :
     public CItemTile
 {
+
+public:
     CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
@@ -21,6 +23,7 @@ class CItemTileRoad :
     ///  Copy constructor (disabled)
     CItemTileRoad(const CItemTileRoad&) = delete;
 
+    /// destructor
     ~CItemTileRoad() {}
 
 private:

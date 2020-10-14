@@ -26,7 +26,7 @@ public:
 
     /// Function to get the balloon's t value
     /// <returns> mTvalue The balloon's t value </returns>
-    int CItemBalloon::GetTValue() { return mTValue; }
+    float CItemBalloon::GetTValue() { return mTValue; }
 
     //Add Pop definition here
 

@@ -28,6 +28,7 @@ public:
     ///  Copy constructor (disabled)
     CItemTile(const CItemTile&) = delete;
 
+    /// destructor 
     ~CItemTile() {}
 
 private:
