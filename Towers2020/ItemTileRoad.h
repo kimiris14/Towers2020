@@ -1,5 +1,5 @@
 /**
- * \file TileRoad.h
+ * \file ItemTileRoad.h
  *
  * \author PaulaRed
  *
@@ -10,6 +10,12 @@
 #include "ItemTile.h"
 #include "ItemBalloon.h"
 
+
+
+/**
+ * This class will handle specific road tile functionality. This includes things like moving 
+ * balloons within the actual tile.
+ */
 class CItemTileRoad :
     public CItemTile
 {

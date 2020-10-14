@@ -8,8 +8,9 @@
 #include "Game.h"
 
 
-// CChildView window
-
+/**
+ * ChildView class that handles all of the user interaction with the applciation
+ */
 class CChildView : public CWnd
 {
 // Construction

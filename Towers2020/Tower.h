@@ -7,10 +7,17 @@
  */
 
 #pragma once
+
+
+
+/**
+ * A base class for all towers
+ */
 class CTower
 {
 public:
 
 private:
-	int mTimeTilFire = 0;
+
+	int mTimeTilFire = 0;  ///< The time until the next fire of projectiles
 };

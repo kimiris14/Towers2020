@@ -1,5 +1,5 @@
 /**
- * \file TileRoad.cpp
+ * \file ItemTileRoad.cpp
  *
  * \author PaulaRed
  */
@@ -51,6 +51,7 @@ const wstring roadNWID = L"i006";
 
 /**
 * Constructor
+* \param level The level object that this item is a part of
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
