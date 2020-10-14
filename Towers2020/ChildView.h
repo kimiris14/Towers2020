@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Game.h"
+#include "Level.h"
 
 
 /**
@@ -41,6 +42,8 @@ private:
 	/// The main game object
 	CGame mGame;
 
+	/// The level
+	CLevel *mLevel;
 
 	/// True until the first time we draw
 	bool mFirstDraw = true;
@@ -53,5 +56,7 @@ public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLevelLevel0();
+	afx_msg void OnLevelLevel1();
+	afx_msg void OnLevelLevel2();
 };
 

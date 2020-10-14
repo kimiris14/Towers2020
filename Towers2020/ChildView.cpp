@@ -18,6 +18,7 @@
 #include "Towers2020.h"
 #include "ChildView.h"
 #include "Game.h"
+#include "Level.h"
 #include "ImageMap.h"
 #include <memory>
 
@@ -27,6 +28,7 @@
 
 using namespace Gdiplus;
 using namespace std;
+using namespace xmlnode;
 
 
 /// Frame duration in milliseconds
@@ -41,6 +43,7 @@ CChildView::CChildView()
 	// create the game object
 	mGame = CGame();
 
+	mLevel = &CLevel(&mGame);
 }
 
 CChildView::~CChildView()
@@ -53,6 +56,8 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_TIMER()
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
+	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
+	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
 END_MESSAGE_MAP()
 
 
@@ -143,10 +148,32 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 	return FALSE;
 }
 
-
-
-
+/**
+* Handler for loading Level0
+*/
 void CChildView::OnLevelLevel0()
 {
-	// TODO: Add your command handler code here
+	wstring filename = L"levels/level0.xml";
+	mLevel->Load(filename);
+	Invalidate();
+}
+
+/**
+* Handler for loading Level1
+*/
+void CChildView::OnLevelLevel1()
+{
+	wstring filename = L"levels/level1.xml";
+	mLevel->Load(filename);
+	Invalidate();
+}
+
+/**
+* Handler for loading Level2
+*/
+void CChildView::OnLevelLevel2()
+{
+	wstring filename = L"levels/level2.xml";
+	mLevel->Load(filename);
+	Invalidate();
 }
