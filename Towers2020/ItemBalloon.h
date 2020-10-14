@@ -14,7 +14,7 @@ class CItemBalloon :
     public CItem
 {
 public:
-    CItemBalloon(CGame* game, CGameField* field, const std::wstring& imageID);
+    CItemBalloon(CLevel *level, CGame* game, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
     CItemBalloon() = delete;
@@ -26,7 +26,7 @@ public:
 
     /// Function to get the balloon's t value
     /// <returns> mTvalue The balloon's t value </returns>
-    int CItemBalloon::GetTValue() { return mTvalue; }
+    int CItemBalloon::GetTValue() { return mTValue; }
 
     //Add Pop definition here
 
@@ -39,6 +39,6 @@ private:
     CImageMap mImageMap;
 
     /// The balloon's t value
-    int mTvalue = 0;
+   float mTValue = 0;
 };
 

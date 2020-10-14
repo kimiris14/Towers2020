@@ -12,6 +12,7 @@
 #include <memory>
 #include "ImageMap.h"
 #include "Item.h"
+#include "Level.h"
 
 
 class CGame
@@ -27,12 +28,12 @@ public:
     void AddImage(const std::wstring& imageID, const std::wstring& imageFile);
 
 
-
     /**
     * gets a shared pointer to the game's image map
     * returns A shared pointer to the game's image map
     */
     std::shared_ptr<CImageMap> GetImageMap() const { return mImageMap; }
+
 
 private:
     /// Game area in virtual pixels
@@ -52,5 +53,8 @@ private:
 
     /// map that links image bitmaps to their respective image id
     std::shared_ptr<CImageMap> mImageMap;
+
+    /// A pointer to the current level (may change later depending on how levels are stored)
+    std::shared_ptr<CLevel> mCurrentLevel;
 
 };

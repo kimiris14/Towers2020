@@ -7,9 +7,8 @@
 #include "pch.h"
 #include "TileRoad.h"
 #include "ImageMap.h"
-#include "Tile.h"
+#include "ItemTile.h"
 #include "Game.h"
-#include "GameField.h"
 
 using namespace std;
 
@@ -53,11 +52,10 @@ const wstring roadNWID = L"i006";
 /**
 * Constructor
 * \param game The Game this item is a member of
-* \param field The field this item is a member of
 * \param imageID The image id for this item
 */
-CTileRoad::CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID)
-    : CItemTile(game, field, imageID)
+CTileRoad::CTileRoad(CLevel* level, CGame* game, const std::wstring& imageID)
+    : CItemTile(level, game, imageID)
 
 {
     mImageMap.AddImage(roadEWID, roadEWImageName);

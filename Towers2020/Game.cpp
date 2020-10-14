@@ -112,7 +112,7 @@ CGame::CGame()
   */
 void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 {
-    // Fill the background with black
+    // Fill the background with blackGa
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
@@ -135,10 +135,11 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // from here on you are drawing virtual pixels
 
 
-    // draw every item in the item vector
-    for (auto item : mItems) {
-        item->Draw(graphics);
+    // draw the level with this graphics context
+    if (mCurrentLevel != nullptr) {
+        mCurrentLevel->Draw(graphics);
     }
+    
 }
 
 

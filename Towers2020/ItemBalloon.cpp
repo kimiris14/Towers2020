@@ -9,7 +9,6 @@
 #include "ItemBalloon.h"
 #include "ImageMap.h"
 #include "Game.h"
-#include "GameField.h"
 
 using namespace std;
 
@@ -23,10 +22,9 @@ const wstring redBalloonID = L"i044"; //assigned
 /**
 * Constructor
 * \param game The Game this item is a member of
-* \param field The field this item is a member of
 * \param imageID The image id for this item
 */
-CItemBalloon::CItemBalloon(CGame* game, CGameField* field, const std::wstring& imageID): CItem(game, field, imageID)
+CItemBalloon::CItemBalloon(CLevel *level, CGame* game, const std::wstring& imageID): CItem(level,game,imageID)
    
 {
     mImageMap.AddImage(redBalloonID, redBalloonImageName);

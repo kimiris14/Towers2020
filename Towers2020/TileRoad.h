@@ -7,13 +7,13 @@
  */
 
 #pragma once
-#include "Tile.h"
+#include "ItemTile.h"
 #include "ItemBalloon.h"
 
 class CTileRoad :
     public CItemTile
 {
-    CTileRoad(CGame* game, CGameField* field, const std::wstring& imageID);
+    CTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
     CTileRoad() = delete;

@@ -5,7 +5,7 @@
  */
 
 #include "pch.h"
-#include "Tile.h"
+#include "ItemTile.h"
 #include "Game.h"
 #include "ImageMap.h"
 
@@ -27,11 +27,10 @@ const wstring grassTwoID = L"i008";
 /**
 * Constructor
 * \param game The Game this item is a member of
-* \param field The field this item is a member of
 * \param imageID The image id for this item
 */
-CItemTile::CItemTile(CGame* game, CGameField* field, const std::wstring& imageID) 
-	: CItem(game, field, imageID)
+CItemTile::CItemTile(CLevel *level, CGame* game, const std::wstring& imageID) 
+	: CItem(level, game, imageID)
 {
 
 	game->AddImage(grassOneID, grassOneImageName);

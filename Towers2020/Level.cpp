@@ -56,3 +56,17 @@ void CLevel::Clear()
 {
     mItems.clear();
 }
+
+
+
+
+/**
+ * Draws all of the items in this level
+ * \param graphics 
+ */
+void CLevel::Draw(Gdiplus::Graphics* graphics)
+{
+    for (auto item : mItems) {
+        item->Draw(graphics);
+    }
+}

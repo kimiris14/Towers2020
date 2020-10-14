@@ -11,13 +11,13 @@
 
 #include <string>
 #include <memory>
-#include "GameField.h"
 #include "ImageMap.h"
 #include "XmlNode.h"
 
 using namespace xmlnode;
 
 class CGame;
+class CLevel;
 
 /**
  * A class that will store all of the game's images
@@ -33,11 +33,10 @@ public:
 
 	/**
 	* Constructor
-	* \param field The field this item is a member of
 	* \param imageID The image ID for this object
 	*/
-	CItem::CItem(CGame *game, CGameField *field, const std::wstring& imageID) 
-		: mGame(game), mField(field), mImageID(imageID) {}
+	CItem::CItem(CLevel *level, CGame *game, const std::wstring& imageID) 
+		: mLevel(level), mGame(game), mImageID(imageID) {}
 
 
 	/// Copy constructor (disabled)
@@ -68,6 +67,11 @@ protected:
 
 	void SetImage(const std::wstring& imageID, const std::wstring& imageFile);
 	
+	/** Getter for mLevel for derived classes
+	* \returns pointer to the level object */
+	CLevel* GetLevel() const { return mLevel; }
+
+
 	/** Getter for mGame for derived classes
 	* \returns pointer to the game object */
 	CGame* GetGame() const { return mGame; }
@@ -85,8 +89,8 @@ private:
 	/// The image ID for the image that represents this Item
 	const std::wstring& mImageID;
 
-	/// The field that this item is a part of
-	CGameField* mField;
+	/// The level that this item is a part of
+	CLevel* mLevel;
 
 	/// The game that this item is a part of
 	CGame* mGame;

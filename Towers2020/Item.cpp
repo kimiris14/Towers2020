@@ -7,7 +7,6 @@
 #include "pch.h"
 #include "Item.h"
 #include "Game.h"
-#include "GameField.h"
 
 
 using namespace std;
