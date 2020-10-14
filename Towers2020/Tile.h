@@ -31,10 +31,6 @@ public:
 
     ~CItemTile() {}
 
-    /**  Draw this item
-    * \param graphics The graphics context to draw on */
-    //virtual void Draw(Gdiplus::Graphics* graphics);
-
 private:
 
 };

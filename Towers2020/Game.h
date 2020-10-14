@@ -17,6 +17,7 @@
 class CGame
 {
 public:
+
     CGame();
     
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
@@ -26,6 +27,12 @@ public:
     void AddImage(const std::wstring& imageID, const std::wstring& imageFile);
 
 
+
+    /**
+    * gets a shared pointer to the game's image map
+    * returns A shared pointer to the game's image map
+    */
+    std::shared_ptr<CImageMap> GetImageMap() const { return mImageMap; }
 
 private:
     /// Game area in virtual pixels
@@ -44,5 +51,6 @@ private:
     float mYOffset;
 
     /// map that links image bitmaps to their respective image id
-    CImageMap mImageMap;
+    std::shared_ptr<CImageMap> mImageMap;
+
 };

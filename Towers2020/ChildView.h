@@ -40,6 +40,7 @@ private:
 	/// The main game object
 	CGame mGame;
 
+
 	/// True until the first time we draw
 	bool mFirstDraw = true;
 

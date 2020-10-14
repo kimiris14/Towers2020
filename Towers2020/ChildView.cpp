@@ -8,6 +8,8 @@
 #include "Towers2020.h"
 #include "ChildView.h"
 #include "Game.h"
+#include "ImageMap.h"
+#include <memory>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

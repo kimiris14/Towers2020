@@ -7,6 +7,8 @@
 #include "pch.h"
 #include "Game.h"
 #include "XmlNode.h"
+#include "ImageMap.h"
+#include <memory>
 #include <map>
 #include <string>
 
@@ -87,18 +89,19 @@ const wstring treesFourID = L"i021";
 */
 CGame::CGame()
 {
+    mImageMap = make_shared<CImageMap>();
     
-    mImageMap.AddImage(houseOneID,   houseOneImageName);
-    mImageMap.AddImage(houseTwoID,   houseTwoImageName);
-    mImageMap.AddImage(houseThreeID, houseThreeImageName);
-    mImageMap.AddImage(houseFourAID, houseFourAImageName);
-    mImageMap.AddImage(houseFourBID, houseFourBImageName);
-    mImageMap.AddImage(castleAID,    castleAImageName);
-    mImageMap.AddImage(castleBID,    castleBImageName);
-    mImageMap.AddImage(treesOneID,   treesOneImageName);
-    mImageMap.AddImage(treesTwoID,   treesTwoImageName);
-    mImageMap.AddImage(treesThreeID, treesThreeImageName);
-    mImageMap.AddImage(treesFourID,  treesFourImageName);
+    mImageMap->AddImage(houseOneID,   houseOneImageName);
+    mImageMap->AddImage(houseTwoID,   houseTwoImageName);
+    mImageMap->AddImage(houseThreeID, houseThreeImageName);
+    mImageMap->AddImage(houseFourAID, houseFourAImageName);
+    mImageMap->AddImage(houseFourBID, houseFourBImageName);
+    mImageMap->AddImage(castleAID,    castleAImageName);
+    mImageMap->AddImage(castleBID,    castleBImageName);
+    mImageMap->AddImage(treesOneID,   treesOneImageName);
+    mImageMap->AddImage(treesTwoID,   treesTwoImageName);
+    mImageMap->AddImage(treesThreeID, treesThreeImageName);
+    mImageMap->AddImage(treesFourID,  treesFourImageName);
 }
 
 /**
@@ -131,6 +134,11 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // from here on you are drawing virtual pixels
 
+
+    // draw every item in the item vector
+    for (auto item : mItems) {
+        item->Draw(graphics);
+    }
 }
 
 
@@ -154,6 +162,6 @@ void CGame::OnLButtonDown(int x, int y)
  */
 void CGame::AddImage(const std::wstring& imageID, const std::wstring& imageFile)
 {
-    mImageMap.AddImage(imageID, imageFile);
+    mImageMap->AddImage(imageID, imageFile);
 }
 

@@ -12,6 +12,7 @@
 #include <string>
 #include <memory>
 #include "GameField.h"
+#include "ImageMap.h"
 #include "XmlNode.h"
 
 using namespace xmlnode;
@@ -35,7 +36,8 @@ public:
 	* \param field The field this item is a member of
 	* \param imageID The image ID for this object
 	*/
-	CItem::CItem(CGame *game, CGameField *field, const std::wstring& imageID) : mGame(game), mField(field), mImageID(imageID) {}
+	CItem::CItem(CGame *game, CGameField *field, const std::wstring& imageID) 
+		: mGame(game), mField(field), mImageID(imageID) {}
 
 
 	/// Copy constructor (disabled)
@@ -65,16 +67,23 @@ public:
 protected:
 
 	void SetImage(const std::wstring& imageID, const std::wstring& imageFile);
+	
+	/** Getter for mGame for derived classes
+	* \returns pointer to the game object */
+	CGame* GetGame() const { return mGame; }
 
+
+	/** Getter for the image ID
+	* \returns the image ID */
+	const std::wstring& GetImageID() const { return mImageID; }
 
 private:
 
-	double mX;  ///< x location on the board (in pixels)
-	double mY;  ///< y location on the board (in pixels)
+	double mX = 0;  ///< x location on the board (in pixels)
+	double mY = 0;  ///< y location on the board (in pixels)
 
 	/// The image ID for the image that represents this Item
 	const std::wstring& mImageID;
-
 
 	/// The field that this item is a part of
 	CGameField* mField;

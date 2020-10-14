@@ -21,18 +21,14 @@ using namespace Gdiplus;
 void CItem::Draw(Gdiplus::Graphics* graphics)
 {
 
-    // Commented out until CGame support is added for image mapping.
-
-    /*
-    unique_ptr<Bitmap> itemBitmap = mGame.GetImage(mImageID);
+    shared_ptr<Bitmap> itemBitmap = mGame->GetImageMap()->GetImage(mImageID);
 
     double wid = itemBitmap->GetWidth();
     double hit = itemBitmap->GetHeight();
 
     graphics->DrawImage(itemBitmap.get(),
         float(GetX() - wid / 2), float(GetY() - hit / 2),
-        (float)mItemBitmap->GetWidth(), (float)mItemBitmap->GetHeight());
-    */
+        (float)itemBitmap->GetWidth(), (float)itemBitmap->GetHeight());
 }
 
 

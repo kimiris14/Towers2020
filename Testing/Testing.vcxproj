@@ -172,7 +172,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CGameTest.cpp" />
     <ClCompile Include="CImageMapTest.cpp">
       <SubType>
       </SubType>
