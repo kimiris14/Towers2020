@@ -33,6 +33,8 @@ public:
 
 	/**
 	* Constructor
+	* \param level A pointer to the level object that this item belongs to
+	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
 	CItem::CItem(CLevel *level, CGame *game, const std::wstring& imageID) 

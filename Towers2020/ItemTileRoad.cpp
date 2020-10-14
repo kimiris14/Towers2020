@@ -5,7 +5,7 @@
  */
 
 #include "pch.h"
-#include "TileRoad.h"
+#include "ItemTileRoad.h"
 #include "ImageMap.h"
 #include "ItemTile.h"
 #include "Game.h"
@@ -54,7 +54,7 @@ const wstring roadNWID = L"i006";
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CTileRoad::CTileRoad(CLevel* level, CGame* game, const std::wstring& imageID)
+CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID)
     : CItemTile(level, game, imageID)
 
 {

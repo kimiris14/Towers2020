@@ -10,18 +10,18 @@
 #include "ItemTile.h"
 #include "ItemBalloon.h"
 
-class CTileRoad :
+class CItemTileRoad :
     public CItemTile
 {
-    CTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
+    CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
-    CTileRoad() = delete;
+    CItemTileRoad() = delete;
 
     ///  Copy constructor (disabled)
-    CTileRoad(const CTileRoad&) = delete;
+    CItemTileRoad(const CItemTileRoad&) = delete;
 
-    ~CTileRoad() {}
+    ~CItemTileRoad() {}
 
 private:
 
@@ -32,22 +32,22 @@ private:
     CImageMap mImageMap;
 
     /// Road tile pointer to move East/West
-    CTileRoad* mRoadEW = nullptr;
+    CItemTileRoad* mRoadEW = nullptr;
 
     /// Road tile pointer to move North/South
-    CTileRoad* mRoadNS = nullptr;
+    CItemTileRoad* mRoadNS = nullptr;
 
     /// Road tile pointer to move North/East
-    CTileRoad* mRoadNE = nullptr;
+    CItemTileRoad* mRoadNE = nullptr;
 
     /// Road tile pointer to move North/West
-    CTileRoad* mRoadNW = nullptr;
+    CItemTileRoad* mRoadNW = nullptr;
 
     /// Road tile pointer to move South/East
-    CTileRoad* mRoadSE = nullptr;
+    CItemTileRoad* mRoadSE = nullptr;
 
     /// Road tile pointer to move South/West
-    CTileRoad* mRoadSW = nullptr;
+    CItemTileRoad* mRoadSW = nullptr;
 
     ///List of current balloons over this tile
     std::vector<std::shared_ptr<CItemBalloon>> mTileBalloons;
