@@ -15,6 +15,10 @@
 #include "Level.h"
 
 
+/**
+ * The overall class that will handle all basic game functionality. This will store
+ * levels and handle the overall structure of gameplay
+ */
 class CGame
 {
 public:
@@ -30,7 +34,7 @@ public:
 
     /**
     * gets a shared pointer to the game's image map
-    * returns A shared pointer to the game's image map
+    * \returns A shared pointer to the game's image map
     */
     std::shared_ptr<CImageMap> GetImageMap() const { return mImageMap; }
 

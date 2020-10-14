@@ -25,6 +25,10 @@ public:
 
 	CLevel() = delete;
 
+	/**
+	* Constructor
+	* \param game The game object that this level belongs to
+	*/
 	CLevel(CGame* game) : mGame(game) {}
 
 	void CLevel::Load(const std::wstring& filename);
@@ -43,6 +47,7 @@ private:
 	/// All of the items to add to our game
 	std::vector<std::shared_ptr<CItem> > mItems;
 
+	/// The game object that this item belongs to
 	CGame* mGame;
 
 };

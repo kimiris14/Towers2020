@@ -124,8 +124,10 @@ int CTowers2020App::ExitInstance()
 // CTowers2020App message handlers
 
 
-// CAboutDlg dialog used for App About
 
+/**
+ * About dialogue menu
+ */
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -137,7 +139,12 @@ public:
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+
+	/**
+	 * Provides DDX/DDV support
+	 * \param pDX the data exchance object
+	 */
+	virtual void DoDataExchange(CDataExchange* pDX); 
 
 // Implementation
 protected:

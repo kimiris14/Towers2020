@@ -10,6 +10,11 @@
 #include "Item.h"
 #include "ImageMap.h"
 
+
+
+/**
+ * Class to represent a balloon in the level
+ */
 class CItemBalloon :
     public CItem
 {

@@ -1,6 +1,16 @@
+/**
+ * \file ChildView.cpp
+ *
+ * \author Dave Yonkers
+ */
 
-// ChildView.cpp : implementation of the CChildView class
-//
+/**
+ * \file ChildView.cpp
+ *
+ * \author PaulaRed
+ */
+
+
 
 #include "pch.h"
 #include "DoubleBufferDC.h"
@@ -63,6 +73,12 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
+
+
+/**
+ * This function is called for everytime there is a screen update. 
+ This is where all drawing starts.
+ */
 void CChildView::OnPaint() 
 {
 

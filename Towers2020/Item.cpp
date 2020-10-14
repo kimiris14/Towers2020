@@ -50,6 +50,7 @@ void CItem::SetImage(const std::wstring& imageID, const std::wstring& imageFile)
  * for specific items.
  *
  * \param node The Xml node we are saving the item from
+ * \returns The new parent node
  */
 std::shared_ptr<xmlnode::CXmlNode> CItem::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {

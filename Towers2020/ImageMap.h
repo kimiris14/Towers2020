@@ -27,11 +27,14 @@ public:
 
 	/**
 	 * Get the size of the image map
+	 * \returns The size of the map
 	 */
 	size_t GetSize() { return mImageMap.size(); }
 
 private:
 
+	/// This is the underlying data structure for this class. The mImageMap hashes image IDs
+	/// stores the associated bitmap object.
 	std::unordered_map<std::wstring, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 };
 

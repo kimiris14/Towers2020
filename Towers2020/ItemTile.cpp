@@ -1,5 +1,5 @@
 /**
- * \file Tile.cpp
+ * \file ItemTile.cpp
  *
  * \author PaulaRed
  */
@@ -26,6 +26,7 @@ const wstring grassTwoID = L"i008";
 
 /**
 * Constructor
+* \param level The level object that this item is a part of
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
