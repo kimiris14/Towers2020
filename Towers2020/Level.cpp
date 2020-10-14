@@ -17,11 +17,11 @@ using namespace std;
 using namespace xmlnode;
 
 /**
- * Load the game level from a .xml XML file.
+ * Load the game level from a .xml file.
  *
  * Opens the XML file and reads the nodes, creating items as appropriate.
  *
- * \param filename The filename of the file to load the aquarium from.
+ * \param filename The filename of the file to load the level from.
  */
 void CLevel::Load(const std::wstring& filename)
 {
@@ -105,6 +105,8 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
     if (item != nullptr)
     {
+        item->XmlLoad(node);
+
         Add(item);
     }
 
