@@ -34,6 +34,14 @@ using namespace xmlnode;
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
+/// Level 0 filename
+wstring level0 = L"levels/level0.xml"; 
+
+/// Level 1 filename
+wstring level1 = L"levels/level1.xml";
+
+/// Level 2 filename
+wstring level2 = L"levels/level2.xml";
 
 // CChildView
 
@@ -153,9 +161,8 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 */
 void CChildView::OnLevelLevel0()
 {
-	wstring filename = L"levels/level0.xml";
-	mLevel->Load(filename);
-	Invalidate();
+	mLevel->Load(level0);
+
 }
 
 /**
@@ -163,9 +170,8 @@ void CChildView::OnLevelLevel0()
 */
 void CChildView::OnLevelLevel1()
 {
-	wstring filename = L"levels/level1.xml";
-	mLevel->Load(filename);
-	Invalidate();
+	mLevel->Load(level1);
+
 }
 
 /**
@@ -173,7 +179,5 @@ void CChildView::OnLevelLevel1()
 */
 void CChildView::OnLevelLevel2()
 {
-	wstring filename = L"levels/level2.xml";
-	mLevel->Load(filename);
-	Invalidate();
+	mLevel->Load(level2);
 }
