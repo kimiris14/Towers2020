@@ -56,6 +56,7 @@ public:
 
 	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+	virtual bool HitTest(int x, int y);
 
 	/** The X location of the item
 	 * \returns X location in pixels */

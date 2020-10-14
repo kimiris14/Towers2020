@@ -32,13 +32,8 @@ public:
 
 
 private:
-    /// The image of this balloon
-    std::shared_ptr<Gdiplus::Bitmap> mItemImage;
-
-    /// map that links image bitmaps to their respective image id
-    CImageMap mImageMap;
 
     /// The balloon's t value
-   float mTValue = 0;
+    float mTValue = 0;
 };
 
