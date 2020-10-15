@@ -48,6 +48,10 @@ public:
 	/// \param elapsed The time since the last update
 	//virtual void Update(double elapsed) {}
 
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { }
+
 private:
 	/// Check to see if corresponding tower has been placed
 	bool mIsTowerPlaced = false; 

@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;ImageMap;GamePallette;Item;ItemBalloon;ItemTile;ItemTileRoad;Level;Tower;XmlNode;Projectile</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;ImageMap;GamePallette;Item;ItemBalloon;ItemTile;ItemTileRoad;Level;Tower;XmlNode;Projectile;ProjectileDart</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -176,6 +176,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CProjectileDartTest.cpp" />
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
