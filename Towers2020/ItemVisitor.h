@@ -1,5 +1,5 @@
 /**
- * \file TileVisitor.h
+ * \file ItemVisitor.h
  *
  * \author PaulaRed
  *
