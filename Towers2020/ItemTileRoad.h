@@ -1,5 +1,5 @@
 /**
- * \file TileRoad.h
+ * \file ItemTileRoad.h
  *
  * \author PaulaRed
  *
@@ -10,9 +10,17 @@
 #include "ItemTile.h"
 #include "ItemBalloon.h"
 
+
+
+/**
+ * This class will handle specific road tile functionality. This includes things like moving 
+ * balloons within the actual tile.
+ */
 class CItemTileRoad :
     public CItemTile
 {
+
+public:
     CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
 
     ///  Default constructor (disabled)
@@ -21,6 +29,7 @@ class CItemTileRoad :
     ///  Copy constructor (disabled)
     CItemTileRoad(const CItemTileRoad&) = delete;
 
+    /// destructor
     ~CItemTileRoad() {}
 
 private:

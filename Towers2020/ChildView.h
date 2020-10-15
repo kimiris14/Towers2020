@@ -6,10 +6,12 @@
 #pragma once
 
 #include "Game.h"
+#include "Level.h"
 
 
-// CChildView window
-
+/**
+ * ChildView class that handles all of the user interaction with the applciation
+ */
 class CChildView : public CWnd
 {
 // Construction
@@ -40,6 +42,8 @@ private:
 	/// The main game object
 	CGame mGame;
 
+	/// The level
+	CLevel *mLevel;
 
 	/// True until the first time we draw
 	bool mFirstDraw = true;
@@ -51,7 +55,8 @@ private:
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	afx_msg void OnFileOpen32775();
-	afx_msg void OnFileSaveas();
+	afx_msg void OnLevelLevel0();
+	afx_msg void OnLevelLevel1();
+	afx_msg void OnLevelLevel2();
 };
 
