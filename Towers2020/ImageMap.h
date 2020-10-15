@@ -9,6 +9,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <map>
 #include <string>
 #include <memory>
 
@@ -35,6 +36,6 @@ private:
 
 	/// This is the underlying data structure for this class. The mImageMap hashes image IDs
 	/// stores the associated bitmap object.
-	std::unordered_map<std::wstring, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
+	std::map<std::wstring, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 };
 

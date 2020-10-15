@@ -11,7 +11,10 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 const std::wstring redBalloonImageName = L"images/red-balloon.png";
 
 /// red balloon id number
-const std::wstring redBalloonID = L"i044";
+const int redBalloonID = 44;
+
+/// The basic level for testing
+const std::wstring baseLevel = L"levels/level0.xml";
 
 
 namespace Testing
@@ -28,11 +31,11 @@ namespace Testing
 		* \param game The Game this item is a member of
 		* \param imageID The image id for this item
 		*/
-		CItemMock(CLevel* level, CGame* game, const std::wstring& imageID)
+		CItemMock(CLevel* level, CGame* game, int imageID)
 			: CItem(level, game, imageID)
 		{
 
-			game->GetImageMap()->AddImage(redBalloonID, redBalloonImageName);
+			game->AddImage(redBalloonID, redBalloonImageName);
 		}
 
 		/** Draw the item
@@ -53,7 +56,7 @@ namespace Testing
 		TEST_METHOD(TestCItemConstruct)
 		{
 			CGame game;
-			CLevel level(&game);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 		}
 
@@ -61,7 +64,7 @@ namespace Testing
 		{
 			// Construct an item to test
 			CGame game;
-			CLevel level(&game);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 
 			// Test initial values
@@ -82,7 +85,7 @@ namespace Testing
 		TEST_METHOD(TestCFishBetaHitTest)
 		{
 			CGame game;
-			CLevel level(&game);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 
 			// Give it a location

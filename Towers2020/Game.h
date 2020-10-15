@@ -10,7 +10,6 @@
 #include <map>
 #include <string>
 #include <memory>
-#include "ImageMap.h"
 #include "Item.h"
 #include "Level.h"
 
@@ -29,14 +28,9 @@ public:
 
     void OnLButtonDown(int x, int y);
 
-    void AddImage(const std::wstring& imageID, const std::wstring& imageFile);
+    bool AddImage(int imageID, std::wstring imageFile);
 
-
-    /**
-    * gets a shared pointer to the game's image map
-    * \returns A shared pointer to the game's image map
-    */
-    std::shared_ptr<CImageMap> GetImageMap() const { return mImageMap; }
+    std::shared_ptr<Gdiplus::Bitmap> GetImage(int imageID);
 
 
 private:
@@ -55,10 +49,10 @@ private:
     /// the viewing window's offset in the y-direction
     float mYOffset;
 
-    /// map that links image bitmaps to their respective image id
-    std::shared_ptr<CImageMap> mImageMap;
-
     /// A pointer to the current level (may change later depending on how levels are stored)
     std::shared_ptr<CLevel> mCurrentLevel;
+
+    /// map that links image bitmaps to their respective image id
+    std::unordered_map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 
 };

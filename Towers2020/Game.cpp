@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Game.h"
+#include "Level.h"
 #include "XmlNode.h"
 #include "ImageMap.h"
 #include <memory>
@@ -21,67 +22,67 @@ using namespace xmlnode;
 const wstring houseOneImageName = L"images/house1.png";
 
 /// house1 id number
-const wstring houseOneID = L"i011";
+const int houseOneID = 11;
 
 /// house2 filename
 const wstring houseTwoImageName = L"images/house2.png";
 
 /// house2 id number
-const wstring houseTwoID = L"i012";
+const int houseTwoID = 12;
 
 /// house3 filename
 const wstring houseThreeImageName = L"images/house3.png";
 
 /// house3 id number
-const wstring houseThreeID = L"i013";
+const int houseThreeID = 13;
 
 /// house4a filename
 const wstring houseFourAImageName = L"images/house4a.png";
 
 /// house4a id number
-const wstring houseFourAID = L"i014";
+const int houseFourAID = 14;
 
 /// house4b filename
 const wstring houseFourBImageName = L"images/house4b.png";
 
 /// house4b id number
-const wstring houseFourBID = L"i015";
+const int houseFourBID = 15;
 
 /// castlea filename
 const wstring castleAImageName = L"images/castlea.png";
 
 /// castlea id number
-const wstring castleAID = L"i016";
+const int castleAID = 16;
 
 /// castleb filename
 const wstring castleBImageName = L"images/castleb.png";
 
 /// castleb id number
-const wstring castleBID = L"i017";
+const int castleBID = 17;
 
 /// trees1 filename
 const wstring treesOneImageName = L"images/trees1.png";
 
 /// trees1 id number
-const wstring treesOneID = L"i018";
+const int treesOneID = 18;
 
 /// trees2 filename
 const wstring treesTwoImageName = L"images/trees2.png";
 
 /// trees2 id number
-const wstring treesTwoID = L"i019";
+const int treesTwoID = 19;
 
 /// trees3 filename
 const wstring treesThreeImageName = L"images/trees3.png";
 
 /// trees3 id number
-const wstring treesThreeID = L"i020";
+const int treesThreeID = 20;
 
 /// trees4 filename
 const wstring treesFourImageName = L"images/trees4.png";
 
 /// trees4 id number
-const wstring treesFourID = L"i021";
+const int treesFourID = 21;
 
 /**
 * Game constructor
@@ -89,19 +90,21 @@ const wstring treesFourID = L"i021";
 */
 CGame::CGame()
 {
-    mImageMap = make_shared<CImageMap>();
+
+    // THIS IS JUST HERE FOR TESTING!!!
+    mCurrentLevel = make_shared<CLevel>(this, L"levels/level0.xml");
     
-    mImageMap->AddImage(houseOneID,   houseOneImageName);
-    mImageMap->AddImage(houseTwoID,   houseTwoImageName);
-    mImageMap->AddImage(houseThreeID, houseThreeImageName);
-    mImageMap->AddImage(houseFourAID, houseFourAImageName);
-    mImageMap->AddImage(houseFourBID, houseFourBImageName);
-    mImageMap->AddImage(castleAID,    castleAImageName);
-    mImageMap->AddImage(castleBID,    castleBImageName);
-    mImageMap->AddImage(treesOneID,   treesOneImageName);
-    mImageMap->AddImage(treesTwoID,   treesTwoImageName);
-    mImageMap->AddImage(treesThreeID, treesThreeImageName);
-    mImageMap->AddImage(treesFourID,  treesFourImageName);
+    AddImage(houseOneID,   houseOneImageName);
+    AddImage(houseTwoID,   houseTwoImageName);
+    AddImage(houseThreeID, houseThreeImageName);
+    AddImage(houseFourAID, houseFourAImageName);
+    AddImage(houseFourBID, houseFourBImageName);
+    AddImage(castleAID,    castleAImageName);
+    AddImage(castleBID,    castleBImageName);
+    AddImage(treesOneID,   treesOneImageName);
+    AddImage(treesTwoID,   treesTwoImageName);
+    AddImage(treesThreeID, treesThreeImageName);
+    AddImage(treesFourID,  treesFourImageName);
 }
 
 /**
@@ -137,7 +140,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // draw the level with this graphics context
     if (mCurrentLevel != nullptr) {
-        mCurrentLevel->Draw(graphics);
+        mCurrentLevel->Draw(this, graphics);
     }
     
 }
@@ -156,13 +159,55 @@ void CGame::OnLButtonDown(int x, int y)
 
 }
 
+
+
 /**
- * Adds an image to the image map
- * \param imageID The ID for this image
- * \param imageFile The file that contains the actual image data
+ * Adds a bitmap to the mImageMap and shows an error message box if appropriate
+ * \param imageID The ID to associate with this image
+ * \param imageFileName The file for the image to load
+ * \returns true if successful, false if failure
  */
-void CGame::AddImage(const std::wstring& imageID, const std::wstring& imageFile)
+bool CGame::AddImage(int imageID, std::wstring imageFileName)
 {
-    mImageMap->AddImage(imageID, imageFile);
+
+    // if the image ID is already in the map, do not load it again
+    if (mImageMap.find(imageID) != mImageMap.end())
+        return true;
+
+    bool success = true;
+
+    // load the image into a bitmap
+    shared_ptr<Bitmap> bitmap = shared_ptr<Bitmap>(Bitmap::FromFile(imageFileName.c_str()));
+    if (bitmap->GetLastStatus() != Ok)
+    {
+        wstring msg(L"Failed to open ");
+        msg += imageFileName;
+        AfxMessageBox(msg.c_str());
+        success = false;
+    }
+    mImageMap[imageID] = bitmap;
+
+    return success;
+}
+
+
+/**
+ * Gets one of the game's images from the image map
+ * \param imageID The ID for this image
+ * \returns The corresponding bitmap object
+ */
+std::shared_ptr<Gdiplus::Bitmap> CGame::GetImage(int imageID)
+{
+    // if the image ID is in the map, return the bitmap pointer, otherwise
+    // return a nullptr.
+
+    if (mImageMap.find(imageID) != mImageMap.end())
+    {
+        return mImageMap[imageID];
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 

@@ -20,7 +20,7 @@ class CItemTile :
 {
 public:
 
-    CItemTile(CLevel* level, CGame* game, const std::wstring& imageID);
+    CItemTile(CLevel* level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemTile() = delete;

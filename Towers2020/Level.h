@@ -25,19 +25,15 @@ public:
 
 	CLevel() = delete;
 
-	/**
-	* Constructor
-	* \param game The game object that this level belongs to
-	*/
-	CLevel(CGame* game) : mGame(game) {}
+	CLevel(CGame* game, std::wstring filename);
 
-	void CLevel::Load(const std::wstring& filename);
+	void CLevel::Load(std::wstring filename);
 
 	void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	void CLevel::Clear();
 
-	void Draw(Gdiplus::Graphics* graphics);
+	void Draw(CGame *game, Gdiplus::Graphics* graphics);
 
 	void CLevel::Add(std::shared_ptr<CItem> item);
 
@@ -49,6 +45,12 @@ private:
 
 	/// The game object that this item belongs to
 	CGame* mGame;
+
+	/// the number of tiles in the x-direction
+	int mLevelWidth = 16;
+
+	/// the number of tiles in the y-direction
+	int mLevelHeight = 16;
 
 };
 

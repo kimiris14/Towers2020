@@ -37,7 +37,7 @@ public:
 	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
-	CItem::CItem(CLevel *level, CGame *game, const std::wstring& imageID) 
+	CItem::CItem(CLevel *level, CGame *game, int imageID) 
 		: mLevel(level), mGame(game), mImageID(imageID) {}
 
 
@@ -50,7 +50,7 @@ public:
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	virtual void Draw(Gdiplus::Graphics* graphics);
+	virtual void Draw(CGame *game, Gdiplus::Graphics* graphics);
 
 	std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
@@ -68,7 +68,7 @@ public:
 
 protected:
 
-	void SetImage(const std::wstring& imageID, const std::wstring& imageFile);
+	void SetImage(int imageID, std::wstring imageFile);
 	
 	/** Getter for mLevel for derived classes
 	* \returns pointer to the level object */
@@ -82,7 +82,7 @@ protected:
 
 	/** Getter for the image ID
 	* \returns the image ID */
-	const std::wstring& GetImageID() const { return mImageID; }
+	int GetImageID() const { return mImageID; }
 
 private:
 
@@ -90,7 +90,7 @@ private:
 	double mY = 0;  ///< y location on the board (in pixels)
 
 	/// The image ID for the image that represents this Item
-	const std::wstring& mImageID;
+	int mImageID;
 
 	/// The level that this item is a part of
 	CLevel* mLevel;

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ImageMap.h"
+#include <map>
 #include <memory>
 #include <string>
 

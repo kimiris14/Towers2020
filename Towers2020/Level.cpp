@@ -17,13 +17,22 @@ using namespace std;
 using namespace xmlnode;
 
 /**
+* Constructor
+* \param game The game object that this level belongs to
+* \param filename The filename of the XML level definition file for this level
+*/
+CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) {
+    Load(filename);
+}
+
+/**
  * Load the game level from a .xml file.
  *
  * Opens the XML file and reads the nodes, creating items as appropriate.
  *
  * \param filename The filename of the file to load the level from.
  */
-void CLevel::Load(const std::wstring& filename)
+void CLevel::Load(std::wstring filename)
 {
 
     // We surround with a try/catch to handle errors
@@ -39,9 +48,14 @@ void CLevel::Load(const std::wstring& filename)
         // node of the XML document in memory!!!!
         for (auto node : root->GetChildren())
         {
-            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"item")
+
+            // this is where we get the items
+            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"items")
             {
-                XmlItem(node);
+                for (auto itemNode : node->GetChildren())
+                {
+                    XmlItem(itemNode);
+                }
             }
 
         }
@@ -69,12 +83,13 @@ void CLevel::Clear()
 
 /**
  * Draws all of the items in this level
- * \param graphics
+ * \param game A pointer to the game object that holds graphics information
+ * \param graphics The graphics context to draw on
  */
-void CLevel::Draw(Gdiplus::Graphics* graphics)
+void CLevel::Draw(CGame *game, Gdiplus::Graphics* graphics)
 {
     for (auto item : mItems) {
-        item->Draw(graphics);
+        item->Draw(game, graphics);
     }
 }
 
@@ -90,8 +105,11 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     shared_ptr<CItem> item;
 
     // We have an item. What type?
-    wstring type = node->GetAttributeValue(L"type", L"");
-    auto imageID = node->GetAttributeValue(L"id", L"");
+    wstring type = node->GetName();
+
+    // Get the image ID attribute value
+    auto imageIDString = node->GetAttributeValue(L"id", L"");
+    int imageID = stoi(imageIDString.substr(1));  // removes the leading "i"
 
     if (type == L"open")
     {

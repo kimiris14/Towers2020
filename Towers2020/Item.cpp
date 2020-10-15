@@ -15,12 +15,13 @@ using namespace Gdiplus;
 
 /**
 * Draw the item
+* \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
-void CItem::Draw(Gdiplus::Graphics* graphics)
+void CItem::Draw(CGame *game, Gdiplus::Graphics* graphics)
 {
 
-    shared_ptr<Bitmap> itemBitmap = mGame->GetImageMap()->GetImage(mImageID);
+    shared_ptr<Bitmap> itemBitmap = game->GetImage(mImageID);
 
     double wid = itemBitmap->GetWidth();
     double hit = itemBitmap->GetHeight();
@@ -36,9 +37,9 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
 * \param imageID The ID for this image
 * \param imageFile The file that contains the actual image data
 */
-void CItem::SetImage(const std::wstring& imageID, const std::wstring& imageFile)
+void CItem::SetImage(int imageID, std::wstring imageFile)
 {
-    mGame->GetImageMap()->AddImage(imageID, imageFile);
+    mGame->AddImage(imageID, imageFile);
 }
 
 
@@ -87,7 +88,7 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 bool CItem::HitTest(int x, int y)
 {
 
-    auto itemImage = mGame->GetImageMap()->GetImage(mImageID);
+    auto itemImage = mGame->GetImage(mImageID);
 
     double wid = itemImage->GetWidth();
     double hit = itemImage->GetHeight();

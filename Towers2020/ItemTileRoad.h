@@ -21,7 +21,7 @@ class CItemTileRoad :
 {
 
 public:
-    CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID);
+    CItemTileRoad(CLevel* level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemTileRoad() = delete;
@@ -36,9 +36,6 @@ private:
 
     /// The image of this tile
     std::shared_ptr<Gdiplus::Bitmap> mItemImage;
-
-    /// map that links image bitmaps to their respective image id
-    CImageMap mImageMap;
 
     /// Road tile pointer to move East/West
     CItemTileRoad* mRoadEW = nullptr;

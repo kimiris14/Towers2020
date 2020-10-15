@@ -16,37 +16,37 @@ using namespace std;
 const wstring roadEWImageName = L"images/roadEW.png";
 
 /// roadEW id number
-const wstring roadEWID = L"i001";
+const int roadEWID = 1;
 
 /// roadNS filename
 const wstring roadNSImageName = L"images/roadNS.png";
 
 /// roadNS id number
-const wstring roadNSID = L"i002";
+const int roadNSID = 2;
 
 /// roadSE filename
 const wstring roadSEImageName = L"images/roadSE.png";
 
 /// roadSE id number
-const wstring roadSEID = L"i003";
+const int roadSEID = 3;
 
 /// roadSW filename
 const wstring roadSWImageName = L"images/roadSW.png";
 
 /// roadSW id number
-const wstring roadSWID = L"i004";
+const int roadSWID = 4;
 
 /// roadNE filename
 const wstring roadNEImageName = L"images/roadNE.png";
 
 /// roadNE id number
-const wstring roadNEID = L"i005";
+const int roadNEID = 5;
 
 /// roadNW filename
 const wstring roadNWImageName = L"images/roadNW.png";
 
 /// roadNW id number
-const wstring roadNWID = L"i006";
+const int roadNWID = 6;
 
 
 /**
@@ -55,16 +55,16 @@ const wstring roadNWID = L"i006";
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, const std::wstring& imageID)
+CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID)
     : CItemTile(level, game, imageID)
 
 {
-    mImageMap.AddImage(roadEWID, roadEWImageName);
-    mImageMap.AddImage(roadNSID, roadNSImageName);
-    mImageMap.AddImage(roadSEID, roadSEImageName);
-    mImageMap.AddImage(roadSWID, roadSWImageName);
-    mImageMap.AddImage(roadNEID, roadNEImageName);
-    mImageMap.AddImage(roadNWID, roadNWImageName);
+    game->AddImage(roadEWID, roadEWImageName);
+    game->AddImage(roadNSID, roadNSImageName);
+    game->AddImage(roadSEID, roadSEImageName);
+    game->AddImage(roadSWID, roadSWImageName);
+    game->AddImage(roadNEID, roadNEImageName);
+    game->AddImage(roadNWID, roadNWImageName);
 }
 
 

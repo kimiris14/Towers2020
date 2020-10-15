@@ -51,7 +51,8 @@ CChildView::CChildView()
 	// create the game object
 	mGame = CGame();
 
-	mLevel = &CLevel(&mGame);
+	// TEMPORARY
+	mLevel = &CLevel(&mGame, L"levels/level0.xml");
 }
 
 CChildView::~CChildView()

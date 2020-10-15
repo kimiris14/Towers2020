@@ -19,7 +19,7 @@ class CItemBalloon :
     public CItem
 {
 public:
-    CItemBalloon(CLevel *level, CGame* game, const std::wstring& imageID);
+    CItemBalloon(CLevel *level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemBalloon() = delete;
