@@ -39,6 +39,8 @@ public:
 
 	void Update(double elapsed);
 
+	void Accept(CItemVisitor* visitor);
+
 
 private:
 

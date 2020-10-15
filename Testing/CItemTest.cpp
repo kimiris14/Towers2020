@@ -2,10 +2,11 @@
 #include "CppUnitTest.h"
 #include "Game.h"
 #include "Level.h"
-#include "Item.h""
+#include "Item.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
 
 /// red balloon filename
 const std::wstring redBalloonImageName = L"images/red-balloon.png";
@@ -41,6 +42,10 @@ namespace Testing
 		/** Draw the item
 		 * \param graphics The graphics context to draw on */
 		virtual void Draw(Gdiplus::Graphics* graphics) {}
+
+		/** Accept a visitor
+		* \param visitor The visitor we accept */
+		virtual void Accept(CItemVisitor* visitor) override { }
 	};
 
 	TEST_CLASS(CItemTest)

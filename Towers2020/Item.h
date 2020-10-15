@@ -13,6 +13,7 @@
 #include <memory>
 #include "ImageMap.h"
 #include "XmlNode.h"
+#include "ItemVisitor.h"
 
 using namespace xmlnode;
 
@@ -69,6 +70,10 @@ public:
 	/// Base class version of the time update
 	/// \param elapsed The number of seconds elapsed since last draw
 	virtual void Update(double elapsed) {}
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
 

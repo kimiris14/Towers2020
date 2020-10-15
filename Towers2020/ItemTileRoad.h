@@ -9,6 +9,7 @@
 #pragma once
 #include "ItemTile.h"
 #include "ItemBalloon.h"
+#include "ItemVisitor.h"
 
 
 
@@ -31,6 +32,10 @@ public:
 
     /// destructor
     ~CItemTileRoad() {}
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRoad(this); }
 
 private:
 

@@ -10,8 +10,9 @@
 #include "Level.h"
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
-#include<memory>
-#include<vector>
+#include "ItemVisitor.h"
+#include <memory>
+#include <vector>
 
 using namespace std;
 using namespace xmlnode;
@@ -149,5 +150,17 @@ void CLevel::Update(double elapsed)
     for (auto item : mItems)
     {
         item->Update(elapsed);
+    }
+}
+
+
+/** Accept a visitor for the collection
+ * \param visitor The visitor for the collection
+ */
+void CLevel::Accept(CItemVisitor* visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
     }
 }

@@ -9,6 +9,7 @@
 #pragma once
 #include "Item.h"
 #include "ImageMap.h"
+#include "ItemVisitor.h"
 
 
 
@@ -34,6 +35,11 @@ public:
     float CItemBalloon::GetTValue() { return mTValue; }
 
     //Add Pop definition here
+
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBalloon(this); }
 
 
 private:

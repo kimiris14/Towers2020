@@ -11,6 +11,7 @@
 #include <string>
 #include "ImageMap.h"
 #include "Item.h"
+#include "ItemVisitor.h"
 
 /**
  * Base class for any tile in the game 
@@ -36,6 +37,10 @@ public:
     virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTile(this); }
 
 private:
 
