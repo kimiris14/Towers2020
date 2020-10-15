@@ -32,7 +32,7 @@ public:
     /// destructor 
     ~CItemTile() {}
 
-    virtual void SetGridLocation(double x, double y);
+    virtual void SetGridLocation(int x, int y);
 
     virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
 
@@ -42,13 +42,23 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTile(this); }
 
+    /** Getter for X grid position
+     * \returns the X grid index */
+    int GetGridX() const { return mGridPositionX; }
+
+    /** Getter for Y grid position
+     * \returns the Y grid index */
+    int GetGridY() const { return mGridPositionY; }
+
+
+
 private:
 
     /// The X position index when placed on the grid (not pixels!)
-    double mGridPositionX;
+    int mGridPositionX;
 
     /// The Y position index when placed on the grid (not pixels!)
-    double mGridPositionY;
+    int mGridPositionY;
 
 };
 

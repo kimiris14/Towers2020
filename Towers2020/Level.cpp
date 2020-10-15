@@ -11,6 +11,7 @@
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
+#include "ItemVisitorFindRoad.h"
 #include <memory>
 #include <vector>
 
@@ -42,6 +43,13 @@ void CLevel::Load(std::wstring filename)
         // Open the document to read
         shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
 
+        // Get the basic level configuration information
+        mLevelWidth = root->GetAttributeIntValue(L"width", 0);
+        mLevelHeight = root->GetAttributeIntValue(L"height", 0);
+        mStartingX = root->GetAttributeIntValue(L"start-x", 0);
+        mStartingY = root->GetAttributeIntValue(L"start-y", 0);
+
+
         // Once we know it is open, clear the existing data
         Clear();
 
@@ -58,13 +66,124 @@ void CLevel::Load(std::wstring filename)
                     XmlItem(itemNode);
                 }
             }
-
         }
 
     }
     catch (CXmlNode::Exception ex)
     {
         AfxMessageBox(ex.Message().c_str());
+    }
+
+
+    // at this point, all of the tiles are loaded in. We can construct the path
+    int currentX = mStartingX;
+    int currentY = mStartingY;
+
+    // to find the starting tile
+    CItemVisitorFindRoad visitor1(currentX, currentY);
+    Accept(&visitor1);
+    CItemTileRoad* prevRoad = visitor1.GetRoad();
+    CItemTileRoad* currRoad = nullptr;
+
+    // if the starting tile is not an east to west tile, that means it must be in reverse.
+    // For example, it could be a north to east tile, or a south to east
+    if ((prevRoad->GetType() == L"NE") || (prevRoad->GetType() == L"SE") || (prevRoad->GetType() == L"EW"))
+        prevRoad->SetReversedDirection(true);
+
+    while (prevRoad != nullptr)
+    {
+        wstring prevType = prevRoad->GetType();
+
+        // these booleans will tell us where to save the next road in the current road
+        bool newNorth = false;
+        bool newEast  = false;
+        bool newSouth = false;
+        bool newWest  = false;
+
+        // next tile should be north (up one index)
+        if (((prevType == L"NS") && (prevRoad->IsReversed())) ||
+            ((prevType == L"NE") && (prevRoad->IsReversed())) ||
+            ((prevType == L"NW") && (prevRoad->IsReversed())))
+        {
+            currentY--;  // remember that in computer-land, pixels are from the top left, down
+            newNorth = true;
+        }
+
+        // next tile should be south (down one index)
+        else if (((prevType == L"NS") && (!prevRoad->IsReversed())) ||
+                 ((prevType == L"SE") && ( prevRoad->IsReversed())) ||
+                 ((prevType == L"SW") && ( prevRoad->IsReversed())))
+        {
+            currentY++;  // remember that in computer-land, pixels are from the top left, down
+            newSouth = true;
+        }
+
+        // the next tile should be to the east (right one index)
+        else if (((prevType == L"EW") && ( prevRoad->IsReversed())) ||
+                 ((prevType == L"SE") && (!prevRoad->IsReversed())) ||
+                 ((prevType == L"NE") && (!prevRoad->IsReversed())))
+        {
+            currentX++;
+            newEast = true;
+        }
+
+        // the next tile should be to the west (left one index)
+        else if (((prevType == L"EW") && (!prevRoad->IsReversed())) ||
+                 ((prevType == L"SW") && (!prevRoad->IsReversed())) ||
+                 ((prevType == L"NW") && (!prevRoad->IsReversed())))
+        {
+            currentX--;
+            newWest = true;
+        }
+
+
+        // Now we know where to expect the next road tile. Attempt to find it with a visitor
+        CItemVisitorFindRoad visitor2(currentX, currentY);
+        Accept(&visitor2);
+        currRoad = visitor2.GetRoad();
+
+        // important to wrap everything here in a nullptr block, since there's a chance that
+        // there was no tile found
+        if (currRoad != nullptr)
+        {
+            // we found the next road! Let's be sure to tell the previous road where the balloons
+            // should be going next
+            if (newNorth)
+            {
+                prevRoad->SetNextNorth(currRoad);
+                
+                // we're going north and entering from the south side, so the next tile is reversed if...
+                if ((currRoad->GetType() == L"NS"))
+                    currRoad->SetReversedDirection(true);
+            }
+            else if (newSouth)
+            {
+                prevRoad->SetNextSouth(currRoad);
+
+                // we're going south and entering from the north side, so the next is never reversed, because
+                // all tiles with North in them start with North ("NS" "NW" "NE")
+            }
+            else if (newEast)
+            {
+                prevRoad->SetNextEast(currRoad);
+
+                // we're going east and entering from the west side, so the next tile is reversed if...
+                if ((currRoad->GetType() == L"NW") || (currRoad->GetType() == L"SW") || (currRoad->GetType() == L"EW"))
+                    currRoad->SetReversedDirection(true);
+            }
+            else if (newWest)
+            {
+                prevRoad->SetNextWest(currRoad);
+
+                // we're going east and entering from the east side, so the next tile is reversed if...
+                if ((currRoad->GetType() == L"NE") || (currRoad->GetType() == L"SE"))
+                    currRoad->SetReversedDirection(true);
+            }
+
+        }
+
+        // update the road for the next iteration
+        prevRoad = currRoad;
     }
 
 }

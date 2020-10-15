@@ -13,40 +13,40 @@
 using namespace std;
 
 /// roadEW filename
-const wstring roadEWImageName = L"images/roadEW.png";
+const wstring RoadEWImageName = L"images/roadEW.png";
 
 /// roadEW id number
-const int roadEWID = 1;
+const int RoadEWID = 1;
 
 /// roadNS filename
-const wstring roadNSImageName = L"images/roadNS.png";
+const wstring RoadNSImageName = L"images/roadNS.png";
 
 /// roadNS id number
-const int roadNSID = 2;
+const int RoadNSID = 2;
 
 /// roadSE filename
-const wstring roadSEImageName = L"images/roadSE.png";
+const wstring RoadSEImageName = L"images/roadSE.png";
 
 /// roadSE id number
-const int roadSEID = 3;
+const int RoadSEID = 3;
 
 /// roadSW filename
-const wstring roadSWImageName = L"images/roadSW.png";
+const wstring RoadSWImageName = L"images/roadSW.png";
 
 /// roadSW id number
-const int roadSWID = 4;
+const int RoadSWID = 4;
 
 /// roadNE filename
-const wstring roadNEImageName = L"images/roadNE.png";
+const wstring RoadNEImageName = L"images/roadNE.png";
 
 /// roadNE id number
-const int roadNEID = 5;
+const int RoadNEID = 5;
 
 /// roadNW filename
-const wstring roadNWImageName = L"images/roadNW.png";
+const wstring RoadNWImageName = L"images/roadNW.png";
 
 /// roadNW id number
-const int roadNWID = 6;
+const int RoadNWID = 6;
 
 
 /**
@@ -59,12 +59,36 @@ CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID)
     : CItemTile(level, game, imageID)
 
 {
-    game->AddImage(roadEWID, roadEWImageName);
-    game->AddImage(roadNSID, roadNSImageName);
-    game->AddImage(roadSEID, roadSEImageName);
-    game->AddImage(roadSWID, roadSWImageName);
-    game->AddImage(roadNEID, roadNEImageName);
-    game->AddImage(roadNWID, roadNWImageName);
+    game->AddImage(RoadEWID, RoadEWImageName);
+    game->AddImage(RoadNSID, RoadNSImageName);
+    game->AddImage(RoadSEID, RoadSEImageName);
+    game->AddImage(RoadSWID, RoadSWImageName);
+    game->AddImage(RoadNEID, RoadNEImageName);
+    game->AddImage(RoadNWID, RoadNWImageName);
+
+    if (imageID == RoadEWID) {
+        mRoadType = L"EW";
+    }
+    else if (imageID == RoadNSID)
+    {
+        mRoadType = L"NS";
+    }
+    else if (imageID == RoadSEID)
+    {
+        mRoadType = L"SE";
+    }
+    else if (imageID == RoadSWID)
+    {
+        mRoadType = L"SW";
+    }
+    else if (imageID == RoadNEID)
+    {
+        mRoadType = L"NE";
+    }
+    else if (imageID == RoadNWID)
+    {
+        mRoadType = L"NW";
+    }
 }
 
 

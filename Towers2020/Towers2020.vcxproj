@@ -191,6 +191,7 @@
     <ClInclude Include="ImageMap.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemBalloon.h" />
+    <ClInclude Include="ItemVisitorFindRoad.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ImageMap.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBalloon.cpp" />
+    <ClCompile Include="ItemVisitorFindRoad.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">

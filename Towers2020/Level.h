@@ -56,5 +56,11 @@ private:
 	/// the number of tiles in the y-direction
 	int mLevelHeight = 16;
 
+	/// The tile index of the starting tile
+	int mStartingX = 0;
+
+	/// The tile index of the starting tile
+	int mStartingY = 0;
+
 };
 

@@ -50,7 +50,7 @@ CItemTile::CItemTile(CLevel *level, CGame* game, int imageID)
 /// Set the item location on the grid
 /// \param x X grid location index
 /// \param y Y grid location index
-void CItemTile::SetGridLocation(double x, double y)
+void CItemTile::SetGridLocation(int x, int y)
 {
 	mGridPositionX = x;
 	mGridPositionY = y;
@@ -79,7 +79,7 @@ void CItemTile::Draw(CGame* game, Gdiplus::Graphics* graphics)
 	float xPos = static_cast<float>(GetX()) - 1;
 	float yPos = static_cast<float>(GetY()) - 1;
 
-	graphics->DrawImage(itemBitmap.get(), xPos, yPos, wid, hit);
+	graphics->DrawImage(itemBitmap.get(), xPos, yPos, wid + 1, hit + 1);
 }
 
 
@@ -92,8 +92,8 @@ void CItemTile::Draw(CGame* game, Gdiplus::Graphics* graphics)
  */
 void CItemTile::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-	double xGrid = node->GetAttributeDoubleValue(L"x", 0);
-	double yGrid = node->GetAttributeDoubleValue(L"y", 0);
+	int xGrid = node->GetAttributeIntValue(L"x", 0);
+	int yGrid = node->GetAttributeIntValue(L"y", 0);
 
 	SetGridLocation(xGrid, yGrid);
 }
