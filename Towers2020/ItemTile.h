@@ -31,7 +31,19 @@ public:
     /// destructor 
     ~CItemTile() {}
 
+    virtual void SetGridLocation(double x, double y);
+
+    virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
+
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
+
 private:
+
+    /// The X position index when placed on the grid (not pixels!)
+    double mGridPositionX;
+
+    /// The Y position index when placed on the grid (not pixels!)
+    double mGridPositionY;
 
 };
 

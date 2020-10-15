@@ -119,6 +119,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
+    
     //
     // Automatic Scaling
     //
@@ -136,6 +137,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     graphics->ScaleTransform(mScale, mScale);
 
     // from here on you are drawing virtual pixels
+ 
 
 
     // draw the level with this graphics context

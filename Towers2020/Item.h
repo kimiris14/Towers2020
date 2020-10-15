@@ -54,7 +54,7 @@ public:
 
 	std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	virtual bool HitTest(int x, int y);
 

@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "ImageMap.h"
 
+using namespace Gdiplus;
 using namespace std;
 
 /// grass1 filename
@@ -23,6 +24,12 @@ const wstring grassTwoImageName = L"images/grass2.png";
 /// grass2 id number
 const int grassTwoID = 8;
 
+/// The width of a tile in pixels
+const double TileWidth = 64;
+
+/// The height of a tile in pixels
+const double TileHeight = 64;
+
 
 /**
 * Constructor
@@ -36,5 +43,57 @@ CItemTile::CItemTile(CLevel *level, CGame* game, int imageID)
 
 	game->AddImage(grassOneID, grassOneImageName);
 	game->AddImage(grassTwoID, grassTwoImageName);
+
 }
 
+
+/// Set the item location on the grid
+/// \param x X grid location index
+/// \param y Y grid location index
+void CItemTile::SetGridLocation(double x, double y)
+{
+	mGridPositionX = x;
+	mGridPositionY = y;
+
+	double xPixelLocation = x * TileWidth;
+	double yPixelLocation = y * TileHeight;
+
+	SetLocation(xPixelLocation, yPixelLocation);
+}
+
+
+
+/**
+* Draw the item from the corner
+* \param game A pointer to the game object that holds graphics information
+* \param graphics The graphics context to draw on
+*/
+void CItemTile::Draw(CGame* game, Gdiplus::Graphics* graphics)
+{
+
+	shared_ptr<Bitmap> itemBitmap = game->GetImage(GetImageID());
+
+	float wid = static_cast<float>(itemBitmap->GetWidth());
+	float hit = static_cast<float>(itemBitmap->GetHeight());
+
+	float xPos = static_cast<float>(GetX()) - 1;
+	float yPos = static_cast<float>(GetY()) - 1;
+
+	graphics->DrawImage(itemBitmap.get(), xPos, yPos, wid, hit);
+}
+
+
+/**
+ * Load the attributes for an item tile node.
+ *
+ * Overridden from base class to account for tile grid placemebt
+ *
+ * \param node The Xml node we are loading the item from
+ */
+void CItemTile::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+	double xGrid = node->GetAttributeDoubleValue(L"x", 0);
+	double yGrid = node->GetAttributeDoubleValue(L"y", 0);
+
+	SetGridLocation(xGrid, yGrid);
+}

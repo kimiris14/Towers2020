@@ -34,9 +34,6 @@ public:
 
 private:
 
-    /// The image of this tile
-    std::shared_ptr<Gdiplus::Bitmap> mItemImage;
-
     /// Road tile pointer to move East/West
     CItemTileRoad* mRoadEW = nullptr;
 

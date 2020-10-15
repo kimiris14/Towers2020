@@ -111,6 +111,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     auto imageIDString = node->GetAttributeValue(L"id", L"");
     int imageID = stoi(imageIDString.substr(1));  // removes the leading "i"
 
+
     if (type == L"open")
     {
         item = make_shared<CItemTile>(this, mGame, imageID);
