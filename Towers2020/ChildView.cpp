@@ -30,6 +30,8 @@ using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
+/// Maximum amount of time to allow for elapsed
+const double MaxElapsed = 0.050;
 
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
@@ -129,6 +131,22 @@ void CChildView::OnPaint()
 	GetClientRect(&rect);
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
+
+	//
+	// Prevent tunnelling
+	//
+	while (elapsed > MaxElapsed)
+	{
+		mGame.Update(MaxElapsed);
+
+		elapsed -= MaxElapsed;
+	}
+
+	// Consume any remaining time
+	if (elapsed > 0)
+	{
+		mGame.Update(elapsed);
+	}
 }
 
 

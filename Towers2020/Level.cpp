@@ -139,3 +139,15 @@ void CLevel::Add(shared_ptr<CItem> item)
 {
     mItems.push_back(item);
 }
+
+
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
+void CLevel::Update(double elapsed)
+{
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
+}

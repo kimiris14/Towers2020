@@ -32,6 +32,8 @@ public:
 
     std::shared_ptr<Gdiplus::Bitmap> GetImage(int imageID);
 
+    void Update(double elapsed);
+
 
 private:
     /// Game area in virtual pixels

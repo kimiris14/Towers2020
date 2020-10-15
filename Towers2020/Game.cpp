@@ -213,3 +213,12 @@ std::shared_ptr<Gdiplus::Bitmap> CGame::GetImage(int imageID)
     }
 }
 
+
+
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
+void CGame::Update(double elapsed)
+{
+    mCurrentLevel->Update(elapsed);
+}

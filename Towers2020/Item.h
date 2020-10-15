@@ -66,6 +66,10 @@ public:
 	* \returns Y location in pixels */
 	double GetY() const { return mY; }
 
+	/// Base class version of the time update
+	/// \param elapsed The number of seconds elapsed since last draw
+	virtual void Update(double elapsed) {}
+
 protected:
 
 	void SetImage(int imageID, std::wstring imageFile);

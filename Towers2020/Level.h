@@ -37,6 +37,8 @@ public:
 
 	void CLevel::Add(std::shared_ptr<CItem> item);
 
+	void Update(double elapsed);
+
 
 private:
 
