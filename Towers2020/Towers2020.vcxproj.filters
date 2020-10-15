@@ -78,6 +78,12 @@
     <ClInclude Include="ProjectileDart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectileRing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileBomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers2020.cpp">
@@ -129,6 +135,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProjectileDart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileRing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileBomb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
