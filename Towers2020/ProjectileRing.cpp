@@ -20,7 +20,7 @@ const int ringID = 52; //assigned
  * \param game The Game this ring is a member of
  * \param imageID The image id for this ring
  */
-CProjectileRing::CProjectileRing(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileRing::CProjectileRing(CLevel* level, int imageID) : CProjectile(level, imageID)
 {
 }
 

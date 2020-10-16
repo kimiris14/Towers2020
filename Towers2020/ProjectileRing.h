@@ -17,7 +17,7 @@ class CProjectileRing :
     public CProjectile
 {
 public:
-    CProjectileRing(CLevel* level, CGame* game, int imageID);
+    CProjectileRing(CLevel* level, int imageID);
 
     /// Default constructor (disabled)
     CProjectileRing() = delete;

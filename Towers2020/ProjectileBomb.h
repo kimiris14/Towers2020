@@ -17,7 +17,7 @@ class CProjectileBomb :
     public CProjectile
 {
 public:
-    CProjectileBomb(CLevel* level, CGame* game, int imageID);
+    CProjectileBomb(CLevel* level, int imageID);
 
     /// Default constructor (disabled)
     CProjectileBomb() = delete;

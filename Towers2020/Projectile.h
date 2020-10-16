@@ -25,8 +25,8 @@ public:
 	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
-	CProjectile(CLevel* level, CGame* game, int imageID) : 
-			CItem(level, game, imageID) {}
+	CProjectile(CLevel* level, int imageID) : 
+			CItem(level, imageID) {}
 
 	/// Destructor
 	virtual ~CProjectile() {}

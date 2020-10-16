@@ -20,7 +20,7 @@ const int bombID = 53; //assigned
  * \param game The Game this bomb is a member of
  * \param imageID The image id for this bomb
  */
-CProjectileBomb::CProjectileBomb(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileBomb::CProjectileBomb(CLevel* level, int imageID) : CProjectile(level, imageID)
 {
 }
 

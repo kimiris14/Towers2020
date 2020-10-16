@@ -23,9 +23,9 @@ const int dartID = 51; //assigned
  * \param game The Game this item is a member of
  * \param imageID The image id for this item
  */
-CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileDart::CProjectileDart(CLevel* level, int imageID) : CProjectile(level, imageID)
 {
-	game->AddImage(dartID, dartImageName);
+	level->AddImage(dartID, dartImageName);
 }
 
 /**

@@ -25,8 +25,8 @@ public:
 	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
-	CTower(CLevel* level, CGame* game, int imageID) :
-		CItem(level, game, imageID) {}
+	CTower(CLevel* level, int imageID) :
+		CItem(level, imageID) {}
 
 	/// Default constructor (disabled)
 	CTower() = delete;

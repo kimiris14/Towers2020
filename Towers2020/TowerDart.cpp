@@ -25,8 +25,8 @@ const wstring dartImageName = L"images/tower8.png";
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CTowerDart::CTowerDart(CLevel* level, CGame* game, int imageID)
-	: CTower(level, game, imageID)
+CTowerDart::CTowerDart(CLevel* level, int imageID)
+	: CTower(level, imageID)
 {
 
 }

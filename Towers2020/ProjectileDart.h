@@ -16,7 +16,7 @@ class CProjectileDart :
     public CProjectile
 {
 public:
-    CProjectileDart(CLevel* level, CGame* game, int imageID);
+    CProjectileDart(CLevel* level, int imageID);
 
     /// Default constructor (disabled)
     CProjectileDart() = delete;

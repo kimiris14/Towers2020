@@ -20,7 +20,7 @@ public:
     * \param game A pointer to the game object that this item belongs to
     * \param imageID The image ID for this object
     */
-    CTowerDart(CLevel* level, CGame* game, int imageID);
+    CTowerDart(CLevel* level, int imageID);
 
     ///  Default constructor (disabled)
     CTowerDart() = delete;
