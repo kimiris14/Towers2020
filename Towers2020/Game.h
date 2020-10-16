@@ -42,6 +42,14 @@ public:
     /// \returns A shared pointer to the game's pallette
     std::shared_ptr<CGamePallette> GetPallette() { return mGamePallette; }
 
+    /// A getter for the game's current level
+    /// \returns A shared pointer to the game's current level
+    std::shared_ptr<CLevel> GetLevel() { return mCurrentLevel; }
+
+    /// A setter for the game's current level
+    /// \param level The new level for the game
+    void SetLevel(std::shared_ptr<CLevel> level) { mCurrentLevel = level; }
+
 
 private:
     /// Game area in virtual pixels

@@ -34,12 +34,6 @@ public:
 	/// Copy constructor (disabled)
 	CProjectile(const CProjectile&) = delete;
 
-	/// Draw the item
-	/// \param graphics The GDI+ graphics context to draw on
-	virtual void Draw(Gdiplus::Graphics* graphics) override;
-
-
-	virtual void SetLocation(double x, double y) override;
 
 	// Handle updates for animation
 	// \param elapsed The time since the last update
@@ -47,7 +41,7 @@ public:
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor* visitor) override { }
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitProjectile(this); }
 
 private:
 	/// Check to see if corresponding tower has been placed

@@ -30,6 +30,14 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
+    /// Increment the score by the amount passed into this function
+    /// \param increment The amount to increment the score by
+    void IncrementScore(int increment = 1) { mScore = mScore + increment; }
+
+    /// Decrement the score by the amount passed into this function
+    /// \param decrement The amount to decrement the score by
+    void DecrementScore(int decrement = 1) { mScore = mScore - decrement; }
+
 private:
 	/// The current score in the game
 	int mScore = 0;

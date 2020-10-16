@@ -16,6 +16,9 @@ class CItemTileRoad;
 class CProjectileRing;
 class CProjectileExplosion;
 class CProjectileDart;
+class CProjectile;
+class CTower;
+class CTowerDart;
 
 
 /** Tile visitor base class */
@@ -37,6 +40,10 @@ public:
     * \param road Road we are visiting */
     virtual void VisitRoad(CItemTileRoad* road) {}
 
+    /** Visit a CProjectile object
+     * \param projectile The projectile we are visiting */
+    virtual void VisitProjectile(CProjectile* projectile) {}
+
     /** Visit a CProjectileRing object
     * \param ring Ring projectile we are visiting */
     virtual void VisitRing(CProjectileRing* ring) {}
@@ -48,4 +55,13 @@ public:
     /** Visit a CProjectileDart object
      * \param dart Dart projectile we are visiting */
     virtual void VisitDart(CProjectileDart* dart) {}
+
+    /** Visit a CTower object
+     * \param tower Tower projectile we are visiting */
+    virtual void VisitTower(CTower* tower) {}
+
+    /** Visit a CTowerDart object
+     * \param darttower The Dart Tower projectile we are visiting */
+    virtual void VisitTowerDart(CTowerDart* darttower) {}
+
 };

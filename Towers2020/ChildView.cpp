@@ -1,12 +1,6 @@
 /**
  * \file ChildView.cpp
  *
- * \author Dave Yonkers
- */
-
-/**
- * \file ChildView.cpp
- *
  * \author PaulaRed
  */
 
@@ -37,13 +31,13 @@ const double MaxElapsed = 0.050;
 const int FrameDuration = 30;
 
 /// Level 0 filename
-wstring level0 = L"levels/level0.xml"; 
+wstring Level0 = L"levels/level0.xml"; 
 
 /// Level 1 filename
-wstring level1 = L"levels/level1.xml";
+wstring Level1 = L"levels/level1.xml";
 
 /// Level 2 filename
-wstring level2 = L"levels/level2.xml";
+wstring Level2 = L"levels/level2.xml";
 
 // CChildView
 
@@ -177,7 +171,8 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLevelLevel0()
 {
 
-	// mLevel->Load(level0);
+	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level0);
+	mGame.SetLevel(newLevel);
 	mGame.StartLevel();
 
 }
@@ -187,8 +182,9 @@ void CChildView::OnLevelLevel0()
 */
 void CChildView::OnLevelLevel1()
 {
-	// mLevel->Load(level1);
-
+	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level1);
+	mGame.SetLevel(newLevel);
+	mGame.StartLevel();
 }
 
 /**
@@ -196,5 +192,7 @@ void CChildView::OnLevelLevel1()
 */
 void CChildView::OnLevelLevel2()
 {
-	// mLevel->Load(level2);
+	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level2);
+	mGame.SetLevel(newLevel);
+	mGame.StartLevel();
 }
