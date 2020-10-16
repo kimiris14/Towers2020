@@ -38,6 +38,10 @@ public:
     /// Starts the current level
     void StartLevel() { mCurrentLevel->Start(); }
 
+    /// A getter for the game pallette (created in the constructor)
+    /// \returns A shared pointer to the game's pallette
+    std::shared_ptr<CGamePallette> GetPallette() { return mGamePallette; }
+
 
 private:
     /// Game area in virtual pixels
@@ -56,15 +60,12 @@ private:
     float mYOffset;
 
     /// A pointer to the current level (may change later depending on how levels are stored)
-    std::unique_ptr<CLevel> mCurrentLevel = nullptr;
+    std::shared_ptr<CLevel> mCurrentLevel = nullptr;
 
     /// map that links image bitmaps to their respective image id
     std::map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 
-    /// image list
-    std::shared_ptr<Gdiplus::Bitmap> mImageList[100];
-
-    /// A pointer to the game pallette 
-    std::shared_ptr<CGamePallette> mGamePallete;
+    /// A pointer to the game pallette. The game should "own" the pallette
+    std::shared_ptr<CGamePallette> mGamePallette = nullptr;
 
 };

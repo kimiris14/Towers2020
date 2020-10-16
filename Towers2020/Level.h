@@ -15,6 +15,7 @@
 #include "ImageMap.h"
 
 class CGame;
+class CGamePallette;
 
 /**
 * Class that represents a level
@@ -25,7 +26,7 @@ public:
 
 	CLevel() = delete;
 
-	CLevel(CGame* game, std::wstring filename);
+	CLevel(CGame* game, std::shared_ptr<CGamePallette> pallette, std::wstring filename);
 
 	void CLevel::Load(std::wstring filename);
 
@@ -35,7 +36,11 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
-	void CLevel::Add(std::shared_ptr<CItem> item);
+	void Add(std::shared_ptr<CItem> item);
+
+	/// Sets the game pallette pointer
+	/// \param pallette The shared pointer pointer to this game pallette
+	void SetGamePallette(std::shared_ptr<CGamePallette> pallette) { mPallette = pallette; }
 
 	void Update(double elapsed);
 
@@ -50,6 +55,11 @@ public:
 
 	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
 
+	/// When an item needs to be deleted from the level, use this to remove it.
+	/// It waits until all of the updates are done before removing it, otherwise
+	/// there would be runtime errors
+	/// \param item The item within mItems to remove.
+	void RemoveItem(std::shared_ptr<CItem> item) { mItemsToDelete.push_back(item); }
 
 private:
 
@@ -58,6 +68,9 @@ private:
 
 	/// The game object that this item belongs to
 	CGame* mGame = nullptr;
+
+	/// The game pallete which holds things like the game's score and such
+	std::shared_ptr<CGamePallette> mPallette = nullptr;
 
 	/// the number of tiles in the x-direction
 	int mLevelWidth = 16;

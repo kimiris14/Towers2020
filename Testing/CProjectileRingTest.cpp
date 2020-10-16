@@ -52,7 +52,7 @@ namespace Testing
 		TEST_METHOD(TestProjectileRingConstruct)
 		{
 			CGame game;
-			CLevel level(&game, baseLevel);
+			CLevel level(&game, game.GetPallette(), baseLevel);
 			CProjectileRing ring(&level, &game, ringID);
 		}
 

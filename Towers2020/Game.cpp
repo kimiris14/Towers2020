@@ -18,6 +18,8 @@ using namespace std;
 using namespace xmlnode;
 
 
+const wstring DefaultLevel = L"levels/level0.xml";
+
 /// house1 filename
 const wstring houseOneImageName = L"images/house1.png";
 
@@ -90,12 +92,12 @@ const int treesFourID = 21;
 */
 CGame::CGame()
 {
-    //testing gamepallette
-    mGamePallete = make_shared<CGamePallette>(this);
 
-    // THIS IS JUST HERE FOR TESTING!!!
+    // create the game pallette
+    mGamePallette = make_shared<CGamePallette>(this);
 
-    mCurrentLevel = make_unique<CLevel>(this, L"levels/level0.xml");
+    // load the default level
+    mCurrentLevel = make_shared<CLevel>(this, mGamePallette, DefaultLevel);
     
     AddImage(houseOneID,   houseOneImageName);
     AddImage(houseTwoID,   houseTwoImageName);
@@ -146,7 +148,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
         mCurrentLevel->Draw(graphics);
     }
 
-    mGamePallete->Draw(graphics);
+    mGamePallette->Draw(graphics);
     
 }
 

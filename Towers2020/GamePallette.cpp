@@ -16,9 +16,8 @@ using namespace std;
 * Constructor
 * \param game The Game this item is a member of
 */
-CGamePallette::CGamePallette(CGame* game)
+CGamePallette::CGamePallette(CGame* game) : mGame(game)
 {
-    mGame = game;
 }
 
 /**
