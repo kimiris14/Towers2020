@@ -143,7 +143,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // draw the level with this graphics context
     if (mCurrentLevel != nullptr) {
-        mCurrentLevel->Draw(this, graphics);
+        mCurrentLevel->Draw(graphics);
     }
 
     mGamePallete->Draw(graphics);

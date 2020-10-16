@@ -25,8 +25,8 @@ public:
 	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
-	CTower(CLevel* level, int imageID) :
-		CItem(level, imageID) {}
+	CTower(CLevel* level, CGame* game, int imageID) :
+		CItem(level, game, imageID) {}
 
 	/// Default constructor (disabled)
 	CTower() = delete;
@@ -38,9 +38,8 @@ public:
 	~CTower() {}
 
 	/// Draw the item
-	/// \param game A pointer to the game object that this item belongs to
 	/// \param graphics The GDI+ graphics context to draw on
-	virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
+	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
 	/// Set the item location
 	/// \param x X location

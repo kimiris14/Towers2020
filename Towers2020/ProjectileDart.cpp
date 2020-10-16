@@ -23,7 +23,7 @@ const int dartID = 51; //assigned
  * \param game The Game this item is a member of
  * \param imageID The image id for this item
  */
-CProjectileDart::CProjectileDart(CLevel* level, int imageID) : CProjectile(level, imageID)
+CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
 {
 	level->AddImage(dartID, dartImageName);
 }
@@ -33,7 +33,7 @@ CProjectileDart::CProjectileDart(CLevel* level, int imageID) : CProjectile(level
 * \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
-void CProjectileDart::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CProjectileDart::Draw(Gdiplus::Graphics* graphics)
 {
 }
 

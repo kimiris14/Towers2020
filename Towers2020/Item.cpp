@@ -18,7 +18,7 @@ using namespace Gdiplus;
 * \param level A pointer to the level object that this item belongs to
 * \param imageID The image ID for this object
 */
-CItem::CItem(CLevel* level, int imageID) : mLevel(level), mImageID(imageID)
+CItem::CItem(CLevel* level, CGame* game, int imageID) : mLevel(level), mGame(game), mImageID(imageID)
 {
 
 }
@@ -29,10 +29,10 @@ CItem::CItem(CLevel* level, int imageID) : mLevel(level), mImageID(imageID)
 * \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
-void CItem::Draw(CGame *game, Gdiplus::Graphics* graphics)
+void CItem::Draw(Gdiplus::Graphics* graphics)
 {
 
-    shared_ptr<Bitmap> itemBitmap = game->GetImage(mImageID);
+    shared_ptr<Bitmap> itemBitmap = mGame->GetImage(mImageID);
 
     double wid = itemBitmap->GetWidth();
     double hit = itemBitmap->GetHeight();

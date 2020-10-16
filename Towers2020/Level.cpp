@@ -236,10 +236,10 @@ void CLevel::Clear()
  * \param game A pointer to the game object that holds graphics information
  * \param graphics The graphics context to draw on
  */
-void CLevel::Draw(CGame *game, Gdiplus::Graphics* graphics)
+void CLevel::Draw(Gdiplus::Graphics* graphics)
 {
     for (auto item : mItems) {
-        item->Draw(game, graphics);
+        item->Draw(graphics);
     }
 }
 
@@ -264,12 +264,12 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
     if (type == L"open")
     {
-        item = make_shared<CItemTile>(this, imageID);
+        item = make_shared<CItemTile>(this, mGame, imageID);
     }
 
     if (type == L"road")
     {
-        item = make_shared<CItemTileRoad>(this, imageID);
+        item = make_shared<CItemTileRoad>(this, mGame, imageID);
     }
 
     if (item != nullptr)
@@ -312,7 +312,7 @@ void CLevel::Update(double elapsed)
             auto startingRoad = visitor.GetRoad();
 
             // spawn the balloon
-            auto balloon = make_shared<CItemBalloon>(this, mDefaultBalloonID);
+            auto balloon = make_shared<CItemBalloon>(this, mGame, mDefaultBalloonID);
             mItems.push_back(balloon);
             startingRoad->AcceptBalloon(balloon);
             mTimeSinceSpawn = 0.0;

@@ -9,10 +9,9 @@
 
  /**
  * Draw the item from the corner
- * \param game A pointer to the game object that holds graphics information
  * \param graphics The graphics context to draw on
  */
-void CTower::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CTower::Draw(Gdiplus::Graphics* graphics)
 {
 
 }

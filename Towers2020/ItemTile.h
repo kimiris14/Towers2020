@@ -21,7 +21,7 @@ class CItemTile :
 {
 public:
 
-    CItemTile(CLevel* level, int imageID);
+    CItemTile(CLevel* level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemTile() = delete;
@@ -37,7 +37,7 @@ public:
     /// Draw the item
     /// \param game A pointer to the game object that this item belongs to
     /// \param graphics The GDI+ graphics context to draw on
-    virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 

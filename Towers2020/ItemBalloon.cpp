@@ -25,7 +25,7 @@ const int RedBalloonID = 44; //assigned
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemBalloon::CItemBalloon(CLevel *level, int imageID) : CItem(level,imageID)
+CItemBalloon::CItemBalloon(CLevel *level, CGame *game, int imageID) : CItem(level,game,imageID)
    
 {
     level->AddImage(imageID, RedBalloonImageName);
