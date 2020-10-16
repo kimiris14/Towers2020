@@ -30,7 +30,6 @@ CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CPro
 
 /**
 * Draw the item from the corner
-* \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
 void CProjectileDart::Draw(Gdiplus::Graphics* graphics)

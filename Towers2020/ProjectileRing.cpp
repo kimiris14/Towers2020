@@ -28,8 +28,6 @@ CProjectileRing::CProjectileRing(CLevel* level, CGame* game, int imageID) : CPro
 * Draw the ring projectile
 * \param graphics The GDI+ graphics context to draw on  
 */
-
-//may need to change to void CProjectileRing::Draw(CGame* game, Gdiplus::Graphics* graphics)
 void CProjectileRing::Draw(Gdiplus::Graphics* graphics)
 {
 	//need to instantiate object of Ring type and use mItems to update/draw ring item

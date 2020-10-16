@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "ProjectileBomb.h"
+#include "ProjectileExplosion.h"
 #include "Game.h"
 #include <memory>
 
@@ -9,7 +9,7 @@ using namespace std;
 using namespace Gdiplus;
 
 /// bomb id number
-const int bombID = 53;
+const int explosionID = 53;
 
 /// The basic level for testing
 const std::wstring baseLevel = L"levels/level0.xml";
@@ -17,7 +17,7 @@ const std::wstring baseLevel = L"levels/level0.xml";
 namespace Testing
 {
 	/** Mock class for testing CItem */
-	class CBombMock : public CProjectileBomb
+	class CBombMock : public CProjectileExplosion
 	{
 	public:
 		/**
@@ -27,7 +27,7 @@ namespace Testing
 		* \param imageID The image id for this item
 		*/
 		CBombMock(CLevel* level, CGame* game, int imageID)
-			: CProjectileBomb(level, game, imageID)
+			: CProjectileExplosion(level, game, imageID)
 		{
 		}
 
@@ -39,7 +39,7 @@ namespace Testing
 		* \param visitor The visitor we accept */
 		virtual void Accept(CItemVisitor* visitor) override { }
 	};
-	TEST_CLASS(CProjectileBombTest)
+	TEST_CLASS(CProjectileExplosionTest)
 	{
 	public:
 
@@ -52,8 +52,8 @@ namespace Testing
 		TEST_METHOD(TestProjectileBombConstruct)
 		{
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
-			CProjectileBomb bomb(&level, &game, bombID);
+			CLevel level(&game, baseLevel);
+			CProjectileExplosion bomb(&level, &game, explosionID);
 		}
 
 	};

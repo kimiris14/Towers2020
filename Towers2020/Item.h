@@ -50,6 +50,10 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+	/** Test this item to see if it has been clicked on
+	* \param x X location on the aquarium to test
+	* \param y Y location on the aquarium to test
+	* \return true if clicked on */
 	virtual bool HitTest(int x, int y);
 
 	/** The X location of the item

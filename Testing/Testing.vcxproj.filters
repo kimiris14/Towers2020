@@ -36,7 +36,7 @@
     <ClCompile Include="CProjectileRingTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CProjectileBombTest.cpp">
+    <ClCompile Include="CProjectileExplosionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

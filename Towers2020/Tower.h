@@ -37,13 +37,8 @@ public:
 	/// destructor 
 	~CTower() {}
 
-	/// Draw the item
-	/// \param graphics The GDI+ graphics context to draw on
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-	/// Set the item location
-	/// \param x X location
-	/// \param y Y location
 	virtual void SetLocation(double x, double y) override;
 
 	/** Accept a visitor

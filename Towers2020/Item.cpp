@@ -16,6 +16,7 @@ using namespace Gdiplus;
 /**
 * Constructor
 * \param level A pointer to the level object that this item belongs to
+* \param game A pointer to the game that this item belongs to
 * \param imageID The image ID for this object
 */
 CItem::CItem(CLevel* level, CGame* game, int imageID) : mLevel(level), mGame(game), mImageID(imageID)
@@ -26,8 +27,6 @@ CItem::CItem(CLevel* level, CGame* game, int imageID) : mLevel(level), mGame(gam
 
 /**
 * Draw the item
-* Draw the item
-* \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
 void CItem::Draw(Gdiplus::Graphics* graphics)

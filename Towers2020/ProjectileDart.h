@@ -27,14 +27,13 @@ public:
     /// Destructor
     ~CProjectileDart() {}
 
+
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void SetLocation(double x, double y) override;
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
-    //virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
-    // I'll add once VisitDart() is in CItemVisitor header
-
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
 };
 
