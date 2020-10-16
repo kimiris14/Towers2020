@@ -16,7 +16,7 @@ class CProjectileDart :
     public CProjectile
 {
 public:
-    CProjectileDart(CLevel* level, int imageID);
+    CProjectileDart(CLevel* level, CGame* game, int imageID);
 
     /// Default constructor (disabled)
     CProjectileDart() = delete;
@@ -27,7 +27,7 @@ public:
     /// Destructor
     ~CProjectileDart() {}
 
-    virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void SetLocation(double x, double y) override;
 

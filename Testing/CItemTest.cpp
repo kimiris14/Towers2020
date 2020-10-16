@@ -31,8 +31,8 @@ namespace Testing
 		* \param level, the level that this game item is a part of
 		* \param imageID The image id for this item
 		*/
-		CItemMock(CLevel* level, int imageID)
-			: CItem(level, imageID)
+		CItemMock(CLevel* level, CGame* game, int imageID)
+			: CItem(level, game, imageID)
 		{
 
 			level->AddImage(redBalloonID, redBalloonImageName);
@@ -61,7 +61,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CItemMock item(&level, redBalloonID);
+			CItemMock item(&level, &game, redBalloonID);
 		}
 
 		TEST_METHOD(TestCItemGettersSetters)
@@ -69,7 +69,7 @@ namespace Testing
 			// Construct an item to test
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CItemMock item(&level, redBalloonID);
+			CItemMock item(&level, &game, redBalloonID);
 
 			// Test initial values
 			Assert::AreEqual(0, item.GetX(), 0);
@@ -90,7 +90,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CItemMock item(&level, redBalloonID);
+			CItemMock item(&level, &game, redBalloonID);
 
 			// Give it a location
 			// Always make the numbers different, in case they are mixed up

@@ -7,7 +7,7 @@
 #include "pch.h"
 #include "Projectile.h"
 
-void CProjectile::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CProjectile::Draw(Gdiplus::Graphics* graphics)
 {
 }
 

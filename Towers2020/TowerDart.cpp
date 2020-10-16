@@ -25,8 +25,8 @@ const wstring dartImageName = L"images/tower8.png";
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CTowerDart::CTowerDart(CLevel* level, int imageID)
-	: CTower(level, imageID)
+CTowerDart::CTowerDart(CLevel* level, CGame* game, int imageID)
+	: CTower(level, game, imageID)
 {
 
 }
@@ -36,7 +36,7 @@ CTowerDart::CTowerDart(CLevel* level, int imageID)
 * \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
-void CTowerDart::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CTowerDart::Draw(Gdiplus::Graphics* graphics)
 {
 }
 

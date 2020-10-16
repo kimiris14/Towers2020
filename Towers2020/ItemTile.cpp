@@ -31,8 +31,8 @@ const int grassTwoID = 8;
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemTile::CItemTile(CLevel *level, int imageID) 
-	: CItem(level, imageID)
+CItemTile::CItemTile(CLevel *level, CGame* game, int imageID)
+	: CItem(level, game, imageID)
 {
 
 	level->AddImage(grassOneID, grassOneImageName);
@@ -59,13 +59,12 @@ void CItemTile::SetGridLocation(int x, int y)
 
 /**
 * Draw the item from the corner
-* \param game A pointer to the game object that holds graphics information
 * \param graphics The graphics context to draw on
 */
-void CItemTile::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CItemTile::Draw(Gdiplus::Graphics* graphics)
 {
 
-	shared_ptr<Bitmap> itemBitmap = game->GetImage(GetImageID());
+	shared_ptr<Bitmap> itemBitmap = GetGame()->GetImage(GetImageID());
 
 	float wid = static_cast<float>(itemBitmap->GetWidth());
 	float hit = static_cast<float>(itemBitmap->GetHeight());

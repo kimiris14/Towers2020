@@ -56,8 +56,8 @@ const int RoadNWID = 6;
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemTileRoad::CItemTileRoad(CLevel* level, int imageID)
-    : CItemTile(level, imageID)
+CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID)
+    : CItemTile(level, game, imageID)
 
 {
     level->AddImage(RoadEWID, RoadEWImageName);

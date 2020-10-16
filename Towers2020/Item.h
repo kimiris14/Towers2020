@@ -32,7 +32,7 @@ public:
 	/// Default constructor (disabled)
 	CItem() = delete;
 
-	CItem::CItem(CLevel* level, int imageID);
+	CItem::CItem(CLevel* level, CGame* game, int imageID);
 
 
 	/// Copy constructor (disabled)
@@ -44,7 +44,7 @@ public:
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	virtual void Draw(CGame *game, Gdiplus::Graphics* graphics);
+	virtual void Draw(Gdiplus::Graphics* graphics);
 
 	std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
@@ -74,6 +74,10 @@ protected:
 	* \returns pointer to the level object */
 	CLevel* GetLevel() const { return mLevel; }
 
+	/** Getter for mGame for derived classes
+	* \returns pointer to the game object */
+	CGame* GetGame() const { return mGame; }
+
 
 	/** Getter for the image ID
 	* \returns the image ID */
@@ -90,5 +94,7 @@ private:
 	/// The level that this item is a part of
 	CLevel* mLevel = nullptr;
 
+	/// The game that this item is a part of
+	CGame* mGame = nullptr;
 };
 

@@ -22,7 +22,7 @@ class CItemTileRoad :
 {
 
 public:
-    CItemTileRoad(CLevel* level, int imageID);
+    CItemTileRoad(CLevel* level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemTileRoad() = delete;

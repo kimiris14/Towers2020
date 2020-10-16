@@ -20,7 +20,7 @@ class CItemBalloon :
     public CItem
 {
 public:
-    CItemBalloon(CLevel *level, int imageID);
+    CItemBalloon(CLevel *level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)
     CItemBalloon() = delete;

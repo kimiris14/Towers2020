@@ -33,7 +33,7 @@ public:
 
 	void CLevel::Clear();
 
-	void Draw(CGame *game, Gdiplus::Graphics* graphics);
+	void Draw(Gdiplus::Graphics* graphics);
 
 	void CLevel::Add(std::shared_ptr<CItem> item);
 
