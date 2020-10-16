@@ -47,8 +47,8 @@ public:
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) override;
 
-	/// Accept a visitor
-	/// \param visitor The visitor we accept 
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { }
 
 private:

@@ -32,8 +32,14 @@ public:
     /// destructor 
     ~CItemTile() {}
 
+    /// Set the item locatio on the grid
+    /// \param x X location
+    /// \param y Y location
     virtual void SetGridLocation(double x, double y);
 
+    /// Draw the item
+    /// \param game A pointer to the game object that this item belongs to
+    /// \param graphics The GDI+ graphics context to draw on
     virtual void Draw(CGame* game, Gdiplus::Graphics* graphics) override;
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
