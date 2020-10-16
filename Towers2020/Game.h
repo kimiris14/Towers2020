@@ -12,6 +12,7 @@
 #include <memory>
 #include "Item.h"
 #include "Level.h"
+#include "GamePallette.h"
 
 
 /**
@@ -56,5 +57,8 @@ private:
 
     /// map that links image bitmaps to their respective image id
     std::unordered_map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
+
+    /// A pointer to the game pallette 
+    std::shared_ptr<CGamePallette> mGamePallete;
 
 };
