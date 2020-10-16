@@ -22,6 +22,12 @@ class CItemTileRoad :
 {
 
 public:
+    /**
+    * Constructor
+    * \param level A pointer to the level object that this item belongs to
+    * \param game A pointer to the game object that this item belongs to
+    * \param imageID The image ID for this object
+    */
     CItemTileRoad(CLevel* level, CGame* game, int imageID);
 
     ///  Default constructor (disabled)

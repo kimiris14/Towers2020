@@ -204,6 +204,7 @@
     <ClInclude Include="ItemTileRoad.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="Tower.h" />
+    <ClInclude Include="TowerDart.h" />
     <ClInclude Include="Towers2020.h" />
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
@@ -230,6 +231,7 @@
     <ClCompile Include="ProjectileDart.cpp" />
     <ClCompile Include="ProjectileRing.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="TowerDart.cpp" />
     <ClCompile Include="Towers2020.cpp" />
     <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>
