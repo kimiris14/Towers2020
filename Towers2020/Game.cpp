@@ -90,6 +90,8 @@ const int treesFourID = 21;
 */
 CGame::CGame()
 {
+    //testing gamepallette
+    mGamePallete = make_shared<CGamePallette>(this);
 
     // THIS IS JUST HERE FOR TESTING!!!
 
@@ -138,13 +140,13 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     graphics->ScaleTransform(mScale, mScale);
 
     // from here on you are drawing virtual pixels
- 
-
 
     // draw the level with this graphics context
     if (mCurrentLevel != nullptr) {
         mCurrentLevel->Draw(this, graphics);
     }
+
+    mGamePallete->Draw(graphics);
     
 }
 

@@ -176,6 +176,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CProjectileBombTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CProjectileDartTest.cpp" />
+    <ClCompile Include="CProjectileRingTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

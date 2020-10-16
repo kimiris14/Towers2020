@@ -1,23 +1,23 @@
 /**
- * \file Tower.h
+ * \file Projectile.h
  *
  * \author PaulaRed
  *
- * Tower base class for the dart tower, radius tower, bomb tower, and owen tower
+ * Class for a projectile that shoots out of a tower.
  */
 
 #pragma once
 #include "Item.h"
-
-
+#include "ImageMap.h"
 
 /**
- * A base class for all towers
+ * Projectile base class for darts, rings, and bombs
  */
-class CTower : public CItem
+class CProjectile : public CItem
 {
 public:
-	
+	/// Default constructor (disabled)
+	CProjectile() = delete;
 
 	/**
 	* Constructor
@@ -25,17 +25,14 @@ public:
 	* \param game A pointer to the game object that this item belongs to
 	* \param imageID The image ID for this object
 	*/
-	CTower(CLevel* level, CGame* game, int imageID) :
-		CItem(level, game, imageID) {}
+	CProjectile(CLevel* level, CGame* game, int imageID) : 
+			CItem(level, game, imageID) {}
 
-	/// Default constructor (disabled)
-	CTower() = delete;
+	/// Destructor
+	virtual ~CProjectile() {}
 
-	///  Copy constructor (disabled)
-	CTower(const CTower&) = delete;
-
-	/// destructor 
-	~CTower() {}
+	/// Copy constructor (disabled)
+	CProjectile(const CProjectile&) = delete;
 
 	/// Draw the item
 	/// \param game A pointer to the game object that this item belongs to
@@ -47,12 +44,19 @@ public:
 	/// \param y Y location
 	virtual void SetLocation(double x, double y) override;
 
+	/// Handle updates for animation
+	/// \param elapsed The time since the last update
+	//virtual void Update(double elapsed) {}
+
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { }
 
 private:
-
-	/// The time until the next fire of projectiles
-	int mTimeTilFire = 0;  
+	/// Check to see if corresponding tower has been placed
+	bool mIsTowerPlaced = false; 
+	
+	/// Delay time before fire
+	double mTimeTillFire = 5;
 };
+

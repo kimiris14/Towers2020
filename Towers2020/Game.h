@@ -12,6 +12,7 @@
 #include <memory>
 #include "Item.h"
 #include "Level.h"
+#include "GamePallette.h"
 
 
 /**
@@ -62,5 +63,8 @@ private:
 
     /// image list
     std::shared_ptr<Gdiplus::Bitmap> mImageList[100];
+
+    /// A pointer to the game pallette 
+    std::shared_ptr<CGamePallette> mGamePallete;
 
 };
