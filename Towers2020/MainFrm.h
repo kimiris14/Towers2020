@@ -39,8 +39,8 @@ protected:  // control bar embedded members
 
 // Generated message map functions
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnSetFocus(CWnd *pOldWnd);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct); 
+	afx_msg void OnSetFocus(CWnd *pOldWnd); 
 	DECLARE_MESSAGE_MAP()
 
 };

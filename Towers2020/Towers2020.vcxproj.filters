@@ -81,10 +81,13 @@
     <ClInclude Include="ProjectileRing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileBomb.h">
+    <ClInclude Include="TowerDart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TowerDart.h">
+    <ClInclude Include="ItemVisitorFindRoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileExplosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,10 +146,13 @@
     <ClCompile Include="ProjectileRing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectileBomb.cpp">
+    <ClCompile Include="TowerDart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TowerDart.cpp">
+    <ClCompile Include="ItemVisitorFindRoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileExplosion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

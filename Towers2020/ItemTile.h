@@ -34,9 +34,6 @@ public:
 
     virtual void SetGridLocation(int x, int y);
 
-    /// Draw the item
-    /// \param game A pointer to the game object that this item belongs to
-    /// \param graphics The GDI+ graphics context to draw on
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;

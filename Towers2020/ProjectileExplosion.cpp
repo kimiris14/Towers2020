@@ -1,18 +1,18 @@
 /**
- * \file ProjectileBomb.cpp
+ * \file ProjectileExplosion.cpp
  *
  * \author PaulaRed
  */
 
 
 #include "pch.h"
-#include "ProjectileBomb.h"
+#include "ProjectileExplosion.h"
 #include "Game.h"
 
 using namespace Gdiplus;
 
 /// bomb id number
-const int bombID = 53; //assigned
+const int explosionID = 53; //assigned
 
  /**
  * Constructor
@@ -20,7 +20,7 @@ const int bombID = 53; //assigned
  * \param game The Game this bomb is a member of
  * \param imageID The image id for this bomb
  */
-CProjectileBomb::CProjectileBomb(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
 {
 }
 
@@ -28,12 +28,10 @@ CProjectileBomb::CProjectileBomb(CLevel* level, CGame* game, int imageID) : CPro
 * Draw the bomb projectile
 * \param graphics The GDI+ graphics context to draw on
 */
-void CProjectileBomb::Draw(Gdiplus::Graphics* graphics) //may need to change to void CProjectileRing::Draw(CGame* game, Gdiplus::Graphics* graphics)
+void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
 {
-	//need to instantiate object of Ring type and use mItems to update/draw ring item
-
 	//SolidBrush brush(Color(128, 0, 0));
-	//graphics->FillRectangle(&brush, 0, 0, mRingRadius, mRingRadius);
+	//graphics->FillEllipse(&brush, 0, 0, mRingRadius, mRingRadius);
 	//graphics->DrawEllipse(&pen, 0, 0, mRingRadius, mRingRadius);
 }
 

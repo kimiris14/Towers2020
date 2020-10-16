@@ -196,7 +196,7 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Projectile.h" />
-    <ClInclude Include="ProjectileBomb.h" />
+    <ClInclude Include="ProjectileExplosion.h" />
     <ClInclude Include="ProjectileDart.h" />
     <ClInclude Include="ProjectileRing.h" />
     <ClInclude Include="Resource.h" />
@@ -229,7 +229,7 @@
     <ClCompile Include="ItemTileRoad.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="ProjectileBomb.cpp" />
+    <ClCompile Include="ProjectileExplosion.cpp" />
     <ClCompile Include="ProjectileDart.cpp" />
     <ClCompile Include="ProjectileRing.cpp" />
     <ClCompile Include="Tower.cpp" />

@@ -28,15 +28,11 @@ public:
     /// Destructor
     ~CProjectileRing() {}
 
-    /// Draw the ring projectile
-    /// \param graphics The GDI+ graphics context to draw on
-    
-    //previously : void CProjectileRing::Draw(CGame* game, Gdiplus::Graphics* graphics)
     virtual void CProjectileRing::Draw(Gdiplus::Graphics* graphics);
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
-    //virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRing(this); } 
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRing(this); } 
 
     //Add ITERATOR
 

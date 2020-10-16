@@ -35,17 +35,14 @@ public:
 	CProjectile(const CProjectile&) = delete;
 
 	/// Draw the item
-	/// \param game A pointer to the game object that this item belongs to
 	/// \param graphics The GDI+ graphics context to draw on
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-	/// Set the item location
-	/// \param x X location
-	/// \param y Y location
+
 	virtual void SetLocation(double x, double y) override;
 
-	/// Handle updates for animation
-	/// \param elapsed The time since the last update
+	// Handle updates for animation
+	// \param elapsed The time since the last update
 	//virtual void Update(double elapsed) {}
 
 	/** Accept a visitor
