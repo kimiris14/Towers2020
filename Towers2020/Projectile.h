@@ -38,7 +38,9 @@ public:
 	/// \param graphics The GDI+ graphics context to draw on
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-
+	/// Set the location of the item
+	/// \param x X location
+	/// \param y Y location
 	virtual void SetLocation(double x, double y) override;
 
 	// Handle updates for animation
@@ -50,10 +52,6 @@ public:
 	virtual void Accept(CItemVisitor* visitor) override { }
 
 private:
-	/// Check to see if corresponding tower has been placed
-	bool mIsTowerPlaced = false; 
-	
-	/// Delay time before fire
-	double mTimeTillFire = 5;
+
 };
 
