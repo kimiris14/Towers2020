@@ -55,6 +55,7 @@ bool CLevel::AddImage(int imageID, std::wstring imageFileName) {
 void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
 {
     mItemsToDelete.push_back(balloon);
+    mGame->GetPallette()->DecrementScore(mPointsPerEscape);
 }
 
 

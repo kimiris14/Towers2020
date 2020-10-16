@@ -112,5 +112,11 @@ private:
 	/// each time update has completed
 	std::vector<std::shared_ptr<CItem>> mItemsToDelete;
 
+	/// The amount of points rewarded to the user per balloon pop
+	int mPointsPerPop = 1;
+
+	/// The amount of points taken away from the user when a balloon escapes (positive integer)
+	int mPointsPerEscape = 1;
+
 };
 
