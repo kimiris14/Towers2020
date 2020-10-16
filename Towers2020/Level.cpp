@@ -267,6 +267,14 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
         item = make_shared<CItemTile>(this, mGame, imageID);
     }
 
+    if ((type == L"trees") || (type == L"house"))
+    {
+        auto itemOccupied = make_shared<CItemTile>(this, mGame, imageID);
+        itemOccupied->SetOpen(false);
+        item = itemOccupied;
+        
+    }
+
     if (type == L"road")
     {
         item = make_shared<CItemTileRoad>(this, mGame, imageID);

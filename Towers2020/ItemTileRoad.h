@@ -83,6 +83,10 @@ public:
     void PlaceBalloonSE(std::shared_ptr<CItemBalloon> balloon);
 
 
+    /// Getter for if the tile is open for tower placement or not
+    /// \returns False, since all roads are occupied by default
+    virtual bool IsOpen() { return false; }
+
 private:
 
     /// This stores the type of road tile (ex. "EW" or "NS")

@@ -60,6 +60,13 @@ public:
     const int GetWidth() const { return TileWidth; }
 
 
+    /// Sets the open boolean for when an item (tower) is placed or removed from the tile.
+    /// \param isOpen True if the tile is open for object placement
+    virtual void SetOpen(bool isOpen) { mOpen = isOpen; }
+
+    /// Getter for if the tile is open for tower placement or not
+    /// \returns True if the tile is open, false if it's occupied.
+    virtual bool IsOpen() { return mOpen; }
 
 private:
 
@@ -74,5 +81,8 @@ private:
 
     /// the constant width for every tile
     const int TileWidth = 64;
+
+    /// This boolean represents if this tile is able to have something placed on it, like a tower
+    bool mOpen = false;
 };
 
