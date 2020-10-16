@@ -12,17 +12,6 @@
 using namespace Gdiplus;
 using namespace std;
 
-/// grass1 filename
-const wstring grassOneImageName = L"images/grass1.png";
-
-/// grass1 id number
-const int grassOneID = 7;
-
-/// grass2 filename
-const wstring grassTwoImageName = L"images/grass2.png";
-
-/// grass2 id number
-const int grassTwoID = 8;
 
 
 /**
@@ -34,9 +23,6 @@ const int grassTwoID = 8;
 CItemTile::CItemTile(CLevel *level, CGame* game, int imageID)
 	: CItem(level, game, imageID)
 {
-
-	level->AddImage(grassOneID, grassOneImageName);
-	level->AddImage(grassTwoID, grassTwoImageName);
 
 }
 

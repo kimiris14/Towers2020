@@ -22,7 +22,7 @@ class CItemTileRoad :
 {
 
 public:
-    CItemTileRoad(CLevel* level, CGame* game, int imageID);
+    CItemTileRoad(CLevel* level, CGame* game, int imageID, std::wstring roadType);
 
     ///  Default constructor (disabled)
     CItemTileRoad() = delete;

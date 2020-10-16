@@ -21,71 +21,6 @@ using namespace xmlnode;
 /// The Default level to load when the game is created
 const wstring DefaultLevel = L"levels/level0.xml";
 
-/// house1 filename
-const wstring houseOneImageName = L"images/house1.png";
-
-/// house1 id number
-const int houseOneID = 11;
-
-/// house2 filename
-const wstring houseTwoImageName = L"images/house2.png";
-
-/// house2 id number
-const int houseTwoID = 12;
-
-/// house3 filename
-const wstring houseThreeImageName = L"images/house3.png";
-
-/// house3 id number
-const int houseThreeID = 13;
-
-/// house4a filename
-const wstring houseFourAImageName = L"images/house4a.png";
-
-/// house4a id number
-const int houseFourAID = 14;
-
-/// house4b filename
-const wstring houseFourBImageName = L"images/house4b.png";
-
-/// house4b id number
-const int houseFourBID = 15;
-
-/// castlea filename
-const wstring castleAImageName = L"images/castlea.png";
-
-/// castlea id number
-const int castleAID = 16;
-
-/// castleb filename
-const wstring castleBImageName = L"images/castleb.png";
-
-/// castleb id number
-const int castleBID = 17;
-
-/// trees1 filename
-const wstring treesOneImageName = L"images/trees1.png";
-
-/// trees1 id number
-const int treesOneID = 18;
-
-/// trees2 filename
-const wstring treesTwoImageName = L"images/trees2.png";
-
-/// trees2 id number
-const int treesTwoID = 19;
-
-/// trees3 filename
-const wstring treesThreeImageName = L"images/trees3.png";
-
-/// trees3 id number
-const int treesThreeID = 20;
-
-/// trees4 filename
-const wstring treesFourImageName = L"images/trees4.png";
-
-/// trees4 id number
-const int treesFourID = 21;
 
 /**
 * Game constructor
@@ -99,18 +34,7 @@ CGame::CGame()
 
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
-    
-    AddImage(houseOneID,   houseOneImageName);
-    AddImage(houseTwoID,   houseTwoImageName);
-    AddImage(houseThreeID, houseThreeImageName);
-    AddImage(houseFourAID, houseFourAImageName);
-    AddImage(houseFourBID, houseFourBImageName);
-    AddImage(castleAID,    castleAImageName);
-    AddImage(castleBID,    castleBImageName);
-    AddImage(treesOneID,   treesOneImageName);
-    AddImage(treesTwoID,   treesTwoImageName);
-    AddImage(treesThreeID, treesThreeImageName);
-    AddImage(treesFourID,  treesFourImageName);
+   
 }
 
 /**

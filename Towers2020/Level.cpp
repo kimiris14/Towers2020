@@ -20,6 +20,11 @@
 using namespace std;
 using namespace xmlnode;
 
+
+/// The directory where all of the images are stored. Be sure to include a trailing "/"
+const wstring ImagesDirectory = L"images/";
+
+
 /**
 * Constructor
 * \param game The game object that this level belongs to
@@ -88,6 +93,16 @@ void CLevel::Load(std::wstring filename)
         // node of the XML document in memory!!!!
         for (auto node : root->GetChildren())
         {
+
+            // this is where we get the items
+            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"declarations")
+            {
+                for (auto declNode : node->GetChildren())
+                {
+                    // loads all of the associated images
+                    XmlItemDeclaration(declNode);
+                }
+            }
 
             // this is where we get the items
             if (node->GetType() == NODE_ELEMENT && node->GetName() == L"items")
@@ -277,7 +292,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
     if (type == L"road")
     {
-        item = make_shared<CItemTileRoad>(this, mGame, imageID);
+        item = make_shared<CItemTileRoad>(this, mGame, imageID, mIDToRoad[imageID]);
     }
 
     if (item != nullptr)
@@ -288,6 +303,27 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     }
 
 }
+
+
+/**
+ * Takes an item declaration node from the XML file and loads it into the image map
+ * \param node The declaration node to process
+ */
+void CLevel::XmlItemDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    // Get the image ID attribute value
+    auto imageIDString = node->GetAttributeValue(L"id", L"");
+    int imageID = stoi(imageIDString.substr(1));  // removes the leading "i"
+
+    wstring imageFile = ImagesDirectory + node->GetAttributeValue(L"image", L"");
+
+    // add the image to the game
+    mGame->AddImage(imageID, imageFile);
+
+    // save the road type to the ID map
+    mIDToRoad[imageID] = node->GetAttributeValue(L"type", L"");
+}
+
 
 /**
 * Add an item to the level

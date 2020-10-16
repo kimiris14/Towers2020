@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include "Item.h"
 #include "ImageMap.h"
 
@@ -31,6 +32,8 @@ public:
 	void CLevel::Load(std::wstring filename);
 
 	void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	void CLevel::XmlItemDeclaration(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	void CLevel::Clear();
 
@@ -110,6 +113,9 @@ private:
 
 	/// The amount of points taken away from the user when a balloon escapes (positive integer)
 	int mPointsPerEscape = 1;
+
+	/// Stores the image ID and maps it to the type of road. This is used only during loading
+	std::map<int, std::wstring> mIDToRoad;
 
 };
 
