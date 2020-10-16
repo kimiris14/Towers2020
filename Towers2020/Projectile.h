@@ -44,10 +44,6 @@ public:
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitProjectile(this); }
 
 private:
-	/// Check to see if corresponding tower has been placed
-	bool mIsTowerPlaced = false; 
-	
-	/// Delay time before fire
-	double mTimeTillFire = 5;
+
 };
 
