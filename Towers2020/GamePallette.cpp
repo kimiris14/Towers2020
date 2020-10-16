@@ -36,7 +36,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        PointF(1200, 500),   // Where to draw (top left corner)
+        PointF(1050, 500),   // Where to draw (middle right of the screen)
         &white);    // The brush to draw the text with
 
 }
