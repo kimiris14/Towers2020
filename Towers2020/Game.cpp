@@ -98,7 +98,7 @@ CGame::CGame()
     mGamePallette = make_shared<CGamePallette>(this);
 
     // load the default level
-    mCurrentLevel = make_shared<CLevel>(this, mGamePallette, DefaultLevel);
+    mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
     
     AddImage(houseOneID,   houseOneImageName);
     AddImage(houseTwoID,   houseTwoImageName);

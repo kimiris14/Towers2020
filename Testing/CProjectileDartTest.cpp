@@ -59,7 +59,7 @@ namespace Testing
 		TEST_METHOD(TestCProjectileDartConstruct)
 		{
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
+			CLevel level(&game, baseLevel);
 			CProjectileDart dart(&level, &game, dartID);
 		}
 	};

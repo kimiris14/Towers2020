@@ -60,7 +60,7 @@ namespace Testing
 		TEST_METHOD(TestCItemConstruct)
 		{
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 		}
 
@@ -68,7 +68,7 @@ namespace Testing
 		{
 			// Construct an item to test
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 
 			// Test initial values
@@ -89,7 +89,7 @@ namespace Testing
 		TEST_METHOD(TestCFishBetaHitTest)
 		{
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
+			CLevel level(&game, baseLevel);
 			CItemMock item(&level, &game, redBalloonID);
 
 			// Give it a location

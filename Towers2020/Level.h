@@ -26,7 +26,7 @@ public:
 
 	CLevel() = delete;
 
-	CLevel(CGame* game, std::shared_ptr<CGamePallette> pallette, std::wstring filename);
+	CLevel(CGame* game, std::wstring filename);
 
 	void CLevel::Load(std::wstring filename);
 
@@ -37,10 +37,6 @@ public:
 	void Draw(Gdiplus::Graphics* graphics);
 
 	void Add(std::shared_ptr<CItem> item);
-
-	/// Sets the game pallette pointer
-	/// \param pallette The shared pointer pointer to this game pallette
-	void SetGamePallette(std::shared_ptr<CGamePallette> pallette) { mPallette = pallette; }
 
 	void Update(double elapsed);
 
@@ -68,9 +64,6 @@ private:
 
 	/// The game object that this item belongs to
 	CGame* mGame = nullptr;
-
-	/// The game pallete which holds things like the game's score and such
-	std::shared_ptr<CGamePallette> mPallette = nullptr;
 
 	/// the number of tiles in the x-direction
 	int mLevelWidth = 16;

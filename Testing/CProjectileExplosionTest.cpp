@@ -52,7 +52,7 @@ namespace Testing
 		TEST_METHOD(TestProjectileBombConstruct)
 		{
 			CGame game;
-			CLevel level(&game, game.GetPallette(), baseLevel);
+			CLevel level(&game, baseLevel);
 			CProjectileExplosion bomb(&level, &game, explosionID);
 		}
 

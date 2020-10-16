@@ -23,11 +23,9 @@ using namespace xmlnode;
 /**
 * Constructor
 * \param game The game object that this level belongs to
-* \param pallette The game pallette
 * \param filename The filename of the XML level definition file for this level
 */
-CLevel::CLevel(CGame* game, std::shared_ptr<CGamePallette> pallette, std::wstring filename) :
-    mGame(game), mPallette(pallette) {
+CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) {
     Load(filename);
 }
 

@@ -171,7 +171,7 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLevelLevel0()
 {
 
-	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level0);
+	auto newLevel = make_shared<CLevel>(&mGame, Level0);
 	mGame.SetLevel(newLevel);
 	mGame.StartLevel();
 
@@ -182,7 +182,7 @@ void CChildView::OnLevelLevel0()
 */
 void CChildView::OnLevelLevel1()
 {
-	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level1);
+	auto newLevel = make_shared<CLevel>(&mGame, Level1);
 	mGame.SetLevel(newLevel);
 	mGame.StartLevel();
 }
@@ -192,7 +192,7 @@ void CChildView::OnLevelLevel1()
 */
 void CChildView::OnLevelLevel2()
 {
-	auto newLevel = make_shared<CLevel>(&mGame, mGame.GetPallette(), Level2);
+	auto newLevel = make_shared<CLevel>(&mGame, Level2);
 	mGame.SetLevel(newLevel);
 	mGame.StartLevel();
 }
