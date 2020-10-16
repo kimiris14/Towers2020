@@ -4,6 +4,7 @@
  * \author PaulaRed
  */
 
+
 #include "pch.h"
 #include "Game.h"
 #include "Level.h"
@@ -17,7 +18,7 @@ using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
-
+/// The Default level to load when the game is created
 const wstring DefaultLevel = L"levels/level0.xml";
 
 /// house1 filename
