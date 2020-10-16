@@ -48,6 +48,8 @@ public:
 
 	bool AddImage(int imageID, std::wstring imageFileName);
 
+	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
+
 
 private:
 
@@ -71,14 +73,14 @@ private:
 
 	/// The number of balloons to spawn for this level 
 	/// (this is subracted by one every time a balloon is spawned)
-	int mNumBalloonsToSpawn = 1;  // project descriptions says 30
+	int mNumBalloonsToSpawn = 30;  // project descriptions says 30
 
 	/// The total time that has elapsed since the last time a balloon was spawned
 	double mTimeSinceSpawn = 0;
 
 	/// The balloon spawn rate in balloons per second.
 	/// 3.0476 balloons per second ~= 42px in between balloons at a 128px/s balloon speed
-	double mBalloonSpawnRate = 3.0467;
+	double mBalloonSpawnRate = 3.0476;
 
 	/// The default balloon ID to spawn (44 is red)
 	int mDefaultBalloonID = 44;
@@ -91,6 +93,11 @@ private:
 
 	/// A boolean to determine when all of the balloons are gone
 	bool mLevelCompleted = false; 
+
+	/// Add all items that need to be deleted to this list during updates. 
+	/// Everything from this list is found and removed from mItems after
+	/// each time update has completed
+	std::vector<std::shared_ptr<CItem>> mItemsToDelete;
 
 };
 

@@ -60,4 +60,7 @@ private:
     /// map that links image bitmaps to their respective image id
     std::map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 
+    /// image list
+    std::shared_ptr<Gdiplus::Bitmap> mImageList[100];
+
 };

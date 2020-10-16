@@ -50,8 +50,6 @@ wstring level2 = L"levels/level2.xml";
 CChildView::CChildView()
 {
 
-	// create the game object
-	mGame = CGame();
 
 }
 

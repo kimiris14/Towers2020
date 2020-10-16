@@ -85,7 +85,7 @@ private:
 	double mY = 0;  ///< y location on the board (in pixels)
 
 	/// The image ID for the image that represents this Item
-	int mImageID;
+	int mImageID = 0;
 
 	/// The level that this item is a part of
 	CLevel* mLevel = nullptr;

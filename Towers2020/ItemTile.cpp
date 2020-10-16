@@ -24,12 +24,6 @@ const wstring grassTwoImageName = L"images/grass2.png";
 /// grass2 id number
 const int grassTwoID = 8;
 
-/// The width of a tile in pixels
-const double TileWidth = 64;
-
-/// The height of a tile in pixels
-const double TileHeight = 64;
-
 
 /**
 * Constructor

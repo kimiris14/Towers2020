@@ -51,6 +51,15 @@ public:
     int GetGridY() const { return mGridPositionY; }
 
 
+    /** Getter for standard tile height
+     * \returns the height in pixels */
+    const int GetHeight() const { return TileHeight; }
+
+    /** Getter for standard tile width
+     * \returns the width in pixels */
+    const int GetWidth() const { return TileWidth; }
+
+
 
 private:
 
@@ -60,5 +69,10 @@ private:
     /// The Y position index when placed on the grid (not pixels!)
     int mGridPositionY = 0;
 
+    /// the constant height for every tile
+    const int TileHeight = 64;
+
+    /// the constant width for every tile
+    const int TileWidth = 64;
 };
 

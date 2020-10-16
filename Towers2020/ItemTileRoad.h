@@ -33,6 +33,9 @@ public:
     /// destructor
     ~CItemTileRoad() {}
 
+
+    virtual void Update(double elapsed) override;
+
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRoad(this); }
@@ -71,6 +74,13 @@ public:
 
 
     void AcceptBalloon(std::shared_ptr<CItemBalloon> balloon);
+
+    void PlaceBalloonNW(std::shared_ptr<CItemBalloon> balloon);
+    void PlaceBalloonSW(std::shared_ptr<CItemBalloon> balloon);
+    void PlaceBalloonEW(std::shared_ptr<CItemBalloon> balloon);
+    void PlaceBalloonNS(std::shared_ptr<CItemBalloon> balloon);
+    void PlaceBalloonNE(std::shared_ptr<CItemBalloon> balloon);
+    void PlaceBalloonSE(std::shared_ptr<CItemBalloon> balloon);
 
 
 private:

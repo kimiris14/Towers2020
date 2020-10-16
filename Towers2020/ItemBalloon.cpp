@@ -14,7 +14,7 @@ using namespace std;
 
 
 /// red balloon filename
-const wstring RedBalloonImageName = L"images/red-balloon";
+const wstring RedBalloonImageName = L"images/red-balloon.png";
 
 /// red balloon id number
 const int RedBalloonID = 44; //assigned

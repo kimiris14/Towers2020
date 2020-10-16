@@ -15,6 +15,7 @@
 #include "ItemVisitorFindRoad.h"
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 using namespace xmlnode;
@@ -44,6 +45,15 @@ std::shared_ptr<Gdiplus::Bitmap> CLevel::GetImage(int id) {
  */
 bool CLevel::AddImage(int imageID, std::wstring imageFileName) {
     return mGame->AddImage(imageID, imageFileName);
+}
+
+
+/// This function is called by a road tile when a baloon has exited the game.
+/// This means that points are lost.
+/// \param balloon The shared pointer to the escaped balloon
+void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
+{
+    mItemsToDelete.push_back(balloon);
 }
 
 
@@ -294,7 +304,7 @@ void CLevel::Update(double elapsed)
         // check to see if we need to spawn a new balloon and reset the timer
         double secondsPerBalloon = 1.0 / mBalloonSpawnRate;
         mTimeSinceSpawn = mTimeSinceSpawn + elapsed;
-        if (mTimeSinceSpawn >= secondsPerBalloon)
+        if ((mTimeSinceSpawn >= secondsPerBalloon) && (mNumBalloonsToSpawn > 0))
         {
             // get the first tile to spawn a balloon on
             CItemVisitorFindRoad visitor(mStartingX, mStartingY);
@@ -306,12 +316,22 @@ void CLevel::Update(double elapsed)
             mItems.push_back(balloon);
             startingRoad->AcceptBalloon(balloon);
             mTimeSinceSpawn = 0.0;
+
+            mNumBalloonsToSpawn--;
         }
     }
 
     for (auto item : mItems)
     {
         item->Update(elapsed);
+    }
+
+    // delete (remove) the items if necessary
+    for (auto deleteMe : mItemsToDelete)
+    {
+        auto indexIter = find(mItems.begin(), mItems.end(), deleteMe);
+        if (indexIter != mItems.end())
+            mItems.erase(indexIter);
     }
 }
 
