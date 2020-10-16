@@ -53,8 +53,6 @@ CChildView::CChildView()
 	// create the game object
 	mGame = CGame();
 
-	// TEMPORARY
-	mLevel = &CLevel(&mGame, L"levels/level0.xml");
 }
 
 CChildView::~CChildView()
@@ -180,7 +178,9 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 */
 void CChildView::OnLevelLevel0()
 {
-	mLevel->Load(level0);
+
+	// mLevel->Load(level0);
+	mGame.StartLevel();
 
 }
 
@@ -189,7 +189,7 @@ void CChildView::OnLevelLevel0()
 */
 void CChildView::OnLevelLevel1()
 {
-	mLevel->Load(level1);
+	// mLevel->Load(level1);
 
 }
 
@@ -198,5 +198,5 @@ void CChildView::OnLevelLevel1()
 */
 void CChildView::OnLevelLevel2()
 {
-	mLevel->Load(level2);
+	// mLevel->Load(level2);
 }

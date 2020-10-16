@@ -22,7 +22,7 @@ class CItemTileRoad :
 {
 
 public:
-    CItemTileRoad(CLevel* level, CGame* game, int imageID);
+    CItemTileRoad(CLevel* level, int imageID);
 
     ///  Default constructor (disabled)
     CItemTileRoad() = delete;
@@ -70,6 +70,9 @@ public:
     void SetNextWest(CItemTileRoad* next) { mWest = next; }
 
 
+    void AcceptBalloon(std::shared_ptr<CItemBalloon> balloon);
+
+
 private:
 
     /// This stores the type of road tile (ex. "EW" or "NS")
@@ -92,6 +95,6 @@ private:
 
 
     ///List of current balloons over this tile
-    std::vector<std::shared_ptr<CItemBalloon>> mTileBalloons;
+    std::vector<std::shared_ptr<CItemBalloon>> mBalloons;
 };
 

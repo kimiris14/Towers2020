@@ -37,12 +37,12 @@ const double TileHeight = 64;
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemTile::CItemTile(CLevel *level, CGame* game, int imageID) 
-	: CItem(level, game, imageID)
+CItemTile::CItemTile(CLevel *level, int imageID) 
+	: CItem(level, imageID)
 {
 
-	game->AddImage(grassOneID, grassOneImageName);
-	game->AddImage(grassTwoID, grassTwoImageName);
+	level->AddImage(grassOneID, grassOneImageName);
+	level->AddImage(grassTwoID, grassTwoImageName);
 
 }
 

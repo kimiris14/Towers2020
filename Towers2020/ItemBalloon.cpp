@@ -14,10 +14,10 @@ using namespace std;
 
 
 /// red balloon filename
-const wstring redBalloonImageName = L"images/red-balloon";
+const wstring RedBalloonImageName = L"images/red-balloon";
 
 /// red balloon id number
-const int redBalloonID = 44; //assigned
+const int RedBalloonID = 44; //assigned
 
 /**
 * Constructor
@@ -25,10 +25,10 @@ const int redBalloonID = 44; //assigned
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemBalloon::CItemBalloon(CLevel *level, CGame* game, int imageID) : CItem(level,game,imageID)
+CItemBalloon::CItemBalloon(CLevel *level, int imageID) : CItem(level,imageID)
    
 {
-    game->AddImage(redBalloonID, redBalloonImageName);
+    level->AddImage(imageID, RedBalloonImageName);
 }
 
 //Add Pop declaration here

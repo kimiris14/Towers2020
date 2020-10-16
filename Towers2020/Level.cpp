@@ -8,6 +8,7 @@
 
 #include "pch.h"
 #include "Level.h"
+#include "Game.h"
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
@@ -26,6 +27,25 @@ using namespace xmlnode;
 CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) {
     Load(filename);
 }
+
+
+/// Gets the image object from the game
+/// \param id The item's ID
+/// \returns The gdiplus bitmap
+std::shared_ptr<Gdiplus::Bitmap> CLevel::GetImage(int id) {
+    return mGame->GetImage(id);
+}
+
+/**
+ * Adds a bitmap to the mImageMap and shows an error message box if appropriate
+ * \param imageID The ID to associate with this image
+ * \param imageFileName The file for the image to load
+ * \returns true if successful, false if failure
+ */
+bool CLevel::AddImage(int imageID, std::wstring imageFileName) {
+    return mGame->AddImage(imageID, imageFileName);
+}
+
 
 /**
  * Load the game level from a .xml file.
@@ -234,12 +254,12 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
     if (type == L"open")
     {
-        item = make_shared<CItemTile>(this, mGame, imageID);
+        item = make_shared<CItemTile>(this, imageID);
     }
 
     if (type == L"road")
     {
-        item = make_shared<CItemTileRoad>(this, mGame, imageID);
+        item = make_shared<CItemTileRoad>(this, imageID);
     }
 
     if (item != nullptr)
@@ -266,6 +286,29 @@ void CLevel::Add(shared_ptr<CItem> item)
 */
 void CLevel::Update(double elapsed)
 {
+
+    if (mLevelActive)
+    {
+        mTotalElapsedTime = mTotalElapsedTime + elapsed;
+
+        // check to see if we need to spawn a new balloon and reset the timer
+        double secondsPerBalloon = 1.0 / mBalloonSpawnRate;
+        mTimeSinceSpawn = mTimeSinceSpawn + elapsed;
+        if (mTimeSinceSpawn >= secondsPerBalloon)
+        {
+            // get the first tile to spawn a balloon on
+            CItemVisitorFindRoad visitor(mStartingX, mStartingY);
+            Accept(&visitor);
+            auto startingRoad = visitor.GetRoad();
+
+            // spawn the balloon
+            auto balloon = make_shared<CItemBalloon>(this, mDefaultBalloonID);
+            mItems.push_back(balloon);
+            startingRoad->AcceptBalloon(balloon);
+            mTimeSinceSpawn = 0.0;
+        }
+    }
+
     for (auto item : mItems)
     {
         item->Update(elapsed);

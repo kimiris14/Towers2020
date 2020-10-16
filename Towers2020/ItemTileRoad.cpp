@@ -55,16 +55,16 @@ const int RoadNWID = 6;
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID)
-    : CItemTile(level, game, imageID)
+CItemTileRoad::CItemTileRoad(CLevel* level, int imageID)
+    : CItemTile(level, imageID)
 
 {
-    game->AddImage(RoadEWID, RoadEWImageName);
-    game->AddImage(RoadNSID, RoadNSImageName);
-    game->AddImage(RoadSEID, RoadSEImageName);
-    game->AddImage(RoadSWID, RoadSWImageName);
-    game->AddImage(RoadNEID, RoadNEImageName);
-    game->AddImage(RoadNWID, RoadNWImageName);
+    level->AddImage(RoadEWID, RoadEWImageName);
+    level->AddImage(RoadNSID, RoadNSImageName);
+    level->AddImage(RoadSEID, RoadSEImageName);
+    level->AddImage(RoadSWID, RoadSWImageName);
+    level->AddImage(RoadNEID, RoadNEImageName);
+    level->AddImage(RoadNWID, RoadNWImageName);
 
     if (imageID == RoadEWID) {
         mRoadType = L"EW";
@@ -89,6 +89,14 @@ CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID)
     {
         mRoadType = L"NW";
     }
+}
+
+
+/// Accepts a new balloon to be held on this road tile
+/// \param balloon The balloon object to add
+void CItemTileRoad::AcceptBalloon(std::shared_ptr<CItemBalloon> balloon)
+{
+    mBalloons.push_back(balloon);
 }
 
 

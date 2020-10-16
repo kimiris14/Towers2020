@@ -21,7 +21,7 @@ class CItemTile :
 {
 public:
 
-    CItemTile(CLevel* level, CGame* game, int imageID);
+    CItemTile(CLevel* level, int imageID);
 
     ///  Default constructor (disabled)
     CItemTile() = delete;
@@ -55,10 +55,10 @@ public:
 private:
 
     /// The X position index when placed on the grid (not pixels!)
-    int mGridPositionX;
+    int mGridPositionX = 0;
 
     /// The Y position index when placed on the grid (not pixels!)
-    int mGridPositionY;
+    int mGridPositionY = 0;
 
 };
 

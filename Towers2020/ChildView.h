@@ -42,8 +42,6 @@ private:
 	/// The main game object
 	CGame mGame;
 
-	/// The level
-	CLevel *mLevel;
 
 	/// True until the first time we draw
 	bool mFirstDraw = true;

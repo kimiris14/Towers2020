@@ -34,6 +34,9 @@ public:
 
     void Update(double elapsed);
 
+    /// Starts the current level
+    void StartLevel() { mCurrentLevel->Start(); }
+
 
 private:
     /// Game area in virtual pixels
@@ -52,9 +55,9 @@ private:
     float mYOffset;
 
     /// A pointer to the current level (may change later depending on how levels are stored)
-    std::shared_ptr<CLevel> mCurrentLevel;
+    std::unique_ptr<CLevel> mCurrentLevel = nullptr;
 
     /// map that links image bitmaps to their respective image id
-    std::unordered_map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
+    std::map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;
 
 };

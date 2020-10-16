@@ -32,14 +32,7 @@ public:
 	/// Default constructor (disabled)
 	CItem() = delete;
 
-	/**
-	* Constructor
-	* \param level A pointer to the level object that this item belongs to
-	* \param game A pointer to the game object that this item belongs to
-	* \param imageID The image ID for this object
-	*/
-	CItem::CItem(CLevel *level, CGame *game, int imageID) 
-		: mLevel(level), mGame(game), mImageID(imageID) {}
+	CItem::CItem(CLevel* level, int imageID);
 
 
 	/// Copy constructor (disabled)
@@ -76,17 +69,10 @@ public:
 	virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
-
-	void SetImage(int imageID, std::wstring imageFile);
 	
 	/** Getter for mLevel for derived classes
 	* \returns pointer to the level object */
 	CLevel* GetLevel() const { return mLevel; }
-
-
-	/** Getter for mGame for derived classes
-	* \returns pointer to the game object */
-	CGame* GetGame() const { return mGame; }
 
 
 	/** Getter for the image ID
@@ -102,9 +88,7 @@ private:
 	int mImageID;
 
 	/// The level that this item is a part of
-	CLevel* mLevel;
+	CLevel* mLevel = nullptr;
 
-	/// The game that this item is a part of
-	CGame* mGame;
 };
 

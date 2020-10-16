@@ -92,7 +92,8 @@ CGame::CGame()
 {
 
     // THIS IS JUST HERE FOR TESTING!!!
-    mCurrentLevel = make_shared<CLevel>(this, L"levels/level0.xml");
+
+    mCurrentLevel = make_unique<CLevel>(this, L"levels/level0.xml");
     
     AddImage(houseOneID,   houseOneImageName);
     AddImage(houseTwoID,   houseTwoImageName);
@@ -171,6 +172,9 @@ void CGame::OnLButtonDown(int x, int y)
  */
 bool CGame::AddImage(int imageID, std::wstring imageFileName)
 {
+
+    auto temp = mImageMap.find(imageID);
+    auto temp2 = mImageMap.end();
 
     // if the image ID is already in the map, do not load it again
     if (mImageMap.find(imageID) != mImageMap.end())
