@@ -13,6 +13,7 @@
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
 #include "ItemVisitorFindRoad.h"
+#include "Tower.h"
 #include <memory>
 #include <vector>
 #include <algorithm>
@@ -389,4 +390,15 @@ void CLevel::Accept(CItemVisitor* visitor)
     {
         item->Accept(visitor);
     }
+}
+
+
+/** Attempts to add a new tower to this level
+ * \param x The x location (in pixels) that we're trying to place the tower at
+ * \param tower The tower we're attempting to add
+ * \returns True is there was a successful placement, False otherwise
+ */
+bool CLevel::PlaceNewTower(std::shared_ptr<CTower> tower)
+{
+    return false;
 }

@@ -45,6 +45,8 @@ public:
 
 	void Accept(CItemVisitor* visitor);
 
+	bool PlaceNewTower(std::shared_ptr<CTower> tower);
+
 	/// Starts the level
 	void Start() { mLevelActive = true; }
 

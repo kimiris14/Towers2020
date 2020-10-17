@@ -59,6 +59,9 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVEL_LEVEL0, &CChildView::OnLevelLevel0)
 	ON_COMMAND(ID_LEVEL_LEVEL1, &CChildView::OnLevelLevel1)
 	ON_COMMAND(ID_LEVEL_LEVEL2, &CChildView::OnLevelLevel2)
+	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 
@@ -196,3 +199,44 @@ void CChildView::OnLevelLevel2()
 	mGame.SetLevel(newLevel);
 	mGame.StartLevel();
 }
+
+
+/**
+ * Called when there is a left mouse button press
+ * \param nFlags Flags associated with the mouse button press
+ * \param point Where the button was pressed
+*/
+void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnLButtonDown(nFlags, point);
+}
+
+
+/**
+ * Called when the left mouse button is released
+ * \param nFlags Flags associated with the mouse button release
+ * \param point Where the button was pressed
+ */
+void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnLButtonUp(nFlags, point);
+}
+
+
+/**
+* Called when the mouse is moved
+* \param nFlags Flags associated with the mouse movement
+* \param point Where the button was pressed
+*/
+void CChildView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnMouseMove(nFlags, point);
+}
+
+

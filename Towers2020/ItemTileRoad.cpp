@@ -23,7 +23,6 @@ using namespace std;
 */
 CItemTileRoad::CItemTileRoad(CLevel* level, CGame* game, int imageID, std::wstring roadType)
     : CItemTile(level, game, imageID), mRoadType(roadType)
-
 {
 
 }

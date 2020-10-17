@@ -59,6 +59,11 @@ public:
      * \returns the width in pixels */
     const int GetWidth() const { return TileWidth; }
 
+    /** Test this item to see if it has been clicked on
+    * \param x X location on the aquarium to test
+    * \param y Y location on the aquarium to test
+    * \return always false - tiles can not be clicked on */
+    virtual bool HitTest(int x, int y) override { return false; }
 
     /// Sets the open boolean for when an item (tower) is placed or removed from the tile.
     /// \param isOpen True if the tile is open for object placement

@@ -40,6 +40,12 @@ public:
 
     //Add Pop definition here
 
+    /** Test this item to see if it has been clicked on
+    * \param x X location on the aquarium to test
+    * \param y Y location on the aquarium to test
+    * \return always false - balloons can not be clicked on */
+    virtual bool HitTest(int x, int y) override { return false; }
+
     /// Balloon class version of the time update
     /// \param elapsed The number of seconds elapsed since last draw
     virtual void Update(double elapsed) { mTValue = mTValue + mBalloonSpeed * elapsed; }
