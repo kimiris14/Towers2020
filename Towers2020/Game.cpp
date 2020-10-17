@@ -10,6 +10,9 @@
 #include "Level.h"
 #include "XmlNode.h"
 #include "ImageMap.h"
+#include "Tower.h"
+#include "TowerDart.h"
+#include "ItemVisitorFindTile.h"
 #include "Item.h"
 #include <memory>
 #include <map>
@@ -101,6 +104,24 @@ void CGame::OnLButtonDown(int x, int y)
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
 
+    // temporary
+    shared_ptr<CTowerDart> newItem = make_shared<CTowerDart>(mCurrentLevel.get(), this);
+    newItem->SetLocation(oX, oY);
+    mGrabbedTower = newItem;
+    mCurrentLevel->Add(newItem);
+
+}
+
+/**
+* Handle a mouse movement on the game area
+* \param x X location clicked on
+* \param y Y location clicked on
+*/
+void CGame::OnMouseMove(int x, int y, UINT nFlags)
+{
+    // convert the x and y clicked pixel coordinates into virtual pixel coordinates
+    double oX = (x - mXOffset) / mScale;
+    double oY = (y - mYOffset) / mScale;
 }
 
 

@@ -28,8 +28,6 @@ public:
     
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
-    void OnLButtonDown(int x, int y);
-
     bool AddImage(int imageID, std::wstring imageFile);
 
     std::shared_ptr<Gdiplus::Bitmap> GetImage(int imageID);
@@ -51,8 +49,15 @@ public:
     /// \param level The new level for the game
     void SetLevel(std::shared_ptr<CLevel> level) { mCurrentLevel = level; }
 
+    void OnLButtonDown(int x, int y);
+    void OnMouseMove(int x, int y, UINT nFlags);
+
 
 private:
+
+    /// This is where an item will be stored if it is grabbed with the mouse
+    std::shared_ptr<CTower> mGrabbedTower = nullptr;
+
     /// Game area in virtual pixels
     const static int Width = 1224;
 

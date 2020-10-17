@@ -19,7 +19,7 @@ class CTowerDart :
 {
 public:
 
-    CTowerDart(CLevel* level, CGame* game, int imageID);
+    CTowerDart(CLevel* level, CGame* game);
 
     ///  Default constructor (disabled)
     CTowerDart() = delete;
@@ -34,9 +34,13 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTowerDart(this); }
 
-    virtual void Draw(Gdiplus::Graphics* graphics) override;
+private:
 
-    virtual void SetLocation(double x, double y) override;
+    /// tower image filename
+    const std::wstring TowerImageName = L"images/tower8.png";
+
+    /// dart id number
+    const int TowerImageID = 420; //not yet assigned
 };
 
 
