@@ -77,11 +77,13 @@ private:
     /// A pointer to the game pallette. The game should "own" the pallette
     std::shared_ptr<CGamePallette> mGamePallette = nullptr;
 
-    /// pointer to the tower buttons
+    /// pointer to the dart tower button
     std::shared_ptr<CTowerButton> mDartTowerButton = nullptr;
-
+    
+    /// pointer to the bomb tower button
     std::shared_ptr<CTowerButton> mBombTowerButton = nullptr;
 
+    /// pointer to the ring tower button
     std::shared_ptr<CTowerButton> mRingTowerButton = nullptr;
 
 };

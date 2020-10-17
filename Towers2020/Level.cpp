@@ -394,7 +394,6 @@ void CLevel::Accept(CItemVisitor* visitor)
 
 
 /** Attempts to add a new tower to this level
- * \param x The x location (in pixels) that we're trying to place the tower at
  * \param tower The tower we're attempting to add
  * \returns True is there was a successful placement, False otherwise
  */

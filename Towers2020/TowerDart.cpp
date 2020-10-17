@@ -12,11 +12,11 @@
 
 using namespace std;
 
-/// dart balloon filename
-const wstring dartImageName = L"images/tower8.png";
+/// tower 8 filename
+const wstring tower8ImageName = L"images/tower8.png";
 
 /// dart id number
-///const int tower8 = ; //not yet assigned
+const int tower8Id = 61; //not yet assigned
 
 
 /**
@@ -28,7 +28,7 @@ const wstring dartImageName = L"images/tower8.png";
 CTowerDart::CTowerDart(CLevel* level, CGame* game, int imageID)
 	: CTower(level, game, imageID)
 {
-
+    level->AddImage(tower8Id, tower8ImageName);
 }
 
 /**
@@ -45,5 +45,25 @@ void CTowerDart::Draw(Gdiplus::Graphics* graphics)
 * \param y Y location
 */
 void CTowerDart::SetLocation(double x, double y)
+{
+}
+
+/** Handle updates for darts
+* \param elapsed The time since the last update
+*/
+void CTowerDart::Update(double elapsed)
+{
+    mTimeTillFire -= elapsed;
+    if (mTimeTillFire <= 0)
+    {
+        mTimeTillFire += mTimeBetweenShots;
+        Fire();
+    }
+}
+
+/**
+* Fire dart
+*/
+void CTowerDart::Fire()
 {
 }

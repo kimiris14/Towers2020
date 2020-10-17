@@ -45,8 +45,7 @@ public:
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTower(this); }
 
-private:
-
+protected:
 	/// The time until the next fire of projectiles
-	int mTimeTilFire = 0;  
+	double mTimeTillFire = 0;  
 };

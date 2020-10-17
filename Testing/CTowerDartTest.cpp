@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "ProjectileDart.h"
+#include "TowerDart.h"
 #include "Game.h"
 #include <memory>
 
@@ -9,10 +9,10 @@ using namespace std;
 using namespace Gdiplus;
 
 /// red balloon filename
-const std::wstring dartImageName = L"images/dart.png";
+const std::wstring dartImageName = L"images/tower8.png";
 
 /// red balloon id number
-const int dartID = 55;
+const int towerDartId = 66;
 
 /// The basic level for testing
 const std::wstring baseLevel = L"levels/level0.xml";
@@ -20,7 +20,7 @@ const std::wstring baseLevel = L"levels/level0.xml";
 namespace Testing
 {
 	/** Mock class for testing CItem */
-	class CDartMock : public CProjectileDart
+	class CTowerDartMock : public CTowerDart
 	{
 	public:
 		/**
@@ -29,11 +29,11 @@ namespace Testing
 		* \param game The Game this item is a member of
 		* \param imageID The image id for this item
 		*/
-		CDartMock(CLevel* level, CGame* game, int imageID)
-			: CProjectileDart(level, game, imageID)
+		CTowerDartMock(CLevel* level, CGame* game, int imageID)
+			: CTowerDart(level, game, imageID)
 		{
 
-			game->AddImage(dartID, dartImageName);
+			game->AddImage(towerDartId, dartImageName);
 		}
 
 		/** Draw the item
@@ -46,7 +46,7 @@ namespace Testing
 	};
 
 
-	TEST_CLASS(CProjectileDartTest)
+	TEST_CLASS(CTowerDartTest)
 	{
 	public:
 
@@ -60,7 +60,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CDartMock dart(&level, &game, dartID);
+			CTowerDartMock tower(&level, &game, towerDartId);
 		}
 	};
 }

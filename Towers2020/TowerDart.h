@@ -10,7 +10,6 @@
 #include "Tower.h"
 #include "ItemVisitor.h"
 
-
 /**
  * Class for a dart tower
  */
@@ -37,6 +36,17 @@ public:
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void SetLocation(double x, double y) override;
+
+    virtual void Update(double elapsed) override;
+
+    void Fire();
+private:
+    /// List of dart objects that represent the tower
+    std::vector<std::shared_ptr<CProjectileDart>> mDarts;
+
+    /// Set time between each time the tower shoots darts
+    double mTimeBetweenShots = 5;
+
 };
 
 
