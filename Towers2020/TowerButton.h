@@ -17,7 +17,7 @@ class CTowerButton
 {
 public:
 
-    CTowerButton(CLevel* level, CGame* game, int imageID, int x, int y);
+    CTowerButton(CGame* game, int imageID, int x, int y);
 
     ///  Default constructor (disabled)
     CTowerButton() = delete;
@@ -35,14 +35,13 @@ private:
     /// ptr to the game we are in
     CGame* mGame = nullptr;
 
-    /// ptr to the level set to nullptr because the level doesnt matter for the buttons
-    CLevel* mLevel = nullptr;
-
     /// the image id for this button
     int mImageID = 0;
 
+    /// the x location for this button
     int mButtonX = 0;
 
+    /// the y location for this button
     int mButtonY = 0;
 
 

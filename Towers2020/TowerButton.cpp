@@ -34,7 +34,7 @@ const int bombTowerID = 102;
 * \param x The x location for the button
 * \param y The y location for the button
 */
-CTowerButton::CTowerButton(CLevel* level, CGame* game, int imageID, int x, int y) 
+CTowerButton::CTowerButton(CGame* game, int imageID, int x, int y) 
     : mGame(game)
     ,mImageID(imageID)
     ,mButtonX(x)
@@ -69,7 +69,7 @@ void CTowerButton::Draw(Gdiplus::Graphics* graphics)
 * \return true if clicked on */
 bool CTowerButton::HitTest(int x, int y)
 {
-    auto itemImage = mLevel->GetImage(mImageID);
+    auto itemImage = mGame->GetImage(mImageID);
 
     double wid = itemImage->GetWidth();
     double hit = itemImage->GetHeight();

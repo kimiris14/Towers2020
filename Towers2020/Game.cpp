@@ -36,11 +36,11 @@ CGame::CGame()
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
 
-    mDartTowerButton = make_shared<CTowerButton>(nullptr, this, 100, 1090, 300);
+    mDartTowerButton = make_shared<CTowerButton>(this, 100, 1090, 300);
 
-    mBombTowerButton = make_shared<CTowerButton>(nullptr, this, 102, 1090, 400);
+    mBombTowerButton = make_shared<CTowerButton>(this, 102, 1090, 400);
 
-    mRingTowerButton = make_shared<CTowerButton>(nullptr, this, 101, 1090, 200);
+    mRingTowerButton = make_shared<CTowerButton>(this, 101, 1090, 200);
 
    
 }
