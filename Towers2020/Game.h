@@ -78,6 +78,10 @@ private:
     std::shared_ptr<CGamePallette> mGamePallette = nullptr;
 
     /// pointer to the tower buttons
-    std::shared_ptr<CTowerButton> mTowerButtons = nullptr;
+    std::shared_ptr<CTowerButton> mDartTowerButton = nullptr;
+
+    std::shared_ptr<CTowerButton> mBombTowerButton = nullptr;
+
+    std::shared_ptr<CTowerButton> mRingTowerButton = nullptr;
 
 };

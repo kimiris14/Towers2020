@@ -6,16 +6,18 @@
  * Class for the button images in the game pallette
  */
 #pragma once
+#include "Item.h"
+
 class CGame;
 
 /**
 * Class that places images of the tower buttons in the game palette
 */
-class CTowerButton
+class CTowerButton 
 {
 public:
 
-    CTowerButton(CGame* game);
+    CTowerButton(CLevel* level, CGame* game, int imageID, int x, int y);
 
     ///  Default constructor (disabled)
     CTowerButton() = delete;
@@ -23,8 +25,7 @@ public:
     /// destructor 
     ~CTowerButton() {}
 
-
-    void Draw(Gdiplus::Graphics* graphics);
+    virtual void Draw(Gdiplus::Graphics* graphics);
 
 
     virtual bool HitTest(int x, int y);
@@ -34,23 +35,16 @@ private:
     /// ptr to the game we are in
     CGame* mGame = nullptr;
 
-    /// dart tower x location
-    int dartButtonX = 1090;
+    /// ptr to the level set to nullptr because the level doesnt matter for the buttons
+    CLevel* mLevel = nullptr;
 
-    /// dart tower y location
-    int dartButtonY = 300;
+    /// the image id for this button
+    int mImageID = 0;
 
-    /// bomb tower x location
-    int bombButtonX = 1090;
+    int mButtonX = 0;
 
-    /// bomb tower y location
-    int bombButtonY = 400;
+    int mButtonY = 0;
 
-    /// ring tower x location
-    int ringButtonX = 1090;
-
-    /// ring tower y location
-    int ringButtonY = 400;
 
 };
 

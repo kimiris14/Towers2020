@@ -10,6 +10,7 @@
 #include "Level.h"
 #include "XmlNode.h"
 #include "ImageMap.h"
+#include "Item.h"
 #include <memory>
 #include <map>
 #include <string>
@@ -35,7 +36,11 @@ CGame::CGame()
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
 
-    mTowerButtons = make_shared<CTowerButton>(this);
+    mDartTowerButton = make_shared<CTowerButton>(nullptr, this, 100, 1090, 300);
+
+    mBombTowerButton = make_shared<CTowerButton>(nullptr, this, 102, 1090, 400);
+
+    mRingTowerButton = make_shared<CTowerButton>(nullptr, this, 101, 1090, 200);
 
    
 }
@@ -78,7 +83,9 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     mGamePallette->Draw(graphics);
 
-    mTowerButtons->Draw(graphics);
+    mDartTowerButton->Draw(graphics);
+    mBombTowerButton->Draw(graphics);
+    mRingTowerButton->Draw(graphics);
     
 }
 
