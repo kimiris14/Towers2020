@@ -34,6 +34,9 @@ CGame::CGame()
 
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
+
+    mTowerButtons = make_shared<CTowerButton>(this);
+
    
 }
 
@@ -74,6 +77,8 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     }
 
     mGamePallette->Draw(graphics);
+
+    mTowerButtons->Draw(graphics);
     
 }
 

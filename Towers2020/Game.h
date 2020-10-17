@@ -13,6 +13,7 @@
 #include "Item.h"
 #include "Level.h"
 #include "GamePallette.h"
+#include "TowerButton.h"
 
 
 /**
@@ -75,5 +76,8 @@ private:
 
     /// A pointer to the game pallette. The game should "own" the pallette
     std::shared_ptr<CGamePallette> mGamePallette = nullptr;
+
+    /// pointer to the tower buttons
+    std::shared_ptr<CTowerButton> mTowerButtons = nullptr;
 
 };

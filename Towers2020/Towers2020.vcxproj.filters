@@ -90,6 +90,9 @@
     <ClInclude Include="ProjectileExplosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TowerButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers2020.cpp">
@@ -153,6 +156,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProjectileExplosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
