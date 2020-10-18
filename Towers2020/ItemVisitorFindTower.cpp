@@ -34,3 +34,11 @@ void CItemVisitorFindTower::VisitTowerRing(CTowerRing* tower)
 	// we can downcast the dart tower to a tower for this
 	VisitTower((CTower*)tower);
 }
+
+/** Visit a CTowerBomb object
+* \param tower Tower we are visiting */
+void CItemVisitorFindTower::VisitTowerBomb(CTowerBomb* tower)
+{
+	// we can downcast the dart tower to a tower for this
+	VisitTower((CTower*)tower);
+}

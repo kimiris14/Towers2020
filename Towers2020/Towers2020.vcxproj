@@ -208,6 +208,7 @@
     <ClInclude Include="ItemTileRoad.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="Tower.h" />
+    <ClInclude Include="TowerBomb.h" />
     <ClInclude Include="TowerDart.h" />
     <ClInclude Include="TowerRing.h" />
     <ClInclude Include="Towers2020.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="ProjectileDart.cpp" />
     <ClCompile Include="ProjectileRing.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="TowerBomb.cpp" />
     <ClCompile Include="TowerDart.cpp" />
     <ClCompile Include="TowerRing.cpp" />
     <ClCompile Include="Towers2020.cpp" />
