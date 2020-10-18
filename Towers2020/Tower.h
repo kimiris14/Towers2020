@@ -37,6 +37,8 @@ public:
 	/// destructor 
 	~CTower() {}
 
+	virtual void Draw(Gdiplus::Graphics* graphics) override;
+
 	bool Place();
 
 	/** Accept a visitor

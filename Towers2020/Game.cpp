@@ -138,6 +138,11 @@ void CGame::OnMouseMove(int x, int y, UINT nFlags)
 
             // attempt to place the tower, then release it
             bool placeSuccessful = mGrabbedTower->Place();
+
+            // remove the tower from the level if the place was not good
+            if (!placeSuccessful)
+                mCurrentLevel->RemoveItem(mGrabbedTower);
+
             mGrabbedTower = nullptr;
 
         }
