@@ -76,3 +76,5 @@ void CItemTile::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 	SetGridLocation(xGrid, yGrid);
 }
+
+

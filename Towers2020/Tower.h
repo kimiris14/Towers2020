@@ -7,14 +7,14 @@
  */
 
 #pragma once
-#include "Item.h"
+#include "ItemTile.h"
 
 
 
 /**
  * A base class for all towers
  */
-class CTower : public CItem
+class CTower : public CItemTile
 {
 public:
 	
@@ -26,7 +26,7 @@ public:
 	* \param imageID The image ID for this object
 	*/
 	CTower(CLevel* level, CGame* game, int imageID) :
-		CItem(level, game, imageID) {}
+		CItemTile(level, game, imageID) {}
 
 	/// Default constructor (disabled)
 	CTower() = delete;
@@ -36,6 +36,8 @@ public:
 
 	/// destructor 
 	~CTower() {}
+
+	bool Place();
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

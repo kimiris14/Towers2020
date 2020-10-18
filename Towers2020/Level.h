@@ -62,6 +62,14 @@ public:
 	/// \param item The item within mItems to remove.
 	void RemoveItem(std::shared_ptr<CItem> item) { mItemsToDelete.push_back(item); }
 
+	/// Getter for the level's height in grid tiles
+	/// \returns the height in grid tiles
+	int GetHeight() const { return mLevelHeight; }
+
+	/// Getter for the level's width in grid tiles
+	/// \returns the width in grid tiles
+	int GetWidth() const { return mLevelWidth; }
+
 private:
 
 	/// All of the items to add to our game

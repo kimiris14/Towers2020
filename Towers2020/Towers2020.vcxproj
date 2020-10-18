@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="ItemVisitorFindTile.h" />
     <ClInclude Include="TowerButton.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
@@ -212,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="ItemVisitorFindTile.cpp" />
     <ClCompile Include="TowerButton.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GamePallette.cpp" />

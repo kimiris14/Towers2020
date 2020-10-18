@@ -73,6 +73,12 @@ public:
     /// \returns True if the tile is open, false if it's occupied.
     virtual bool IsOpen() { return mOpen; }
 
+    /// the constant height for every tile
+    const int TileHeight = 64;
+
+    /// the constant width for every tile
+    const int TileWidth = 64;
+
 private:
 
     /// The X position index when placed on the grid (not pixels!)
@@ -80,12 +86,6 @@ private:
 
     /// The Y position index when placed on the grid (not pixels!)
     int mGridPositionY = 0;
-
-    /// the constant height for every tile
-    const int TileHeight = 64;
-
-    /// the constant width for every tile
-    const int TileWidth = 64;
 
     /// This boolean represents if this tile is able to have something placed on it, like a tower
     bool mOpen = false;
