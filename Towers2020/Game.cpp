@@ -122,6 +122,29 @@ void CGame::OnMouseMove(int x, int y, UINT nFlags)
     // convert the x and y clicked pixel coordinates into virtual pixel coordinates
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
+
+
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedTower != nullptr)
+    {
+        // If an item is being moved, we only continue to 
+        // move it while the left button is down.
+        if (nFlags & MK_LBUTTON)
+        {
+            mGrabbedTower->SetLocation(oX, oY);
+        }
+        else
+        {
+
+            // attempt to place the tower, then release it
+            bool placeSuccessful = mGrabbedTower->Place();
+            mGrabbedTower = nullptr;
+
+        }
+
+        // Force the screen to redraw
+        // Invalidate();
+    }
 }
 
 

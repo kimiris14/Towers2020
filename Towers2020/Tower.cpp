@@ -35,6 +35,7 @@ bool CTower::Place()
         return false;
 
     // find the tile on this grid.
+    return false;
 
 
 
