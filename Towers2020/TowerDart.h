@@ -47,7 +47,9 @@ private:
     /// dart id number
     const int TowerImageID = 420; //not yet assigned
     
-    
+    /// Time in between each time the tower shoots darts in seconds
+    double mTimeBetweenShots = 5;
+
 };
 
 

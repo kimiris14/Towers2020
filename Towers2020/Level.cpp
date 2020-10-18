@@ -458,13 +458,3 @@ void CLevel::Accept(CItemVisitor* visitor)
         item->Accept(visitor);
     }
 }
-
-
-/** Attempts to add a new tower to this level
- * \param tower The tower we're attempting to add
- * \returns True is there was a successful placement, False otherwise
- */
-bool CLevel::PlaceNewTower(std::shared_ptr<CTower> tower)
-{
-    return false;
-}
