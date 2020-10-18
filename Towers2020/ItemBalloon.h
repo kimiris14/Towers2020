@@ -58,7 +58,6 @@ public:
     /// red balloon id number
     const int RedBalloonID = 44;
 
-
 private:
 
     /// Balloon speed in tiles per second (each tile is 64px, so this is equivalent to 128px/s)

@@ -20,7 +20,7 @@ using namespace std;
 * \param imageID The image id for this item
 */
 CItemBalloon::CItemBalloon(CLevel *level, CGame *game) : CItem(level,game,RedBalloonID)
-   
 {
+    SetImageID(RedBalloonID);  // base it is uninitialized during the call to CItem constructor
     game->AddImage(RedBalloonID, RedBalloonImageName);
 }
