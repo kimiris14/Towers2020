@@ -54,6 +54,11 @@ public:
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 
+	/// Getter for the level active boolean. 
+	/// Tells the caller if the current level is active
+	/// \returns true if the level has been activated
+	bool IsActive() const { return mLevelActive; }
+
 	/// When an item needs to be deleted from the level, use this to remove it.
 	/// It waits until all of the updates are done before removing it, otherwise
 	/// there would be runtime errors

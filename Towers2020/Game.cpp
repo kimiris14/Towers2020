@@ -92,6 +92,11 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 */
 void CGame::OnLButtonDown(int x, int y)
 {
+
+    // if the current level is active, then the mouse will do nothing.
+    if (mCurrentLevel->IsActive())
+        return;
+
     // convert the x and y clicked pixel coordinates into virtual pixel coordinates
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
