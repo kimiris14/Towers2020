@@ -35,8 +35,15 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
 
+    double GetAngle();
+
+    void SetAngle();
+
 private:
     /// Dart image's angle
-    double mAngle = 1;
+    double mAngle = 0;
+
+    /// Dart's number counter
+    int mAngleCounter = 0;
 };
 

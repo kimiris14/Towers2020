@@ -21,6 +21,9 @@ const int dartID = 51; //assigned
 /// Constant to covert radians to degrees.
 const double RtoD = 57.2957795;
 
+/// Pi
+const double pi = 3.14159265358979323846;
+
  /**
  * Constructor
  * \param level The Level this item is a member of
@@ -59,4 +62,52 @@ void CProjectileDart::Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY
 */
 void CProjectileDart::SetLocation(double x, double y)
 {
+}
+
+/**
+ * Get dart's current angle
+ * \return mAngle
+ */
+double CProjectileDart::GetAngle()
+{
+    return mAngle;
+}
+
+/** 
+ * Set mAngle
+ */
+void CProjectileDart::SetAngle()
+{
+    if (mAngle == 0)
+    {
+        mAngle = pi / 4;
+    }
+    else if (mAngle == (pi / 4))
+    {
+        mAngle = pi / 2;
+    }
+    else if (mAngle == (pi / 2))
+    {
+        mAngle = (3 * pi) / 4;
+    }
+    else if (mAngle == ((3 * pi) / 4))
+    {
+        mAngle = pi;
+    }
+    else if (mAngle == pi)
+    {
+        mAngle = (5 * pi) / 4;
+    }
+    else if (mAngle == ((5 * pi) / 4))
+    {
+        mAngle = (3 * pi) / 2;
+    }
+    else if (mAngle == ((3 * pi) / 2))
+    {
+        mAngle = (7 * pi) / 4;
+    }
+    else if (mAngle == ((7 * pi) / 4))
+    {
+        mAngle = 0;
+    }
 }

@@ -8,15 +8,17 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 using namespace Gdiplus;
 
-/// red balloon filename
+/// dart filename
 const std::wstring dartImageName = L"images/dart.png";
 
-/// red balloon id number
+/// dart id number
 const int dartID = 55;
 
 /// The basic level for testing
 const std::wstring baseLevel = L"levels/level0.xml";
 
+/// pi
+const double pi = 3.14159265358979323846;
 namespace Testing
 {
 	/** Mock class for testing CItem */
@@ -61,6 +63,29 @@ namespace Testing
 			CGame game;
 			CLevel level(&game, baseLevel);
 			CDartMock dart(&level, &game, dartID);
+		}
+
+		TEST_METHOD(TestCProjectileDartGetterSetter)
+		{
+			CGame game;
+			CLevel level(&game, baseLevel);
+			CDartMock dart(&level, &game, dartID);
+
+			Assert::AreEqual(0, dart.GetAngle(), 0);
+			dart.SetAngle();
+			Assert::AreEqual(pi / 4, dart.GetAngle(), 0);
+			dart.SetAngle();
+			dart.SetAngle();
+			dart.SetAngle();
+			Assert::AreEqual(pi, dart.GetAngle(), 0);
+			dart.SetAngle();
+			dart.SetAngle();
+			dart.SetAngle();
+			dart.SetAngle();
+			Assert::AreEqual(0, dart.GetAngle(), 0);
+			dart.SetAngle();
+			Assert::AreEqual(pi / 4, dart.GetAngle(), 0);
+
 		}
 	};
 }
