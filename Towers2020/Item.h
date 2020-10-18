@@ -87,6 +87,11 @@ protected:
 	* \returns the image ID */
 	int GetImageID() const { return mImageID; }
 
+
+	/** Setter for the image ID
+	* \param newID the new image ID for this object */
+	void SetImageID(int newID) { mImageID = newID; }
+
 private:
 
 	double mX = 0;  ///< x location on the board (in pixels)

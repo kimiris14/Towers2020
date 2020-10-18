@@ -13,6 +13,8 @@
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
 #include "ItemVisitorFindRoad.h"
+#include "ItemVisitorFindTile.h"
+#include "ItemVisitorFindTower.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
@@ -61,6 +63,69 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
 {
     mItemsToDelete.push_back(balloon);
     mGame->GetPallette()->DecrementScore(mPointsPerEscape);
+}
+
+/// This searches the playing area for a clicked tower. If a tower object was
+/// found, that object is returned.
+/// \param x The x coordinate in pixels
+/// \param y the y coordinate in pixels
+/// \returns The clicked object if found, otherwise nullptr
+std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
+{
+    // this only finds towers
+    CItemVisitorFindTower visitor(x, y);
+    Accept(&visitor);
+    CTower* tower = visitor.GetTower();
+
+    // this will fun any CItem object
+    shared_ptr<CItem> hitItem = HitTest(x, y);
+
+    // if there was a tower that was found and clicked on, pick it up and return it
+    if ((hitItem.get() == tower) && (tower != nullptr)) {
+
+        auto x = (int)hitItem->GetX();
+        auto y = (int)hitItem->GetY();
+
+        int gridX = x / mTileSpacing;
+        int gridY = y / mTileSpacing;
+
+        // find the tile on this grid.
+        CItemVisitorFindTile visitor(gridX, gridY);
+        Accept(&visitor);
+        auto currentTile = visitor.GetTile();
+
+        // "pick up" the tile
+        if (currentTile != nullptr)
+        {
+            currentTile->SetOpen(true);
+        }
+
+        return hitItem;
+    } 
+    
+    return nullptr;
+}
+
+
+/*
+ * Runs a hit test on all of the items in the level, and returns the
+ * last item that was hit (the last item in the mItems list)
+ * \param x The x pixel to search for
+ * \param y The y pixel to search for
+ * \returns a shared ptr to the found object
+ */
+std::shared_ptr<CItem> CLevel::HitTest(int x, int y)
+{
+    shared_ptr<CItem> lastItem = nullptr;
+    for (auto item : mItems)
+    {
+        if (item->HitTest(x, y))
+        {
+            lastItem = item;
+        }
+    }
+    return lastItem;
+    
 }
 
 
@@ -280,7 +345,9 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
     if (type == L"open")
     {
-        item = make_shared<CItemTile>(this, mGame, imageID);
+        auto itemOccupied = make_shared<CItemTile>(this, mGame, imageID);
+        itemOccupied->SetOpen(true);
+        item = itemOccupied;
     }
 
     if ((type == L"trees") || (type == L"house"))
@@ -390,15 +457,4 @@ void CLevel::Accept(CItemVisitor* visitor)
     {
         item->Accept(visitor);
     }
-}
-
-
-/** Attempts to add a new tower to this level
- * \param x The x location (in pixels) that we're trying to place the tower at
- * \param tower The tower we're attempting to add
- * \returns True is there was a successful placement, False otherwise
- */
-bool CLevel::PlaceNewTower(std::shared_ptr<CTower> tower)
-{
-    return false;
 }

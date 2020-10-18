@@ -41,8 +41,10 @@ private:
     /// the image id for this button
     int mImageID = 0;
 
+    /// Button's x location
     int mButtonX = 0;
-
+    
+    /// Button's y location
     int mButtonY = 0;
 
 

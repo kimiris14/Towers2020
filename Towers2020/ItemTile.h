@@ -59,12 +59,6 @@ public:
      * \returns the width in pixels */
     const int GetWidth() const { return TileWidth; }
 
-    /** Test this item to see if it has been clicked on
-    * \param x X location on the aquarium to test
-    * \param y Y location on the aquarium to test
-    * \return always false - tiles can not be clicked on */
-    virtual bool HitTest(int x, int y) override { return false; }
-
     /// Sets the open boolean for when an item (tower) is placed or removed from the tile.
     /// \param isOpen True if the tile is open for object placement
     virtual void SetOpen(bool isOpen) { mOpen = isOpen; }
@@ -73,6 +67,12 @@ public:
     /// \returns True if the tile is open, false if it's occupied.
     virtual bool IsOpen() { return mOpen; }
 
+    /// the constant height for every tile
+    const int TileHeight = 64;
+
+    /// the constant width for every tile
+    const int TileWidth = 64;
+
 private:
 
     /// The X position index when placed on the grid (not pixels!)
@@ -80,12 +80,6 @@ private:
 
     /// The Y position index when placed on the grid (not pixels!)
     int mGridPositionY = 0;
-
-    /// the constant height for every tile
-    const int TileHeight = 64;
-
-    /// the constant width for every tile
-    const int TileWidth = 64;
 
     /// This boolean represents if this tile is able to have something placed on it, like a tower
     bool mOpen = false;

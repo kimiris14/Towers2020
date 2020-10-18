@@ -25,25 +25,32 @@ const wstring dartImageName = L"images/tower8.png";
 * \param game The Game this item is a member of
 * \param imageID The image id for this item
 */
-CTowerDart::CTowerDart(CLevel* level, CGame* game, int imageID)
-	: CTower(level, game, imageID)
+CTowerDart::CTowerDart(CLevel* level, CGame* game)
+	: CTower(level, game, TowerImageID)
 {
+	// the image ID is not properly set in the CTower constructor because it is
+	// not yet initialized. This fixes that
+	SetImageID(TowerImageID);
 
+	level->AddImage(TowerImageID, TowerImageName);
+}
+
+/** Handle updates for darts
+* \param elapsed The time since the last update
+*/
+void CTowerDart::Update(double elapsed)
+{
+    mTimeTillFire -= elapsed;
+    if (mTimeTillFire <= 0)
+    {
+        mTimeTillFire += mTimeBetweenShots;
+        Fire();
+    }
 }
 
 /**
-* Draw the item from the corner
-* \param graphics The graphics context to draw on
+* Fire dart
 */
-void CTowerDart::Draw(Gdiplus::Graphics* graphics)
-{
-}
-
-/**
-* Set item location
-* \param x X location
-* \param y Y location
-*/
-void CTowerDart::SetLocation(double x, double y)
+void CTowerDart::Fire()
 {
 }
