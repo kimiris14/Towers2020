@@ -17,7 +17,6 @@ using namespace std;
 * Constructor
 * \param level The Level this item is a member of
 * \param game The Game this item is a member of
-* \param imageID The image id for this item
 */
 CItemBalloon::CItemBalloon(CLevel *level, CGame *game) : CItem(level,game,RedBalloonID)
 {

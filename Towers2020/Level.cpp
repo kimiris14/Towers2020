@@ -90,13 +90,11 @@ std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
 }
 
 
-/*
- * Runs a hit test on all of the items in the level, and returns the
- * last item that was hit (the last item in the mItems list)
- * \param x The x pixel to search for
- * \param y The y pixel to search for
- * \returns a shared ptr to the found object
- */
+/// Runs a hit test on all of the items in the level, and returns the
+/// last item that was hit (the last item in the mItems list)
+/// \param x The x pixel to search for
+/// \param y The y pixel to search for
+/// \returns a shared ptr to the found object
 std::shared_ptr<CItem> CLevel::HitTest(int x, int y)
 {
     shared_ptr<CItem> lastItem = nullptr;

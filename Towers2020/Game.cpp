@@ -124,6 +124,7 @@ void CGame::OnLButtonDown(int x, int y)
 
 /**
 * Handle a mouse movement on the game area
+* \param nFlags Flags associated with the mouse button press
 * \param x X location clicked on
 * \param y Y location clicked on
 */

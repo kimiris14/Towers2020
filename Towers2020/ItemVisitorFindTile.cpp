@@ -20,7 +20,7 @@ void CItemVisitorFindTile::VisitRoad(CItemTileRoad* road)
 }
 
 /** Visit a CItemTileRoad object
-* \param road Road we are visiting */
+* \param tile Tile we are visiting */
 void CItemVisitorFindTile::VisitTile(CItemTile* tile)
 {
 	if (tile->GetGridX() == mTargetX && tile->GetGridY() == mTargetY)

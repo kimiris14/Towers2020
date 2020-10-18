@@ -35,7 +35,7 @@ namespace Testing
 			: CItem(level, game, imageID)
 		{
 
-			level->AddImage(redBalloonID, redBalloonImageName);
+			game->AddImage(redBalloonID, redBalloonImageName);
 		}
 
 		/** Draw the item
