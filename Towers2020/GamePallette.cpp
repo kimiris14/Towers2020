@@ -6,11 +6,21 @@
 
 
 #include "pch.h"
+#include "Game.h"
 #include "GamePallette.h"
+#include "Item.h"
+#include "ImageButton.h"
+#include "TowerDart.h"
 #include <string>
 
 using namespace Gdiplus;
 using namespace std;
+
+/// the x-location of the tower buttons on screen in pixels
+const int TowerButtonXLocation = 1124;
+
+/// the y-location of the dart tower button in pixels
+const int DartTowerY = 200;
 
 /**
 * Constructor
@@ -18,6 +28,14 @@ using namespace std;
 */
 CGamePallette::CGamePallette(CGame* game) : mGame(game)
 {
+    // create the buttons and push them onto the button list
+    auto tempDartTower = make_shared<CTowerDart>(nullptr, game);
+    int dartImageID = tempDartTower->GetImageID();
+    mDartTowerButton = make_shared<CImageButton>(game, dartImageID, TowerButtonXLocation, DartTowerY);
+
+    // mTowerButtons.push_back(make_shared<CImageButton>(this, 102, 1090, 400));
+
+    // mTowerButtons.push_back(make_shared<CImageButton>(this, 101, 1090, 200));
 }
 
 /**
@@ -51,4 +69,25 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         &font2,      // The font to use
         PointF(1080, 550),   // Draw to the center of the game palette (and under Score)
         &yellow);    // The brush to draw the text with
+
+
+    // draw the buttons
+    if (mDartTowerButton != nullptr)
+        mDartTowerButton->Draw(graphics);
+}
+
+
+/**
+* Handle a click on the game area
+* \param x X location clicked on
+* \param y Y location clicked on
+* \returns A new tower object if one of the tower buttons was pressed
+*/
+std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
+{
+    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y)) {
+        return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame);
+    }
+
+    return nullptr;
 }

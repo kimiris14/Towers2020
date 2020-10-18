@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;ImageMap;Game;GamePallette;Item;ItemBalloon;ItemTile;ItemTileRoad;Level;Tower;XmlNode;ItemVisitor;ItemVisitorFindRoad;Projectile;ProjectileExplosion;ProjectileDart;ProjectileRing;TowerDart;TowerButton</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;GamePallette;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,7 +147,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;ImageMap;Game;GamePallette;Item;ItemBalloon;ItemTile;ItemTileRoad;Level;Tower;XmlNode;ItemVisitor;ItemVisitorFindRoad;Projectile;ProjectileBomb;ProjectileDart;ProjectileRing;TowerDart</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;GamePallette;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

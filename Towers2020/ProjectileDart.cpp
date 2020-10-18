@@ -32,7 +32,7 @@ const double pi = 3.14159265358979323846;
  */
 CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
 {
-	level->AddImage(dartID, dartImageName);
+	game->AddImage(dartID, dartImageName);
 }
 
 /**

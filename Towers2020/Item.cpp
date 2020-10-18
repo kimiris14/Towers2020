@@ -33,13 +33,15 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
 {
 
     shared_ptr<Bitmap> itemBitmap = mGame->GetImage(mImageID);
+    
+    if (itemBitmap != nullptr) {
+        double wid = itemBitmap->GetWidth();
+        double hit = itemBitmap->GetHeight();
 
-    double wid = itemBitmap->GetWidth();
-    double hit = itemBitmap->GetHeight();
-
-    graphics->DrawImage(itemBitmap.get(),
-        float(GetX() - wid / 2), float(GetY() - hit / 2),
-        (float)itemBitmap->GetWidth(), (float)itemBitmap->GetHeight());
+        graphics->DrawImage(itemBitmap.get(),
+            float(GetX() - wid / 2), float(GetY() - hit / 2),
+            (float)itemBitmap->GetWidth(), (float)itemBitmap->GetHeight());
+    }
 }
 
 
@@ -88,7 +90,7 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 bool CItem::HitTest(int x, int y)
 {
 
-    auto itemImage = mLevel->GetImage(mImageID);
+    auto itemImage = mGame->GetImage(mImageID);
 
     double wid = itemImage->GetWidth();
     double hit = itemImage->GetHeight();

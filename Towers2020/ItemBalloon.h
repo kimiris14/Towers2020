@@ -20,7 +20,7 @@ class CItemBalloon :
     public CItem
 {
 public:
-    CItemBalloon(CLevel *level, CGame* game, int imageID);
+    CItemBalloon(CLevel *level, CGame* game);
 
     ///  Default constructor (disabled)
     CItemBalloon() = delete;
@@ -38,8 +38,6 @@ public:
     /// \param newT The balloon's new t value
     void SetT(double newT) { mTValue = newT; }
 
-    //Add Pop definition here
-
     /** Test this item to see if it has been clicked on
     * \param x X location on the aquarium to test
     * \param y Y location on the aquarium to test
@@ -53,6 +51,12 @@ public:
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBalloon(this); }
+
+    /// red balloon filename
+    const std::wstring RedBalloonImageName = L"images/red-balloon.png";
+
+    /// red balloon id number
+    const int RedBalloonID = 44;
 
 
 private:

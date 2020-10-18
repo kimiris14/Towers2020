@@ -13,6 +13,7 @@
 #include "Tower.h"
 #include "TowerDart.h"
 #include "ItemVisitorFindTile.h"
+#include "ImageButton.h"
 #include "Item.h"
 #include <memory>
 #include <map>
@@ -39,13 +40,6 @@ CGame::CGame()
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
 
-    mDartTowerButton = make_shared<CTowerButton>(nullptr, this, 100, 1090, 300);
-
-    mBombTowerButton = make_shared<CTowerButton>(nullptr, this, 102, 1090, 400);
-
-    mRingTowerButton = make_shared<CTowerButton>(nullptr, this, 101, 1090, 200);
-
-   
 }
 
 /**
@@ -79,16 +73,14 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // from here on you are drawing virtual pixels
 
+    if (mGamePallette != nullptr) {
+        mGamePallette->Draw(graphics);
+    }
+
     // draw the level with this graphics context
     if (mCurrentLevel != nullptr) {
         mCurrentLevel->Draw(graphics);
     }
-
-    mGamePallette->Draw(graphics);
-
-    mDartTowerButton->Draw(graphics);
-    mBombTowerButton->Draw(graphics);
-    mRingTowerButton->Draw(graphics);
     
 }
 
@@ -112,13 +104,14 @@ void CGame::OnLButtonDown(int x, int y)
         mGrabbedTower = clickedItem;
 
     }
-    else 
+
+    // did we click an item in the game pallette?
+    clickedItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
+    if (clickedItem != nullptr)
     {
-        // temporary
-        shared_ptr<CTowerDart> newItem = make_shared<CTowerDart>(mCurrentLevel.get(), this);
-        newItem->SetLocation(oX, oY);
-        mGrabbedTower = newItem;
-        mCurrentLevel->Add(newItem);
+        clickedItem->SetLocation(oX, oY);
+        mGrabbedTower = clickedItem;
+        mCurrentLevel->Add(clickedItem);
     }
     
 

@@ -38,23 +38,6 @@ CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) {
 }
 
 
-/// Gets the image object from the game
-/// \param id The item's ID
-/// \returns The gdiplus bitmap
-std::shared_ptr<Gdiplus::Bitmap> CLevel::GetImage(int id) {
-    return mGame->GetImage(id);
-}
-
-/**
- * Adds a bitmap to the mImageMap and shows an error message box if appropriate
- * \param imageID The ID to associate with this image
- * \param imageFileName The file for the image to load
- * \returns true if successful, false if failure
- */
-bool CLevel::AddImage(int imageID, std::wstring imageFileName) {
-    return mGame->AddImage(imageID, imageFileName);
-}
-
 
 /// This function is called by a road tile when a baloon has exited the game.
 /// This means that points are lost.
@@ -424,7 +407,7 @@ void CLevel::Update(double elapsed)
             auto startingRoad = visitor.GetRoad();
 
             // spawn the balloon
-            auto balloon = make_shared<CItemBalloon>(this, mGame, mDefaultBalloonID);
+            auto balloon = make_shared<CItemBalloon>(this, mGame);
             mItems.push_back(balloon);
             startingRoad->AcceptBalloon(balloon);
             mTimeSinceSpawn = 0.0;

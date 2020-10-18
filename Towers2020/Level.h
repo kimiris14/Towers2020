@@ -48,10 +48,6 @@ public:
 	/// Starts the level
 	void Start() { mLevelActive = true; }
 
-	std::shared_ptr<Gdiplus::Bitmap> GetImage(int id);
-
-	bool AddImage(int imageID, std::wstring imageFileName);
-
 	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
 
 	std::shared_ptr<CItem> PickUpTower(int x, int y);
@@ -105,9 +101,6 @@ private:
 	/// The balloon spawn rate in balloons per second.
 	/// 3.0476 balloons per second ~= 42px in between balloons at a 128px/s balloon speed
 	double mBalloonSpawnRate = 3.0476;
-
-	/// The default balloon ID to spawn (44 is red)
-	int mDefaultBalloonID = 44;
 
 	/// Holds the total elapsed time since the level started in seconds
 	double mTotalElapsedTime = 0;

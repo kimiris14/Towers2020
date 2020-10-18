@@ -186,7 +186,7 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="ItemVisitorFindTile.h" />
     <ClInclude Include="ItemVisitorFindTower.h" />
-    <ClInclude Include="TowerButton.h" />
+    <ClInclude Include="ImageButton.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -216,7 +216,7 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="ItemVisitorFindTile.cpp" />
     <ClCompile Include="ItemVisitorFindTower.cpp" />
-    <ClCompile Include="TowerButton.cpp" />
+    <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GamePallette.cpp" />
     <ClCompile Include="ImageMap.cpp" />

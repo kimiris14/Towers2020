@@ -29,8 +29,8 @@ namespace Testing
 		* \param game The Game this item is a member of
 		* \param imageID The image id for this item
 		*/
-		CTowerDartMock(CLevel* level, CGame* game, int imageID)
-			: CTowerDart(level, game, imageID)
+		CTowerDartMock(CLevel* level, CGame* game)
+			: CTowerDart(level, game)
 		{
 
 			game->AddImage(towerDartId, dartImageName);
@@ -60,7 +60,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CTowerDartMock tower(&level, &game, towerDartId);
+			CTowerDartMock tower(&level, &game);
 		}
 	};
 }

@@ -90,13 +90,13 @@
     <ClInclude Include="ProjectileExplosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TowerButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ItemVisitorFindTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ItemVisitorFindTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,13 +164,13 @@
     <ClCompile Include="ProjectileExplosion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TowerButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ItemVisitorFindTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ItemVisitorFindTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

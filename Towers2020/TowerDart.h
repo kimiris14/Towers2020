@@ -38,14 +38,14 @@ public:
 
     void Fire();
 
+    /// dart id number
+    const int TowerImageID = 420;
+
 private:
 
     
     /// tower image filename
     const std::wstring TowerImageName = L"images/tower8.png";
-
-    /// dart id number
-    const int TowerImageID = 420; //not yet assigned
     
     /// Time in between each time the tower shoots darts in seconds
     double mTimeBetweenShots = 5;

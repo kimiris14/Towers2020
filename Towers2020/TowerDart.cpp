@@ -32,7 +32,7 @@ CTowerDart::CTowerDart(CLevel* level, CGame* game)
 	// not yet initialized. This fixes that
 	SetImageID(TowerImageID);
 
-	level->AddImage(TowerImageID, TowerImageName);
+	game->AddImage(TowerImageID, TowerImageName);
 }
 
 /** Handle updates for darts
