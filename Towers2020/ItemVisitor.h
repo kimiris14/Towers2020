@@ -19,6 +19,7 @@ class CProjectileDart;
 class CProjectile;
 class CTower;
 class CTowerDart;
+class CTowerRing;
 class CImageButton;
 
 
@@ -64,6 +65,10 @@ public:
     /** Visit a CTowerDart object
      * \param darttower The Dart Tower projectile we are visiting */
     virtual void VisitTowerDart(CTowerDart* darttower) {}
+
+    /** Visit a CTowerRing object
+    * \param ringtower The Ring Tower projectile we are visiting */
+    virtual void VisitTowerRing(CTowerRing* ringtower) {}
 
     /** Visit a CImageButton object
      * \param button The button we are visiting */

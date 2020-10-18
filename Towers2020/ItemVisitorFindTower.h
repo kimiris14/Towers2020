@@ -14,7 +14,7 @@
  // Forward references to all item types
 class CTower;
 class CTowerDart;
-
+class CTowerRing;
 
 /** Tower visitor class */
 class CItemVisitorFindTower : public CItemVisitor
@@ -34,7 +34,7 @@ public:
 
     virtual void VisitTower(CTower* tower);
     virtual void VisitTowerDart(CTowerDart* tower);
-
+    virtual void VisitTowerRing(CTowerRing* ringtower);
 
     /** Getter for the road tile that was found (if at all)
     * \returns A pointer to the found tile */
