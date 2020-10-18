@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;GamePallette;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;GamePallette;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;TowerRing;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -186,6 +186,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="CTowerDartTest.cpp" />
+    <ClCompile Include="CTowerRingTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
