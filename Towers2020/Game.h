@@ -56,7 +56,7 @@ public:
 private:
 
     /// This is where an item will be stored if it is grabbed with the mouse
-    std::shared_ptr<CTower> mGrabbedTower = nullptr;
+    std::shared_ptr<CItem> mGrabbedTower = nullptr;
 
     /// Game area in virtual pixels
     const static int Width = 1224;
@@ -82,11 +82,13 @@ private:
     /// A pointer to the game pallette. The game should "own" the pallette
     std::shared_ptr<CGamePallette> mGamePallette = nullptr;
 
-    /// pointer to the tower buttons
+    /// pointer to the dart tower button
     std::shared_ptr<CTowerButton> mDartTowerButton = nullptr;
-
+    
+    /// pointer to the bomb tower button
     std::shared_ptr<CTowerButton> mBombTowerButton = nullptr;
 
+    /// pointer to the ring tower button
     std::shared_ptr<CTowerButton> mRingTowerButton = nullptr;
 
 };

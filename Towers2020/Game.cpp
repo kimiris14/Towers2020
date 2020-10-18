@@ -104,11 +104,23 @@ void CGame::OnLButtonDown(int x, int y)
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
 
-    // temporary
-    shared_ptr<CTowerDart> newItem = make_shared<CTowerDart>(mCurrentLevel.get(), this);
-    newItem->SetLocation(oX, oY);
-    mGrabbedTower = newItem;
-    mCurrentLevel->Add(newItem);
+    // did we click an item in the level?
+    auto clickedItem = mCurrentLevel->PickUpTower((int)oX, (int)oY);
+    if (clickedItem != nullptr) {
+
+        // we grabbed an item. Set the pointer in Game
+        mGrabbedTower = clickedItem;
+
+    }
+    else 
+    {
+        // temporary
+        shared_ptr<CTowerDart> newItem = make_shared<CTowerDart>(mCurrentLevel.get(), this);
+        newItem->SetLocation(oX, oY);
+        mGrabbedTower = newItem;
+        mCurrentLevel->Add(newItem);
+    }
+    
 
 }
 
@@ -137,7 +149,7 @@ void CGame::OnMouseMove(int x, int y, UINT nFlags)
         {
 
             // attempt to place the tower, then release it
-            bool placeSuccessful = mGrabbedTower->Place();
+            bool placeSuccessful = ((CTower*)mGrabbedTower.get())->Place();
 
             // remove the tower from the level if the place was not good
             if (!placeSuccessful)

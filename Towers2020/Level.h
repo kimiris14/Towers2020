@@ -45,8 +45,6 @@ public:
 
 	void Accept(CItemVisitor* visitor);
 
-	bool PlaceNewTower(std::shared_ptr<CTower> tower);
-
 	/// Starts the level
 	void Start() { mLevelActive = true; }
 
@@ -55,6 +53,10 @@ public:
 	bool AddImage(int imageID, std::wstring imageFileName);
 
 	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
+
+	std::shared_ptr<CItem> PickUpTower(int x, int y);
+
+	std::shared_ptr<CItem> HitTest(int x, int y);
 
 	/// When an item needs to be deleted from the level, use this to remove it.
 	/// It waits until all of the updates are done before removing it, otherwise
@@ -83,6 +85,9 @@ private:
 
 	/// the number of tiles in the y-direction
 	int mLevelHeight = 16;
+
+	/// the spacing of each tile on the grid
+	int mTileSpacing = 64;
 
 	/// The tile index of the starting tile
 	int mStartingX = 0;

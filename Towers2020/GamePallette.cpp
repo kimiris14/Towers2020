@@ -26,16 +26,29 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
 */
 void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 {
+    //Font 
     FontFamily fontFamily(L"Arial");
-    Gdiplus::Font font(&fontFamily, 24);
+    
+    //Font size for Score
+    Gdiplus::Font font(&fontFamily, 30);
+
+    //Font size for actual score value
+    Gdiplus::Font font2(&fontFamily, 50);
 
     //Draw the score in white
-    SolidBrush white(Color (255, 255, 255));     
-    wstring score = L"Score: " + to_wstring(mScore);
-    graphics->DrawString(score.c_str(),  // String to draw
+    SolidBrush yellow(Color(255, 255, 0));
+    wstring scorew = L"Score";
+    graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        PointF(1050, 500),   // Where to draw (middle right of the screen)
-        &white);    // The brush to draw the text with
+        PointF(1050, 500),   // Draw to the center of the game palette
+        &yellow);    // The brush to draw the text with
 
+    //Draw the score Value in white
+    wstring score = to_wstring(mScore);
+    graphics->DrawString(score.c_str(),  // String to draw
+        -1,         // String length, -1 so it figures it out on its own
+        &font2,      // The font to use
+        PointF(1080, 550),   // Draw to the center of the game palette (and under Score)
+        &yellow);    // The brush to draw the text with
 }

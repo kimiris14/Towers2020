@@ -1,5 +1,5 @@
 /**
- * \file ItemVisitor.h
+ * \file ItemVisitorFindRoad.h
  *
  * \author PaulaRed
  *
@@ -17,7 +17,7 @@ class CItemTile;
 class CItemTileRoad;
 
 
-/** Tile visitor base class */
+/** Item visitor to find roads */
 class CItemVisitorFindRoad : public CItemVisitor
 {
 public:
