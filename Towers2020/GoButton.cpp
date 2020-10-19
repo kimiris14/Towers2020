@@ -21,7 +21,6 @@ const int goButtonImageID = 500;
 /**
 * Constructor
 * \param game The game object that this item is a part of
-* \param imageID The image ID for this item
 * \param x The x location for this item in pixels
 * \param y The y location for this item in pixels
 */
