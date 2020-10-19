@@ -49,9 +49,7 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
 
     // mTowerButtons.push_back(make_shared<CImageButton>(this, 101, 1090, 200));
 
-    auto tempGoButton = make_shared<CGoButton>(game, TowerButtonXLocation, GoButtonY);
-    int goButtonImageID = tempGoButton->GetImageID();
-    mGoButton = make_shared<CImageButton>(game, goButtonImageID, TowerButtonXLocation, GoButtonY);
+    mGoButton = make_shared<CGoButton>(game, TowerButtonXLocation, GoButtonY);
 }
 
 /**

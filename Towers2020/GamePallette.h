@@ -64,7 +64,7 @@ private:
     std::shared_ptr<CImageButton> mBombTowerButton = nullptr;
 
     /// a shared ptr to the go button
-    std::shared_ptr<CImageButton> mGoButton = nullptr;
+    std::shared_ptr<CGoButton> mGoButton = nullptr;
 
 };
 

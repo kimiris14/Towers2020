@@ -12,12 +12,6 @@
 
 using namespace std;
 
-/// go button image name
-const wstring goButtonImageName = L"images/button-go.png";
-
-/// go button id number
-const int goButtonImageID = 500;
-
 /**
 * Constructor
 * \param game The game object that this item is a part of
@@ -27,6 +21,6 @@ const int goButtonImageID = 500;
 CGoButton::CGoButton(CGame* game, int x, int y)
 	: CImageButton(game, goButtonImageID, x, y)
 {
-
+	SetImageID(goButtonImageID);
 	game->AddImage(goButtonImageID, goButtonImageName);
 }
