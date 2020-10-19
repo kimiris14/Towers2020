@@ -65,7 +65,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     Gdiplus::Font font(&fontFamily, 30);
 
     //Font size for actual score value
-    Gdiplus::Font font2(&fontFamily, 50);
+    Gdiplus::Font font2(&fontFamily, 40);
 
     //Draw the score in white
     SolidBrush yellow(Color(255, 255, 0));
@@ -81,7 +81,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font2,      // The font to use
-        PointF(1080, 550),   // Draw to the center of the game palette (and under Score)
+        PointF(1060, 550),   // Draw to the center of the game palette (and under Score)
         &yellow);    // The brush to draw the text with
 
 
