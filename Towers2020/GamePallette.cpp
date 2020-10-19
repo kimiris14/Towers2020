@@ -11,6 +11,7 @@
 #include "Item.h"
 #include "ImageButton.h"
 #include "TowerDart.h"
+#include "TowerRing.h"
 #include <string>
 
 using namespace Gdiplus;
@@ -22,6 +23,7 @@ const int TowerButtonXLocation = 1124;
 /// the y-location of the dart tower button in pixels
 const int DartTowerY = 200;
 
+const int RingTowerY = 100;
 /**
 * Constructor
 * \param game The Game this Game Pallette is a member of
@@ -33,6 +35,9 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
     int dartImageID = tempDartTower->GetImageID();
     mDartTowerButton = make_shared<CImageButton>(game, dartImageID, TowerButtonXLocation, DartTowerY);
 
+    auto tempRingTower = make_shared<CTowerRing>(nullptr, game);
+    int ringImageID = tempRingTower->GetImageID();
+    mRingTowerButton = make_shared<CImageButton>(game, ringImageID, TowerButtonXLocation, RingTowerY);
     // mTowerButtons.push_back(make_shared<CImageButton>(this, 102, 1090, 400));
 
     // mTowerButtons.push_back(make_shared<CImageButton>(this, 101, 1090, 200));
@@ -74,6 +79,8 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     // draw the buttons
     if (mDartTowerButton != nullptr)
         mDartTowerButton->Draw(graphics);
+    if (mRingTowerButton != nullptr)
+        mRingTowerButton->Draw(graphics);
 }
 
 
@@ -89,5 +96,8 @@ std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
         return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame);
     }
 
+    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y)) {
+        return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
+    }
     return nullptr;
 }
