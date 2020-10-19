@@ -103,13 +103,19 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 */
 std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
 {
-    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y)) {
+    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y)) 
+    {
         return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame);
     }
 
-    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y)) {
+    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y)) 
+    {
         return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
     }
 
+    if (mGoButton != nullptr && mGoButton->HitTest(x,y)) 
+    {
+        mGame->GetLevel()->Start();
+    }
     return nullptr;
 }
