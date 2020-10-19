@@ -23,6 +23,7 @@ const int TowerButtonXLocation = 1124;
 /// the y-location of the dart tower button in pixels
 const int DartTowerY = 200;
 
+/// the y-location of the ring tower button in pixels
 const int RingTowerY = 100;
 /**
 * Constructor
