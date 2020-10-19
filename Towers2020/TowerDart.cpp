@@ -12,12 +12,6 @@
 
 using namespace std;
 
-/// dart balloon filename
-const wstring dartImageName = L"images/tower8.png";
-
-/// dart id number
-///const int tower8 = ; //not yet assigned
-
 
 /**
 * Constructor

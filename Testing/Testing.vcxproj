@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;Game;GamePallette;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;TowerRing;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pch;Game;GamePallette;GoButton;ImageMap;Item;ItemBalloon;ItemTile;ItemTileRoad;ItemVisitor;ItemVisitorFindRoad;ItemVisitorFindTile;ItemVisitorFindTower;Level;Projectile;ProjectileDart;ProjectileExplosion;ProjectileRing;Tower;TowerDart;TowerRing;ImageButton;XmlNode;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

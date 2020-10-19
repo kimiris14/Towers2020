@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="GoButton.h" />
     <ClInclude Include="ItemVisitorFindTile.h" />
     <ClInclude Include="ItemVisitorFindTower.h" />
     <ClInclude Include="ImageButton.h" />
@@ -216,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="GoButton.cpp" />
     <ClCompile Include="ItemVisitorFindTile.cpp" />
     <ClCompile Include="ItemVisitorFindTower.cpp" />
     <ClCompile Include="ImageButton.cpp" />

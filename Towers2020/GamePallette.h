@@ -12,6 +12,7 @@
 
 class CGame;
 class CImageButton;
+class CGoButton;
 
 /**
  * Game pallette class that holds scoring mechanisms and draggable towers
@@ -61,6 +62,9 @@ private:
 
     /// a shared ptr to the dart tower button
     std::shared_ptr<CImageButton> mBombTowerButton = nullptr;
+
+    /// a shared ptr to the go button
+    std::shared_ptr<CGoButton> mGoButton = nullptr;
 
 };
 
