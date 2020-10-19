@@ -90,7 +90,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         mDartTowerButton->Draw(graphics);
     if (mRingTowerButton != nullptr)
         mRingTowerButton->Draw(graphics);
-    if (mGoButton != nullptr)
+    if (mGoButton != nullptr && mGame->GetLevel()->IsActive() == false)
         mGoButton->Draw(graphics);
 }
 
