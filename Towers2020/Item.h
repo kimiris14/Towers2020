@@ -72,6 +72,15 @@ public:
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) = 0;
 
+	/** Getter for the image ID
+	* \returns the image ID */
+	virtual int GetImageID() const { return mImageID; }
+
+
+	/** Setter for the image ID
+	* \param newID the new image ID for this object */
+	virtual void SetImageID(int newID) { mImageID = newID; }
+
 protected:
 	
 	/** Getter for mLevel for derived classes
@@ -82,10 +91,6 @@ protected:
 	* \returns pointer to the game object */
 	CGame* GetGame() const { return mGame; }
 
-
-	/** Getter for the image ID
-	* \returns the image ID */
-	int GetImageID() const { return mImageID; }
 
 private:
 

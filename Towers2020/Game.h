@@ -13,7 +13,6 @@
 #include "Item.h"
 #include "Level.h"
 #include "GamePallette.h"
-#include "TowerButton.h"
 
 
 /**
@@ -27,8 +26,6 @@ public:
     CGame();
     
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
-
-    void OnLButtonDown(int x, int y);
 
     bool AddImage(int imageID, std::wstring imageFile);
 
@@ -51,8 +48,15 @@ public:
     /// \param level The new level for the game
     void SetLevel(std::shared_ptr<CLevel> level) { mCurrentLevel = level; }
 
+    void OnLButtonDown(int x, int y);
+    void OnMouseMove(int x, int y, UINT nFlags);
+
 
 private:
+
+    /// This is where an item will be stored if it is grabbed with the mouse
+    std::shared_ptr<CItem> mGrabbedTower = nullptr;
+
     /// Game area in virtual pixels
     const static int Width = 1224;
 
@@ -76,12 +80,5 @@ private:
 
     /// A pointer to the game pallette. The game should "own" the pallette
     std::shared_ptr<CGamePallette> mGamePallette = nullptr;
-
-    /// pointer to the tower buttons
-    std::shared_ptr<CTowerButton> mDartTowerButton = nullptr;
-
-    std::shared_ptr<CTowerButton> mBombTowerButton = nullptr;
-
-    std::shared_ptr<CTowerButton> mRingTowerButton = nullptr;
 
 };

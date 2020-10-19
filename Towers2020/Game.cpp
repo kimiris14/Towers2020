@@ -10,6 +10,10 @@
 #include "Level.h"
 #include "XmlNode.h"
 #include "ImageMap.h"
+#include "Tower.h"
+#include "TowerDart.h"
+#include "ItemVisitorFindTile.h"
+#include "ImageButton.h"
 #include "Item.h"
 #include <memory>
 #include <map>
@@ -36,13 +40,6 @@ CGame::CGame()
     // load the default level
     mCurrentLevel = make_shared<CLevel>(this, DefaultLevel);
 
-    mDartTowerButton = make_shared<CTowerButton>(this, 100, 1090, 300);
-
-    mBombTowerButton = make_shared<CTowerButton>(this, 102, 1090, 400);
-
-    mRingTowerButton = make_shared<CTowerButton>(this, 101, 1090, 200);
-
-   
 }
 
 /**
@@ -76,16 +73,14 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     // from here on you are drawing virtual pixels
 
+    if (mGamePallette != nullptr) {
+        mGamePallette->Draw(graphics);
+    }
+
     // draw the level with this graphics context
     if (mCurrentLevel != nullptr) {
         mCurrentLevel->Draw(graphics);
     }
-
-    mGamePallette->Draw(graphics);
-
-    mDartTowerButton->Draw(graphics);
-    mBombTowerButton->Draw(graphics);
-    mRingTowerButton->Draw(graphics);
     
 }
 
@@ -97,10 +92,75 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 */
 void CGame::OnLButtonDown(int x, int y)
 {
+
+    // if the current level is active, then the mouse will do nothing.
+    if (mCurrentLevel->IsActive())
+        return;
+
     // convert the x and y clicked pixel coordinates into virtual pixel coordinates
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
 
+    // did we click an item in the level?
+    auto clickedItem = mCurrentLevel->PickUpTower((int)oX, (int)oY);
+    if (clickedItem != nullptr) {
+
+        // we grabbed an item. Set the pointer in Game
+        mGrabbedTower = clickedItem;
+
+    }
+
+    // did we click an item in the game pallette?
+    clickedItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
+    if (clickedItem != nullptr)
+    {
+        clickedItem->SetLocation(oX, oY);
+        mGrabbedTower = clickedItem;
+        mCurrentLevel->Add(clickedItem);
+    }
+    
+
+}
+
+/**
+* Handle a mouse movement on the game area
+* \param nFlags Flags associated with the mouse button press
+* \param x X location clicked on
+* \param y Y location clicked on
+*/
+void CGame::OnMouseMove(int x, int y, UINT nFlags)
+{
+    // convert the x and y clicked pixel coordinates into virtual pixel coordinates
+    double oX = (x - mXOffset) / mScale;
+    double oY = (y - mYOffset) / mScale;
+
+
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedTower != nullptr)
+    {
+        // If an item is being moved, we only continue to 
+        // move it while the left button is down.
+        if (nFlags & MK_LBUTTON)
+        {
+            mGrabbedTower->SetLocation(oX, oY);
+        }
+        else
+        {
+
+            // attempt to place the tower, then release it
+            bool placeSuccessful = ((CTower*)mGrabbedTower.get())->Place();
+
+            // remove the tower from the level if the place was not good
+            if (!placeSuccessful)
+                mCurrentLevel->RemoveItem(mGrabbedTower);
+
+            mGrabbedTower = nullptr;
+
+        }
+
+        // Force the screen to redraw
+        // Invalidate();
+    }
 }
 
 

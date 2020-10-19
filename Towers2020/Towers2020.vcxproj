@@ -184,7 +184,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
-    <ClInclude Include="TowerButton.h" />
+    <ClInclude Include="ItemVisitorFindTile.h" />
+    <ClInclude Include="ItemVisitorFindTower.h" />
+    <ClInclude Include="ImageButton.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -206,13 +208,17 @@
     <ClInclude Include="ItemTileRoad.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="Tower.h" />
+    <ClInclude Include="TowerBomb.h" />
     <ClInclude Include="TowerDart.h" />
+    <ClInclude Include="TowerRing.h" />
     <ClInclude Include="Towers2020.h" />
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="TowerButton.cpp" />
+    <ClCompile Include="ItemVisitorFindTile.cpp" />
+    <ClCompile Include="ItemVisitorFindTower.cpp" />
+    <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GamePallette.cpp" />
     <ClCompile Include="ImageMap.cpp" />
@@ -235,7 +241,9 @@
     <ClCompile Include="ProjectileDart.cpp" />
     <ClCompile Include="ProjectileRing.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="TowerBomb.cpp" />
     <ClCompile Include="TowerDart.cpp" />
+    <ClCompile Include="TowerRing.cpp" />
     <ClCompile Include="Towers2020.cpp" />
     <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>

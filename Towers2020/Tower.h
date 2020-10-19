@@ -7,14 +7,14 @@
  */
 
 #pragma once
-#include "Item.h"
+#include "ItemTile.h"
 
 
 
 /**
  * A base class for all towers
  */
-class CTower : public CItem
+class CTower : public CItemTile
 {
 public:
 	
@@ -26,7 +26,7 @@ public:
 	* \param imageID The image ID for this object
 	*/
 	CTower(CLevel* level, CGame* game, int imageID) :
-		CItem(level, game, imageID) {}
+		CItemTile(level, game, imageID) {}
 
 	/// Default constructor (disabled)
 	CTower() = delete;
@@ -39,14 +39,13 @@ public:
 
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-	virtual void SetLocation(double x, double y) override;
+	bool Place();
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTower(this); }
 
-private:
-
+protected:
 	/// The time until the next fire of projectiles
-	int mTimeTilFire = 0;  
+	double mTimeTillFire = 0;  
 };

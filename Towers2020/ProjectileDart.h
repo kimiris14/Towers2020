@@ -27,13 +27,23 @@ public:
     /// Destructor
     ~CProjectileDart() {}
 
-
-    virtual void Draw(Gdiplus::Graphics* graphics) override;
+    void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
 
     virtual void SetLocation(double x, double y) override;
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
+
+    double GetAngle();
+
+    void SetAngle();
+
+private:
+    /// Dart image's angle
+    double mAngle = 0;
+
+    /// Dart's number counter
+    int mAngleCounter = 0;
 };
 

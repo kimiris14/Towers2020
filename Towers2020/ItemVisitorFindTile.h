@@ -1,5 +1,5 @@
 /**
- * \file ItemVisitorFindRoad.h
+ * \file ItemVisitorFindTile.h
  *
  * \author PaulaRed
  *
@@ -17,28 +17,29 @@ class CItemTile;
 class CItemTileRoad;
 
 
-/** Item visitor to find roads */
-class CItemVisitorFindRoad : public CItemVisitor
+/** Tile visitor class to find a any given tile */
+class CItemVisitorFindTile : public CItemVisitor
 {
 public:
 
-    CItemVisitorFindRoad() = delete;
+    CItemVisitorFindTile() = delete;
 
     /** Constructor
      * \param x The target X value to find
      * \param y The target Y value to find
      */
-    CItemVisitorFindRoad(int x, int y) : mTargetX(x), mTargetY(y) {}
+    CItemVisitorFindTile(int x, int y) : mTargetX(x), mTargetY(y) {}
 
-    virtual ~CItemVisitorFindRoad() {}
+    virtual ~CItemVisitorFindTile() {}
 
 
     virtual void VisitRoad(CItemTileRoad* road);
+    virtual void VisitTile(CItemTile* tile);
 
 
-    /** Getter for the road tile that was found (if at all)
+    /** Getter for the  tile that was found (if at all)
     * \returns A pointer to the found tile */
-    CItemTileRoad* GetRoad() { return mRoad; }
+    CItemTile* GetTile() { return mTile; }
 
 private:
 
@@ -48,8 +49,8 @@ private:
     /// The target Y index we are looking for
     const int mTargetY;
 
-    /// If we find a road tile at the given index, this pointer will update
+    /// If we find a tile at the given index, this pointer will update
     /// to point to the road tile that was found
-    CItemTileRoad* mRoad = nullptr;
+    CItemTile* mTile = nullptr;
 
 };

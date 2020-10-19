@@ -35,8 +35,8 @@ void CItemTile::SetGridLocation(int x, int y)
 	mGridPositionX = x;
 	mGridPositionY = y;
 
-	double xPixelLocation = x * TileWidth;
-	double yPixelLocation = y * TileHeight;
+	double xPixelLocation = double(x) * TileWidth;
+	double yPixelLocation = double(y) * TileHeight;
 
 	SetLocation(xPixelLocation, yPixelLocation);
 }
@@ -76,3 +76,5 @@ void CItemTile::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 	SetGridLocation(xGrid, yGrid);
 }
+
+

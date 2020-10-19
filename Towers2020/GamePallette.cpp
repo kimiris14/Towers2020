@@ -6,18 +6,41 @@
 
 
 #include "pch.h"
+#include "Game.h"
 #include "GamePallette.h"
+#include "Item.h"
+#include "ImageButton.h"
+#include "TowerDart.h"
+#include "TowerRing.h"
 #include <string>
 
 using namespace Gdiplus;
 using namespace std;
 
+/// the x-location of the tower buttons on screen in pixels
+const int TowerButtonXLocation = 1124;
+
+/// the y-location of the dart tower button in pixels
+const int DartTowerY = 200;
+
+const int RingTowerY = 100;
 /**
 * Constructor
 * \param game The Game this Game Pallette is a member of
 */
 CGamePallette::CGamePallette(CGame* game) : mGame(game)
 {
+    // create the buttons and push them onto the button list
+    auto tempDartTower = make_shared<CTowerDart>(nullptr, game);
+    int dartImageID = tempDartTower->GetImageID();
+    mDartTowerButton = make_shared<CImageButton>(game, dartImageID, TowerButtonXLocation, DartTowerY);
+
+    auto tempRingTower = make_shared<CTowerRing>(nullptr, game);
+    int ringImageID = tempRingTower->GetImageID();
+    mRingTowerButton = make_shared<CImageButton>(game, ringImageID, TowerButtonXLocation, RingTowerY);
+    // mTowerButtons.push_back(make_shared<CImageButton>(this, 102, 1090, 400));
+
+    // mTowerButtons.push_back(make_shared<CImageButton>(this, 101, 1090, 200));
 }
 
 /**
@@ -26,16 +49,55 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
 */
 void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 {
+    //Font 
     FontFamily fontFamily(L"Arial");
-    Gdiplus::Font font(&fontFamily, 24);
+    
+    //Font size for Score
+    Gdiplus::Font font(&fontFamily, 30);
+
+    //Font size for actual score value
+    Gdiplus::Font font2(&fontFamily, 50);
 
     //Draw the score in white
-    SolidBrush white(Color (255, 255, 255));     
-    wstring score = L"Score: " + to_wstring(mScore);
-    graphics->DrawString(score.c_str(),  // String to draw
+    SolidBrush yellow(Color(255, 255, 0));
+    wstring scorew = L"Score";
+    graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        PointF(1050, 500),   // Where to draw (middle right of the screen)
-        &white);    // The brush to draw the text with
+        PointF(1050, 500),   // Draw to the center of the game palette
+        &yellow);    // The brush to draw the text with
 
+    //Draw the score Value in white
+    wstring score = to_wstring(mScore);
+    graphics->DrawString(score.c_str(),  // String to draw
+        -1,         // String length, -1 so it figures it out on its own
+        &font2,      // The font to use
+        PointF(1080, 550),   // Draw to the center of the game palette (and under Score)
+        &yellow);    // The brush to draw the text with
+
+
+    // draw the buttons
+    if (mDartTowerButton != nullptr)
+        mDartTowerButton->Draw(graphics);
+    if (mRingTowerButton != nullptr)
+        mRingTowerButton->Draw(graphics);
+}
+
+
+/**
+* Handle a click on the game area
+* \param x X location clicked on
+* \param y Y location clicked on
+* \returns A new tower object if one of the tower buttons was pressed
+*/
+std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
+{
+    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y)) {
+        return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame);
+    }
+
+    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y)) {
+        return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
+    }
+    return nullptr;
 }

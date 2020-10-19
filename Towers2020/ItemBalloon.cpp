@@ -13,22 +13,13 @@
 using namespace std;
 
 
-/// red balloon filename
-const wstring RedBalloonImageName = L"images/red-balloon.png";
-
-/// red balloon id number
-const int RedBalloonID = 44; //assigned
-
 /**
 * Constructor
 * \param level The Level this item is a member of
 * \param game The Game this item is a member of
-* \param imageID The image id for this item
 */
-CItemBalloon::CItemBalloon(CLevel *level, CGame *game, int imageID) : CItem(level,game,imageID)
-   
+CItemBalloon::CItemBalloon(CLevel *level, CGame *game) : CItem(level,game,RedBalloonID)
 {
-    level->AddImage(imageID, RedBalloonImageName);
+    SetImageID(RedBalloonID);  // base it is uninitialized during the call to CItem constructor
+    game->AddImage(RedBalloonID, RedBalloonImageName);
 }
-
-//Add Pop declaration here
