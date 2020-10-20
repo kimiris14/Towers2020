@@ -12,6 +12,7 @@
 #include "ImageButton.h"
 #include "TowerDart.h"
 #include "TowerRing.h"
+#include "TowerBomb.h"
 #include "GoButton.h"
 #include <string>
 
@@ -20,6 +21,9 @@ using namespace std;
 
 /// the x-location of the tower buttons on screen in pixels
 const int TowerButtonXLocation = 1124;
+
+/// the y-location of the bomb tower button in pixels
+const int BombTowerY = 300;
 
 /// the y-location of the dart tower button in pixels
 const int DartTowerY = 200;
@@ -44,6 +48,10 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
     auto tempRingTower = make_shared<CTowerRing>(nullptr, game);
     int ringImageID = tempRingTower->GetImageID();
     mRingTowerButton = make_shared<CImageButton>(game, ringImageID, TowerButtonXLocation, RingTowerY);
+
+    auto tempBombTower = make_shared<CTowerBomb>(nullptr, game);
+    int bombImageID = tempBombTower->GetImageID();
+    mBombTowerButton = make_shared<CImageButton>(game, bombImageID, TowerButtonXLocation, BombTowerY);
 
     // mTowerButtons.push_back(make_shared<CImageButton>(this, 102, 1090, 400));
 
@@ -73,7 +81,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        PointF(1050, 500),   // Draw to the center of the game palette
+        PointF(1050, 400),   // Draw to the center of the game palette
         &yellow);    // The brush to draw the text with
 
     //Draw the score Value in yellow
@@ -81,7 +89,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font2,      // The font to use
-        PointF(1060, 550),   // Draw to the center of the game palette (and under Score)
+        PointF(1060, 450),   // Draw to the center of the game palette (and under Score)
         &yellow);    // The brush to draw the text with
 
 
@@ -90,10 +98,11 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         mDartTowerButton->Draw(graphics);
     if (mRingTowerButton != nullptr)
         mRingTowerButton->Draw(graphics);
+    if (mBombTowerButton != nullptr)
+        mBombTowerButton->Draw(graphics);
     if (mGoButton != nullptr && mGame->GetLevel()->IsActive() == false)
         mGoButton->Draw(graphics);
 }
-
 
 /**
 * Handle a click on the game area
@@ -112,6 +121,11 @@ std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
     if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true)
     {
         return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
+    }
+
+    if (mBombTowerButton != nullptr && mBombTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true)
+    {
+        return make_shared<CTowerBomb>(mGame->GetLevel().get(), mGame);
     }
 
     if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTitleDisplayed() != true)
