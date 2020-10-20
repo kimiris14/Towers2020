@@ -19,7 +19,12 @@
 #include <memory>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <Windows.h>
+#include <chrono>
+#include <thread>
 
+using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
@@ -33,8 +38,14 @@ const wstring ImagesDirectory = L"images/";
 * \param game The game object that this level belongs to
 * \param filename The filename of the XML level definition file for this level
 */
-CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) {
+CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) 
+{
+    // grab the level number from the filename
+    levelNumber = filename[12];
+    mDisplayTitle = true;
+    mTowersDraggable = false;
     Load(filename);
+
 }
 
 
@@ -127,6 +138,7 @@ void CLevel::Load(std::wstring filename)
         shared_ptr<CXmlNode> root = CXmlNode::OpenDocument(filename);
 
         // Get the basic level configuration information
+
         mLevelWidth = root->GetAttributeIntValue(L"width", 0);
         mLevelHeight = root->GetAttributeIntValue(L"height", 0);
         mStartingX = root->GetAttributeIntValue(L"start-x", 0);
@@ -300,8 +312,30 @@ void CLevel::Clear()
  */
 void CLevel::Draw(Gdiplus::Graphics* graphics)
 {
-    for (auto item : mItems) {
+    for (auto item : mItems) 
+    {
         item->Draw(graphics);
+    }
+
+    // Draw the level title
+    if (mDisplayTitle)
+    {
+        //Font 
+        FontFamily fontFamily(L"Arial");
+
+        //Font size for title
+        Gdiplus::Font font(&fontFamily, 60);
+
+        //Draw the title in brown
+        SolidBrush brown(Color::Brown);
+
+        wstring levelw;
+        levelw = L"Level " + levelNumber + L" Begin";
+        graphics->DrawString(levelw.c_str(),  // String to draw
+            -1,         // String length, -1 so it figures it out on its own
+            &font,      // The font to use
+            PointF(levelStringX, levelTitleY),   // Draw to the center of the game palette
+            &brown);    // The brush to draw the text with
     }
 }
 
@@ -389,11 +423,19 @@ void CLevel::Add(shared_ptr<CItem> item)
 */
 void CLevel::Update(double elapsed)
 {
+    mTotalElapsedTime = mTotalElapsedTime + elapsed;
+
+    // if 2 seconds have passed, get rid of the level title display
+    if (mTotalElapsedTime > mDisplayTitleTime && mDisplayTitle == true)
+    {
+        // reset total elapsed time so now the total elapsed time keeps track of total play time
+        mDisplayTitle = false;
+        mTowersDraggable = true;
+        mTotalElapsedTime = 0;
+    }
 
     if (mLevelActive)
     {
-        mTotalElapsedTime = mTotalElapsedTime + elapsed;
-
         // check to see if we need to spawn a new balloon and reset the timer
         double secondsPerBalloon = 1.0 / mBalloonSpawnRate;
         mTimeSinceSpawn = mTimeSinceSpawn + elapsed;

@@ -46,22 +46,25 @@ public:
 
     /// A setter for the game's current level
     /// \param level The new level for the game
-    void SetLevel(std::shared_ptr<CLevel> level) { mCurrentLevel = level; }
+    void SetLevel(std::shared_ptr<CLevel> level, int levelNumber) { mCurrentLevel = level; mLevelNumber = levelNumber; }
+
+
+    void DrawLevelTitle(Gdiplus::Graphics* graphics);
 
     void OnLButtonDown(int x, int y);
     void OnMouseMove(int x, int y, UINT nFlags);
-
-
-private:
-
-    /// This is where an item will be stored if it is grabbed with the mouse
-    std::shared_ptr<CItem> mGrabbedTower = nullptr;
 
     /// Game area in virtual pixels
     const static int Width = 1224;
 
     /// Game area height in virtual pixels
     const static int Height = 1024;
+
+
+private:
+
+    /// This is where an item will be stored if it is grabbed with the mouse
+    std::shared_ptr<CItem> mGrabbedTower = nullptr;
 
     /// The game view's scale factor
     float mScale;
@@ -74,6 +77,9 @@ private:
 
     /// A pointer to the current level (may change later depending on how levels are stored)
     std::shared_ptr<CLevel> mCurrentLevel = nullptr;
+
+    /// The current level number
+    int mLevelNumber = 0;
 
     /// map that links image bitmaps to their respective image id
     std::map<int, std::shared_ptr<Gdiplus::Bitmap>> mImageMap;

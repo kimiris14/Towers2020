@@ -73,6 +73,21 @@ public:
 	/// \returns the width in grid tiles
 	int GetWidth() const { return mLevelWidth; }
 
+	/**
+	* Tells us if towers can be dragged or not
+	* \return true if towers can be dragged, false if not
+	*/
+	bool IsTowerDraggable() { return mTowersDraggable; }
+
+	/// the current level number
+	std::wstring levelNumber;
+
+	/// the y location for the level title
+	const int levelTitleY = 400;
+
+	/// the x location for the level title
+	const int levelStringX = 150;
+
 private:
 
 	/// All of the items to add to our game
@@ -115,6 +130,15 @@ private:
 
 	/// A boolean to determine when all of the balloons are gone
 	bool mLevelCompleted = false; 
+
+	/// a boolean for knowing when we display the level title
+	bool mDisplayTitle = true;
+
+	/// a boolean for knowing when towers are draggable
+	bool mTowersDraggable = false;
+
+	/// level titles are displayed for two seconds
+	int mDisplayTitleTime = 2;
 
 	/// Add all items that need to be deleted to this list during updates. 
 	/// Everything from this list is found and removed from mItems after

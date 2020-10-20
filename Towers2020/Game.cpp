@@ -18,6 +18,7 @@
 #include <memory>
 #include <map>
 #include <string>
+#include <Windows.h>
 
 using namespace Gdiplus;
 using namespace std;
@@ -81,7 +82,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     if (mCurrentLevel != nullptr) {
         mCurrentLevel->Draw(graphics);
     }
-    
 }
 
 
@@ -103,7 +103,8 @@ void CGame::OnLButtonDown(int x, int y)
 
     // did we click an item in the level?
     auto clickedItem = mCurrentLevel->PickUpTower((int)oX, (int)oY);
-    if (clickedItem != nullptr) {
+    if (clickedItem != nullptr) 
+    {
 
         // we grabbed an item. Set the pointer in Game
         mGrabbedTower = clickedItem;
@@ -221,7 +222,7 @@ std::shared_ptr<Gdiplus::Bitmap> CGame::GetImage(int imageID)
 
 
 /** Handle updates for animation
-* \param elapsed The time since the last update
+* \param elapsed The time since the last update in seconds
 */
 void CGame::Update(double elapsed)
 {

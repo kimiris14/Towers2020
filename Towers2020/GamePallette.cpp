@@ -76,7 +76,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         PointF(1050, 500),   // Draw to the center of the game palette
         &yellow);    // The brush to draw the text with
 
-    //Draw the score Value in white
+    //Draw the score Value in yellow
     wstring score = to_wstring(mScore);
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
@@ -103,17 +103,18 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 */
 std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
 {
-    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y)) 
+    // only make towers draggable if 2 seconds have passed
+    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTowerDraggable() == true) 
     {
-        return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame);
+        return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame );
     }
 
-    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y)) 
+    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTowerDraggable() == true)
     {
         return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
     }
 
-    if (mGoButton != nullptr && mGoButton->HitTest(x,y)) 
+    if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTowerDraggable() == true)
     {
         mGame->GetLevel()->Start();
     }

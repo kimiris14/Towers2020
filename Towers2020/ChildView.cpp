@@ -115,6 +115,7 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
+
 	CPaintDC paintDC(this);
 	CDoubleBufferDC dc(&paintDC); // device context for painting
 	Graphics graphics(dc.m_hDC);
@@ -173,9 +174,9 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 */
 void CChildView::OnLevelLevel0()
 {
-
 	auto newLevel = make_shared<CLevel>(&mGame, Level0);
-	mGame.SetLevel(newLevel);
+	int levelNumber = 0;
+	mGame.SetLevel(newLevel, levelNumber);
 
 }
 
@@ -185,7 +186,8 @@ void CChildView::OnLevelLevel0()
 void CChildView::OnLevelLevel1()
 {
 	auto newLevel = make_shared<CLevel>(&mGame, Level1);
-	mGame.SetLevel(newLevel);
+	int levelNumber = 1;
+	mGame.SetLevel(newLevel, levelNumber);
 }
 
 /**
@@ -194,7 +196,8 @@ void CChildView::OnLevelLevel1()
 void CChildView::OnLevelLevel2()
 {
 	auto newLevel = make_shared<CLevel>(&mGame, Level2);
-	mGame.SetLevel(newLevel);
+	int levelNumber = 2;
+	mGame.SetLevel(newLevel, levelNumber);
 }
 
 
