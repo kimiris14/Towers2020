@@ -77,7 +77,7 @@ public:
 	* Tells us if towers can be dragged or not
 	* \return true if towers can be dragged, false if not
 	*/
-	bool IsTowerDraggable() { return mTowersDraggable; }
+	bool IsTitleDisplayed() { return mDisplayTitle; }
 
 	/// the current level number
 	std::wstring levelNumber;
@@ -133,9 +133,6 @@ private:
 
 	/// a boolean for knowing when we display the level title
 	bool mDisplayTitle = true;
-
-	/// a boolean for knowing when towers are draggable
-	bool mTowersDraggable = false;
 
 	/// level titles are displayed for two seconds
 	int mDisplayTitleTime = 2;

@@ -43,7 +43,6 @@ CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game)
     // grab the level number from the filename
     levelNumber = filename[12];
     mDisplayTitle = true;
-    mTowersDraggable = false;
     Load(filename);
 
 }
@@ -430,7 +429,6 @@ void CLevel::Update(double elapsed)
     {
         // reset total elapsed time so now the total elapsed time keeps track of total play time
         mDisplayTitle = false;
-        mTowersDraggable = true;
         mTotalElapsedTime = 0;
     }
 

@@ -104,17 +104,17 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
 {
     // only make towers draggable if 2 seconds have passed
-    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTowerDraggable() == true) 
+    if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true) 
     {
         return make_shared<CTowerDart>(mGame->GetLevel().get(), mGame );
     }
 
-    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTowerDraggable() == true)
+    if (mRingTowerButton != nullptr && mRingTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true)
     {
         return make_shared<CTowerRing>(mGame->GetLevel().get(), mGame);
     }
 
-    if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTowerDraggable() == true)
+    if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTitleDisplayed() != true)
     {
         mGame->GetLevel()->Start();
     }
