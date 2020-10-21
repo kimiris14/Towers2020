@@ -92,6 +92,7 @@ protected:
 	CGame* GetGame() const { return mGame; }
 
 
+
 private:
 
 	double mX = 0;  ///< x location on the board (in pixels)

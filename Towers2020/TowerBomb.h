@@ -8,6 +8,11 @@
 
 #pragma once
 #include "Tower.h"
+
+
+/**
+ * Class for a bomb tower
+ */
 class CTowerBomb :
     public CTower
 {

@@ -8,6 +8,7 @@
 
 #pragma once
 #include "Projectile.h"
+#include "ImageMap.h"
 
  /**
   * Class to represent a dart in a level
@@ -27,17 +28,17 @@ public:
     /// Destructor
     ~CProjectileDart() {}
 
-    void Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY);
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     virtual void SetLocation(double x, double y) override;
-
+    
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
 
     double GetAngle();
 
-    void SetAngle();
+    void SetAngle(double angle);
 
 private:
     /// Dart image's angle
@@ -45,5 +46,11 @@ private:
 
     /// Dart's number counter
     int mAngleCounter = 0;
+
+    /// Dart's x position
+    int mXPos = 0;
+    
+    /// Dart's y position
+    int mYPos = 0;
 };
 

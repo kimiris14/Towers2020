@@ -94,8 +94,8 @@ std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
         }
 
         return hitItem;
-    } 
-    
+    }
+
     return nullptr;
 }
 
@@ -116,7 +116,7 @@ std::shared_ptr<CItem> CLevel::HitTest(int x, int y)
         }
     }
     return lastItem;
-    
+
 }
 
 
@@ -200,9 +200,9 @@ void CLevel::Load(std::wstring filename)
 
         // these booleans will tell us where to save the next road in the current road
         bool newNorth = false;
-        bool newEast  = false;
+        bool newEast = false;
         bool newSouth = false;
-        bool newWest  = false;
+        bool newWest = false;
 
         // next tile should be north (up one index)
         if (((prevType == L"NS") && (prevRoad->IsReversed())) ||
@@ -215,17 +215,17 @@ void CLevel::Load(std::wstring filename)
 
         // next tile should be south (down one index)
         else if (((prevType == L"NS") && (!prevRoad->IsReversed())) ||
-                 ((prevType == L"SE") && ( prevRoad->IsReversed())) ||
-                 ((prevType == L"SW") && ( prevRoad->IsReversed())))
+            ((prevType == L"SE") && (prevRoad->IsReversed())) ||
+            ((prevType == L"SW") && (prevRoad->IsReversed())))
         {
             currentY++;  // remember that in computer-land, pixels are from the top left, down
             newSouth = true;
         }
 
         // the next tile should be to the east (right one index)
-        else if (((prevType == L"EW") && ( prevRoad->IsReversed())) ||
-                 ((prevType == L"SE") && (!prevRoad->IsReversed())) ||
-                 ((prevType == L"NE") && (!prevRoad->IsReversed())))
+        else if (((prevType == L"EW") && (prevRoad->IsReversed())) ||
+            ((prevType == L"SE") && (!prevRoad->IsReversed())) ||
+            ((prevType == L"NE") && (!prevRoad->IsReversed())))
         {
             currentX++;
             newEast = true;
@@ -233,8 +233,8 @@ void CLevel::Load(std::wstring filename)
 
         // the next tile should be to the west (left one index)
         else if (((prevType == L"EW") && (!prevRoad->IsReversed())) ||
-                 ((prevType == L"SW") && (!prevRoad->IsReversed())) ||
-                 ((prevType == L"NW") && (!prevRoad->IsReversed())))
+            ((prevType == L"SW") && (!prevRoad->IsReversed())) ||
+            ((prevType == L"NW") && (!prevRoad->IsReversed())))
         {
             currentX--;
             newWest = true;
@@ -255,7 +255,7 @@ void CLevel::Load(std::wstring filename)
             if (newNorth)
             {
                 prevRoad->SetNextNorth(currRoad);
-                
+
                 // we're going north and entering from the south side, so the next tile is reversed if...
                 if ((currRoad->GetType() == L"NS"))
                     currRoad->SetReversedDirection(true);
@@ -369,7 +369,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
         auto itemOccupied = make_shared<CItemTile>(this, mGame, imageID);
         itemOccupied->SetOpen(false);
         item = itemOccupied;
-        
+
     }
 
     if (type == L"road")
@@ -416,7 +416,6 @@ void CLevel::Add(shared_ptr<CItem> item)
     mItems.push_back(item);
 }
 
-
 /** Handle updates for animation
 * \param elapsed The time since the last update
 */
@@ -454,12 +453,21 @@ void CLevel::Update(double elapsed)
         }
     }
 
+    // Add items to temporary vector to avoid changing a vector that is being iterated over
     for (auto item : mItems)
     {
-        item->Update(elapsed);
+        mDeferredAdds.push_back(item);
     }
-
+    mItems.clear();
+    for (auto items : mDeferredAdds)
+    {
+        items->Update(elapsed); // Call update
+        mItems.push_back(items); // Pushback back into mItems
+    }
+    mDeferredAdds.clear(); // clear vector
+ 
     // delete (remove) the items if necessary
+
     for (auto deleteMe : mItemsToDelete)
     {
         auto indexIter = find(mItems.begin(), mItems.end(), deleteMe);

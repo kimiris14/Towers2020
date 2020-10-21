@@ -63,6 +63,9 @@ private:
     /// a shared ptr to the dart tower button
     std::shared_ptr<CImageButton> mBombTowerButton = nullptr;
 
+    /// a shared ptr to the dart
+    std::shared_ptr<CProjectileDart> mDart = nullptr;
+
     /// a shared ptr to the go button
     std::shared_ptr<CGoButton> mGoButton = nullptr;
 

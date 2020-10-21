@@ -1,8 +1,8 @@
 /**
 * \file Level.h
-* 
+*
 * \author PaulaRed
-* 
+*
 * Class that represents a level
 */
 #pragma once
@@ -129,7 +129,7 @@ private:
 	bool mLevelActive = false;
 
 	/// A boolean to determine when all of the balloons are gone
-	bool mLevelCompleted = false; 
+	bool mLevelCompleted = false;
 
 	/// a boolean for knowing when we display the level title
 	bool mDisplayTitle = true;
@@ -151,5 +151,7 @@ private:
 	/// Stores the image ID and maps it to the type of road. This is used only during loading
 	std::map<int, std::wstring> mIDToRoad;
 
+	/// Temporary mItems
+	std::vector<std::shared_ptr<CItem> > mDeferredAdds;
 };
 

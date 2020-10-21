@@ -15,16 +15,16 @@
 #include "GamePallette.h"
 
 
-/**
- * The overall class that will handle all basic game functionality. This will store
- * levels and handle the overall structure of gameplay
- */
+ /**
+  * The overall class that will handle all basic game functionality. This will store
+  * levels and handle the overall structure of gameplay
+  */
 class CGame
 {
 public:
 
     CGame();
-    
+
     void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
     bool AddImage(int imageID, std::wstring imageFile);

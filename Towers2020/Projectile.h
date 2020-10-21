@@ -43,6 +43,8 @@ public:
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitProjectile(this); }
 
+	//virtual bool HitBalloon(CItemBalloon* balloon);
+
 private:
 
 };

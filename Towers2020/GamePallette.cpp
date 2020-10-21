@@ -14,6 +14,7 @@
 #include "TowerRing.h"
 #include "TowerBomb.h"
 #include "GoButton.h"
+#include "ProjectileDart.h"
 #include <string>
 
 using namespace Gdiplus;
@@ -131,6 +132,7 @@ std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
     if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTitleDisplayed() != true)
     {
         mGame->GetLevel()->Start();
+
     }
     return nullptr;
 }
