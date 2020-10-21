@@ -36,7 +36,7 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
 
-    virtual void Update(double elapsed) override;
+    //virtual void Update(double elapsed) override; <-- will fix
 
     double GetAngle();
 

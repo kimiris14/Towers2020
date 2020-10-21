@@ -75,7 +75,7 @@ void CProjectileDart::SetLocation(double x, double y)
 /**
  * Update function
  * \param elapsed Time elapsed
- */
+ *
 void CProjectileDart::Update(double elapsed)
 {
     CProjectile::Update(elapsed);
@@ -87,7 +87,7 @@ void CProjectileDart::Update(double elapsed)
     {
         SetActive(false);
     }
-}
+}*/
 
 /**
  * Get dart's current angle
