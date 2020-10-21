@@ -34,6 +34,13 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitRing(this); } 
 
+    ///Getter for the ring's radius
+    /// <returns> the ring radius in pixels </returns>
+    int GetRadius() { return mRingRadius; }
+
+    /// Set the ring's radius
+    /// <param name="rad"> radius to set </param>
+    void SetRadius(int rad) { mRingRadius = rad; }
     //Add ITERATOR
 
 private:

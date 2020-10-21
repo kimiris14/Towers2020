@@ -30,10 +30,10 @@ CProjectileRing::CProjectileRing(CLevel* level, CGame* game, int imageID) : CPro
 */
 void CProjectileRing::Draw(Gdiplus::Graphics* graphics)
 {
-	//need to instantiate object of Ring type and use mItems to update/draw ring item
-
-	//Pen pen(Color(255, 0, 0));
-	//graphics->DrawEllipse(&pen, 0, 0, mRingRadius, mRingRadius);
+	auto x = (int)this->GetX();
+	auto y = (int)this->GetY();
+	Pen pen(Color(255, 0, 0));
+	graphics->DrawEllipse(&pen, x - mRingRadius / 2 - 1, y - mRingRadius / 2 - 1, mRingRadius, mRingRadius);
 }
 
 //Update Function for Ring Animation

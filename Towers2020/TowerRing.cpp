@@ -6,11 +6,14 @@
 
 #include "pch.h"
 #include "TowerRing.h"
+#include "ProjectileRing.h"
 #include "ImageMap.h"
 #include "Game.h"
 
 using namespace std;
 
+/// ring id number
+const int ringID = 52; //assigned
 /**
 * Constructor
 * \param level The level object that this item is a part of
@@ -31,12 +34,16 @@ CTowerRing::CTowerRing(CLevel* level, CGame* game)
 */
 void CTowerRing::Update(double elapsed)
 {
-    mTimeTillFire -= elapsed;
-    if (mTimeTillFire <= 0)
+    if (GetLevel()->IsActive())
     {
-        mTimeTillFire += mTimeBetweenShots;
-        Fire();
+        mTimeTillFire -= elapsed;
+        if (mTimeTillFire <= 0)
+        {
+            mTimeTillFire += mTimeBetweenShots;
+            Fire();
+        }
     }
+
 }
 
 /**
@@ -44,4 +51,21 @@ void CTowerRing::Update(double elapsed)
 */
 void CTowerRing::Fire()
 {
+    auto ring = make_shared<CProjectileRing>(GetLevel(), GetGame(), ringID);
+    int radius = ring->GetRadius();
+    double rad = (double(radius));
+
+    double secondsPerRing = 1.0 / mGrowingSpeed;
+    mRingSpawnTime = mRingSpawnTime + GetLevel()->GetElapsedTime();
+
+    if ((mRingSpawnTime >= secondsPerRing))
+    {
+        rad = rad + (GetLevel()->GetElapsedTime()) * (mGrowingSpeed);
+        ring->SetRadius((int)rad);
+ 
+    }
+    ring->SetLocation(this->GetX(), this->GetY());
+
+    GetLevel()->Add(ring);
+    mRingSpawnTime = 0.0;
 }

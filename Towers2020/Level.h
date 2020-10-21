@@ -73,6 +73,9 @@ public:
 	/// \returns the width in grid tiles
 	int GetWidth() const { return mLevelWidth; }
 
+	/// Getter for the level's total elapsed time
+	/// <returns> the total elapsed time in seconds </returns>
+	double GetElapsedTime() const { return mTotalElapsedTime; }
 	/**
 	* Tells us if towers can be dragged or not
 	* \return true if towers can be dragged, false if not
