@@ -26,8 +26,8 @@ namespace Testing
 		* \param game The Game this item is a member of
 		* \param imageID The image id for this item
 		*/
-		CRingMock(CLevel* level, CGame* game, int imageID)
-			: CProjectileRing(level, game, imageID)
+		CRingMock(CLevel* level, CGame* game)
+			: CProjectileRing(level, game)
 		{
 		}
 
@@ -53,7 +53,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CProjectileRing ring(&level, &game, ringID);
+			CProjectileRing ring(&level, &game);
 		}
 
 	};

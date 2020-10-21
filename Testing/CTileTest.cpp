@@ -4,6 +4,8 @@
 #include "Item.h"
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
+#include "ItemVisitorFindRoad.h"
+#include "ItemVisitorFindTile.h"
 #include "CppUnitTest.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -118,7 +120,7 @@ namespace Testing
 			extern wchar_t g_dir[];
 			::SetCurrentDirectory(g_dir);
 		}
-		TEST_METHOD(SetLocationTests)
+		TEST_METHOD(TestSetLocation)
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
@@ -127,19 +129,19 @@ namespace Testing
 			CTileMock grass(&level, &game, grass1ID, grassType);
 			CTileMock trees(&level, &game, trees2ID, treesType);
 
-			road.SetGridLocation(100, 200);
-			house.SetGridLocation(110, 300);
-			grass.SetGridLocation(200, 100);
-			trees.SetGridLocation(300, 200);
+			road.SetGridLocation(1, 2);
+			house.SetGridLocation(1, 3);
+			grass.SetGridLocation(2, 1);
+			trees.SetGridLocation(3, 2);
 
-			Assert::AreEqual(road.GetGridX(), 100);
-			Assert::AreEqual(road.GetGridY(), 200);
-			Assert::AreEqual(house.GetGridX(), 110);
-			Assert::AreEqual(house.GetGridY(), 300);
-			Assert::AreEqual(grass.GetGridX(), 200);
-			Assert::AreEqual(grass.GetGridY(), 100);
-			Assert::AreEqual(trees.GetGridX(), 300);
-			Assert::AreEqual(trees.GetGridY(), 200);
+			Assert::AreEqual(road.GetGridX(), 1);
+			Assert::AreEqual(road.GetGridY(), 2);
+			Assert::AreEqual(house.GetGridX(), 1);
+			Assert::AreEqual(house.GetGridY(), 3);
+			Assert::AreEqual(grass.GetGridX(), 2);
+			Assert::AreEqual(grass.GetGridY(), 1);
+			Assert::AreEqual(trees.GetGridX(), 3);
+			Assert::AreEqual(trees.GetGridY(), 2);
 		}
 
 		TEST_METHOD(IsOpenTests)
@@ -155,6 +157,31 @@ namespace Testing
 			Assert::AreEqual(trees.IsOpen(), false);
 			Assert::AreEqual(house.IsOpen(), false);
 			Assert::AreEqual(grass.IsOpen(), true);
+		}
+
+		TEST_METHOD(TestLevelTileLoading)
+		{
+			// this loads level zero
+			CGame game;
+			CLevel level(&game, baseLevel);
+
+			// normal grass tile
+			CItemVisitorFindTile visitor1(0, 8);
+			level.Accept(&visitor1);
+			auto tile = visitor1.GetTile();
+			Assert::AreEqual(tile->GetGridX(), 0);
+			Assert::AreEqual(tile->GetGridY(), 8);
+			Assert::AreEqual(tile->GetImageID(), 7);
+			Assert::IsTrue(tile->IsOpen());
+
+			// find a south/east road tile
+			CItemVisitorFindRoad visitor2(4, 4);
+			level.Accept(&visitor2);
+			auto tile2 = visitor2.GetRoad();
+			Assert::AreEqual(tile2->GetGridX(), 4);
+			Assert::AreEqual(tile2->GetGridY(), 4);
+			Assert::AreEqual(tile2->GetImageID(), 3);
+			Assert::IsFalse(tile2->IsOpen());
 		}
 	};
 }

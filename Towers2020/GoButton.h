@@ -23,9 +23,9 @@ public:
 	CGoButton(CGame* game, int x, int y);
 
 	/// go button image name
-	const std::wstring goButtonImageName = L"images/button-go.png";
+	const std::wstring mGoButtonImageName = L"images/button-go.png";
 
 	/// go button id number
-	const int goButtonImageID = 500;
+	const int mGoButtonImageID = 500;
 };
 

@@ -19,8 +19,8 @@ using namespace std;
 * \param y The y location for this item in pixels
 */
 CGoButton::CGoButton(CGame* game, int x, int y)
-	: CImageButton(game, goButtonImageID, x, y)
+	: CImageButton(game, mGoButtonImageID, x, y)
 {
-	SetImageID(goButtonImageID);
-	game->AddImage(goButtonImageID, goButtonImageName);
+	SetImageID(mGoButtonImageID);
+	game->AddImage(mGoButtonImageID, mGoButtonImageName);
 }
