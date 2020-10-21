@@ -83,10 +83,10 @@ public:
 	std::wstring levelNumber;
 
 	/// the y location for the level title
-	const int levelTitleY = 400;
+	Gdiplus::REAL levelTitleY = 400;
 
 	/// the x location for the level title
-	const int levelStringX = 150;
+	Gdiplus::REAL levelStringX = 150;
 
 private:
 
