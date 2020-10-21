@@ -1,5 +1,5 @@
 /**
-* \file TowerRing.h
+* \file TowerBomb.h
 *
 * \author PaulaRed
 *

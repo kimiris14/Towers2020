@@ -2,6 +2,8 @@
  * \file TowerBomb.cpp
  *
  * \author PaulaRed
+ * 
+ * Class for a bomb tower
  */
 
 
