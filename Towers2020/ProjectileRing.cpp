@@ -57,6 +57,16 @@ void CProjectileRing::Update(double elapsed) {
 	if (mRingRadius > RingEndRadius) 
 	{
 		SetActive(false);
+
+	
+	}
+
+	// the ring is still active, so let's check for pops.
+	else
+	{
+
+
+
 	}
 
 }

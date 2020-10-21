@@ -55,7 +55,13 @@ CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game)
 void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
 {
     mItemsToDelete.push_back(balloon);
-    mGame->GetPallette()->DecrementScore(mPointsPerEscape);
+
+    // be absolutely certain that the balloon isn't popped before we decrement the score
+    if (!balloon->IsPopped())
+    {
+        mGame->GetPallette()->DecrementScore(mPointsPerEscape);
+
+    }
 }
 
 /// This searches the playing area for a clicked tower. If a tower object was

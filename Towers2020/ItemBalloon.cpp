@@ -23,3 +23,26 @@ CItemBalloon::CItemBalloon(CLevel *level, CGame *game) : CItem(level,game,RedBal
     SetImageID(RedBalloonID);  // base it is uninitialized during the call to CItem constructor
     game->AddImage(RedBalloonID, RedBalloonImageName);
 }
+
+/**
+* Draw the balloon only if it is unpopped
+* \param graphics The graphics context to draw on
+*/
+void CItemBalloon::Draw(Gdiplus::Graphics* graphics)
+{
+    if (!mIsPopped)
+    {
+        CItem::Draw(graphics);
+    }
+}
+
+/// This function "pops" the balloon
+/// \param the number of points that should be associated with this pop
+void CItemBalloon::Pop(int score)
+{
+    // the if statement is here to protect from lag causing a balloon to be popped more than once
+    if (mIsPopped == false) {
+        mIsPopped = true;
+        GetGame()->GetPallette()->IncrementScore(score);
+    }
+}

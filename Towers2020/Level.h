@@ -105,7 +105,7 @@ private:
 	/// the number of tiles in the y-direction
 	int mLevelHeight = 16;
 
-	/// the spacing of each tile on the grid
+	/// the spacing of each tile on the grid in pixels
 	int mTileSpacing = 64;
 
 	/// The tile index of the starting tile
