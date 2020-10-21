@@ -53,10 +53,6 @@ private:
 
     /// The distance from the tower
     double mT = 20;
-
-    double mSpeedX = 3.0;
-
-    int mAngleCount = 0;
 };
 
 
