@@ -10,43 +10,10 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace Testing
 {
-	/// red balloon filename
-	const std::wstring redBalloonImageName = L"images/red-balloon.png";
-
-	/// red balloon id number
-	const int redBalloonID = 44;
-
 	/// The basic level for testing
 	const std::wstring baseLevel = L"levels/level0.xml";
 
-	/** Mock class for testing CTile */
-	class CItemBalloonMock : public CItemBalloon
-	{
-	public:
-
-		/**
-		* Constructor
-		* \param level, the level that this game item is a part of
-		* \param game, the game this item is a part of
-		* \param imageID The image id for this item
-		*/
-		CItemBalloonMock(CLevel* level, CGame* game)
-			: CItemBalloon(level, game)
-		{
-			SetImageID(redBalloonID);  
-			game->AddImage(redBalloonID, redBalloonImageName);
-		}
-
-		/** Draw the item
-		 * \param graphics The graphics context to draw on */
-		virtual void Draw(Gdiplus::Graphics* graphics) {}
-
-		/** Accept a visitor
-		* \param visitor The visitor we accept */
-		virtual void Accept(CItemVisitor* visitor) override { }
-
-	};
-
+	/**Mock visitor class for testing*/
 	class CTestVisitor : public CItemVisitor
 	{
 	public:
@@ -66,19 +33,35 @@ namespace Testing
 			::SetCurrentDirectory(g_dir);
 		}
 
-		TEST_METHOD(ItemVisitorTests)
+		TEST_METHOD(BalloonVisitorTest)
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			// add balloons to the game
-			CItemBalloonMock balloon(&level, &game);
-			CItemBalloonMock balloon2(&level, &game);
-			CItemBalloonMock balloon3(&level, &game);
-			CItemBalloonMock balloon4(&level, &game);
+
+			// clear level and add balloons to the game
+			level.Clear();
+
+			auto balloon1 = std::make_shared<CItemBalloon>(&level, &game);
+			auto balloon2 = std::make_shared<CItemBalloon>(&level, &game);
+			auto balloon3 = std::make_shared<CItemBalloon>(&level, &game);
+			auto balloon4 = std::make_shared<CItemBalloon>(&level, &game);
+			
+			level.Add(balloon1);
+			level.Add(balloon2);
+			level.Add(balloon3);
+			level.Add(balloon4);
 
 			CTestVisitor visitor;
 			level.Accept(&visitor);
 			Assert::AreEqual(4, visitor.mNumBalloons);
+
+			// add another item and make sure it is not counted as a balloon
+			auto house1 = std::make_shared<CItemTile>(&level, &game, 11);
+			level.Add(house1);
+
+			CTestVisitor visitor2;
+			level.Accept(&visitor2);
+			Assert::AreEqual(4, visitor2.mNumBalloons);
 
 		}
 
