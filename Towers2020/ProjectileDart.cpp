@@ -22,7 +22,7 @@ const int dartID = 51; //assigned
 const double RtoD = 57.2957795;
 
 /// Pi
-const double pi = 3.14159265358979323846;
+const double Pi = 3.14159265358979323846;
 
  /**
  * Constructor
@@ -32,7 +32,9 @@ const double pi = 3.14159265358979323846;
  */
 CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
 {
-	game->AddImage(dartID, dartImageName);
+    SetImageID(dartID);
+ 	game->AddImage(dartID, dartImageName);
+    
 }
 
 /**
@@ -40,19 +42,23 @@ CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CPro
  * variable mAngle, which is the rotation in radians.
  *
  * @param graphics The graphics context to draw on.
- * @param offsetX An X offset added to the position of the dart.
- * @param offsetY A Y offset added to the position of the dart.
  */
-void CProjectileDart::Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY)
+void CProjectileDart::Draw(Gdiplus::Graphics* graphics)
 {
-    /*int wid = mImage->GetWidth();
-    int hit = mImage->GetHeight();
-    auto save = graphics->Save();
-    graphics->TranslateTransform((REAL)(GetX() + offsetX),
-        (REAL)(GetY() + offsetY));
-    graphics->RotateTransform((REAL)(mAngle * RtoD));
-    graphics->DrawImage(mImage.get(), 0, 0, wid, hit);
-    graphics->Restore(save);*/
+    shared_ptr<Bitmap> dartImage = GetGame()->GetImage(dartID);
+    if (dartImage != nullptr)
+    {
+        int wid = dartImage->GetWidth();
+        int hit = dartImage->GetHeight();
+        auto offsetX = wid / 2;
+        auto offsetY = hit / 2;
+        auto save = graphics->Save();
+        graphics->TranslateTransform((REAL)(mXPos - wid),
+            (REAL)(mYPos - hit));
+        graphics->RotateTransform((REAL)(mAngle * RtoD));
+        graphics->DrawImage(dartImage.get(), offsetX, offsetY, wid, hit);
+        graphics->Restore(save);
+    }
 }
 
 /**
@@ -62,6 +68,8 @@ void CProjectileDart::Draw(Gdiplus::Graphics* graphics, int offsetX, int offsetY
 */
 void CProjectileDart::SetLocation(double x, double y)
 {
+    mXPos = (int)x;
+    mYPos = (int)y;
 }
 
 /**
@@ -75,39 +83,9 @@ double CProjectileDart::GetAngle()
 
 /** 
  * Set mAngle
+ * \param angle Angle to be set
  */
-void CProjectileDart::SetAngle()
+void CProjectileDart::SetAngle(double angle)
 {
-    if (mAngle == 0)
-    {
-        mAngle = pi / 4;
-    }
-    else if (mAngle == (pi / 4))
-    {
-        mAngle = pi / 2;
-    }
-    else if (mAngle == (pi / 2))
-    {
-        mAngle = (3 * pi) / 4;
-    }
-    else if (mAngle == ((3 * pi) / 4))
-    {
-        mAngle = pi;
-    }
-    else if (mAngle == pi)
-    {
-        mAngle = (5 * pi) / 4;
-    }
-    else if (mAngle == ((5 * pi) / 4))
-    {
-        mAngle = (3 * pi) / 2;
-    }
-    else if (mAngle == ((3 * pi) / 2))
-    {
-        mAngle = (7 * pi) / 4;
-    }
-    else if (mAngle == ((7 * pi) / 4))
-    {
-        mAngle = 0;
-    }
+    mAngle = angle;
 }

@@ -9,7 +9,9 @@
 #pragma once
 #include "Tower.h"
 #include "ItemVisitor.h"
+#include "ProjectileDart.h"
 
+#include <vector>
 
 /**
  * Class for a dart tower
@@ -42,7 +44,6 @@ public:
     const int TowerImageID = 420;
 
 private:
-
     
     /// tower image filename
     const std::wstring TowerImageName = L"images/tower8.png";
@@ -50,6 +51,15 @@ private:
     /// Time in between each time the tower shoots darts in seconds
     double mTimeBetweenShots = 5;
 
+    /// Dart Tower image
+    std::unique_ptr<Gdiplus::Bitmap> mDartTowerImage;
+
+    /// The distance from the tower
+    double mT = 20;
+
+    double mSpeedX = 3.0;
+
+    int mAngleCount = 0;
 };
 
 

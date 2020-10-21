@@ -1,8 +1,8 @@
 /**
 * \file Level.h
-* 
+*
 * \author PaulaRed
-* 
+*
 * Class that represents a level
 */
 #pragma once
@@ -73,6 +73,9 @@ public:
 	/// \returns the width in grid tiles
 	int GetWidth() const { return mLevelWidth; }
 
+	/// Getter for the level's total elapsed time
+	/// <returns> the total elapsed time in seconds </returns>
+	double GetElapsedTime() const { return mTotalElapsedTime; }
 	/**
 	* Tells us if towers can be dragged or not
 	* \return true if towers can be dragged, false if not
@@ -129,7 +132,7 @@ private:
 	bool mLevelActive = false;
 
 	/// A boolean to determine when all of the balloons are gone
-	bool mLevelCompleted = false; 
+	bool mLevelCompleted = false;
 
 	/// a boolean for knowing when we display the level title
 	bool mDisplayTitle = true;
@@ -151,5 +154,7 @@ private:
 	/// Stores the image ID and maps it to the type of road. This is used only during loading
 	std::map<int, std::wstring> mIDToRoad;
 
+	/// Temporary mItems
+	std::vector<std::shared_ptr<CItem> > mDeferredAdds;
 };
 

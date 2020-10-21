@@ -55,7 +55,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
-    
+
     //
     // Automatic Scaling
     //
@@ -82,6 +82,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     if (mCurrentLevel != nullptr) {
         mCurrentLevel->Draw(graphics);
     }
+
 }
 
 
@@ -119,7 +120,7 @@ void CGame::OnLButtonDown(int x, int y)
         mGrabbedTower = clickedItem;
         mCurrentLevel->Add(clickedItem);
     }
-    
+
 
 }
 

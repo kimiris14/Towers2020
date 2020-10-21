@@ -86,7 +86,7 @@ namespace Testing
 			Assert::AreEqual(-107, item.GetY(), 0.0001);
 		}
 
-		TEST_METHOD(TestCFishBetaHitTest)
+		TEST_METHOD(TestCItemHitTest)
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
