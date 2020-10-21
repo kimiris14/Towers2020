@@ -38,7 +38,7 @@ public:
 
     void Fire();
 
-    /// ring tower id number
+    /// ring tower image id number
     const int TowerRingImageID = 422;
 
 private:
@@ -47,18 +47,12 @@ private:
     /// tower image filename
     const std::wstring TowerRingImageName = L"images/tower-rings.png";
 
+
     /// Time in between each time the tower shoots ring in seconds
     double mTimeBetweenShots = 5;
 
     /// Time till the ring can fire after level has began in seconds
     double mTimeTillFire = 5;
 
-    /// Ring growing speed in pixels per second
-    //double mGrowingSpeed = 3.125;
-    double mGrowingSpeed = 10.188;
-    /// <summary>
-    /// Spawn time for ring to show in window in seconds
-    /// </summary>
-    double mRingSpawnTime = 0;
 };
 

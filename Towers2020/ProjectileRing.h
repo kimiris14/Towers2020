@@ -17,7 +17,7 @@ class CProjectileRing :
     public CProjectile
 {
 public:
-    CProjectileRing(CLevel* level, CGame* game, int imageID);
+    CProjectileRing(CLevel* level, CGame* game);
 
     /// Default constructor (disabled)
     CProjectileRing() = delete;
@@ -41,10 +41,26 @@ public:
     /// Set the ring's radius
     /// <param name="rad"> radius to set </param>
     void SetRadius(int rad) { mRingRadius = rad; }
-    //Add ITERATOR
+
+    virtual void Update(double elapsed);
+
+    double GetGrowingSpeed() { return mGrowingSpeed; }
 
 private:
-    /// Radius of ring projectile
-    int mRingRadius = 10;
+
+    /// the initial radius of the ring in pixels
+    const double RingInitialRadius = 10;
+
+    /// the max radius of the ring in pixels
+    const double RingEndRadius = 100;
+
+    /// the current radius of the ring in pixels
+    double mRingRadius = 0;
+
+    /// This image ID is arbitrary, since the ring is not drawn by an image.
+    const int RingImageID = 0;
+
+    /// Ring radius growing speed in pixels per second
+    double mGrowingSpeed = 200;
 };
 
