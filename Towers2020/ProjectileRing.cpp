@@ -11,16 +11,13 @@
 
 using namespace Gdiplus;
 
- /// ring id number
-const int ringID = 52; //assigned
 
  /**
  * Constructor
  * \param level The Level this ring is a member of
  * \param game The Game this ring is a member of
- * \param imageID The image id for this ring
  */
-CProjectileRing::CProjectileRing(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileRing::CProjectileRing(CLevel* level, CGame* game) : CProjectile(level, game, RingImageID)
 {
 }
 
@@ -30,10 +27,36 @@ CProjectileRing::CProjectileRing(CLevel* level, CGame* game, int imageID) : CPro
 */
 void CProjectileRing::Draw(Gdiplus::Graphics* graphics)
 {
-	auto x = (int)this->GetX();
-	auto y = (int)this->GetY();
-	Pen pen(Color(255, 0, 0), 2);
-	graphics->DrawEllipse(&pen, x - mRingRadius / 2 - 1, y - mRingRadius / 2 - 1, mRingRadius, mRingRadius);
+
+	// only draw the ring if it's still active
+	if (IsActive())
+	{
+		// calculate the upper corner of the ring to draw at
+		int x = (int)GetX() - (int)mRingRadius;
+		int y = (int)GetY() - (int)mRingRadius;
+		Pen pen(Color(255, 0, 0), 2); // red ring
+
+		// the radius is multiplied by two to get the total width and height of the elipse
+		graphics->DrawEllipse(&pen, x, y, (int)mRingRadius * 2, (int)mRingRadius * 2);
+
+	}
 }
 
-//Update Function for Ring Animation
+
+/// Balloon class version of the time update
+/// \param elapsed The number of seconds elapsed since last draw
+void CProjectileRing::Update(double elapsed) {
+
+	// this updates the total elapsed time for the projectile
+	CProjectile::Update(elapsed);
+
+	// now, ring specific updates.
+	mRingRadius = GetTotalElapsed() * mGrowingSpeed + RingInitialRadius;
+
+	// if the radius is larger than the maximum, this ring is no longer active
+	if (mRingRadius > RingEndRadius) 
+	{
+		SetActive(false);
+	}
+
+}

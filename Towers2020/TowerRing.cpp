@@ -12,8 +12,7 @@
 
 using namespace std;
 
-/// ring id number
-const int ringID = 52; //assigned
+
 /**
 * Constructor
 * \param level The level object that this item is a part of
@@ -39,6 +38,7 @@ void CTowerRing::Update(double elapsed)
         mTimeTillFire -= elapsed;
         if (mTimeTillFire <= 0)
         {
+            // reset the timer and shoot the ring
             mTimeTillFire += mTimeBetweenShots;
             Fire();
         }
@@ -47,25 +47,15 @@ void CTowerRing::Update(double elapsed)
 }
 
 /**
-* Fire ring
+* Fire a new ring and place it into the level
 */
 void CTowerRing::Fire()
 {
-    auto ring = make_shared<CProjectileRing>(GetLevel(), GetGame(), ringID);
-    int radius = ring->GetRadius();
-    double rad = (double(radius));
+    auto ring = make_shared<CProjectileRing>(GetLevel(), GetGame());
 
-    double secondsPerRing = 1.0 / ring->GetGrowingSpeed();
-    mRingSpawnTime = mRingSpawnTime + GetLevel()->GetElapsedTime();
+    // the ring should be centered over the tower
+    ring->SetLocation(GetX(), GetY());
 
-    if ((mRingSpawnTime >= secondsPerRing))
-    {
-        rad = (GetLevel()->GetElapsedTime()) * (ring->GetGrowingSpeed());
-        ring->SetRadius((int)rad);
-
-    }
-    ring->SetLocation(this->GetX(), this->GetY());
-
+    // Adds the ring to the level's mItems
     GetLevel()->Add(ring);
-    mRingSpawnTime = 0.0;
 }
