@@ -36,7 +36,7 @@ public:
 
     ///Getter for the ring's radius
     /// <returns> the ring radius in pixels </returns>
-    int GetRadius() { return mRingRadius; }
+    double GetRadius() { return mRingRadius; }
 
     /// Set the ring's radius
     /// <param name="rad"> radius to set </param>
@@ -44,6 +44,9 @@ public:
 
     virtual void Update(double elapsed);
 
+    /** Getter for the growing speed
+    * \return mGrowingSpeed 
+    */
     double GetGrowingSpeed() { return mGrowingSpeed; }
 
 private:

@@ -73,6 +73,23 @@ void CProjectileDart::SetLocation(double x, double y)
 }
 
 /**
+ * Update function
+ * \param elapsed Time elapsed
+ */
+void CProjectileDart::Update(double elapsed)
+{
+    CProjectile::Update(elapsed);
+    
+    mXPos = GetTotalElapsed() + mSpeedX * elapsed;
+    mYPos = GetTotalElapsed() + mSpeedY * elapsed;
+
+    if (mDistanceFromTower > 90)
+    {
+        SetActive(false);
+    }
+}
+
+/**
  * Get dart's current angle
  * \return mAngle
  */

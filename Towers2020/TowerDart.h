@@ -51,15 +51,8 @@ private:
     /// Time in between each time the tower shoots darts in seconds
     double mTimeBetweenShots = 5;
 
-    /// Dart Tower image
-    std::unique_ptr<Gdiplus::Bitmap> mDartTowerImage;
-
     /// The distance from the tower
     double mT = 20;
-
-    double mSpeedX = 3.0;
-
-    int mAngleCount = 0;
 };
 
 
