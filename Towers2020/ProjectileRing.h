@@ -41,10 +41,20 @@ public:
     /// Set the ring's radius
     /// <param name="rad"> radius to set </param>
     void SetRadius(int rad) { mRingRadius = rad; }
+
+    /// Balloon class version of the time update
+   /// \param elapsed The number of seconds elapsed since last draw
+    virtual void Update(double elapsed) { mRingRadius = elapsed * mGrowingSpeed; }
+
+    double GetGrowingSpeed() { return mGrowingSpeed; }
     //Add ITERATOR
 
 private:
     /// Radius of ring projectile
     int mRingRadius = 10;
+
+    /// Ring growing speed in pixels per second
+    //double mGrowingSpeed = 3.125;
+    double mGrowingSpeed = 10.188;
 };
 
