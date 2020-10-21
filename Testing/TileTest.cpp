@@ -113,7 +113,11 @@ namespace Testing
 	{
 	public:
 
-
+		TEST_METHOD_INITIALIZE(methodName)
+		{
+			extern wchar_t g_dir[];
+			::SetCurrentDirectory(g_dir);
+		}
 		TEST_METHOD(SetLocationTests)
 		{
 			CGame game;
