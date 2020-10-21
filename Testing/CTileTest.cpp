@@ -109,7 +109,7 @@ namespace Testing
 		virtual void Accept(CItemVisitor* visitor) override { }
 	};
 
-	TEST_CLASS(TileTest)
+	TEST_CLASS(CTileTest)
 	{
 	public:
 

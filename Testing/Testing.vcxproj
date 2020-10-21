@@ -202,8 +202,9 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="VisitorTest.cpp" />
-    <ClCompile Include="TileTest.cpp" />
+    <ClCompile Include="CDisplayLevelTest.cpp" />
+    <ClCompile Include="CVisitorTest.cpp" />
+    <ClCompile Include="CTileTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

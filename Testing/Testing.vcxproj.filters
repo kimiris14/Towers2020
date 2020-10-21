@@ -45,10 +45,13 @@
     <ClCompile Include="CTowerRingTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileTest.cpp">
+    <ClCompile Include="CDisplayLevelTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisitorTest.cpp">
+    <ClCompile Include="CVisitorTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,6 +13,9 @@ namespace Testing
 	/// The basic level for testing
 	const std::wstring baseLevel = L"levels/level0.xml";
 
+	/// house image ID
+	const int houseID = 11;
+
 	/**Mock visitor class for testing*/
 	class CTestVisitor : public CItemVisitor
 	{
@@ -23,7 +26,7 @@ namespace Testing
 	};
 
 
-	TEST_CLASS(VisitorTest)
+	TEST_CLASS(CVisitorTest)
 	{
 	public:
 
@@ -56,7 +59,7 @@ namespace Testing
 			Assert::AreEqual(4, visitor.mNumBalloons);
 
 			// add another item and make sure it is not counted as a balloon
-			auto house1 = std::make_shared<CItemTile>(&level, &game, 11);
+			auto house1 = std::make_shared<CItemTile>(&level, &game, houseID);
 			level.Add(house1);
 
 			CTestVisitor visitor2;
