@@ -21,6 +21,7 @@ class CTower;
 class CTowerDart;
 class CTowerRing;
 class CTowerBomb;
+class CTowerOwen;
 class CImageButton;
 
 
@@ -74,6 +75,10 @@ public:
     /** Visit a CTowerBomb object
     * \param bombtower The Bomb Tower we are visiting */
     virtual void VisitTowerBomb(CTowerBomb* bombtower) {}
+
+    /** Visit a CTowerOwen object
+    * \param owentower The Owen Tower we are visiting */
+    virtual void VisitTowerOwen(CTowerOwen* owentower) {}
 
     /** Visit a CImageButton object
      * \param button The button we are visiting */
