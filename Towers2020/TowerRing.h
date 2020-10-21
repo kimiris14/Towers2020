@@ -53,9 +53,7 @@ private:
     /// Time till the ring can fire after level has began in seconds
     double mTimeTillFire = 5;
 
-    /// Ring growing speed in pixels per second
-    //double mGrowingSpeed = 3.125;
-    double mGrowingSpeed = 10.188;
+
     /// <summary>
     /// Spawn time for ring to show in window in seconds
     /// </summary>

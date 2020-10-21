@@ -32,7 +32,7 @@ void CProjectileRing::Draw(Gdiplus::Graphics* graphics)
 {
 	auto x = (int)this->GetX();
 	auto y = (int)this->GetY();
-	Pen pen(Color(255, 0, 0));
+	Pen pen(Color(255, 0, 0), 2);
 	graphics->DrawEllipse(&pen, x - mRingRadius / 2 - 1, y - mRingRadius / 2 - 1, mRingRadius, mRingRadius);
 }
 

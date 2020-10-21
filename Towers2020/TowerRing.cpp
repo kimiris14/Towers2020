@@ -55,14 +55,14 @@ void CTowerRing::Fire()
     int radius = ring->GetRadius();
     double rad = (double(radius));
 
-    double secondsPerRing = 1.0 / mGrowingSpeed;
+    double secondsPerRing = 1.0 / ring->GetGrowingSpeed();
     mRingSpawnTime = mRingSpawnTime + GetLevel()->GetElapsedTime();
 
     if ((mRingSpawnTime >= secondsPerRing))
     {
-        rad = rad + (GetLevel()->GetElapsedTime()) * (mGrowingSpeed);
+        rad = (GetLevel()->GetElapsedTime()) * (ring->GetGrowingSpeed());
         ring->SetRadius((int)rad);
- 
+
     }
     ring->SetLocation(this->GetX(), this->GetY());
 
