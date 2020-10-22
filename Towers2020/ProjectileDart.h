@@ -36,9 +36,11 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDart(this); } 
 
-    //virtual void Update(double elapsed) override; <-- will fix
+    virtual void Update(double elapsed) override;
 
     double GetAngle();
+
+    double GetDistance() { return mDistanceFromTower; }
 
     void SetAngle(double angle);
 
@@ -46,22 +48,16 @@ private:
     /// Dart image's angle
     double mAngle = 0;
 
-    /// Dart's number counter
-    int mAngleCounter = 0;
-
     /// Dart's x position
     double mXPos = 0;
     
     /// Dart's y position
     double mYPos = 0;
-
-    /// Dart speed X
-    double mSpeedX = 0;
-    
-    /// Dart speed Y
-    double mSpeedY = 0;
     
     /// Dart's distance from Tower
     double mDistanceFromTower = 10;
+
+    /// Current speed of dart
+    double mSpeed = 100;
 };
 
