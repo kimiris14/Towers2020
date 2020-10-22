@@ -23,13 +23,11 @@ class CItemVisitorRingPopFinder : public CItemVisitor
 {
 public:
 
-    CItemVisitorRingPopFinder(int originX, int originY, double radius, double range);
+    CItemVisitorRingPopFinder(int originX, int originY, double radius, double range, int points);
 
     /// destructor 
     virtual ~CItemVisitorRingPopFinder() {}
 
-    /** Visit a CItemBalloon object
-     * \param balloon Balloon we are visiting */
     virtual void VisitBalloon(CItemBalloon* balloon) override;
 
 private:
@@ -40,14 +38,13 @@ private:
     /// The origin of the circle's y component in pixels
     int mOriginY = 0;
 
-    /// The radius of the circle in pixels
-    double mRadius = 0;
+    /// The number of point recieved for each balloon pop
+    int mPopPoints = 1;
 
-    /// The range between the ring's edge and a balloon's center in pixels.
-    /// All balloons within this range will be added to the popped list
-    double mRange = 0;
+    /// The minimum distance from origin in pixels
+    double mMinPoppingDistance = 0;
 
-    /// A vector of the balloons that were determined to be popped
-    std::vector<CItemBalloon*> mBalloonsToPop;
+    /// The maximum distance from the origin in pixels
+    double mMaxPoppingDistance = 0;
 
 };

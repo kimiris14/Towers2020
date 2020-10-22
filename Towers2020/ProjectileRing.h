@@ -65,5 +65,12 @@ private:
 
     /// Ring radius growing speed in pixels per second
     double mGrowingSpeed = 200;
+
+    /// Pop balloons that come within mPoppingDistance amount of pixels from the ring.
+    /// Really this should be equivalent to about the radius of a balloon.
+    const int PoppingDistance = 24;
+
+    /// The number of points awarded to the user if this ring pops a balloon
+    const int PointsPerPop = 2;
 };
 

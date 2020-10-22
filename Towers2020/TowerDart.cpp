@@ -77,7 +77,7 @@ void CTowerDart::Fire()
 
         dart->SetLocation(x, y);
         item = dart;
-        GetLevel()->Add(item);
+        GetLevel()->AddDeferred(item);
     }
 }
 

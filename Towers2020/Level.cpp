@@ -339,7 +339,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            PointF(levelStringX, levelTitleY),   // Draw to the center of the game palette
+            PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
             &brown);    // The brush to draw the text with
     }
 }
@@ -422,6 +422,15 @@ void CLevel::Add(shared_ptr<CItem> item)
     mItems.push_back(item);
 }
 
+/**
+* Safely add an item to the level by inserting it into the mDeferredAdds list
+* \param item The item we are adding
+*/
+void CLevel::AddDeferred(std::shared_ptr<CItem> item)
+{
+    mDeferredAdds.push_back(item);
+}
+
 /** Handle updates for animation
 * \param elapsed The time since the last update
 */
@@ -459,21 +468,33 @@ void CLevel::Update(double elapsed)
         }
     }
 
-    // Add items to temporary vector to avoid changing a vector that is being iterated over
+    //// Add items to temporary vector to avoid changing a vector that is being iterated over
+    //for (auto item : mItems)
+    //{
+    //    mDeferredAdds.push_back(item);
+    //}
+    //mItems.clear();
+    //for (auto items : mDeferredAdds)
+    //{
+    //    items->Update(elapsed); // Call update
+    //    mItems.push_back(items); // Pushback back into mItems
+    //}
+    //mDeferredAdds.clear(); // clear vector
+
     for (auto item : mItems)
     {
-        mDeferredAdds.push_back(item);
+        item->Update(elapsed);
     }
-    mItems.clear();
-    for (auto items : mDeferredAdds)
+
+    // if any item was to be added during the call to item->Update() above,
+    // it should now be added into mItems
+    for (auto item : mDeferredAdds)
     {
-        items->Update(elapsed); // Call update
-        mItems.push_back(items); // Pushback back into mItems
+        mItems.push_back(item);
     }
-    mDeferredAdds.clear(); // clear vector
+    mDeferredAdds.clear();
  
     // delete (remove) the items if necessary
-
     for (auto deleteMe : mItemsToDelete)
     {
         auto indexIter = find(mItems.begin(), mItems.end(), deleteMe);

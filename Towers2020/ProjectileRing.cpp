@@ -8,6 +8,7 @@
 #include "pch.h"
 #include "ProjectileRing.h"
 #include "Game.h"
+#include "ItemVisitorRingPopFinder.h"
 
 using namespace Gdiplus;
 
@@ -57,16 +58,12 @@ void CProjectileRing::Update(double elapsed) {
 	if (mRingRadius > RingEndRadius) 
 	{
 		SetActive(false);
-
 	
 	}
 
-	// the ring is still active, so let's check for pops.
-	else
-	{
-
-
-
+	if (IsActive()) {
+		// pop. those. BALLOONS!!!
+		CItemVisitorRingPopFinder popper(GetX(), GetY(), mRingRadius, PoppingDistance, PointsPerPop);
+		GetGame()->GetLevel()->Accept(&popper);
 	}
-
 }
