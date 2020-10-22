@@ -39,6 +39,9 @@ wstring Level1 = L"levels/level1.xml";
 /// Level 2 filename
 wstring Level2 = L"levels/level2.xml";
 
+/// Level 3 filename
+wstring Level3 = L"levels/level3.xml";
+
 // CChildView
 
 CChildView::CChildView()
@@ -62,6 +65,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_MOUSEMOVE()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_COMMAND(ID_LEVEL_LEVEL3, &CChildView::OnLevelLevel3)
 END_MESSAGE_MAP()
 
 
@@ -200,6 +204,16 @@ void CChildView::OnLevelLevel2()
 	mGame.SetLevel(newLevel, levelNumber);
 }
 
+
+/**
+* Handler for loading Level3
+*/
+void CChildView::OnLevelLevel3()
+{
+	auto newLevel = make_shared<CLevel>(&mGame, Level3);
+	int levelNumber = 3;
+	mGame.SetLevel(newLevel, levelNumber);
+}
 
 /**
  * Called when there is a left mouse button press

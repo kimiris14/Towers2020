@@ -15,6 +15,7 @@
 #include "ItemVisitorFindRoad.h"
 #include "ItemVisitorFindTile.h"
 #include "ItemVisitorFindTower.h"
+#include "VisitItemGarbage.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
@@ -80,7 +81,8 @@ std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
     shared_ptr<CItem> hitItem = HitTest(x, y);
 
     // if there was a tower that was found and clicked on, pick it up and return it
-    if ((hitItem.get() == tower) && (tower != nullptr)) {
+    if ((hitItem.get() == tower) && (tower != nullptr)) 
+    {
 
         auto x = (int)hitItem->GetX();
         auto y = (int)hitItem->GetY();
@@ -467,6 +469,19 @@ void CLevel::Update(double elapsed)
             mNumBalloonsToSpawn--;
         }
     }
+    
+
+    // delete the inactive projectiles
+    //CVisitProjectileCollectGarbage garbageVisitor();
+    //Accept(&garbageVisitor);
+    //auto projectileGarbage = garbageVisitor.GetInactiveProjectiles();
+    //for (auto item : mItems)
+    //{
+    //    if (projectileGarbage.contains(item.get()))
+    //    {
+    //        mItemsToDelete.push_back(item);
+    //    }
+    //}
 
     //// Add items to temporary vector to avoid changing a vector that is being iterated over
     //for (auto item : mItems)

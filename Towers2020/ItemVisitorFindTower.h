@@ -37,7 +37,7 @@ public:
     virtual void VisitTowerDart(CTowerDart* tower);
     virtual void VisitTowerRing(CTowerRing* ringtower);
     virtual void VisitTowerBomb(CTowerBomb* bombtower);
-    virtual void VisitTowerOwen(CTowerOwen* owentower);
+    //virtual void VisitTowerOwen(CTowerOwen* owentower);
 
     /** Getter for the road tile that was found (if at all)
     * \returns A pointer to the found tile */

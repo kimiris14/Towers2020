@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "Game.h"
 #include "Level.h"
-#include "ItemBalloon.h"
-#include "ItemTile.h"
-#include "ItemTileRoad.h"
-#include "ItemVisitor.h"
 #include "CppUnitTest.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

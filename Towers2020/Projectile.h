@@ -50,7 +50,7 @@ public:
 
 	/// Getter for the projectile's activity status
 	/// \returns True if the projectile is active, false if it is completely spent
-	double IsActive() const { return mProjectileActive; }
+	bool IsActive() const { return mProjectileActive; }
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

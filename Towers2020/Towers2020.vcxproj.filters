@@ -108,7 +108,7 @@
     <ClInclude Include="GoButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TowerOwen.h">
+    <ClInclude Include="VisitItemGarbage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ItemVisitorRingPopFinder.h">
@@ -195,6 +195,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GoButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VisitItemGarbage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
