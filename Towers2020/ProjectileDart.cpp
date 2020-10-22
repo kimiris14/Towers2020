@@ -45,19 +45,23 @@ CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CPro
  */
 void CProjectileDart::Draw(Gdiplus::Graphics* graphics)
 {
-    shared_ptr<Bitmap> dartImage = GetGame()->GetImage(dartID);
-    if (dartImage != nullptr)
+    if (IsActive())
     {
-        int wid = dartImage->GetWidth();
-        int hit = dartImage->GetHeight();
-        auto offsetX = wid / 2;
-        auto offsetY = hit / 2;
-        auto save = graphics->Save();
-        graphics->TranslateTransform((REAL)(mXPos - wid),
-            (REAL)(mYPos - hit));
-        graphics->RotateTransform((REAL)(mAngle * RtoD));
-        graphics->DrawImage(dartImage.get(), offsetX, offsetY, wid, hit);
-        graphics->Restore(save);
+        shared_ptr<Bitmap> dartImage = GetGame()->GetImage(dartID);
+        if (dartImage != nullptr)
+        {
+            int wid = dartImage->GetWidth();
+            int hit = dartImage->GetHeight();
+            auto offsetX = wid / 2;
+            auto offsetY = hit / 2;
+            auto save = graphics->Save();
+            graphics->TranslateTransform((REAL)(mXPos),
+                (REAL)(mYPos));
+            graphics->RotateTransform((REAL)(mAngle * RtoD));
+            graphics->DrawImage(dartImage.get(), mDistanceFromTower,
+                mDistanceFromTower, wid, hit);
+            graphics->Restore(save);
+        }
     }
 }
 
@@ -68,26 +72,25 @@ void CProjectileDart::Draw(Gdiplus::Graphics* graphics)
 */
 void CProjectileDart::SetLocation(double x, double y)
 {
-    mXPos = (int)x;
-    mYPos = (int)y;
+    mXPos = x;
+    mYPos = y;
 }
 
 /**
  * Update function
  * \param elapsed Time elapsed
- *
+ */
 void CProjectileDart::Update(double elapsed)
 {
     CProjectile::Update(elapsed);
-    
-    mXPos = GetTotalElapsed() + mSpeedX * elapsed;
-    mYPos = GetTotalElapsed() + mSpeedY * elapsed;
 
-    if (mDistanceFromTower > 90)
+    mDistanceFromTower = GetTotalElapsed() * mSpeed;
+
+    /*if (mDistanceFromTower > 90)
     {
         SetActive(false);
-    }
-}*/
+    }*/
+}
 
 /**
  * Get dart's current angle

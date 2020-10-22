@@ -60,17 +60,20 @@ void CTowerDart::Fire()
     double wid = dartTowerImage->GetWidth();
     double hit = dartTowerImage->GetHeight();
 
-    for (int i = 0; i < 8; i++)
+    for (double i = 0; i < 8; i++)
     {
         shared_ptr<CItem> item = nullptr;
         auto dart = make_shared<CProjectileDart>(GetLevel(), GetGame(), dartID);
-        dart->SetAngle(i * (Pi / 4));
+
+        dart->SetAngle(i * (Pi / 4.0));
         double a = dart->GetAngle();
+        double dist = dart->GetDistance();
+
         double sn = sin(a);
         double cs = cos(a);
 
-        double x = GetX() + wid / 2 + cs * mT;
-        double y = GetY() + hit / 8 + sn * mT;
+        double x = GetX() + cs * dart->GetDistance();
+        double y = GetY() + sn * dart->GetDistance();
 
         dart->SetLocation(x, y);
         item = dart;
