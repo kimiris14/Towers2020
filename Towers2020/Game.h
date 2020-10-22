@@ -46,10 +46,9 @@ public:
 
     /// A setter for the game's current level
     /// \param level The new level for the game
+    /// \param levelNumber The numerical value associated with the level (ex. 6, in Level 6)
     void SetLevel(std::shared_ptr<CLevel> level, int levelNumber) { mCurrentLevel = level; mLevelNumber = levelNumber; }
 
-
-    void DrawLevelTitle(Gdiplus::Graphics* graphics);
 
     void OnLButtonDown(int x, int y);
     void OnMouseMove(int x, int y, UINT nFlags);
