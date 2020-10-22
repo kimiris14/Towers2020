@@ -13,6 +13,7 @@
 #include "TowerDart.h"
 #include "TowerRing.h"
 #include "TowerBomb.h"
+#include "TowerOwen.h"
 #include "GoButton.h"
 #include "ProjectileDart.h"
 #include <string>
@@ -22,6 +23,9 @@ using namespace std;
 
 /// the x-location of the tower buttons on screen in pixels
 const int TowerButtonXLocation = 1124;
+
+/// the y-location of the Owen tower button in pixels
+const int OwenTowerY = 400;
 
 /// the y-location of the bomb tower button in pixels
 const int BombTowerY = 300;
@@ -54,9 +58,10 @@ CGamePallette::CGamePallette(CGame* game) : mGame(game)
     int bombImageID = tempBombTower->GetImageID();
     mBombTowerButton = make_shared<CImageButton>(game, bombImageID, TowerButtonXLocation, BombTowerY);
 
-    // mTowerButtons.push_back(make_shared<CImageButton>(this, 102, 1090, 400));
+    auto tempOwenTower = make_shared<CTowerOwen>(nullptr, game);
+    int owenImageID = tempOwenTower->GetImageID();
+    mOwenTowerButton = make_shared<CImageButton>(game, owenImageID, TowerButtonXLocation, OwenTowerY);
 
-    // mTowerButtons.push_back(make_shared<CImageButton>(this, 101, 1090, 200));
 
     mGoButton = make_shared<CGoButton>(game, TowerButtonXLocation, GoButtonY);
 }
@@ -82,7 +87,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        PointF(1050, 400),   // Draw to the center of the game palette
+        PointF(1050, 500),   // Draw to the center of the game palette
         &yellow);    // The brush to draw the text with
 
     //Draw the score Value in yellow
@@ -90,7 +95,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font2,      // The font to use
-        PointF(1060, 450),   // Draw to the center of the game palette (and under Score)
+        PointF(1060, 550),   // Draw to the center of the game palette (and under Score)
         &yellow);    // The brush to draw the text with
 
 
@@ -101,6 +106,8 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         mRingTowerButton->Draw(graphics);
     if (mBombTowerButton != nullptr)
         mBombTowerButton->Draw(graphics);
+    if (mOwenTowerButton != nullptr)
+        mOwenTowerButton->Draw(graphics);
     if (mGoButton != nullptr && mGame->GetLevel()->IsActive() == false)
         mGoButton->Draw(graphics);
 }
@@ -127,6 +134,11 @@ std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
     if (mBombTowerButton != nullptr && mBombTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true)
     {
         return make_shared<CTowerBomb>(mGame->GetLevel().get(), mGame);
+    }
+
+    if (mOwenTowerButton != nullptr && mOwenTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true)
+    {
+        return make_shared<CTowerOwen>(mGame->GetLevel().get(), mGame);
     }
 
     if (mGoButton != nullptr && mGoButton->HitTest(x,y) && mGame->GetLevel()->IsTitleDisplayed() != true)

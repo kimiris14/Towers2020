@@ -37,7 +37,7 @@ void CItemBalloon::Draw(Gdiplus::Graphics* graphics)
 }
 
 /// This function "pops" the balloon
-/// \param the number of points that should be associated with this pop
+/// \param score the number of points that should be associated with this pop
 void CItemBalloon::Pop(int score)
 {
     // the if statement is here to protect from lag causing a balloon to be popped more than once

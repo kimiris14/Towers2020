@@ -17,6 +17,9 @@
 class CTowerOwen :
     public CTower
 {
+
+public:
+
     CTowerOwen(CLevel* level, CGame* game);
 
     ///  Default constructor (disabled)
@@ -39,9 +42,11 @@ class CTowerOwen :
     /// owen tower image id number
     const int TowerOwenImageID = 450;
 
-private:
     /// tower image filename
-    //const std::wstring TowerRingImageName = L"images/tower-owen.png";
+    const std::wstring TowerOwenImageName = L"images/blue-balloon.png";
+
+
+private:
 
 
     /// Time in between each time the tower shoots ring in seconds

@@ -21,9 +21,9 @@ CTowerOwen::CTowerOwen(CLevel* level, CGame* game)
 {
     // the image ID is not properly set in the CTower constructor because it is
     // not yet initialized. This fixes that
-    //SetImageID(TowerOwenImageID);
+    SetImageID(TowerOwenImageID);
 
-    //game->AddImage(TowerOwenImageID, TowerOwenImageName);
+    game->AddImage(TowerOwenImageID, TowerOwenImageName);
 }
 
 /** Handle updates for owen projectiles
