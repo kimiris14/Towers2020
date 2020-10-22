@@ -41,6 +41,8 @@ public:
 
 	void Add(std::shared_ptr<CItem> item);
 
+	void AddDeferred(std::shared_ptr<CItem> item);
+
 	void Update(double elapsed);
 
 	void Accept(CItemVisitor* visitor);
@@ -86,10 +88,10 @@ public:
 	std::wstring levelNumber;
 
 	/// the y location for the level title
-	Gdiplus::REAL levelTitleY = 400;
+	const Gdiplus::REAL LevelTitleY = 400;
 
 	/// the x location for the level title
-	Gdiplus::REAL levelStringX = 150;
+	const Gdiplus::REAL LevelStringX = 100;
 
 private:
 
@@ -105,7 +107,7 @@ private:
 	/// the number of tiles in the y-direction
 	int mLevelHeight = 16;
 
-	/// the spacing of each tile on the grid
+	/// the spacing of each tile on the grid in pixels
 	int mTileSpacing = 64;
 
 	/// The tile index of the starting tile
@@ -155,6 +157,6 @@ private:
 	std::map<int, std::wstring> mIDToRoad;
 
 	/// Temporary mItems
-	std::vector<std::shared_ptr<CItem> > mDeferredAdds;
+	std::vector<std::shared_ptr<CItem>> mDeferredAdds;
 };
 

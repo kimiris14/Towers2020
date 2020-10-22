@@ -196,6 +196,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemBalloon.h" />
     <ClInclude Include="ItemVisitorFindRoad.h" />
+    <ClInclude Include="ItemVisitorRingPopFinder.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBalloon.cpp" />
     <ClCompile Include="ItemVisitorFindRoad.cpp" />
+    <ClCompile Include="ItemVisitorRingPopFinder.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
