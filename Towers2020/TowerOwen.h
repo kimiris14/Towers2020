@@ -83,5 +83,8 @@ private:
     /// the level that this tower is in
     CLevel* mLevel;
 
+    /// a boolean for checking if this is the first time we placed the tower
+    bool mFirstPlacement = true;
+
 };
 

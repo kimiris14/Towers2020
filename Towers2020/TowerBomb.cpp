@@ -100,11 +100,17 @@ bool CTowerBomb::Place()
     // count number of bombs placed using a visitor
     if (successful)
     {
-        // only visit if it was placed successfully
-        CBombCounter visitor;
-        mLevel->Accept(&visitor);
-        int numBombsPlaced = visitor.GetNumBombs();
-        mTimeTillFire = mTimeTillFire * numBombsPlaced;
+        // only declare time til fire if this is the first placement
+        if (mFirstPlacement)
+        {
+            // only visit if it was placed successfully
+            CBombCounter visitor;
+            mLevel->Accept(&visitor);
+            int numBombsPlaced = visitor.GetNumBombs();
+            mTimeTillFire = mTimeTillFire * numBombsPlaced;
+            mFirstPlacement = false;
+            
+        }
         return true;
     }
 

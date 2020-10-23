@@ -61,6 +61,10 @@ private:
     /// The explosion display time in seconds
     double mDisplayTime = 0.25;
 
+    /// a boolean for checking if this is the first time we placed the tower
+    bool mFirstPlacement = true;
+
+
     /// the level this tower is in
     CLevel *mLevel = nullptr;
 

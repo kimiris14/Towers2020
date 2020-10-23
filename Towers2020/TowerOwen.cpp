@@ -124,13 +124,17 @@ bool CTowerOwen::Place()
     // count number of bombs placed using a visitor
     if (successful)
     {
-        // only visit if it was placed successfully
-        CTowerOwenCounter visitor;
-        mLevel->Accept(&visitor);
-        int numOwensPlaced = visitor.GetNumOwens();
-        if (numOwensPlaced > 1)
+        if (mFirstPlacement)
         {
-            this->SetDrOwen(false);
+            // only visit if it was placed successfully
+            CTowerOwenCounter visitor;
+            mLevel->Accept(&visitor);
+            int numOwensPlaced = visitor.GetNumOwens();
+            if (numOwensPlaced > 1)
+            {
+                this->SetDrOwen(false);
+            }
+            mFirstPlacement = false;
         }
         return true;
     }
