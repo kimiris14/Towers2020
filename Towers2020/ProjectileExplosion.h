@@ -17,7 +17,7 @@ class CProjectileExplosion :
     public CProjectile
 {
 public:
-    CProjectileExplosion(CLevel* level, CGame* game, int imageID);
+    CProjectileExplosion(CLevel* level, CGame* game);
 
     /// Default constructor (disabled)
     CProjectileExplosion() = delete;
@@ -36,5 +36,10 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitExplosion(this); } 
 
+    virtual void Update(double elapsed);
+
+private:
+    /// Explosion radius of projectile in pixels
+    int mExplosionRadius = 100;
 };
 
