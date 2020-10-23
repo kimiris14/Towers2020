@@ -37,6 +37,8 @@ public:
   
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
+    virtual bool Place();
+
     void Fire();
 
     /// bomb tower id number
@@ -58,6 +60,9 @@ private:
 
     /// The explosion display time in seconds
     double mDisplayTime = 0.25;
+
+    /// the level this tower is in
+    CLevel *mLevel = nullptr;
 
 };
 

@@ -9,6 +9,7 @@
 
 #include "pch.h"
 #include "TowerBomb.h"
+#include "BombCounter.h"
 #include "ProjectileExplosion.h"
 #include "ImageMap.h"
 #include "Game.h"
@@ -21,7 +22,7 @@ using namespace std;
 * \param game The Game this item is a member of
 */
 CTowerBomb::CTowerBomb(CLevel* level, CGame* game)
-    : CTower(level, game, TowerBombImageID)
+    : CTower(level, game, TowerBombImageID), mLevel(level)
 {
     // the image ID is not properly set in the CTower constructor because it is
     // not yet initialized. This fixes that
@@ -37,6 +38,7 @@ CTowerBomb::CTowerBomb(CLevel* level, CGame* game)
 */
 void CTowerBomb::Update(double elapsed)
 {
+ 
     if (GetLevel()->IsActive())
     {
         
@@ -82,5 +84,32 @@ void CTowerBomb::Draw(Gdiplus::Graphics* graphics)
     if (!mHasExploded)
     {
         CItem::Draw(graphics);
+    }
+}
+
+/**
+* Keeps track of the number of times a bomb was successfully placed and 
+* updates the time until fire accordingly
+* \return true if the bomb was placed successfully, false otherwise
+*/
+bool CTowerBomb::Place()
+{
+    // upcall
+    bool successful = CTower::Place();
+
+    // count number of bombs placed using a visitor
+    if (successful)
+    {
+        // only visit if it was placed successfully
+        CBombCounter visitor;
+        mLevel->Accept(&visitor);
+        int numBombsPlaced = visitor.GetNumBombs();
+        mTimeTillFire = mTimeTillFire * numBombsPlaced;
+        return true;
+    }
+
+    else
+    {
+        return false;
     }
 }
