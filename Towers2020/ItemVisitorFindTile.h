@@ -25,8 +25,8 @@ public:
     CItemVisitorFindTile() = delete;
 
     /** Constructor
-     * \param x The target X value to find
-     * \param y The target Y value to find
+     * \param x The target X value to find (in grid indecies)
+     * \param y The target Y value to find (in grid indecies)
      */
     CItemVisitorFindTile(int x, int y) : mTargetX(x), mTargetY(y) {}
 

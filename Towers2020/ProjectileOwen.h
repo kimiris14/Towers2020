@@ -1,9 +1,17 @@
+/**
+* \file ProjectileOwen.h
+* 
+* \author PaulaRed 
+* 
+* Class that represents the projectiles for the owen tower
+*/
 #pragma once
 #include "Projectile.h"
 
 class CLevel;
 class CGame;
 
+/**Class that represents the projectiles for the owen tower*/
 class CProjectileOwen :
     public CProjectile
 {

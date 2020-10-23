@@ -1,5 +1,5 @@
 /**
- * \file TowerRing.cpp
+ * \file TowerOwen.cpp
  *
  * \author PaulaRed
  */
@@ -9,11 +9,13 @@
 #include "ImageMap.h"
 #include "ProjectileOwen.h"
 #include "ItemVisitorFindNearestBalloon.h"
+#include "TowerOwenCounter.h"
 #include "ItemBalloon.h"
 #include "Game.h"
 #include <math.h>
 
 using namespace std;
+using namespace Gdiplus;
 
 /// Constant for Pi
 const double Pi = 3.14159265358979323846;
@@ -24,13 +26,14 @@ const double Pi = 3.14159265358979323846;
 * \param game The Game this item is a member of
 */
 CTowerOwen::CTowerOwen(CLevel* level, CGame* game)
-    : CTower(level, game, TowerOwenImageID)
+    : CTower(level, game, TowerOwenImageID), mLevel(level)
 {
     // the image ID is not properly set in the CTower constructor because it is
     // not yet initialized. This fixes that
     SetImageID(TowerOwenImageID);
 
     game->AddImage(TowerOwenImageID, TowerOwenImageName);
+    game->AddImage(DrOwenImageID, DrOwenImageName);
 
     mTimeTillFire = mTimeBetweenShots;
 }
@@ -43,15 +46,39 @@ void CTowerOwen::Update(double elapsed)
     if (GetLevel()->IsActive())
     {
         mTimeTillFire -= elapsed;
-        if (mTimeTillFire <= 0 && mHasDrOwen)
+        if (mTimeTillFire <= 0)
         {
             // reset the timer and shoot the owen projectiles
             mTimeTillFire += mTimeBetweenShots;
-            Fire();
+
+            // only fire if this tower has Dr Owen sitting on it
+            if (mHasDrOwen)
+                Fire();
         }
 
     }
 
+}
+
+/// Draw the Dr. Owen tower, then Dr. Owen if appropriate
+/// \param graphics The gdiplus graphics context to draw on
+void CTowerOwen::Draw(Gdiplus::Graphics* graphics)
+{
+    CItem::Draw(graphics);
+
+    if (!mHasDrOwen)
+        return;
+
+    shared_ptr<Bitmap> itemBitmap = GetGame()->GetImage(DrOwenImageID);
+
+    if (itemBitmap != nullptr) {
+        double wid = itemBitmap->GetWidth();
+        double hit = itemBitmap->GetHeight();
+
+        graphics->DrawImage(itemBitmap.get(),
+            float(GetX() - wid / 2), float(GetY() - hit / 2),
+            (float)itemBitmap->GetWidth(), (float)itemBitmap->GetHeight());
+    }
 }
 
 /**
@@ -61,7 +88,7 @@ void CTowerOwen::Fire()
 {
 
     // find the nearest balloon
-    CItemVisitorFindNearestBalloon visitor(GetX(), GetY(), mBalloonTargetRange);
+    CItemVisitorFindNearestBalloon visitor((int)GetX(), (int)GetY(), mBalloonTargetRange);
     GetLevel()->Accept(&visitor);
     CItemBalloon* balloon = visitor.GetNearestBallon();
 
@@ -80,6 +107,40 @@ void CTowerOwen::Fire()
         mFiringAngle = mFiringAngle + 180;
     }
 
-    auto bit = make_shared<CProjectileOwen>(GetLevel(), GetGame(), GetX(), GetY(), mFiringAngle);
+    auto bit = make_shared<CProjectileOwen>(GetLevel(), GetGame(), (int)GetX(), (int)GetY(), mFiringAngle);
     GetLevel()->AddDeferred(bit);
+}
+
+/**
+* Keeps track of the number of times an owen tower was successfully placed and
+* updates the time until fire accordingly
+* \return true if the bomb was placed successfully, false otherwise
+*/
+bool CTowerOwen::Place()
+{
+    // upcall
+    bool successful = CTower::Place();
+
+    // count number of bombs placed using a visitor
+    if (successful)
+    {
+        if (mFirstPlacement)
+        {
+            // only visit if it was placed successfully
+            CTowerOwenCounter visitor;
+            mLevel->Accept(&visitor);
+            int numOwensPlaced = visitor.GetNumOwens();
+            if (numOwensPlaced > 1)
+            {
+                this->SetDrOwen(false);
+            }
+            mFirstPlacement = false;
+        }
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
 }

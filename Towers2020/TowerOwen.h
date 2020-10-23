@@ -36,14 +36,17 @@ public:
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTowerOwen(this); }
 
     virtual void Update(double elapsed) override;
-
+    virtual void Draw(Gdiplus::Graphics* graphics);
 
     /// This will return true if the current tower has Dr. Owen on it
+    /// \return true if this tower has dr owen on it
     bool HasDrOwen() const { return mHasDrOwen; }
+
+    virtual bool Place();
 
     /// A setter for Dr Owen.
     /// \param HasDrOwen this should be true if this tower now has Dr. Owen
-    bool SetDrOwen(bool HasDrOwen) { mHasDrOwen = HasDrOwen; }
+    void SetDrOwen(bool HasDrOwen) { mHasDrOwen = HasDrOwen; }
 
     void Fire();
 
@@ -53,10 +56,16 @@ public:
     /// tower image filename
     const std::wstring TowerOwenImageName = L"images/blue-balloon.png";
 
+    /// Dr. Owen himself image id number
+    const int DrOwenImageID = 451;
+
+    /// Dr. Owen himself image filename
+    const std::wstring DrOwenImageName = L"images/black-balloon.png";
+
 
 private:
 
-    // This boolean is true if this tower actually has Dr. Owen on it
+    /// This boolean is true if this tower actually has Dr. Owen on it
     bool mHasDrOwen = true;
 
     /// The current angle for which projectiles are fired (in degrees)
@@ -70,6 +79,12 @@ private:
 
     /// the range that Dr. Owen can see balloons in (pixels)
     double mBalloonTargetRange = 200;
+
+    /// the level that this tower is in
+    CLevel* mLevel;
+
+    /// a boolean for checking if this is the first time we placed the tower
+    bool mFirstPlacement = true;
 
 };
 

@@ -59,7 +59,7 @@ void CProjectileOwen::Update(double elapsed)
 	// attempt to pop balloons if we're active
 	if (IsActive())
 	{
-		CItemVisitorPopFinder popper(GetX(), GetY(), PoppingDistance, PointsPerPop);
+		CItemVisitorPopFinder popper((int)GetX(), (int)GetY(), PoppingDistance, PointsPerPop);
 		GetLevel()->Accept(&popper);
 
 		// If there was a balloon popped, consider this projectile as "spent"
@@ -94,7 +94,7 @@ void CProjectileOwen::Draw(Gdiplus::Graphics* graphics)
 	y += FontOffsetY;
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, FontSize);
+	Gdiplus::Font font(&fontFamily, (REAL)FontSize);
 
 
 	SolidBrush white(Color(255, 255, 255));
@@ -102,7 +102,7 @@ void CProjectileOwen::Draw(Gdiplus::Graphics* graphics)
 	graphics->DrawString(bit.c_str(),
 		-1,  // string length
 		&font,      
-		PointF(x, y),
+		PointF((REAL)x, (REAL)y),
 		&white);
 
 }

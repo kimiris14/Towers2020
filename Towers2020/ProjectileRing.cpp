@@ -63,7 +63,7 @@ void CProjectileRing::Update(double elapsed) {
 
 	if (IsActive()) {
 		// pop. those. BALLOONS!!!
-		CItemVisitorRingPopFinder popper(GetX(), GetY(), mRingRadius, PoppingDistance, PointsPerPop);
+		CItemVisitorRingPopFinder popper((int)GetX(), (int)GetY(), mRingRadius, PoppingDistance, PointsPerPop);
 		GetGame()->GetLevel()->Accept(&popper);
 	}
 }

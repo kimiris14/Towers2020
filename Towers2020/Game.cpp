@@ -88,39 +88,44 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
 /**
 * Handle a click on the game area
-* \param x X location clicked on
-* \param y Y location clicked on
+* \param x X location clicked on (pixels)
+* \param y Y location clicked on (pixels)
 */
 void CGame::OnLButtonDown(int x, int y)
 {
-
-    // if the current level is active, then the mouse will do nothing.
-    if (mCurrentLevel->IsActive())
-        return;
 
     // convert the x and y clicked pixel coordinates into virtual pixel coordinates
     double oX = (x - mXOffset) / mScale;
     double oY = (y - mYOffset) / mScale;
 
-    // did we click an item in the level?
-    auto clickedItem = mCurrentLevel->PickUpTower((int)oX, (int)oY);
-    if (clickedItem != nullptr) 
+    // if the current level is active, then the level will handle the click
+    if (mCurrentLevel->IsActive())
+    {
+        mCurrentLevel->OnLButtonDown((int)oX, (int)oY);
+    }
+    // otherwise, we have to figure out exactly where we clicked
+    else
     {
 
-        // we grabbed an item. Set the pointer in Game
-        mGrabbedTower = clickedItem;
+        // did we click an item in the level?
+        auto clickedItem = mCurrentLevel->PickUpTower((int)oX, (int)oY);
+        if (clickedItem != nullptr)
+        {
 
+            // we grabbed an item. Set the pointer in Game
+            mGrabbedTower = clickedItem;
+
+        }
+
+        // did we click an item in the game pallette?
+        clickedItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
+        if (clickedItem != nullptr)
+        {
+            clickedItem->SetLocation(oX, oY);
+            mGrabbedTower = clickedItem;
+            mCurrentLevel->Add(clickedItem);
+        }
     }
-
-    // did we click an item in the game pallette?
-    clickedItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
-    if (clickedItem != nullptr)
-    {
-        clickedItem->SetLocation(oX, oY);
-        mGrabbedTower = clickedItem;
-        mCurrentLevel->Add(clickedItem);
-    }
-
 
 }
 

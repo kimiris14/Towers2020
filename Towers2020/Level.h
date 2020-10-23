@@ -47,6 +47,8 @@ public:
 
 	void Accept(CItemVisitor* visitor);
 
+	void OnLButtonDown(int x, int y);
+
 	/// Starts the level
 	void Start() { mLevelActive = true; }
 

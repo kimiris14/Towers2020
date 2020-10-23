@@ -91,6 +91,13 @@ void CProjectileDart::Update(double elapsed)
     {
         SetActive(false);
     }
+
+    //pop balloons if darts are active
+    if (IsActive())
+    {
+        CItemVisitorPopFinder popper((int)GetX(), (int)GetY(), PoppingDistance, PointsPerPop);
+        GetLevel()->Accept(&popper);
+    }
 }
 
 /**
