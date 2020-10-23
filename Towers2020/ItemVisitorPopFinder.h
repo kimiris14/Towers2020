@@ -29,6 +29,10 @@ public:
 
     virtual void VisitBalloon(CItemBalloon* balloon) override;
 
+    /// A getter for the "has popped" boolean
+    /// \returns True if the visitor has popped a balloon, false if not
+    bool HasPopped() const { return mHasPopped; }
+
 private:
 
     /// The origin of the circle's x component in pixels
@@ -42,5 +46,8 @@ private:
 
     /// The maximum distance from origin that a balloon can be popped by in pixels
     double mPoppingDistance = 0;
+
+    /// This boolean is used to keep track if this visitor has popped a balloon yet
+    bool mHasPopped = false;
 
 };

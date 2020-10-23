@@ -34,8 +34,9 @@ void CItemVisitorPopFinder::VisitBalloon(CItemBalloon* balloon)
     double dist = sqrt(pow((mOriginX - balloon->GetX()), 2) + pow((mOriginY - balloon->GetY()), 2));
 
     // if the balloon is within popping distance, pop it
-    if (dist < mPoppingDistance)
+    if (dist < mPoppingDistance && !balloon->IsPopped())
     {
         balloon->Pop(mPopPoints);
+        mHasPopped = true;
     }
 }

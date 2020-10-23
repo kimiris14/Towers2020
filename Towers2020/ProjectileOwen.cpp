@@ -61,6 +61,10 @@ void CProjectileOwen::Update(double elapsed)
 	{
 		CItemVisitorPopFinder popper(GetX(), GetY(), PoppingDistance, PointsPerPop);
 		GetLevel()->Accept(&popper);
+
+		// If there was a balloon popped, consider this projectile as "spent"
+		if (popper.HasPopped())
+			SetActive(false);
 	}
 
 }
