@@ -49,8 +49,6 @@ public:
      * \param projectile The projectile we are visiting */
     virtual void VisitProjectile(CProjectile* projectile) {}
 
-    virtual void VisitGarbage() {};
-
     /** Visit a CProjectileRing object
     * \param ring Ring projectile we are visiting */
     virtual void VisitRing(CProjectileRing* ring) {}
