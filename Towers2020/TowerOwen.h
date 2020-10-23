@@ -36,7 +36,7 @@ public:
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTowerOwen(this); }
 
     virtual void Update(double elapsed) override;
-
+    virtual void Draw(Gdiplus::Graphics* graphics);
 
     /// This will return true if the current tower has Dr. Owen on it
     bool HasDrOwen() const { return mHasDrOwen; }
@@ -52,6 +52,12 @@ public:
 
     /// tower image filename
     const std::wstring TowerOwenImageName = L"images/blue-balloon.png";
+
+    /// Dr. Owen himself image id number
+    const int DrOwenImageID = 451;
+
+    /// Dr. Owen himself image filename
+    const std::wstring DrOwenImageName = L"images/black-balloon.png";
 
 
 private:
