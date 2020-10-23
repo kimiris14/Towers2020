@@ -61,7 +61,7 @@ void CTowerOwen::Update(double elapsed)
 }
 
 /// Draw the Dr. Owen tower, then Dr. Owen if appropriate
-/// \graphics The gdiplus graphics context to draw on
+/// \param graphics The gdiplus graphics context to draw on
 void CTowerOwen::Draw(Gdiplus::Graphics* graphics)
 {
     CItem::Draw(graphics);

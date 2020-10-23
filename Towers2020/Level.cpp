@@ -15,6 +15,7 @@
 #include "ItemVisitorFindRoad.h"
 #include "ItemVisitorFindTile.h"
 #include "ItemVisitorFindTower.h"
+#include "TowerOwen.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
@@ -566,5 +567,29 @@ void CLevel::Accept(CItemVisitor* visitor)
     for (auto item : mItems)
     {
         item->Accept(visitor);
+    }
+}
+
+
+/**
+* Handle a click on the level area when the level is active
+* \param x X location clicked on (pixels)
+* \param y Y location clicked on (pixels)
+*/
+void CLevel::OnLButtonDown(int x, int y)
+{
+
+    CItemVisitorFindTower towerFinder(x, y);
+    Accept(&towerFinder);
+    CTowerOwen* tower = towerFinder.GetOwenTower();
+
+    // if we clicked on a Dr. Owen tower, there's stuff we need to do...
+    if (tower != nullptr) {
+        // clear all of the owens on the grid
+        towerFinder.SetRemoveDrOwens(true);
+        Accept(&towerFinder);
+
+        // this tower now has Dr. Owen on it
+        tower->SetDrOwen(true);
     }
 }

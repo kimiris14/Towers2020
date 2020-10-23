@@ -40,9 +40,17 @@ public:
     virtual void VisitTowerBomb(CTowerBomb* bombtower);
     virtual void VisitTowerOwen(CTowerOwen* owentower);
 
-    /** Getter for the road tile that was found (if at all)
-    * \returns A pointer to the found tile */
+    /** Getter for the tower that was found (if at all)
+    * \returns A pointer to the found tower */
     CTower* GetTower() { return mTower; }
+
+    /** Getter for the owen tower that was found (if at all)
+    * \returns A pointer to the owenTower */
+    CTowerOwen* GetOwenTower() { return mOwenTower; }
+
+    /** Setter for clearing owen towers of Dr. Owen if he is found
+    * \param remove whether to remove Owen or not (default is false) */
+    void SetRemoveDrOwens(bool remove) { mClearOwens = remove; }
 
 private:
 
@@ -57,5 +65,8 @@ private:
 
     /// This will point to only an owen tower if we find it.
     CTowerOwen* mOwenTower = nullptr;
+
+    /// If this is true, the finder will clear all Owen Towers of Dr. Owen
+    bool mClearOwens = false;
 
 };
