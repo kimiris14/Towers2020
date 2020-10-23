@@ -108,7 +108,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
         mBombTowerButton->Draw(graphics);
     if (mOwenTowerButton != nullptr)
         mOwenTowerButton->Draw(graphics);
-    if (mGoButton != nullptr && mGame->GetLevel()->IsActive() == false)
+    if (mGoButton != nullptr && mGame->GetLevel()->IsActive() == false && mGame->GetLevel()->IsTitleDisplayed() == false)
         mGoButton->Draw(graphics);
 }
 

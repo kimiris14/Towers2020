@@ -44,5 +44,7 @@ void CItemBalloon::Pop(int score)
     if (mIsPopped == false) {
         mIsPopped = true;
         GetGame()->GetPallette()->IncrementScore(score);
+        // decrease the number of active balloons by 1
+        GetGame()->GetLevel()->DerementActiveBalloons();
     }
 }

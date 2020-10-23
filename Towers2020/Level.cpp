@@ -60,6 +60,8 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
     if (!balloon->IsPopped())
     {
         mGame->GetPallette()->DecrementScore(mPointsPerEscape);
+        // decrease number of active balloons if balloons escape
+        this->DerementActiveBalloons();
 
     }
 }
@@ -343,6 +345,28 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
             PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
             &brown);    // The brush to draw the text with
     }
+
+    // if the level is completed, display level complete title
+    if (mLevelCompleted)
+    {
+        //Font 
+        FontFamily fontFamily(L"Arial");
+
+        //Font size for title
+        Gdiplus::Font font(&fontFamily, 60);
+
+        //Draw the title in brown
+        SolidBrush brown(Color::Brown);
+
+        wstring levelw;
+        levelw = L"Level Complete!";
+        graphics->DrawString(levelw.c_str(),  // String to draw
+            -1,         // String length, -1 so it figures it out on its own
+            &font,      // The font to use
+            PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
+            &brown);    // The brush to draw the text with
+    }
+    
 }
 
 
@@ -447,6 +471,12 @@ void CLevel::Update(double elapsed)
         mTotalElapsedTime = 0;
     }
 
+    // if there are no more active balloons the level is completed
+    if (mNumBalloonsActive == 0) 
+    {
+        mLevelCompleted = true;
+    }
+
     if (mLevelActive)
     {
         // check to see if we need to spawn a new balloon and reset the timer
@@ -468,19 +498,6 @@ void CLevel::Update(double elapsed)
             mNumBalloonsToSpawn--;
         }
     }
-    
-
-    // delete the inactive projectiles
-    //CVisitProjectileCollectGarbage garbageVisitor();
-    //Accept(&garbageVisitor);
-    //auto projectileGarbage = garbageVisitor.GetInactiveProjectiles();
-    //for (auto item : mItems)
-    //{
-    //    if (projectileGarbage.contains(item.get()))
-    //    {
-    //        mItemsToDelete.push_back(item);
-    //    }
-    //}
 
     //// Add items to temporary vector to avoid changing a vector that is being iterated over
     //for (auto item : mItems)
