@@ -84,6 +84,9 @@ public:
 	*/
 	bool IsTitleDisplayed() { return mDisplayTitle; }
 
+	/**Setter for the number of active balloons*/
+	void DerementActiveBalloons() { mNumBalloonsActive -= 1; }
+
 	/// the current level number
 	std::wstring levelNumber;
 
@@ -91,7 +94,7 @@ public:
 	const Gdiplus::REAL LevelTitleY = 400;
 
 	/// the x location for the level title
-	const Gdiplus::REAL LevelStringX = 100;
+	const Gdiplus::REAL LevelStringX = 170;
 
 private:
 
@@ -119,6 +122,10 @@ private:
 	/// The number of balloons to spawn for this level 
 	/// (this is subracted by one every time a balloon is spawned)
 	int mNumBalloonsToSpawn = 30;  // project descriptions says 30
+
+	/// we start off with 30 active balloons, this will be decremented as they 
+	/// are popped or they escape
+	int mNumBalloonsActive = 30;
 
 	/// The total time that has elapsed since the last time a balloon was spawned
 	double mTimeSinceSpawn = 0;
