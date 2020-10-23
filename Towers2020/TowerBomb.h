@@ -39,7 +39,7 @@ public:
 
     void Fire();
 
-    /// ring tower id number
+    /// bomb tower id number
     const int TowerBombImageID = 424;
 
 private:

@@ -12,7 +12,7 @@
 using namespace std;
 using namespace Gdiplus;
 
-/// dart balloon filename
+/// dart image filename
 const wstring dartImageName = L"images/dart.png";
 
 /// dart id number
