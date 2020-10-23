@@ -15,7 +15,6 @@
 #include "ItemVisitorFindRoad.h"
 #include "ItemVisitorFindTile.h"
 #include "ItemVisitorFindTower.h"
-#include "VisitItemGarbage.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
