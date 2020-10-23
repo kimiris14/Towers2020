@@ -66,6 +66,9 @@ void CTowerOwen::Draw(Gdiplus::Graphics* graphics)
 {
     CItem::Draw(graphics);
 
+    if (!mHasDrOwen)
+        return;
+
     shared_ptr<Bitmap> itemBitmap = GetGame()->GetImage(DrOwenImageID);
 
     if (itemBitmap != nullptr) {

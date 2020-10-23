@@ -534,18 +534,6 @@ void CLevel::Update(double elapsed)
         }
     }
 
-    //// Add items to temporary vector to avoid changing a vector that is being iterated over
-    //for (auto item : mItems)
-    //{
-    //    mDeferredAdds.push_back(item);
-    //}
-    //mItems.clear();
-    //for (auto items : mDeferredAdds)
-    //{
-    //    items->Update(elapsed); // Call update
-    //    mItems.push_back(items); // Pushback back into mItems
-    //}
-    //mDeferredAdds.clear(); // clear vector
 
     for (auto item : mItems)
     {
