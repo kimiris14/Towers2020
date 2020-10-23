@@ -31,6 +31,8 @@ CTowerDart::CTowerDart(CLevel* level, CGame* game)
 	SetImageID(TowerImageID);
 	game->AddImage(TowerImageID, TowerImageName);
 
+    mTimeTillFire = mTimeBetweenShots;
+
 }
 
 /** Handle updates for darts
