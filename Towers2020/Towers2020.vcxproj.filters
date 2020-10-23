@@ -117,6 +117,15 @@
     <ClInclude Include="TowerOwen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ItemVisitorPopFinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileOwen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemVisitorFindNearestBalloon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers2020.cpp">
@@ -207,6 +216,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TowerOwen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemVisitorPopFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileOwen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemVisitorFindNearestBalloon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

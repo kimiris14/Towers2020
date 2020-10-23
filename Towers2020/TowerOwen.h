@@ -37,6 +37,14 @@ public:
 
     virtual void Update(double elapsed) override;
 
+
+    /// This will return true if the current tower has Dr. Owen on it
+    bool HasDrOwen() const { return mHasDrOwen; }
+
+    /// A setter for Dr Owen.
+    /// \param HasDrOwen this should be true if this tower now has Dr. Owen
+    bool SetDrOwen(bool HasDrOwen) { mHasDrOwen = HasDrOwen; }
+
     void Fire();
 
     /// owen tower image id number
@@ -48,11 +56,20 @@ public:
 
 private:
 
+    // This boolean is true if this tower actually has Dr. Owen on it
+    bool mHasDrOwen = true;
+
+    /// The current angle for which projectiles are fired (in degrees)
+    double mFiringAngle = 180;
 
     /// Time in between each time the tower shoots ring in seconds
-    double mTimeBetweenShots = 0; //possibly changed later
+    double mTimeBetweenShots = 0.25; 
 
     /// Time till the ring can fire after level has began in seconds
-    double mTimeTillFire = 0; //possibly changed later
+    double mTimeTillFire = 0;
+
+    /// the range that Dr. Owen can see balloons in (pixels)
+    double mBalloonTargetRange = 200;
+
 };
 

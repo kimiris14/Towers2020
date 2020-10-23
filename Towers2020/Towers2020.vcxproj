@@ -184,6 +184,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="ItemVisitorFindNearestBalloon.h" />
+    <ClInclude Include="ItemVisitorPopFinder.h" />
     <ClInclude Include="GoButton.h" />
     <ClInclude Include="ItemVisitorFindTile.h" />
     <ClInclude Include="ItemVisitorFindTower.h" />
@@ -203,6 +205,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileExplosion.h" />
     <ClInclude Include="ProjectileDart.h" />
+    <ClInclude Include="ProjectileOwen.h" />
     <ClInclude Include="ProjectileRing.h" />
     <ClInclude Include="TowerOwen.h" />
     <ClInclude Include="VisitItemGarbage.h" />
@@ -220,6 +223,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="ItemVisitorFindNearestBalloon.cpp" />
+    <ClCompile Include="ItemVisitorPopFinder.cpp" />
     <ClCompile Include="GoButton.cpp" />
     <ClCompile Include="ItemVisitorFindTile.cpp" />
     <ClCompile Include="ItemVisitorFindTower.cpp" />
@@ -245,6 +250,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileExplosion.cpp" />
     <ClCompile Include="ProjectileDart.cpp" />
+    <ClCompile Include="ProjectileOwen.cpp" />
     <ClCompile Include="ProjectileRing.cpp" />
     <ClCompile Include="TowerOwen.cpp" />
     <ClCompile Include="VisitItemGarbage.cpp" />

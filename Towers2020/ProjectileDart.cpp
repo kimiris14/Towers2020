@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "ProjectileDart.h"
+#include "ItemVisitorPopFinder.h"
 #include "ImageMap.h"
 #include "Game.h"
 
@@ -90,6 +91,10 @@ void CProjectileDart::Update(double elapsed)
     {
         SetActive(false);
     }*/
+
+    // pop balloons if they're close enough
+    CItemVisitorPopFinder popper(GetX(), GetY(), PoppingDistance, PointsPerPop);
+    GetLevel()->Accept(&popper);
 }
 
 /**
