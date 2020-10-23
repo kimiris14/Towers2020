@@ -87,8 +87,22 @@ public:
 	/**Setter for the number of active balloons*/
 	void DerementActiveBalloons() { mNumBalloonsActive -= 1; }
 
+	/// A getter for the next level
+	/// \returns the filename for the next level
+	std::wstring GetNextLevel() { return mNextLevelFilename; }
+
+	/// A getter for if the level is completed
+	/// \returns true if the level has been completed
+	bool IsCompleted() { return mLevelCompleted; }
+
 	/// the current level number
 	std::wstring levelNumber;
+
+	/// the next level to Load
+	std::wstring nextLevelNumber; 
+
+	/// the last level
+	std::wstring lastLevel = L"3";
 
 	/// the y location for the level title
 	const Gdiplus::REAL LevelTitleY = 400;
@@ -146,8 +160,15 @@ private:
 	/// a boolean for knowing when we display the level title
 	bool mDisplayTitle = true;
 
+	/// a boolean to keep track of if we reset the total elapsed time 
+	/// had a hard time figuring out a solution without this boolean for loading the next level in update
+	bool mResetTotalElapsedTime = false;
+
 	/// level titles are displayed for two seconds
 	int mDisplayTitleTime = 2;
+
+	/// the next level to be loaded
+	std::wstring mNextLevelFilename = L"";
 
 	/// Add all items that need to be deleted to this list during updates. 
 	/// Everything from this list is found and removed from mItems after

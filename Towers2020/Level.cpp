@@ -42,7 +42,6 @@ CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game)
 {
     // grab the level number from the filename
     levelNumber = filename[12];
-    mDisplayTitle = true;
     Load(filename);
 
 }
@@ -326,7 +325,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // Draw the level title
-    if (mDisplayTitle)
+    if (mDisplayTitle && levelNumber != L"3")
     {
         //Font 
         FontFamily fontFamily(L"Arial");
@@ -338,7 +337,10 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         SolidBrush brown(Color::Brown);
 
         wstring levelw;
-        levelw = L"Level " + levelNumber + L" Begin";
+        if (mLevelCompleted == false)
+            levelw = L"Level " + levelNumber + L" Begin";
+        if (mLevelCompleted == true)
+            levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
@@ -346,27 +348,30 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
             &brown);    // The brush to draw the text with
     }
 
-    // if the level is completed, display level complete title
-    if (mLevelCompleted)
+    // Draw the level title
+    if (mDisplayTitle && levelNumber == L"3")
     {
         //Font 
-        FontFamily fontFamily(L"Arial");
+        FontFamily fontFamily(L"Comic Sans MS");
 
         //Font size for title
         Gdiplus::Font font(&fontFamily, 60);
 
         //Draw the title in brown
-        SolidBrush brown(Color::Brown);
+        SolidBrush brown(Color::Orange);
 
         wstring levelw;
-        levelw = L"Level Complete!";
+        if (mLevelCompleted == false)
+            levelw = L"Level " + levelNumber + L" Begin";
+        if (mLevelCompleted == true)
+            levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
             PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
             &brown);    // The brush to draw the text with
     }
-    
+
 }
 
 
@@ -464,7 +469,7 @@ void CLevel::Update(double elapsed)
     mTotalElapsedTime = mTotalElapsedTime + elapsed;
 
     // if 2 seconds have passed, get rid of the level title display
-    if (mTotalElapsedTime > mDisplayTitleTime && mDisplayTitle == true)
+    if (mTotalElapsedTime > mDisplayTitleTime && mDisplayTitle == true && mLevelCompleted == false)
     {
         // reset total elapsed time so now the total elapsed time keeps track of total play time
         mDisplayTitle = false;
@@ -474,7 +479,37 @@ void CLevel::Update(double elapsed)
     // if there are no more active balloons the level is completed
     if (mNumBalloonsActive == 0) 
     {
+        // the level is complete (redundancy?)
+        mDisplayTitle = true;
         mLevelCompleted = true;
+        mLevelActive = false;
+
+        // reset the elapsed time only if we havent already
+        if (mResetTotalElapsedTime == false)
+        {
+            mTotalElapsedTime = 0;
+            mResetTotalElapsedTime = true;
+        }
+
+        // check if 2 seconds has passed since we completed the level
+        if (mTotalElapsedTime > mDisplayTitleTime && mLevelCompleted == true)
+        {
+            // figure out the next level to load
+            // if the current level is not the last level, the next level will be this level + 1
+            if (levelNumber != lastLevel)
+            {
+                nextLevelNumber = to_wstring(stoi(levelNumber) + 1);
+                
+            }
+            // otherwise the next level is the last level
+            else
+            {
+                nextLevelNumber = lastLevel;
+            }
+
+            mNextLevelFilename = L"levels/level" + nextLevelNumber + L".xml";
+            
+        }
     }
 
     if (mLevelActive)

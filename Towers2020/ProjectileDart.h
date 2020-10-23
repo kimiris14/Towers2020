@@ -52,6 +52,13 @@ public:
     void SetAngle(double angle);
 
 private:
+
+    /// The maximum distance that a balloon can be from a dart and still be popped (in pixels)
+    const double PoppingDistance = 24;
+
+    /// The number of points to award if a dart hits a balloon
+    const int PointsPerPop = 10;
+
     /// Dart image's angle
     double mAngle = 0;
     

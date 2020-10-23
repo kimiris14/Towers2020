@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "ProjectileDart.h"
+#include "ItemVisitorPopFinder.h"
 #include "ImageMap.h"
 #include "Game.h"
 

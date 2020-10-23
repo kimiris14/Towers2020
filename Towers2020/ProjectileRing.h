@@ -28,7 +28,7 @@ public:
     /// Destructor
     ~CProjectileRing() {}
 
-    virtual void CProjectileRing::Draw(Gdiplus::Graphics* graphics);
+    virtual void Draw(Gdiplus::Graphics* graphics);
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
