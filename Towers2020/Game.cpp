@@ -25,7 +25,7 @@ using namespace std;
 using namespace xmlnode;
 
 /// The Default level to load when the game is created
-const wstring DefaultLevel = L"levels/level0.xml";
+const wstring DefaultLevel = L"levels/level1.xml";
 
 
 /**
@@ -227,5 +227,10 @@ std::shared_ptr<Gdiplus::Bitmap> CGame::GetImage(int imageID)
 */
 void CGame::Update(double elapsed)
 {
+    // load the next level if the current level is complete
+    if (mCurrentLevel->IsCompleted() && mCurrentLevel->GetNextLevel() != L"")
+    {
+        mCurrentLevel = make_shared<CLevel>(this, mCurrentLevel->GetNextLevel());
+    }
     mCurrentLevel->Update(elapsed);
 }

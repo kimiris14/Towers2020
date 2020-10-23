@@ -8,9 +8,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 using namespace Gdiplus;
 
-/// bomb id number
-const int explosionID = 53;
-
 /// The basic level for testing
 const std::wstring baseLevel = L"levels/level0.xml";
 
@@ -26,8 +23,8 @@ namespace Testing
 		* \param game The Game this item is a member of
 		* \param imageID The image id for this item
 		*/
-		CBombMock(CLevel* level, CGame* game, int imageID)
-			: CProjectileExplosion(level, game, imageID)
+		CBombMock(CLevel* level, CGame* game)
+			: CProjectileExplosion(level, game)
 		{
 		}
 
@@ -53,7 +50,7 @@ namespace Testing
 		{
 			CGame game;
 			CLevel level(&game, baseLevel);
-			CProjectileExplosion bomb(&level, &game, explosionID);
+			CProjectileExplosion bomb(&level, &game);
 		}
 
 	};

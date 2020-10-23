@@ -18,9 +18,8 @@ const int explosionID = 53; //assigned
  * Constructor
  * \param level The Level this bomb is a member of
  * \param game The Game this bomb is a member of
- * \param imageID The image id for this bomb
  */
-CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game, int imageID) : CProjectile(level, game, imageID)
+CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game) : CProjectile(level, game, explosionID)
 {
 }
 
@@ -30,9 +29,25 @@ CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game, int image
 */
 void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
 {
-	//SolidBrush brush(Color(128, 0, 0));
-	//graphics->FillEllipse(&brush, 0, 0, mRingRadius, mRingRadius);
-	//graphics->DrawEllipse(&pen, 0, 0, mRingRadius, mRingRadius);
+	if (IsActive())
+	{
+		auto x = (int)this->GetX() - (int)mExplosionRadius;
+		auto y = (int)this->GetY() - (int)mExplosionRadius;
+		SolidBrush brush(Color(128, 0, 0));
+		graphics->FillEllipse(&brush, x, y, mExplosionRadius * 2, mExplosionRadius * 2);
+		
+	}
 }
 
-//Update Function for Bomb Explosion
+/**
+* Update the bomb projectile animation
+* \param elapsed The elapsed time in seconds
+*/
+void CProjectileExplosion::Update(double elapsed)
+{
+	CProjectile::Update(elapsed);
+	if (GetTotalElapsed() > 0.25)
+	{
+		SetActive(false); //deactivate projectile
+	}
+}

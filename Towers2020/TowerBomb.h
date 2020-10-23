@@ -33,11 +33,13 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitTowerBomb(this); }
 
-    virtual void Update(double elapsed) override;
+    virtual void Update(double elapsed);
+  
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     void Fire();
 
-    /// ring tower id number
+    /// bomb tower id number
     const int TowerBombImageID = 424;
 
 private:
@@ -47,6 +49,15 @@ private:
 
     /// Time in between each time one bomb tower shoots an explosion in seconds
     double mTimeBetweenShots = 3;
+
+    /// Time until the bomb tower can fire after level has began in seconds
+    double mTimeTillFire = 3;
+
+    /// Has the explosion projectile exploded?
+    bool mHasExploded = false;
+
+    /// The explosion display time in seconds
+    double mDisplayTime = 0.25;
 
 };
 
