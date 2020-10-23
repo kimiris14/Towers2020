@@ -39,11 +39,14 @@ public:
 
 
     /// This will return true if the current tower has Dr. Owen on it
+    /// \return true if this tower has dr owen on it
     bool HasDrOwen() const { return mHasDrOwen; }
+
+    virtual bool Place();
 
     /// A setter for Dr Owen.
     /// \param HasDrOwen this should be true if this tower now has Dr. Owen
-    bool SetDrOwen(bool HasDrOwen) { mHasDrOwen = HasDrOwen; }
+    void SetDrOwen(bool HasDrOwen) { mHasDrOwen = HasDrOwen; }
 
     void Fire();
 
@@ -56,7 +59,7 @@ public:
 
 private:
 
-    // This boolean is true if this tower actually has Dr. Owen on it
+    /// This boolean is true if this tower actually has Dr. Owen on it
     bool mHasDrOwen = true;
 
     /// The current angle for which projectiles are fired (in degrees)
@@ -70,6 +73,9 @@ private:
 
     /// the range that Dr. Owen can see balloons in (pixels)
     double mBalloonTargetRange = 200;
+
+    /// the level that this tower is in
+    CLevel* mLevel;
 
 };
 

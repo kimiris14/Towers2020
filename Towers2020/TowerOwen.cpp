@@ -1,5 +1,5 @@
 /**
- * \file TowerRing.cpp
+ * \file TowerOwen.cpp
  *
  * \author PaulaRed
  */
@@ -9,6 +9,7 @@
 #include "ImageMap.h"
 #include "ProjectileOwen.h"
 #include "ItemVisitorFindNearestBalloon.h"
+#include "TowerOwenCounter.h"
 #include "ItemBalloon.h"
 #include "Game.h"
 #include <math.h>
@@ -24,7 +25,7 @@ const double Pi = 3.14159265358979323846;
 * \param game The Game this item is a member of
 */
 CTowerOwen::CTowerOwen(CLevel* level, CGame* game)
-    : CTower(level, game, TowerOwenImageID)
+    : CTower(level, game, TowerOwenImageID), mLevel(level)
 {
     // the image ID is not properly set in the CTower constructor because it is
     // not yet initialized. This fixes that
@@ -82,4 +83,34 @@ void CTowerOwen::Fire()
 
     auto bit = make_shared<CProjectileOwen>(GetLevel(), GetGame(), GetX(), GetY(), mFiringAngle);
     GetLevel()->AddDeferred(bit);
+}
+
+/**
+* Keeps track of the number of times an owen tower was successfully placed and
+* updates the time until fire accordingly
+* \return true if the bomb was placed successfully, false otherwise
+*/
+bool CTowerOwen::Place()
+{
+    // upcall
+    bool successful = CTower::Place();
+
+    // count number of bombs placed using a visitor
+    if (successful)
+    {
+        // only visit if it was placed successfully
+        CTowerOwenCounter visitor;
+        mLevel->Accept(&visitor);
+        int numOwensPlaced = visitor.GetNumOwens();
+        if (numOwensPlaced > 1)
+        {
+            this->SetDrOwen(false);
+        }
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
 }

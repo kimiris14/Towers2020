@@ -126,6 +126,9 @@
     <ClInclude Include="BombCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TowerOwenCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Towers2020.cpp">
@@ -225,6 +228,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BombCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerOwenCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
