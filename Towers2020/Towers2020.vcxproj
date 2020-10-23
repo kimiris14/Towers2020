@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BombCounter.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="ItemVisitorFindNearestBalloon.h" />
     <ClInclude Include="ItemVisitorPopFinder.h" />
@@ -221,6 +222,7 @@
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BombCounter.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="ItemVisitorFindNearestBalloon.cpp" />
     <ClCompile Include="ItemVisitorPopFinder.cpp" />

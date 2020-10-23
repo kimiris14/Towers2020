@@ -39,7 +39,8 @@ public:
 
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-	bool Place();
+	virtual bool Place();
+
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

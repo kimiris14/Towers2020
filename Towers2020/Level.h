@@ -102,7 +102,7 @@ public:
 	std::wstring nextLevelNumber; 
 
 	/// the last level
-	std::wstring lastLevel = L"3";
+	const std::wstring lastLevel = L"3";
 
 	/// the y location for the level title
 	const Gdiplus::REAL LevelTitleY = 400;
