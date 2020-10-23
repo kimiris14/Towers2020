@@ -63,7 +63,7 @@ private:
     double mFiringAngle = 180;
 
     /// Time in between each time the tower shoots ring in seconds
-    double mTimeBetweenShots = 0.25; 
+    double mTimeBetweenShots = 0.5; 
 
     /// Time till the ring can fire after level has began in seconds
     double mTimeTillFire = 0;
