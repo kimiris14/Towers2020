@@ -45,35 +45,25 @@ CProjectileDart::CProjectileDart(CLevel* level, CGame* game, int imageID) : CPro
  */
 void CProjectileDart::Draw(Gdiplus::Graphics* graphics)
 {
+    // Check to make sure projectile is still active
     if (IsActive())
     {
         shared_ptr<Bitmap> dartImage = GetGame()->GetImage(dartID);
         if (dartImage != nullptr)
         {
+            // Find image specifics
             int wid = dartImage->GetWidth();
             int hit = dartImage->GetHeight();
-            auto offsetX = wid / 2;
-            auto offsetY = hit / 2;
+            // Draw
             auto save = graphics->Save();
-            graphics->TranslateTransform((REAL)(mXPos),
-                (REAL)(mYPos));
+            graphics->TranslateTransform((REAL)(GetX()),
+                (REAL)(GetY()));
             graphics->RotateTransform((REAL)(mAngle * RtoD));
-            graphics->DrawImage(dartImage.get(), mDistanceFromTower,
-                mDistanceFromTower, wid, hit);
+            graphics->DrawImage(dartImage.get(), 0,
+                0, wid, hit);
             graphics->Restore(save);
         }
     }
-}
-
-/**
-* Set item location
-* \param x X location
-* \param y Y location
-*/
-void CProjectileDart::SetLocation(double x, double y)
-{
-    mXPos = x;
-    mYPos = y;
 }
 
 /**
@@ -82,14 +72,24 @@ void CProjectileDart::SetLocation(double x, double y)
  */
 void CProjectileDart::Update(double elapsed)
 {
+    // This updates the total elapsed time for the projectile
     CProjectile::Update(elapsed);
 
-    mDistanceFromTower = GetTotalElapsed() * mSpeed;
+    // Dart's specifics for draw
+    double newX = GetX() + mSpeedX * elapsed;
+    double newY = GetY() + mSpeedY * elapsed; 
+    
+    // Set the new location
+    SetLocation(newX, newY);
 
-    /*if (mDistanceFromTower > 90)
+    // Dart's distance from tower
+    mDistanceFromTower = GetTotalElapsed() * mGrowingSpeed + mInitialDistance;
+    
+    // If the dart's distance is larger than 100 pixels, this dart is no longer active
+    if (mDistanceFromTower > mFinalDistance)
     {
         SetActive(false);
-    }*/
+    }
 }
 
 /**

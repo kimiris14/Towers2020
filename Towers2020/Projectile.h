@@ -66,5 +66,6 @@ private:
 	/// A boolean to determine if the projectile is active or completely spent.
 	bool mProjectileActive = true;
 
+
 };
 

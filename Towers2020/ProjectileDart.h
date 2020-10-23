@@ -30,7 +30,11 @@ public:
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-    virtual void SetLocation(double x, double y) override;
+    /** Set X and Y speed of dart
+    * \param x X pos
+    * \param y Y pos
+    */
+    void SetSpeed(double x, double y) { mSpeedX = x; mSpeedY = y; }
     
     /** Accept a visitor
     * \param visitor The visitor we accept */
@@ -40,24 +44,33 @@ public:
 
     double GetAngle();
 
-    double GetDistance() { return mDistanceFromTower; }
+    /** Return initial distance of dart from tower
+    * \return mInitialDistance
+    */
+    double GetDistance() { return mInitialDistance; }
 
     void SetAngle(double angle);
 
 private:
     /// Dart image's angle
     double mAngle = 0;
-
-    /// Dart's x position
-    double mXPos = 0;
-    
-    /// Dart's y position
-    double mYPos = 0;
     
     /// Dart's distance from Tower
-    double mDistanceFromTower = 10;
+    double mDistanceFromTower = 0;
 
-    /// Current speed of dart
-    double mSpeed = 100;
+    /// Current speed of dart at X
+    double mSpeedX = 0;
+
+    /// Current speed of dart at Y
+    double mSpeedY = 0;
+
+    /// Dart's growing speed in pixels per second
+    double mGrowingSpeed = 200;
+
+    /// Dart's initial distance from tower
+    double mInitialDistance = 10;
+
+    /// Dart's final distance from tower
+    double mFinalDistance = 100;
 };
 

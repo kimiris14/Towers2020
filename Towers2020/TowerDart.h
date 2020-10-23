@@ -50,8 +50,6 @@ private:
     
     /// Time in between each time the tower shoots darts in seconds
     double mTimeBetweenShots = 5;
-
-    double mDistanceFromTower = 10;
 };
 
 

@@ -4,7 +4,6 @@
  * \author PaulaRed
  */
 
-
 #include "pch.h"
 #include "TowerDart.h"
 #include "ImageMap.h"
@@ -16,7 +15,6 @@ using namespace Gdiplus;
 
 /// Dart image ID
 const int dartID = 51;
-
 
 /// Pi
 const double Pi = 3.14159265358979323846;
@@ -56,28 +54,36 @@ void CTowerDart::Update(double elapsed)
 */
 void CTowerDart::Fire()
 {
+    // Get image specifics
     shared_ptr<Bitmap> dartTowerImage = GetGame()->GetImage(TowerImageID);
     double wid = dartTowerImage->GetWidth();
     double hit = dartTowerImage->GetHeight();
 
+    // Create 8 darts
     for (double i = 0; i < 8; i++)
     {
         shared_ptr<CItem> item = nullptr;
         auto dart = make_shared<CProjectileDart>(GetLevel(), GetGame(), dartID);
 
-        dart->SetAngle(i * (Pi / 4.0));
+        // Set the dart's angle
+        dart->SetAngle(i * (Pi / 4.0) - Pi / 4.0);
         double a = dart->GetAngle();
         double dist = dart->GetDistance();
 
-        double sn = sin(a);
-        double cs = cos(a);
+        double sn = sin(a); // sin
+        double cs = cos(a); // cos
 
+        // Assign dart location
         double x = GetX() + cs * dart->GetDistance();
         double y = GetY() + sn * dart->GetDistance();
-
         dart->SetLocation(x, y);
+
+        // Upcast and append to level's AddDeferred
         item = dart;
         GetLevel()->AddDeferred(item);
+
+        // Set X and Y speed
+        dart->SetSpeed(200 * cs, 200 * sn);
     }
 }
 
