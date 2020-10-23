@@ -7,11 +7,12 @@
 
 #include "pch.h"
 #include "ProjectileExplosion.h"
+#include "ItemVisitorPopFinder.h"
 #include "Game.h"
 
 using namespace Gdiplus;
 
-/// bomb id number
+/// explosion id number
 const int explosionID = 53; //assigned
 
  /**
@@ -24,7 +25,7 @@ CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game) : CProjec
 }
 
 /**
-* Draw the bomb projectile
+* Draw the explosion projectile
 * \param graphics The GDI+ graphics context to draw on
 */
 void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
@@ -40,7 +41,7 @@ void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
 }
 
 /**
-* Update the bomb projectile animation
+* Update the explosion projectile animation
 * \param elapsed The elapsed time in seconds
 */
 void CProjectileExplosion::Update(double elapsed)
@@ -49,5 +50,12 @@ void CProjectileExplosion::Update(double elapsed)
 	if (GetTotalElapsed() > 0.25)
 	{
 		SetActive(false); //deactivate projectile
+	}
+
+	if (IsActive())
+	{
+		//pop balloons
+		CItemVisitorPopFinder popper((int)GetX(), (int)GetY(), mExplosionRadius, PointsPerPop);
+		GetLevel()->Accept(&popper);
 	}
 }

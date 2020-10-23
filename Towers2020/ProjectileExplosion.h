@@ -40,6 +40,9 @@ public:
 
 private:
     /// Explosion radius of projectile in pixels
-    int mExplosionRadius = 100;
+    double mExplosionRadius = 100;
+
+    /// The number points awarded when a balloon has been popped
+    const int PointsPerPop = 2;
 };
 
