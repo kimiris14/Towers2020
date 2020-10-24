@@ -13,6 +13,7 @@
     <trees id="i919" image="trees2-graveyard.png"/>
     <trees id="i920" image="trees3-graveyard.png"/>
     <trees id="i921" image="trees4-graveyard.png"/>
+    <pumpkin id="i999" image="pumpkin1-graveyard.png"/>
   </declarations>
   <items>
     	
@@ -25,6 +26,7 @@
 		<trees id="i919" x="12" y="0"/>
 
 		<trees id="i918" x="11" y="0"/>
+		<pumpkin id="i999" x="11" y="0"/>
 
 		<open id="i908" x="10" y="0"/>
 
