@@ -54,13 +54,13 @@ public:
     const int TowerOwenImageID = 450;
 
     /// tower image filename
-    const std::wstring TowerOwenImageName = L"images/blue-balloon.png";
+    const std::wstring TowerOwenImageName = L"images/owen-gear.png";
 
     /// Dr. Owen himself image id number
     const int DrOwenImageID = 451;
 
     /// Dr. Owen himself image filename
-    const std::wstring DrOwenImageName = L"images/black-balloon.png";
+    const std::wstring DrOwenImageName = L"images/owen.png";
 
 
 private:
