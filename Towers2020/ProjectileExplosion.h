@@ -29,7 +29,6 @@ public:
     ~CProjectileExplosion() {}
 
     /// Draw the bomb projectile
-    /// \param graphics The GDI+ graphics context to draw on
     virtual void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics);
 
     /** Accept a visitor
