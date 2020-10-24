@@ -9,17 +9,26 @@
     <road id="i906" image="roadNW-graveyard.png" type="NW"/>
     <open id="i907" image="grass1-graveyard.png"/>
     <open id="i908" image="grass2-graveyard.png"/>
+    <trees id="i918" image="trees1-graveyard.png"/>
+    <trees id="i919" image="trees2-graveyard.png"/>
+    <trees id="i920" image="trees3-graveyard.png"/>
+    <trees id="i921" image="trees4-graveyard.png"/>
   </declarations>
   <items>
-    <open id="i908" x="15" y="0"/>
+    		<open id="i908" x="15" y="0"/>
+		<trees id="i920" x="15" y="0"/>
 
 		<open id="i908" x="14" y="0"/>
+		<trees id="i921" x="14" y="0"/>
 
 		<open id="i908" x="13" y="0"/>
+		<trees id="i920" x="13" y="0"/>
 
 		<open id="i908" x="12" y="0"/>
+		<trees id="i919" x="12" y="0"/>
 
 		<open id="i908" x="11" y="0"/>
+		<trees id="i918" x="11" y="0"/>
 
 		<open id="i908" x="10" y="0"/>
 
@@ -44,12 +53,16 @@
 		<open id="i908" x="0" y="0"/>
 
 		<open id="i908" x="15" y="1"/>
+		<trees id="i921" x="15" y="1"/>
 
 		<open id="i908" x="14" y="1"/>
+		<trees id="i921" x="14" y="1"/>
 
 		<open id="i908" x="13" y="1"/>
+		<trees id="i919" x="13" y="1"/>
 
 		<open id="i908" x="12" y="1"/>
+		<trees id="i919" x="12" y="1"/>
 
 		<open id="i908" x="11" y="1"/>
 
@@ -78,8 +91,10 @@
 		<open id="i908" x="15" y="2"/>
 
 		<open id="i908" x="14" y="2"/>
+		<trees id="i919" x="14" y="2"/>
 
 		<open id="i908" x="13" y="2"/>
+		<trees id="i919" x="13" y="2"/>
 
 		<open id="i908" x="12" y="2"/>
 
