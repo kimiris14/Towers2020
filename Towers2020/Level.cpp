@@ -332,10 +332,10 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         FontFamily fontFamily(L"Arial");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 60);
+        Gdiplus::Font font(&fontFamily, 60, FontStyleBold);
 
         //Draw the title in brown
-        SolidBrush brown(Color::Brown);
+        SolidBrush color(Color::Brown);
 
         wstring levelw;
         if (mLevelCompleted == false)
@@ -346,20 +346,20 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
             PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
-            &brown);    // The brush to draw the text with
+            &color);    // The brush to draw the text with
     }
 
     // Draw the level title
     if (mDisplayTitle && levelNumber == L"3")
     {
         //Font 
-        FontFamily fontFamily(L"Comic Sans MS");
+        FontFamily fontFamily(L"Chiller");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 60);
+        Gdiplus::Font font(&fontFamily, 80, FontStyleBold);
 
         //Draw the title in brown
-        SolidBrush brown(Color::Orange);
+        SolidBrush color(Color(215, 55, 5));
 
         wstring levelw;
         if (mLevelCompleted == false)
@@ -370,7 +370,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
             PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
-            &brown);    // The brush to draw the text with
+            &color);    // The brush to draw the text with
     }
 
 }
