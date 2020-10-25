@@ -94,6 +94,8 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 void CChildView::OnPaint() 
 {
 
+
+
 	if (mFirstDraw)
 	{
 		mFirstDraw = false;
@@ -120,16 +122,6 @@ void CChildView::OnPaint()
 	mLastTime = time.QuadPart;
 
 
-	CPaintDC paintDC(this);
-	CDoubleBufferDC dc(&paintDC); // device context for painting
-	Graphics graphics(dc.m_hDC);
-
-	// get the client's rectangle viewing box
-	CRect rect;
-	GetClientRect(&rect);
-
-	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
-
 	//
 	// Prevent tunnelling
 	//
@@ -145,6 +137,19 @@ void CChildView::OnPaint()
 	{
 		mGame.Update(elapsed);
 	}
+
+
+	CPaintDC paintDC(this);
+	CDoubleBufferDC dc(&paintDC); // device context for painting
+	Graphics graphics(dc.m_hDC);
+
+	// get the client's rectangle viewing box
+	CRect rect;
+	GetClientRect(&rect);
+
+	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
+
+
 }
 
 
