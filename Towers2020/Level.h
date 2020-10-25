@@ -101,11 +101,17 @@ public:
 	/// the last level
 	const std::wstring LastLevel = L"3";
 
-	/// the y location for the level title
+	/// the y location for the level title (in pixels);
 	const Gdiplus::REAL LevelTitleY = 400;
 
-	/// the x location for the level title
+	/// the x location for the level title (in pixels)
 	const Gdiplus::REAL LevelStringX = 170;
+
+	/// the text size for the begining level text with larger fonts (in pixels)
+	const Gdiplus::REAL LevelTextSizeSmall = 100;
+
+	/// the text size for the level text with smaller fonts (in pixels)
+	const Gdiplus::REAL LevelTextSizeLarge = 135;
 
 private:
 

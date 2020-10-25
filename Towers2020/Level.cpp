@@ -332,7 +332,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         FontFamily fontFamily(L"Arial");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 60, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, LevelTextSizeSmall, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color::Brown);
@@ -356,7 +356,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         FontFamily fontFamily(L"Chiller");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 80, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, LevelTextSizeLarge, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color(215, 55, 5));
@@ -527,7 +527,7 @@ void CLevel::Update(double elapsed)
 
             // spawn the balloon
             auto balloon = make_shared<CItemBalloon>(this, mGame);
-            mItems.push_back(balloon);
+            mDeferredAdds.push_back(balloon);
             startingRoad->AcceptBalloon(balloon);
             mTimeSinceSpawn = 0.0;
 
@@ -543,6 +543,7 @@ void CLevel::Update(double elapsed)
 
     // if any item was to be added during the call to item->Update() above,
     // it should now be added into mItems
+    for (auto item : mDeferredAdds)
     for (auto item : mDeferredAdds)
     {
         mItems.push_back(item);

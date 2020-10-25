@@ -57,5 +57,5 @@ void CTowerRing::Fire()
     ring->SetLocation(GetX(), GetY());
 
     // Adds the ring to the level's mItems
-    GetLevel()->Add(ring);
+    GetLevel()->AddDeferred(ring);
 }

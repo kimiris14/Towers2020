@@ -66,7 +66,7 @@ void CTowerBomb::Fire()
     explosion->SetLocation(GetX(), GetY());
 
     //Add explosion projectile to level
-    GetLevel()->Add(explosion);
+    GetLevel()->AddDeferred(explosion);
 
     //If level elapsed time > 0.25, deactivate projectile
     if (GetLevel()->GetElapsedTime() > mDisplayTime && mHasExploded == true)

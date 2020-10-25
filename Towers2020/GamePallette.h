@@ -45,6 +45,13 @@ public:
     void DecrementScore(int decrement = 1) { mScore = mScore - decrement; }
 
 private:
+
+    /// The size in px of the score string display
+    const static int ScoreStringSize = 60;
+
+    /// The size in px of the actual score display
+    const static int ScoreSize = 80;
+
 	/// The current score in the game
 	int mScore = 0;
 
@@ -68,6 +75,7 @@ private:
 
     /// a shared ptr to the go button
     std::shared_ptr<CGoButton> mGoButton = nullptr;
+
 
 };
 

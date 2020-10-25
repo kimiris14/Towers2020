@@ -51,19 +51,19 @@ private:
     double mDistance = 0;
 
     /// The max distance of this projectile in pixels
-    const int MaxDistance = 200;
+    const static int MaxDistance = 200;
 
     /// How far the projectile should start from the origin in pixels
-    const int StartingDistance = 10;
+    const static int StartingDistance = 10;
 
     /// the font size in pixels (used for centering the bit, as well)
-    const int FontSize = 10;
+    const static int FontSize = 30;
 
     /// The maximum distance that a balloon can be from a dart and still be popped (in pixels)
     const double PoppingDistance = 15;
 
     /// The number of points to award if a dart hits a balloon
-    const int PointsPerPop = 2;
+    const static int PointsPerPop = 2;
 
     /// This is the value to display as the projectile, which is set in the constructor
     int mBitValue = 0;

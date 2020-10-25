@@ -123,7 +123,7 @@ void CGame::OnLButtonDown(int x, int y)
         {
             clickedItem->SetLocation(oX, oY);
             mGrabbedTower = clickedItem;
-            mCurrentLevel->Add(clickedItem);
+            mCurrentLevel->AddDeferred(clickedItem);
         }
     }
 
