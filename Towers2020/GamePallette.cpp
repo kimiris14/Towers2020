@@ -76,10 +76,10 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     FontFamily fontFamily(L"Arial");
     
     //Font size for Score
-    Gdiplus::Font font(&fontFamily, 30);
+    Gdiplus::Font font(&fontFamily, 30, 0, UnitPixel);
 
     //Font size for actual score value
-    Gdiplus::Font font2(&fontFamily, 40);
+    Gdiplus::Font font2(&fontFamily, 40, 0, UnitPixel);
 
     //Draw the score in white
     SolidBrush yellow(Color(255, 255, 0));

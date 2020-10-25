@@ -94,7 +94,7 @@ void CProjectileOwen::Draw(Gdiplus::Graphics* graphics)
 	y += FontOffsetY;
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, (REAL)FontSize);
+	Gdiplus::Font font(&fontFamily, (REAL)FontSize, 0, UnitPixel);
 
 
 	SolidBrush white(Color(255, 255, 255));
