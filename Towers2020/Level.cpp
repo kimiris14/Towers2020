@@ -42,7 +42,7 @@ const wstring ImagesDirectory = L"images/";
 CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) 
 {
     // grab the level number from the filename
-    levelNumber = filename[12];
+    mLevelNumber = filename[12];
     Load(filename);
 
 }
@@ -326,7 +326,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // Draw the level title
-    if (mDisplayTitle && levelNumber != L"3")
+    if (mDisplayTitle && mLevelNumber != L"3")
     {
         //Font 
         FontFamily fontFamily(L"Arial");
@@ -339,7 +339,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
 
         wstring levelw;
         if (mLevelCompleted == false)
-            levelw = L"Level " + levelNumber + L" Begin";
+            levelw = L"Level " + mLevelNumber + L" Begin";
         if (mLevelCompleted == true)
             levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
@@ -350,7 +350,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // Draw the level title
-    if (mDisplayTitle && levelNumber == L"3")
+    if (mDisplayTitle && mLevelNumber == L"3")
     {
         //Font 
         FontFamily fontFamily(L"Chiller");
@@ -363,7 +363,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
 
         wstring levelw;
         if (mLevelCompleted == false)
-            levelw = L"Level " + levelNumber + L" Begin";
+            levelw = L"Level " + mLevelNumber + L" Begin";
         if (mLevelCompleted == true)
             levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
@@ -497,18 +497,18 @@ void CLevel::Update(double elapsed)
         {
             // figure out the next level to load
             // if the current level is not the last level, the next level will be this level + 1
-            if (levelNumber != lastLevel)
+            if (mLevelNumber != LastLevel)
             {
-                nextLevelNumber = to_wstring(stoi(levelNumber) + 1);
+                mNextLevelNumber = to_wstring(stoi(mLevelNumber) + 1);
                 
             }
             // otherwise the next level is the last level
             else
             {
-                nextLevelNumber = lastLevel;
+                mNextLevelNumber = LastLevel;
             }
 
-            mNextLevelFilename = L"levels/level" + nextLevelNumber + L".xml";
+            mNextLevelFilename = L"levels/level" + mNextLevelNumber + L".xml";
             
         }
     }

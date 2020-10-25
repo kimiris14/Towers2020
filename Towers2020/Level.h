@@ -97,14 +97,9 @@ public:
 	/// \returns true if the level has been completed
 	bool IsCompleted() { return mLevelCompleted; }
 
-	/// the current level number
-	std::wstring levelNumber;
-
-	/// the next level to Load
-	std::wstring nextLevelNumber; 
 
 	/// the last level
-	const std::wstring lastLevel = L"3";
+	const std::wstring LastLevel = L"3";
 
 	/// the y location for the level title
 	const Gdiplus::REAL LevelTitleY = 400;
@@ -113,6 +108,12 @@ public:
 	const Gdiplus::REAL LevelStringX = 170;
 
 private:
+
+	/// the current level number
+	std::wstring mLevelNumber;
+
+	/// the next level to Load
+	std::wstring mNextLevelNumber;
 
 	/// All of the items to add to our game
 	std::vector<std::shared_ptr<CItem> > mItems;
