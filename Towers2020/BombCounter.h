@@ -22,10 +22,7 @@ class CBombCounter : public CItemVisitor
 {
 public:
 
-	/**Visits and counts bombs in the level
-	* \param bombtower The bomb tower we are visiting
-	*/
-	virtual void CBombCounter::VisitTowerBomb(CTowerBomb* bombtower) { mNumBombs++; }
+	virtual void VisitTowerBomb(CTowerBomb* bombtower);
 
 	/**
 	* Getter for number of bombs in the level

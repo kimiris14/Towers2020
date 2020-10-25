@@ -37,7 +37,7 @@ public:
   
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-    virtual bool Place();
+    virtual bool Place() override;
 
     void Fire();
 

@@ -22,10 +22,8 @@ class CTowerOwenCounter : public CItemVisitor
 {
 public:
 
-	/**Visits and counts owen towers in the level
-	* \param owentower The owen tower we are visiting
-	*/
-	virtual void CTowerOwenCounter::VisitTowerOwen(CTowerOwen* owentower) { mNumOwens++; }
+
+	virtual void VisitTowerOwen(CTowerOwen* owentower);
 
 	/**
 	* Getter for number of owens in the level
