@@ -43,6 +43,10 @@ CTowerOwen::CTowerOwen(CLevel* level, CGame* game)
 */
 void CTowerOwen::Update(double elapsed)
 {
+    if (!IsActive())
+        return;
+
+
     if (GetLevel()->IsActive())
     {
         mTimeTillFire -= elapsed;
@@ -65,6 +69,9 @@ void CTowerOwen::Update(double elapsed)
 void CTowerOwen::Draw(Gdiplus::Graphics* graphics)
 {
     CItem::Draw(graphics);
+
+    if (!IsActive())
+        return;
 
     if (!mHasDrOwen)
         return;

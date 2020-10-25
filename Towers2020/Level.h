@@ -54,7 +54,7 @@ public:
 
 	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
 
-	std::shared_ptr<CItem> PickUpTower(int x, int y);
+	CTower* PickUpTower(int x, int y);
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 

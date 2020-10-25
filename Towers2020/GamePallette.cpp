@@ -130,7 +130,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
 * \param y Y location clicked on
 * \returns A new tower object if one of the tower buttons was pressed
 */
-std::shared_ptr<CItem> CGamePallette::OnLButtonDown(int x, int y)
+std::shared_ptr<CTower> CGamePallette::OnLButtonDown(int x, int y)
 {
     // only make towers draggable if 2 seconds have passed
     if (mDartTowerButton != nullptr && mDartTowerButton->HitTest(x, y) && mGame->GetLevel()->IsTitleDisplayed() != true) 

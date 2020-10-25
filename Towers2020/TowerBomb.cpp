@@ -38,6 +38,9 @@ CTowerBomb::CTowerBomb(CLevel* level, CGame* game)
 */
 void CTowerBomb::Update(double elapsed)
 {
+
+    if (!IsActive())
+        return;
  
     if (GetLevel()->IsActive())
     {

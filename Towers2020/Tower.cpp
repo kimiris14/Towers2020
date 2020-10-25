@@ -17,6 +17,9 @@
  */
 void CTower::Draw(Gdiplus::Graphics* graphics)
 {
+    if (!IsActive())
+        return;
+
     CItem::Draw(graphics);
 }
 

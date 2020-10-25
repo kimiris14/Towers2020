@@ -63,7 +63,7 @@ public:
 private:
 
     /// This is where an item will be stored if it is grabbed with the mouse
-    std::shared_ptr<CItem> mGrabbedTower = nullptr;
+    CTower* mGrabbedTower = nullptr;
 
     /// The game view's scale factor
     float mScale;

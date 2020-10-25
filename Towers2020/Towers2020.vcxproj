@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="BombCounter.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="ItemBalloonGhost.h" />
     <ClInclude Include="ItemVisitorFindNearestBalloon.h" />
     <ClInclude Include="ItemVisitorPopFinder.h" />
     <ClInclude Include="GoButton.h" />
@@ -225,6 +226,7 @@
   <ItemGroup>
     <ClCompile Include="BombCounter.cpp" />
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="ItemBalloonGhost.cpp" />
     <ClCompile Include="ItemVisitorFindNearestBalloon.cpp" />
     <ClCompile Include="ItemVisitorPopFinder.cpp" />
     <ClCompile Include="GoButton.cpp" />

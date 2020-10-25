@@ -34,7 +34,7 @@ public:
 
 	void Draw(Gdiplus::Graphics* graphics);
 
-    std::shared_ptr<CItem> OnLButtonDown(int x, int y);
+    std::shared_ptr<CTower> OnLButtonDown(int x, int y);
 
     /// Increment the score by the amount passed into this function
     /// \param increment The amount to increment the score by

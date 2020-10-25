@@ -33,6 +33,10 @@ CTowerRing::CTowerRing(CLevel* level, CGame* game)
 */
 void CTowerRing::Update(double elapsed)
 {
+
+    if (!IsActive())
+        return;
+
     if (GetLevel()->IsActive())
     {
         mTimeTillFire -= elapsed;

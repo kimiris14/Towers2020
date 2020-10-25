@@ -16,6 +16,8 @@
 #include "ItemVisitorFindTile.h"
 #include "ItemVisitorFindTower.h"
 #include "TowerOwen.h"
+#include "ItemBalloon.h"
+#include "ItemBalloonGhost.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
@@ -70,23 +72,21 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
 /// found, that object is returned.
 /// \param x The x coordinate in pixels
 /// \param y the y coordinate in pixels
-/// \returns The clicked object if found, otherwise nullptr
-std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
+/// \returns A pointer to the clicked tower if found
+CTower* CLevel::PickUpTower(int x, int y)
 {
     // this only finds towers
     CItemVisitorFindTower visitor(x, y);
     Accept(&visitor);
     CTower* tower = visitor.GetTower();
 
-    // this will fun any CItem object
-    shared_ptr<CItem> hitItem = HitTest(x, y);
 
     // if there was a tower that was found and clicked on, pick it up and return it
-    if ((hitItem.get() == tower) && (tower != nullptr)) 
+    if ((tower != nullptr)) 
     {
 
-        auto x = (int)hitItem->GetX();
-        auto y = (int)hitItem->GetY();
+        auto x = (int)tower->GetX();
+        auto y = (int)tower->GetY();
 
         int gridX = x / mTileSpacing;
         int gridY = y / mTileSpacing;
@@ -102,7 +102,7 @@ std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
             currentTile->SetOpen(true);
         }
 
-        return hitItem;
+        return tower;
     }
 
     return nullptr;
@@ -543,7 +543,6 @@ void CLevel::Update(double elapsed)
 
     // if any item was to be added during the call to item->Update() above,
     // it should now be added into mItems
-    for (auto item : mDeferredAdds)
     for (auto item : mDeferredAdds)
     {
         mItems.push_back(item);
