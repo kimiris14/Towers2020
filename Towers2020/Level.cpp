@@ -332,7 +332,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         FontFamily fontFamily(L"Arial");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 60, FontStyleBold);
+        Gdiplus::Font font(&fontFamily, 60, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color::Brown);
@@ -356,7 +356,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         FontFamily fontFamily(L"Chiller");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 80, FontStyleBold);
+        Gdiplus::Font font(&fontFamily, 80, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color(215, 55, 5));

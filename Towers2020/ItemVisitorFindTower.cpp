@@ -24,7 +24,7 @@ void CItemVisitorFindTower::VisitTower(CTower* tower)
 * \param tower Tower we are visiting */
 void CItemVisitorFindTower::VisitTowerDart(CTowerDart* tower)
 {
-	// we can downcast the dart tower to a tower for this
+	// we can upcast the dart tower to a tower for this
 	VisitTower((CTower*)tower);
 }
 
@@ -32,7 +32,7 @@ void CItemVisitorFindTower::VisitTowerDart(CTowerDart* tower)
 * \param tower Tower we are visiting */
 void CItemVisitorFindTower::VisitTowerRing(CTowerRing* tower)
 {
-	// we can downcast the ring tower to a tower for this
+	// we can upcast the ring tower to a tower for this
 	VisitTower((CTower*)tower);
 }
 
@@ -40,7 +40,7 @@ void CItemVisitorFindTower::VisitTowerRing(CTowerRing* tower)
 * \param tower Tower we are visiting */
 void CItemVisitorFindTower::VisitTowerBomb(CTowerBomb* tower)
 {
-	// we can downcast the bomb tower to a tower for this
+	// we can upcast the bomb tower to a tower for this
 	VisitTower((CTower*)tower);
 }
 
@@ -50,7 +50,7 @@ void CItemVisitorFindTower::VisitTowerBomb(CTowerBomb* tower)
  */
 void CItemVisitorFindTower::VisitTowerOwen(CTowerOwen* tower)
 {
-	// we can downcast the dart tower to a tower for this
+	// we can upcast the dart tower to a tower for this
 	VisitTower((CTower*)tower);
 
 	if (tower->HitTest(mTargetX, mTargetY))
