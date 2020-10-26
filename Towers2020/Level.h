@@ -201,6 +201,6 @@ private:
 	std::vector<std::shared_ptr<CItem>> mDeferredAdds;
 
 	/// The probability of spawing a ghost balloon every call to Update() - should be a value [0, 1]
-	double mGhostProbability = 0.001;
+	double mGhostProbability = 0.002;
 };
 

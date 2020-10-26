@@ -59,7 +59,7 @@ private:
     const static int GhostImageID = 737;
 
     /// Ghost floating speed in pixels per second
-    int mSpeed = 64;
+    double mSpeed = 64;
 
     /// This will hold the time at which the special message should be shown until
     double mShowMessageUntil = 0;
@@ -69,6 +69,10 @@ private:
 
     /// The special message to display when a ghost balloon is popped
     std::wstring mSpecialMessage = L"Those who know, BOO!";
+
+    /// This value scales the sway of the balloon so that it looks more normal. It is initially
+    /// generated randomly in the constructor to a value [0,1]
+    double mSwayScaler = 1;
 
 };
 

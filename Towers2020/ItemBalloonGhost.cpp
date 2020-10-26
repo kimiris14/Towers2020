@@ -23,6 +23,10 @@ CItemBalloonGhost::CItemBalloonGhost(CLevel* level, CGame* game) : CItemBalloon(
 {
 	SetImageID(GhostImageID);
 	GetGame()->AddImage(GhostImageID, GhostImage);
+
+	mSwayScaler = ((double)rand() / RAND_MAX);
+
+	mSpeed = mSpeed * ((double)rand() / RAND_MAX);
 }
 
 /**
@@ -37,7 +41,7 @@ void CItemBalloonGhost::Update(double elapsed)
 		auto newY = GetY() - mSpeed * elapsed;
 
 		/// The arbirary numbers just control the way that the balloon sways
-		auto newX = GetX() + 4 * sin(GetY() / (CGame::Height / 90));
+		auto newX = GetX() + 10 * mSwayScaler * sin(GetY() / (CGame::Height / 90));
 
 		SetLocation(newX, newY);
 	}
@@ -61,7 +65,7 @@ void CItemBalloonGhost::Draw(Gdiplus::Graphics* graphics)
 		FontFamily fontFamily(L"Arial");
 
 		// Font size
-		Gdiplus::Font font(&fontFamily, 25, 0, UnitPixel);
+		Gdiplus::Font font(&fontFamily, 25, FontStyleBold, UnitPixel);
 
 		StringFormat stringFormat;
 
@@ -82,7 +86,8 @@ void CItemBalloonGhost::Draw(Gdiplus::Graphics* graphics)
 			&white);    // The brush to draw the text with
 	}
 
-	if (IsActive())
+	// only draw the ghost balloon if the game is not over
+	if (!GetLevel()->IsCompleted())
 		CItemBalloon::Draw(graphics);
 }
 
