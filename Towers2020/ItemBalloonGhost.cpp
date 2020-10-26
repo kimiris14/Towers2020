@@ -81,7 +81,7 @@ void CItemBalloonGhost::Draw(Gdiplus::Graphics* graphics)
 		graphics->DrawString(mSpecialMessage.c_str(),  // String to draw
 			-1,         // String length, -1 so it figures it out on its own
 			&font,      // The font to use
-			RectF(GetX() - 100, GetY() - 30, 200, 60),   // Draw to the center of this rectangle
+			RectF((REAL)GetX() - 100, (REAL)GetY() - 30, 200, 60),   // Draw to the center of this rectangle
 			&stringFormat,
 			&white);    // The brush to draw the text with
 	}

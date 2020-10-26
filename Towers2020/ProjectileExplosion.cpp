@@ -35,7 +35,7 @@ void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
 		auto x = (int)this->GetX() - (int)mExplosionRadius;
 		auto y = (int)this->GetY() - (int)mExplosionRadius;
 		SolidBrush brush(Color(128, 0, 0));
-		graphics->FillEllipse(&brush, x, y, mExplosionRadius * 2, mExplosionRadius * 2);
+		graphics->FillEllipse(&brush, x, y, int(mExplosionRadius * 2), int(mExplosionRadius * 2));
 		
 	}
 }
