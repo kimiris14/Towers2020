@@ -11,6 +11,7 @@
 
  // Forward references to all item types
 class CItemBalloon;
+class CItemBalloonGhost;
 class CItemTile;
 class CItemTileRoad;
 class CProjectileRing;
@@ -36,6 +37,10 @@ public:
     /** Visit a CItemBalloon object
      * \param balloon Balloon we are visiting */
     virtual void VisitBalloon(CItemBalloon* balloon) {}
+
+    /** Visit a CItemBalloonGhost object
+     * \param balloon Ghost Balloon we are visiting */
+    virtual void VisitBalloonGhost(CItemBalloonGhost* balloon) {}
 
     /** Visit a CItemTile object
     * \param tile Tile we are visiting */

@@ -81,6 +81,14 @@ public:
 	* \param newID the new image ID for this object */
 	virtual void SetImageID(int newID) { mImageID = newID; }
 
+	/// Setter for the item's activity status
+	/// \param active If the item is still considered active in the game, this is true
+	void SetActive(bool active) { mItemActive = active; }
+
+	/// Getter for the item's activity status
+	/// \returns True if the false is active, false if it is inactive
+	bool IsActive() const { return mItemActive; }
+
 protected:
 	
 	/** Getter for mLevel for derived classes
@@ -94,6 +102,9 @@ protected:
 
 
 private:
+
+	/// A boolean to represent if this item is current active in the game
+	bool mItemActive = true;
 
 	double mX = 0;  ///< x location on the board (in pixels)
 	double mY = 0;  ///< y location on the board (in pixels)

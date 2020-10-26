@@ -40,6 +40,11 @@ CTowerDart::CTowerDart(CLevel* level, CGame* game)
 */
 void CTowerDart::Update(double elapsed)
 {
+
+    if (!IsActive())
+        return;
+
+
     if (GetLevel()->IsActive())
     {
         mTimeTillFire -= elapsed;

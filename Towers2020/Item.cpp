@@ -32,6 +32,9 @@ CItem::CItem(CLevel* level, CGame* game, int imageID) : mLevel(level), mGame(gam
 void CItem::Draw(Gdiplus::Graphics* graphics)
 {
 
+    if (!mItemActive)
+        return;
+
     shared_ptr<Bitmap> itemBitmap = mGame->GetImage(mImageID);
     
     if (itemBitmap != nullptr) {
@@ -89,6 +92,9 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 bool CItem::HitTest(int x, int y)
 {
+
+    if (!mItemActive)
+        return false;
 
     auto itemImage = mGame->GetImage(mImageID);
 

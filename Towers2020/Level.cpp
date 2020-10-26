@@ -9,6 +9,7 @@
 #include "pch.h"
 #include "Level.h"
 #include "Game.h"
+#include "GamePallette.h"
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
@@ -16,6 +17,8 @@
 #include "ItemVisitorFindTile.h"
 #include "ItemVisitorFindTower.h"
 #include "TowerOwen.h"
+#include "ItemBalloon.h"
+#include "ItemBalloonGhost.h"
 #include "Tower.h"
 #include <memory>
 #include <vector>
@@ -42,7 +45,7 @@ const wstring ImagesDirectory = L"images/";
 CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) 
 {
     // grab the level number from the filename
-    levelNumber = filename[12];
+    mLevelNumber = filename[12];
     Load(filename);
 
 }
@@ -57,8 +60,9 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
     mItemsToDelete.push_back(balloon);
 
     // be absolutely certain that the balloon isn't popped before we decrement the score
-    if (!balloon->IsPopped())
+    if (balloon->IsActive())
     {
+        balloon->SetActive(false);
         mGame->GetPallette()->DecrementScore(mPointsPerEscape);
         // decrease number of active balloons if balloons escape
         this->DerementActiveBalloons();
@@ -70,23 +74,21 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
 /// found, that object is returned.
 /// \param x The x coordinate in pixels
 /// \param y the y coordinate in pixels
-/// \returns The clicked object if found, otherwise nullptr
-std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
+/// \returns A pointer to the clicked tower if found
+CTower* CLevel::PickUpTower(int x, int y)
 {
     // this only finds towers
     CItemVisitorFindTower visitor(x, y);
     Accept(&visitor);
     CTower* tower = visitor.GetTower();
 
-    // this will fun any CItem object
-    shared_ptr<CItem> hitItem = HitTest(x, y);
 
     // if there was a tower that was found and clicked on, pick it up and return it
-    if ((hitItem.get() == tower) && (tower != nullptr)) 
+    if ((tower != nullptr)) 
     {
 
-        auto x = (int)hitItem->GetX();
-        auto y = (int)hitItem->GetY();
+        auto x = (int)tower->GetX();
+        auto y = (int)tower->GetY();
 
         int gridX = x / mTileSpacing;
         int gridY = y / mTileSpacing;
@@ -102,7 +104,7 @@ std::shared_ptr<CItem> CLevel::PickUpTower(int x, int y)
             currentTile->SetOpen(true);
         }
 
-        return hitItem;
+        return tower;
     }
 
     return nullptr;
@@ -126,6 +128,25 @@ std::shared_ptr<CItem> CLevel::HitTest(int x, int y)
     }
     return lastItem;
 
+}
+
+
+/// Spawns a ghost at random
+void CLevel::SpawnGhost()
+{
+
+    double spawnProb = ((double)rand() / RAND_MAX);
+    if (spawnProb <= mGhostProbability)
+    {
+        /// Spawn at a random x value along the width of the game
+        double spawnX = ((double)rand() / RAND_MAX) * (CGame::Width - CGamePallette::PaletteWidth);
+
+        auto ghost = make_shared<CItemBalloonGhost>(this, mGame);
+        ghost->SetLocation(spawnX, CGame::Height);
+
+        AddDeferred(ghost);
+
+    }
 }
 
 
@@ -326,20 +347,20 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // Draw the level title
-    if (mDisplayTitle && levelNumber != L"3")
+    if (mDisplayTitle && mLevelNumber != L"3")
     {
         //Font 
         FontFamily fontFamily(L"Arial");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 60, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, LevelTextSizeSmall, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color::Brown);
 
         wstring levelw;
         if (mLevelCompleted == false)
-            levelw = L"Level " + levelNumber + L" Begin";
+            levelw = L"Level " + mLevelNumber + L" Begin";
         if (mLevelCompleted == true)
             levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
@@ -350,20 +371,20 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // Draw the level title
-    if (mDisplayTitle && levelNumber == L"3")
+    if (mDisplayTitle && mLevelNumber == L"3")
     {
         //Font 
         FontFamily fontFamily(L"Chiller");
 
         //Font size for title
-        Gdiplus::Font font(&fontFamily, 80, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, LevelTextSizeLarge, FontStyleBold, UnitPixel);
 
         //Draw the title in brown
         SolidBrush color(Color(215, 55, 5));
 
         wstring levelw;
         if (mLevelCompleted == false)
-            levelw = L"Level " + levelNumber + L" Begin";
+            levelw = L"Level " + mLevelNumber + L" Begin";
         if (mLevelCompleted == true)
             levelw = L"Level Complete!";
         graphics->DrawString(levelw.c_str(),  // String to draw
@@ -497,18 +518,18 @@ void CLevel::Update(double elapsed)
         {
             // figure out the next level to load
             // if the current level is not the last level, the next level will be this level + 1
-            if (levelNumber != lastLevel)
+            if (mLevelNumber != LastLevel)
             {
-                nextLevelNumber = to_wstring(stoi(levelNumber) + 1);
+                mNextLevelNumber = to_wstring(stoi(mLevelNumber) + 1);
                 
             }
             // otherwise the next level is the last level
             else
             {
-                nextLevelNumber = lastLevel;
+                mNextLevelNumber = LastLevel;
             }
 
-            mNextLevelFilename = L"levels/level" + nextLevelNumber + L".xml";
+            mNextLevelFilename = L"levels/level" + mNextLevelNumber + L".xml";
             
         }
     }
@@ -527,7 +548,7 @@ void CLevel::Update(double elapsed)
 
             // spawn the balloon
             auto balloon = make_shared<CItemBalloon>(this, mGame);
-            mItems.push_back(balloon);
+            mDeferredAdds.push_back(balloon);
             startingRoad->AcceptBalloon(balloon);
             mTimeSinceSpawn = 0.0;
 
@@ -535,6 +556,12 @@ void CLevel::Update(double elapsed)
         }
     }
 
+
+    // see if we should call the ghost spawner
+    if (mLevelNumber == L"3" && mLevelActive)
+    {
+        SpawnGhost();
+    }
 
     for (auto item : mItems)
     {

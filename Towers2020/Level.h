@@ -54,9 +54,11 @@ public:
 
 	void EscapedBalloon(std::shared_ptr<CItemBalloon> balloon);
 
-	std::shared_ptr<CItem> PickUpTower(int x, int y);
+	CTower* PickUpTower(int x, int y);
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
+
+	void SpawnGhost();
 
 	/// Getter for the level active boolean. 
 	/// Tells the caller if the current level is active
@@ -89,6 +91,9 @@ public:
 	/**Setter for the number of active balloons*/
 	void DerementActiveBalloons() { mNumBalloonsActive -= 1; }
 
+	/**Setter for the number of active balloons*/
+	void IncrementActiveBalloons() { mNumBalloonsActive += 1; }
+
 	/// A getter for the next level
 	/// \returns the filename for the next level
 	std::wstring GetNextLevel() { return mNextLevelFilename; }
@@ -97,22 +102,28 @@ public:
 	/// \returns true if the level has been completed
 	bool IsCompleted() { return mLevelCompleted; }
 
-	/// the current level number
-	std::wstring levelNumber;
-
-	/// the next level to Load
-	std::wstring nextLevelNumber; 
-
 	/// the last level
-	const std::wstring lastLevel = L"3";
+	const std::wstring LastLevel = L"3";
 
-	/// the y location for the level title
+	/// the y location for the level title (in pixels);
 	const Gdiplus::REAL LevelTitleY = 400;
 
-	/// the x location for the level title
+	/// the x location for the level title (in pixels)
 	const Gdiplus::REAL LevelStringX = 170;
 
+	/// the text size for the begining level text with larger fonts (in pixels)
+	const Gdiplus::REAL LevelTextSizeSmall = 100;
+
+	/// the text size for the level text with smaller fonts (in pixels)
+	const Gdiplus::REAL LevelTextSizeLarge = 135;
+
 private:
+
+	/// the current level number
+	std::wstring mLevelNumber;
+
+	/// the next level to Load
+	std::wstring mNextLevelNumber;
 
 	/// All of the items to add to our game
 	std::vector<std::shared_ptr<CItem> > mItems;
@@ -188,5 +199,8 @@ private:
 
 	/// Temporary mItems
 	std::vector<std::shared_ptr<CItem>> mDeferredAdds;
+
+	/// The probability of spawing a ghost balloon every call to Update() - should be a value [0, 1]
+	double mGhostProbability = 0.001;
 };
 

@@ -118,12 +118,12 @@ void CGame::OnLButtonDown(int x, int y)
         }
 
         // did we click an item in the game pallette?
-        clickedItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
-        if (clickedItem != nullptr)
+        auto newItem = mGamePallette->OnLButtonDown((int)oX, (int)oY);
+        if (newItem != nullptr)
         {
-            clickedItem->SetLocation(oX, oY);
-            mGrabbedTower = clickedItem;
-            mCurrentLevel->Add(clickedItem);
+            newItem->SetLocation(oX, oY);
+            mGrabbedTower = newItem.get();
+            mCurrentLevel->AddDeferred(newItem);
         }
     }
 
@@ -155,11 +155,11 @@ void CGame::OnMouseMove(int x, int y, UINT nFlags)
         {
 
             // attempt to place the tower, then release it
-            bool placeSuccessful = ((CTower*)mGrabbedTower.get())->Place();
+            bool placeSuccessful = mGrabbedTower->Place();
 
             // remove the tower from the level if the place was not good
             if (!placeSuccessful)
-                mCurrentLevel->RemoveItem(mGrabbedTower);
+                mGrabbedTower->SetActive(false);
 
             mGrabbedTower = nullptr;
 

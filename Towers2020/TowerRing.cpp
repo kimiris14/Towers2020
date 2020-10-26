@@ -33,6 +33,10 @@ CTowerRing::CTowerRing(CLevel* level, CGame* game)
 */
 void CTowerRing::Update(double elapsed)
 {
+
+    if (!IsActive())
+        return;
+
     if (GetLevel()->IsActive())
     {
         mTimeTillFire -= elapsed;
@@ -57,5 +61,5 @@ void CTowerRing::Fire()
     ring->SetLocation(GetX(), GetY());
 
     // Adds the ring to the level's mItems
-    GetLevel()->Add(ring);
+    GetLevel()->AddDeferred(ring);
 }
