@@ -112,10 +112,10 @@ public:
 	const Gdiplus::REAL LevelStringX = 170;
 
 	/// the text size for the begining level text with larger fonts (in pixels)
-	const Gdiplus::REAL LevelTextSizeSmall = 100;
+	const Gdiplus::REAL LevelTextSizeSmall = 120;
 
 	/// the text size for the level text with smaller fonts (in pixels)
-	const Gdiplus::REAL LevelTextSizeLarge = 135;
+	const Gdiplus::REAL LevelTextSizeLarge = 145;
 
 private:
 

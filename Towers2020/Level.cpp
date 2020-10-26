@@ -365,6 +365,14 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         //Font size for title
         Gdiplus::Font font(&fontFamily, LevelTextSizeSmall, FontStyleBold, UnitPixel);
 
+        StringFormat stringFormat;
+
+        // Center-justify each line of text.
+        stringFormat.SetAlignment(StringAlignmentCenter);
+
+        // Center the block of text (top to bottom) in the rectangle.
+        stringFormat.SetLineAlignment(StringAlignmentCenter);
+
         //Draw the title in brown
         SolidBrush color(Color::Brown);
 
@@ -376,8 +384,9 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            PointF(LevelStringX, LevelTitleY),   // Draw 
-            &color);    // The brush to draw the text with
+            RectF(0, 0, 1224 - 200, 1024),
+            &stringFormat,   // Draw 
+            &color);     // The brush to draw the text with
     }
 
     // Draw the level title
@@ -388,6 +397,14 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
 
         //Font size for title
         Gdiplus::Font font(&fontFamily, LevelTextSizeLarge, FontStyleBold, UnitPixel);
+
+        StringFormat stringFormat;
+
+        // Center-justify each line of text.
+        stringFormat.SetAlignment(StringAlignmentCenter);
+
+        // Center the block of text (top to bottom) in the rectangle.
+        stringFormat.SetLineAlignment(StringAlignmentCenter);
 
         //Draw the title in brown
         SolidBrush color(Color(215, 55, 5));
@@ -400,7 +417,8 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            PointF(LevelStringX, LevelTitleY),   // Draw 
+            RectF(0, 0, 1224 - 200, 1024),
+            &stringFormat,   // Draw 
             &color);    // The brush to draw the text with
         graphics->DrawImage(mBatOneImage.get(), LevelStringX + 100, LevelTitleY - 50);
         graphics->DrawImage(mBatThreeImage.get(), LevelStringX + 400, LevelTitleY - 120);
