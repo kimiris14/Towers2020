@@ -14,12 +14,17 @@
     <trees id="i920" image="trees3-graveyard.png"/>
     <trees id="i921" image="trees4-graveyard.png"/>
     <pumpkin id="i999" image="pumpkin1-graveyard.png"/>
+    <trees id="i922" image="leaf-pile.png"/>
   </declarations>
   <items>
     	
 		<trees id="i920" x="15" y="0"/>
 
+		<trees id="i922" x="15" y="0"/>
+
 		<trees id="i921" x="14" y="0"/>
+
+		<trees id="i922" x="14" y="0"/>
 
 		<trees id="i920" x="13" y="0"/>
 
@@ -50,7 +55,11 @@
 
 		<trees id="i921" x="0" y="0"/>
 
+		<trees id="i922" x="0" y="0"/>
+
 		<trees id="i921" x="15" y="1"/>
+
+		<trees id="i922" x="15" y="1"/>
 
 		<trees id="i921" x="14" y="1"/>
 
@@ -174,6 +183,8 @@
 
 		<open id="i908" x="2" y="4"/>
 
+		<trees id="i922" x="2" y="4"/>
+
 		<open id="i908" x="1" y="4"/>
 
 		<open id="i908" x="0" y="4"/>
@@ -255,6 +266,8 @@
 		<road id="i903" x="10" y="7"/>
 
 		<trees id="i921" x="9" y="7"/>
+
+		<trees id="i922" x="9" y="7"/>
 
 		<trees id="i920" x="8" y="7"/>
 
@@ -404,6 +417,8 @@
 
 		<trees id="i919" x="15" y="12"/>
 
+		<trees id="i922" x="15" y="12"/>
+
 		<open id="i908" x="14" y="12"/>
 
 		<open id="i908" x="13" y="12"/>
@@ -436,11 +451,17 @@
 
 		<trees id="i920" x="15" y="13"/>
 
+		<trees id="i922" x="15" y="13"/>
+
 		<trees id="i920" x="14" y="13"/>
+
+		<trees id="1922" x="13" y="13"/>
 
 		<trees id="i921" x="13" y="13"/>
 
 		<open id="i908" x="12" y="13"/>
+
+		<trees id="i922" x="12" y="13"/>		
 
 		<open id="i908" x="11" y="13"/>
 
@@ -463,6 +484,8 @@
 		<open id="i908" x="2" y="13"/>		
 
 		<trees id="i919" x="1" y="13"/>
+
+		<trees id="i922" x="1" y="13"/>
 
 		<trees id="i920" x="0" y="13"/>
 
@@ -503,7 +526,7 @@
 		<trees id="i921" x="14" y="15"/>
 
 		<trees id="i921" x="13" y="15"/>
-
+	
 		<trees id="i920" x="12" y="15"/>
 
 		<trees id="i919" x="11" y="15"/>
@@ -529,5 +552,6 @@
 		<trees id="i921" x="1" y="15"/>
 
 		<trees id="i921" x="0" y="15"/>
+
   </items>
 </level>
