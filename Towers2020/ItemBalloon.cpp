@@ -30,7 +30,7 @@ CItemBalloon::CItemBalloon(CLevel *level, CGame *game) : CItem(level,game,RedBal
 */
 void CItemBalloon::Draw(Gdiplus::Graphics* graphics)
 {
-    if (!mIsPopped)
+    if (IsActive())
     {
         CItem::Draw(graphics);
     }
@@ -41,10 +41,10 @@ void CItemBalloon::Draw(Gdiplus::Graphics* graphics)
 void CItemBalloon::Pop(int score)
 {
     // the if statement is here to protect from lag causing a balloon to be popped more than once
-    if (mIsPopped == false) {
-        mIsPopped = true;
+    if (IsActive()) {
+        SetActive(false);
         GetGame()->GetPallette()->IncrementScore(score);
         // decrease the number of active balloons by 1
-        GetGame()->GetLevel()->DerementActiveBalloons();
+        GetLevel()->DerementActiveBalloons();
     }
 }
