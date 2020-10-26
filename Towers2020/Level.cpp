@@ -366,7 +366,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
+            PointF(LevelStringX, LevelTitleY),   // Draw 
             &color);    // The brush to draw the text with
     }
 
@@ -390,7 +390,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            PointF(LevelStringX, LevelTitleY),   // Draw to the center of the game palette
+            PointF(LevelStringX, LevelTitleY),   // Draw 
             &color);    // The brush to draw the text with
     }
 
