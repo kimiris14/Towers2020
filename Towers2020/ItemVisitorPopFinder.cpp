@@ -7,6 +7,7 @@
 #include "pch.h"
 #include "ItemVisitorPopFinder.h"
 #include "ItemBalloon.h"
+#include "ItemBalloonGhost.h"
 #include <cmath>
 
 using namespace std;
@@ -34,9 +35,22 @@ void CItemVisitorPopFinder::VisitBalloon(CItemBalloon* balloon)
     double dist = sqrt(pow((mOriginX - balloon->GetX()), 2) + pow((mOriginY - balloon->GetY()), 2));
 
     // if the balloon is within popping distance, pop it
-    if (dist < mPoppingDistance && !balloon->IsPopped())
+    if (dist < mPoppingDistance && balloon->IsActive())
     {
         balloon->Pop(mPopPoints);
+        mHasPopped = true;
+    }
+}
+
+void CItemVisitorPopFinder::VisitBalloonGhost(CItemBalloonGhost* balloon)
+{
+    // distance from the current balloon to the center of the ring
+    double dist = sqrt(pow((mOriginX - balloon->GetX()), 2) + pow((mOriginY - balloon->GetY()), 2));
+
+    // if the balloon is within popping distance, pop it
+    if (dist < mPoppingDistance && balloon->IsActive())
+    {
+        balloon->Pop(mPopPoints * balloon->GetMultiplier());
         mHasPopped = true;
     }
 }

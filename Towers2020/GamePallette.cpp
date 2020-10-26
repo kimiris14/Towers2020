@@ -91,13 +91,13 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     stringFormat.SetLineAlignment(StringAlignmentCenter);
 
 
-    // Draw the score in white
+    // Draw the score in yellow
     SolidBrush yellow(Color(255, 255, 0));
     wstring scorew = L"Score";
     graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        RectF(1024, 500, 200, ScoreStringSize),   // Draw to the center of this rectangle
+        RectF(1024, 500, PaletteWidth, ScoreStringSize),   // Draw to the center of this rectangle
         &stringFormat,
         &yellow);    // The brush to draw the text with
 
@@ -106,7 +106,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font2,      // The font to use
-        RectF(1024, 500 + ScoreStringSize, 200, ScoreSize),   // Draw to the center of this rectangle
+        RectF(1024, 500 + ScoreStringSize, PaletteWidth, ScoreSize),   // Draw to the center of this rectangle
         &stringFormat,
         &yellow);    // The brush to draw the text with
 

@@ -28,6 +28,7 @@ public:
     virtual ~CItemVisitorPopFinder() {}
 
     virtual void VisitBalloon(CItemBalloon* balloon) override;
+    virtual void VisitBalloonGhost(CItemBalloonGhost* balloon) override;
 
     /// A getter for the "has popped" boolean
     /// \returns True if the visitor has popped a balloon, false if not

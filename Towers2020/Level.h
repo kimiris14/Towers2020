@@ -58,6 +58,8 @@ public:
 
 	std::shared_ptr<CItem> HitTest(int x, int y);
 
+	void SpawnGhost();
+
 	/// Getter for the level active boolean. 
 	/// Tells the caller if the current level is active
 	/// \returns true if the level has been activated
@@ -89,6 +91,9 @@ public:
 	/**Setter for the number of active balloons*/
 	void DerementActiveBalloons() { mNumBalloonsActive -= 1; }
 
+	/**Setter for the number of active balloons*/
+	void IncrementActiveBalloons() { mNumBalloonsActive += 1; }
+
 	/// A getter for the next level
 	/// \returns the filename for the next level
 	std::wstring GetNextLevel() { return mNextLevelFilename; }
@@ -96,7 +101,6 @@ public:
 	/// A getter for if the level is completed
 	/// \returns true if the level has been completed
 	bool IsCompleted() { return mLevelCompleted; }
-
 
 	/// the last level
 	const std::wstring LastLevel = L"3";
@@ -195,5 +199,8 @@ private:
 
 	/// Temporary mItems
 	std::vector<std::shared_ptr<CItem>> mDeferredAdds;
+
+	/// The probability of spawing a ghost balloon every call to Update() - should be a value [0, 1]
+	double mGhostProbability = 0.001;
 };
 

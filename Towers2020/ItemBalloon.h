@@ -54,12 +54,7 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitBalloon(this); }
 
-
     virtual void Pop(int score);
-
-    /// Getter for the mIsPopped variable
-    /// \returns true when the balloon has been popped, false otherwise
-    bool IsPopped() const { return mIsPopped; }
 
     /// red balloon filename
     const std::wstring RedBalloonImageName = L"images/red-balloon.png";
@@ -75,7 +70,5 @@ private:
     /// The balloon's t value
     double mTValue = 0.0;
 
-    /// A member variable to keep track of when the balloon is popped
-    bool mIsPopped = false;
 };
 

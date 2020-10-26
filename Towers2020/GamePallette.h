@@ -44,14 +44,18 @@ public:
     /// \param decrement The amount to decrement the score by
     void DecrementScore(int decrement = 1) { mScore = mScore - decrement; }
 
-private:
-
     /// The size in px of the score string display
     const static int ScoreStringSize = 60;
 
     /// The size in px of the actual score display
     const static int ScoreSize = 80;
 
+    /// The width of the game palette in pixels
+    const static int PaletteWidth = 200;
+
+private:
+
+    
 	/// The current score in the game
 	int mScore = 0;
 

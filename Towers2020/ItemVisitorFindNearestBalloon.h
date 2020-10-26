@@ -28,6 +28,7 @@ public:
     virtual ~CItemVisitorFindNearestBalloon() {}
 
     virtual void VisitBalloon(CItemBalloon* balloon) override;
+    virtual void VisitBalloonGhost(CItemBalloonGhost* balloon) override;
 
 
     /// Getter for the nearest balloon after it's been found

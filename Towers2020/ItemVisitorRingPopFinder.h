@@ -29,6 +29,7 @@ public:
     virtual ~CItemVisitorRingPopFinder() {}
 
     virtual void VisitBalloon(CItemBalloon* balloon) override;
+    virtual void VisitBalloonGhost(CItemBalloonGhost* balloon) override;
 
 private:
 

@@ -9,6 +9,7 @@
 #include "pch.h"
 #include "Level.h"
 #include "Game.h"
+#include "GamePallette.h"
 #include "ItemTile.h"
 #include "ItemTileRoad.h"
 #include "ItemVisitor.h"
@@ -59,8 +60,9 @@ void CLevel::EscapedBalloon(std::shared_ptr<CItemBalloon> balloon)
     mItemsToDelete.push_back(balloon);
 
     // be absolutely certain that the balloon isn't popped before we decrement the score
-    if (!balloon->IsPopped())
+    if (balloon->IsActive())
     {
+        balloon->SetActive(false);
         mGame->GetPallette()->DecrementScore(mPointsPerEscape);
         // decrease number of active balloons if balloons escape
         this->DerementActiveBalloons();
@@ -126,6 +128,25 @@ std::shared_ptr<CItem> CLevel::HitTest(int x, int y)
     }
     return lastItem;
 
+}
+
+
+/// Spawns a ghost at random
+void CLevel::SpawnGhost()
+{
+
+    double spawnProb = ((double)rand() / RAND_MAX);
+    if (spawnProb <= mGhostProbability)
+    {
+        /// Spawn at a random x value along the width of the game
+        double spawnX = ((double)rand() / RAND_MAX) * (CGame::Width - CGamePallette::PaletteWidth);
+
+        auto ghost = make_shared<CItemBalloonGhost>(this, mGame);
+        ghost->SetLocation(spawnX, CGame::Height);
+
+        AddDeferred(ghost);
+
+    }
 }
 
 
@@ -535,6 +556,12 @@ void CLevel::Update(double elapsed)
         }
     }
 
+
+    // see if we should call the ghost spawner
+    if (mLevelNumber == L"3" && mLevelActive)
+    {
+        SpawnGhost();
+    }
 
     for (auto item : mItems)
     {

@@ -29,7 +29,7 @@ void CItemVisitorFindNearestBalloon::VisitBalloon(CItemBalloon* balloon)
 {
 
     // if the balloon is popped, we don't care about it
-    if (balloon->IsPopped())
+    if (!balloon->IsActive())
         return;
 
     // distance from the current balloon to the center of the ring
@@ -42,4 +42,13 @@ void CItemVisitorFindNearestBalloon::VisitBalloon(CItemBalloon* balloon)
         mNearestBalloon = balloon;
     }
 
+}
+
+/**
+ * Visit a ghost balloon object and determine it's distance
+ * \param balloon The balloon we are visiting
+ */
+void CItemVisitorFindNearestBalloon::VisitBalloonGhost(CItemBalloonGhost* balloon)
+{
+    VisitBalloon((CItemBalloon*)balloon);
 }
