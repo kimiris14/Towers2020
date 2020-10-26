@@ -55,7 +55,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
-
     //
     // Automatic Scaling
     //
@@ -83,6 +82,14 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
         mCurrentLevel->Draw(graphics);
     }
 
+    if (mLevelNumber == 3)
+    {
+        FontFamily fontFamily(L"Arial");
+        Gdiplus::Font font(&fontFamily, 50, FontStyleBold, UnitPixel);
+        // Lettering color
+        SolidBrush yellow(Color(255, 255, 0));
+        graphics->DrawString(L"CSE 335 Graveyard", -1, &font, PointF(170, 890), &yellow);
+    }
 }
 
 
