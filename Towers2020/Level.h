@@ -202,5 +202,14 @@ private:
 
 	/// The probability of spawing a ghost balloon every call to Update() - should be a value [0, 1]
 	double mGhostProbability = 0.002;
+
+	/// Pointer to bat 1 image 
+	std::unique_ptr<Gdiplus::Bitmap> mBatOneImage;
+
+	/// Pointer to bat 2 image 
+	std::unique_ptr<Gdiplus::Bitmap> mBatTwoImage;
+
+	/// Pointer to bat 3 image 
+	std::unique_ptr<Gdiplus::Bitmap> mBatThreeImage;
 };
 

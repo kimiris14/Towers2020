@@ -36,7 +36,14 @@ using namespace xmlnode;
 /// The directory where all of the images are stored. Be sure to include a trailing "/"
 const wstring ImagesDirectory = L"images/";
 
+/// Bat image filename
+const wstring BatOneImageName = L"images/batsleft.png";
 
+/// Bat Two image filename
+const wstring BatTwoImageName = L"images/batsmiddle.png";
+
+/// Bat Three image filename
+const wstring BatThreeImageName = L"images/batsright.png";
 /**
 * Constructor
 * \param game The game object that this level belongs to
@@ -48,6 +55,9 @@ CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game)
     mLevelNumber = filename[12];
     Load(filename);
 
+    mBatOneImage = unique_ptr<Bitmap>(Bitmap::FromFile(BatOneImageName.c_str()));
+    mBatTwoImage = unique_ptr<Bitmap>(Bitmap::FromFile(BatTwoImageName.c_str()));
+    mBatThreeImage = unique_ptr<Bitmap>(Bitmap::FromFile(BatThreeImageName.c_str()));
 }
 
 
@@ -392,6 +402,9 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
             &font,      // The font to use
             PointF(LevelStringX, LevelTitleY),   // Draw 
             &color);    // The brush to draw the text with
+        graphics->DrawImage(mBatOneImage.get(), LevelStringX + 100, LevelTitleY - 50);
+        graphics->DrawImage(mBatThreeImage.get(), LevelStringX + 400, LevelTitleY - 120);
+        graphics->DrawImage(mBatTwoImage.get(), LevelStringX + 250, LevelTitleY + 100);
     }
 
 }
