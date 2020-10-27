@@ -85,10 +85,10 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     if (mLevelNumber == 3)
     {
         FontFamily fontFamily(L"Arial");
-        Gdiplus::Font font(&fontFamily, 50, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, 40, FontStyleBold, UnitPixel);
         // Lettering color
-        SolidBrush yellow(Color(255, 255, 0));
-        graphics->DrawString(L"CSE 335 Graveyard", -1, &font, PointF(170, 890), &yellow);
+        SolidBrush grey(Color(90, 90, 90));
+        graphics->DrawString(L"CSE 335 Graveyard", -1, &font, PointF(200, 860), &grey);
     }
 }
 
