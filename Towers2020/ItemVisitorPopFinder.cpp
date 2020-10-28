@@ -42,6 +42,8 @@ void CItemVisitorPopFinder::VisitBalloon(CItemBalloon* balloon)
     }
 }
 
+/** Visit a Ghost balloon object and determine if it can be popped
+ *\param balloon Balloon we are visiting */
 void CItemVisitorPopFinder::VisitBalloonGhost(CItemBalloonGhost* balloon)
 {
     // distance from the current balloon to the center of the ring
