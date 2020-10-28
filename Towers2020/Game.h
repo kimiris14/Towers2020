@@ -59,6 +59,9 @@ public:
     /// Game area height in virtual pixels
     const static int Height = 1024;
 
+    const static int TitlePointX = 200;
+
+    const static int TitlePointY = 905;
 
 private:
 
