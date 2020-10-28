@@ -55,7 +55,7 @@ void CItemBalloonGhost::Update(double elapsed)
 
 
 /// Draw the balloon or it's secret message
-/// \graphics the Gdiplus graphics context to draw on
+/// \param graphics the Gdiplus graphics context to draw on
 void CItemBalloonGhost::Draw(Gdiplus::Graphics* graphics)
 {
 	/// Show the special message and only if the level is not completed
