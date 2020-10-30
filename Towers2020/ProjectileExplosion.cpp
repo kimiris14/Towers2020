@@ -13,14 +13,17 @@
 using namespace Gdiplus;
 
 /// explosion id number
-const int explosionID = 53; //assigned
+const int ExplosionID = 53; //assigned
+
+/// The length of the explosion in seconds
+const double ExplosionLength = 0.25;
 
  /**
  * Constructor
  * \param level The Level this bomb is a member of
  * \param game The Game this bomb is a member of
  */
-CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game) : CProjectile(level, game, explosionID)
+CProjectileExplosion::CProjectileExplosion(CLevel* level, CGame* game) : CProjectile(level, game, ExplosionID)
 {
 }
 
@@ -47,7 +50,7 @@ void CProjectileExplosion::Draw(Gdiplus::Graphics* graphics)
 void CProjectileExplosion::Update(double elapsed)
 {
 	CProjectile::Update(elapsed);
-	if (GetTotalElapsed() > 0.25)
+	if (GetTotalElapsed() > ExplosionLength)
 	{
 		SetActive(false); //deactivate projectile
 	}

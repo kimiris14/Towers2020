@@ -14,10 +14,15 @@ using namespace std;
 using namespace Gdiplus;
 
 /// Dart image ID
-const int dartID = 51;
+const int DartID = 51;
 
 /// Pi
 const double Pi = 3.14159265358979323846;
+
+/// The dart's speed in pixels per second
+const int DartSpeed = 200;
+
+
 /**
 * Constructor
 * \param level The level object that this item is a part of
@@ -70,7 +75,7 @@ void CTowerDart::Fire()
     for (double i = 0; i < 8; i++)
     {
         shared_ptr<CItem> item = nullptr;
-        auto dart = make_shared<CProjectileDart>(GetLevel(), GetGame(), dartID);
+        auto dart = make_shared<CProjectileDart>(GetLevel(), GetGame(), DartID);
 
         // Set the dart's angle
         dart->SetAngle(i * (Pi / 4.0) - Pi / 4.0);
@@ -90,7 +95,7 @@ void CTowerDart::Fire()
         GetLevel()->AddDeferred(item);
 
         // Set X and Y speed
-        dart->SetSpeed(200 * cs, 200 * sn);
+        dart->SetSpeed(DartSpeed * cs, DartSpeed * sn);
     }
 }
 

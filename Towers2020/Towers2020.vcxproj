@@ -196,7 +196,6 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GamePallette.h" />
-    <ClInclude Include="ImageMap.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemBalloon.h" />
     <ClInclude Include="ItemVisitorFindRoad.h" />
@@ -235,7 +234,6 @@
     <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GamePallette.cpp" />
-    <ClCompile Include="ImageMap.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBalloon.cpp" />
     <ClCompile Include="ItemVisitorFindRoad.cpp" />

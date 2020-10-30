@@ -48,9 +48,6 @@
     <ClInclude Include="GamePallette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -153,9 +150,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GamePallette.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="XmlNode.cpp">

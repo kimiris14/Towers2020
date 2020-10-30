@@ -39,6 +39,12 @@ const int RingTowerY = 100;
 /// they y-location of the go button in pixels
 const int GoButtonY = 900;
 
+/// the x location of the rectangle that houses the score
+const int ScoreTextBoxPositionX = 1024;
+
+/// the y location of the rectangle that houses the score
+const int ScoreTextBoxPositionY = 500;
+
 /**
 * Constructor
 * \param game The Game this Game Pallette is a member of
@@ -97,7 +103,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(scorew.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font,      // The font to use
-        RectF(1024, 500, PaletteWidth, ScoreStringSize),   // Draw to the center of this rectangle
+        RectF(ScoreTextBoxPositionX, ScoreTextBoxPositionY, PaletteWidth, ScoreStringSize),   // Draw to the center of this rectangle
         &stringFormat,
         &yellow);    // The brush to draw the text with
 
@@ -106,7 +112,7 @@ void CGamePallette::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawString(score.c_str(),  // String to draw
         -1,         // String length, -1 so it figures it out on its own
         &font2,      // The font to use
-        RectF(1024, 500 + ScoreStringSize, PaletteWidth, ScoreSize),   // Draw to the center of this rectangle
+        RectF(ScoreTextBoxPositionX, ScoreTextBoxPositionY + ScoreStringSize, PaletteWidth, ScoreSize),   // Draw to the center of this rectangle
         &stringFormat,
         &yellow);    // The brush to draw the text with
 

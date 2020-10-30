@@ -27,6 +27,9 @@ using namespace xmlnode;
 /// The Default level to load when the game is created
 const wstring DefaultLevel = L"levels/level1.xml";
 
+/// The size of the graveyard text in pixels
+const int CSE335GraveyardSize = 50;
+
 
 /**
 * Game constructor
@@ -85,7 +88,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     if (mLevelNumber == 3)
     {
         FontFamily fontFamily(L"Chiller");
-        Gdiplus::Font font(&fontFamily, 50, FontStyleBold, UnitPixel);
+        Gdiplus::Font font(&fontFamily, CSE335GraveyardSize, FontStyleBold, UnitPixel);
         // Lettering color
         SolidBrush grey(Color(90, 90, 90));
         graphics->DrawString(L"CSE 335 Graveyard", -1, &font, PointF(TitlePointX, TitlePointY), &grey);
@@ -172,8 +175,6 @@ void CGame::OnMouseMove(int x, int y, UINT nFlags)
 
         }
 
-        // Force the screen to redraw
-        // Invalidate();
     }
 }
 

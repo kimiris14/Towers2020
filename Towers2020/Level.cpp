@@ -44,6 +44,11 @@ const wstring BatTwoImageName = L"images/batsmiddle.png";
 
 /// Bat Three image filename
 const wstring BatThreeImageName = L"images/batsright.png";
+
+/// The index of the filename strings where you can find the level's numerical value
+const int LevelNumberFilenameIndex = 12;
+
+
 /**
 * Constructor
 * \param game The game object that this level belongs to
@@ -52,7 +57,7 @@ const wstring BatThreeImageName = L"images/batsright.png";
 CLevel::CLevel(CGame* game, std::wstring filename) : mGame(game) 
 {
     // grab the level number from the filename
-    mLevelNumber = filename[12];
+    mLevelNumber = filename[LevelNumberFilenameIndex];
     Load(filename);
 
     mBatOneImage = unique_ptr<Bitmap>(Bitmap::FromFile(BatOneImageName.c_str()));
@@ -384,7 +389,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            RectF(0, 0, 1224 - 200, 1024),
+            RectF(0, 0, CGame::Width - CGamePallette::PaletteWidth, CGame::Height),
             &stringFormat,   // Draw 
             &color);     // The brush to draw the text with
     }
@@ -417,7 +422,7 @@ void CLevel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(levelw.c_str(),  // String to draw
             -1,         // String length, -1 so it figures it out on its own
             &font,      // The font to use
-            RectF(0, 0, 1224 - 200, 1024),
+            RectF(0, 0, CGame::Width - CGamePallette::PaletteWidth, CGame::Height),
             &stringFormat,   // Draw 
             &color);    // The brush to draw the text with
         graphics->DrawImage(mBatOneImage.get(), LevelStringX + 100, LevelTitleY - 50);

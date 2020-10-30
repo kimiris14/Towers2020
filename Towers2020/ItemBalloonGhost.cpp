@@ -13,6 +13,18 @@
 using namespace std;
 using namespace Gdiplus;
 
+/// When the balloon is popped, this is the offset of the text in the X direction (in pixels)
+const int BooTextXOffet = -100;
+
+/// When the balloon is popped, this is the offset of the text in the Y direction (in pixels)
+const int BooTextYOffet = -30;
+
+/// The boo textbox's height in pixels
+const int BooTextRectHeight = 60;
+
+/// The boo textbox's width in pixels
+const int BooTextRectWidth = 200;
+
 
  /**
   * Constructor
@@ -75,15 +87,15 @@ void CItemBalloonGhost::Draw(Gdiplus::Graphics* graphics)
 		// Center the block of text (top to bottom) in the rectangle.
 		stringFormat.SetLineAlignment(StringAlignmentCenter);
 
-		SolidBrush white(Color(255, 255, 0));
+		SolidBrush yellow(Color(255, 255, 0));
 
 		// Draw the score Value in yellow
 		graphics->DrawString(mSpecialMessage.c_str(),  // String to draw
 			-1,         // String length, -1 so it figures it out on its own
 			&font,      // The font to use
-			RectF((REAL)GetX() - 100, (REAL)GetY() - 30, 200, 60),   // Draw to the center of this rectangle
+			RectF((REAL)GetX() + BooTextXOffet, (REAL)GetY() + BooTextYOffet, BooTextRectWidth, BooTextRectHeight),
 			&stringFormat,
-			&white);    // The brush to draw the text with
+			&yellow);    // The brush to draw the text with
 	}
 
 	// only draw the ghost balloon if the game is not over
